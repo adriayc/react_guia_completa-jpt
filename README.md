@@ -50,3 +50,16 @@ Instalar [node.js](https://nodejs.org/en/)
 # npm install                       // Instalar las dependencias
 # npm run dev                       // Ejecutar la app react
 ```
+
+## Que es JSX?
+JavaScript Syntax Extension - Es una extensión del lenguaje desarrollada por Meta para React.
+
+Parece JS pero muestra código de HTML, y básicamente es un lenguaje de Template que muestra el HTML pero tiene todas las funciones de JavaScript.
+
+Una vez compilado son archivos JS con funciones y objetos.
+
+### Reglas en JSX
+- A diferencia de HTML, que no es estrict, en JSX si un elemento HTML tiene una etiqueta de apertura deberás tener también la de cierre.
+- Las etiquetas de solo apertura como <link>, <img> o <input> deberán finalizar con />.
+- Cada componente debe tener un return.
+- En este return debe haber máximo un solo elemento en el nivel máximo.
