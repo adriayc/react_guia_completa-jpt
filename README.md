@@ -63,3 +63,12 @@ Una vez compilado son archivos JS con funciones y objetos.
 - Las etiquetas de solo apertura como <link>, <img> o <input> deberán finalizar con />.
 - Cada componente debe tener un return.
 - En este return debe haber máximo un solo elemento en el nivel máximo.
+
+## Formas de Escribir Codigo CSS en React
+Hay muchas opciones, incluso algunas librerías te ofrecen componentes que puedes personalizar.
+- CSS Plano
+- Framework CSS
+- Módulos CSS
+- Componentes
+- SASS
+- Styled Components
