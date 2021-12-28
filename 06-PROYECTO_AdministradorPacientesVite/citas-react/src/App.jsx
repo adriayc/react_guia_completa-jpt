@@ -6,13 +6,13 @@ import ListadoPacientes from './components/ListadoPacientes';
 function App() {
 
   return (
-    <>
+    <div className="container mx-auto mt-20">
       {/* Llamar el componente */}
       <Header />
       < Formulario />
       <ListadoPacientes />
-    </>
+    </div>
   )
 }
 
-export default App
+export default App;
