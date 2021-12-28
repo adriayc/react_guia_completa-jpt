@@ -42,3 +42,11 @@ Instalar [node.js](https://nodejs.org/en/)
 # node -v               // Muestra la version de node
 # npm -v                // Muestra la version de npm
 ```
+
+## Crear una App React con Vite
+```bash
+# npm init vite@latest              // Inicializar la app react
+# cd citas-react
+# npm install                       // Instalar las dependencias
+# npm run dev                       // Ejecutar la app react
+```
