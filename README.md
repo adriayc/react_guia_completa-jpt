@@ -34,3 +34,11 @@ Requieren tener instalado Node.js (NPM) o YARN.
 - BlitzJS
 - Remix Run
 - Hydrogen (de Shopify)
+
+## Instalar Node.js y NPM en Linux
+Instalar [node.js](https://nodejs.org/en/)
+
+```bash
+# node -v               // Muestra la version de node
+# npm -v                // Muestra la version de npm
+```
