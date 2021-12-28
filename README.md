@@ -72,3 +72,10 @@ Hay muchas opciones, incluso algunas librerías te ofrecen componentes que puede
 - Componentes
 - SASS
 - Styled Components
+
+## Instalando TailwindCSS
+[Tailwind CSS](https://tailwindcss.com/)
+```bash
+# npm install -D tailwindcss@latest postcss@latest autoprefixer@latest
+# npx tailwindcss init -p
+```
