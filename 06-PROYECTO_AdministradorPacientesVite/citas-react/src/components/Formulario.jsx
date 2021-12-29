@@ -2,6 +2,14 @@
 import { useState, useEffect } from 'react';
 
 const Formulario = () => {
+    // Declaramos un state con un valor inicial
+    const [ nombre, setNombre ] = useState('');
+    
+    // setNombre('Hook');              // Se debe usar la funcion modificador del state (Muestra un error por exceso de renders)
+    // nombre = 'Hook';                // Erro!, no se puede usar la asignacion en la variable
+    
+    console.log(nombre);
+
     return (
         <div className="md:w-1/2 lg:w-2/5">
             <h2 className="font-black text-3xl text-center">Seguimiento Pacientes</h2>

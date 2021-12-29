@@ -104,3 +104,25 @@ Los Adicionales:
 
 ### Crear tus propios Hoooks
 También es posible crear tus propios Hooks, de esta forma podrás separar tus código en funciones reutilizables y sacar todo el beneficio de lo que React ofrece.
+
+#### Que es el State o Estado en React? (La Pieza Central de React)
+El State o Estado es básicamente eso; cuál es el estado de nuestra aplicacion.
+
+El Estado es una variable con información relevante en nuestra aplicación de React, algunas veces el state pertenece a un componente en especifico o algunas veces deseas compartirlo a lo largo de diferentes componentes.
+
+El state es creado con la función useState();
+
+```react
+import { useState } from "react";
+
+const [cliente, setCliente] = useState({});
+const [total, setTotal] = useState(0);
+const [cliente, setCliente] = useState([]);
+const [modal, setModal] = useState(false);
+```
+
+Rect reacciona en base al State.
+
+Cada que tu state cambia, tu aplicación de React va a renderizar y actualizarse con esos cambios.
+
+Para modificar el state, se utiliza la función que extraemos cuando declaramos el stae en nuestro componente.
