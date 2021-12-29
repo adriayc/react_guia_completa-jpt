@@ -79,3 +79,28 @@ Hay muchas opciones, incluso algunas librerías te ofrecen componentes que puede
 # npm install -D tailwindcss@latest postcss@latest autoprefixer@latest
 # npx tailwindcss init -p
 ```
+
+## Que son los React Hooks o Hooks?
+React cuenta con una API muy sencilla que te permite crear todo tipo de aplicaciones por medio de algo llamado Hooks.
+
+Los Hooks están disponibles desde la versión 16.8, previo a ello se tenía que crear clases para crear y modificar el state, con los Hooks no es necesario.
+
+Los Hooks se dividen en Básicos y Adicionales.
+
+### Categorías de Hooks
+Los básicos:
+- useState
+- useEffect
+- useContext
+
+Los Adicionales:
+- useReducer
+- useCallback
+- useMemo
+- useRef
+- useImperativeHandler
+- useLayoutEffect
+- useDebugValue
+
+### Crear tus propios Hoooks
+También es posible crear tus propios Hooks, de esta forma podrás separar tus código en funciones reutilizables y sacar todo el beneficio de lo que React ofrece.

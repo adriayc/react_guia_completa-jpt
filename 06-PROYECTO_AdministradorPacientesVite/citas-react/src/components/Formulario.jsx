@@ -1,3 +1,5 @@
+// Import Hooks
+import { useState, useEffect } from 'react';
 
 const Formulario = () => {
     return (
