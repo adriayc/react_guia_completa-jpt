@@ -131,3 +131,19 @@ Para modificar el state, se utiliza la función que extraemos cuando declaramos 
 Los Hooks se colocan en la parte superior de tus componentes de React.
 
 No se deben colocar dentro de condicionales, tampoco después de un return.
+
+### Eventos en React
+La forma en que React maneja los eventos es muy similar a como lo hace JavaScript de forma nativa con algunos cambios.
+
+Los eventos son camelCase, es decir en lugar de onchange se utiliza onChange, en lugar de onclick se utiliza onClick.
+
+También a diferencia de JS y HTML, donde se coloca el nombre de la función en un string en React (JSX) se utiliza la función.
+
+```react
+<button onClick={ descargarPedidos() }>Descargar Pedidos</button>
+```
+
+```react
+<form onSubmit={ handleSubmit }>
+  <button type="submit">Añadir Cliente</button>
+</form>
