@@ -126,3 +126,8 @@ Rect reacciona en base al State.
 Cada que tu state cambia, tu aplicación de React va a renderizar y actualizarse con esos cambios.
 
 Para modificar el state, se utiliza la función que extraemos cuando declaramos el stae en nuestro componente.
+
+#### Reglas de los Hooks
+Los Hooks se colocan en la parte superior de tus componentes de React.
+
+No se deben colocar dentro de condicionales, tampoco después de un return.

@@ -1,14 +1,25 @@
 // Import Hooks
 import { useState, useEffect } from 'react';
 
+
+// // Error! no pueden ir fuera del componente
+// const [ nombre, setNombre ] = useState('');
+
 const Formulario = () => {
-    // Declaramos un state con un valor inicial
+    // Declaramos un state con un valor inicial (Debe estar dentro del componente)
     const [ nombre, setNombre ] = useState('');
-    
-    // setNombre('Hook');              // Se debe usar la funcion modificador del state (Muestra un error por exceso de renders)
-    // nombre = 'Hook';                // Erro!, no se puede usar la asignacion en la variable
-    
-    console.log(nombre);
+
+    // // No puede ir dentro de una condicional
+    // const admin = false;
+    // if(admin) {
+    //     const [ puedeVer, setPuedeVer ] = useState(true);
+    // }
+
+    // // No puede ir despues de un return
+    // let cargando = true;
+    // if(cargando) return;
+
+    // const [ estaVisible, setEstaVisible ] = useState(true);
 
     return (
         <div className="md:w-1/2 lg:w-2/5">
