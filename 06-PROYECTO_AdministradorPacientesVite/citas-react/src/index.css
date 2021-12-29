@@ -2,6 +2,7 @@
 /* @import "tailwindcss/components"; */
 /* @import "tailwindcss/utilities"; */
 
+/* Tailwind CSS V3.0 */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
