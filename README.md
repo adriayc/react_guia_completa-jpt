@@ -147,3 +147,29 @@ También a diferencia de JS y HTML, donde se coloca el nombre de la función en 
 <form onSubmit={ handleSubmit }>
   <button type="submit">Añadir Cliente</button>
 </form>
+```
+
+### Qué son los Props o Propiedades en React
+El State o Funciones que crees en tus componentes, solo estarán disponibles en ese componente.
+
+Una forma de evitar duplicar código y reutilizar esas variables, state o estados y funciones en otros componentes es por medio de Props o Propiedades.
+
+Los Props se pasan del padre al hijo, nunca se pueden pasar del hijo al padre.
+
+Si tienes un state que se va a pasar por diferentes componentes, lo mejor es colocarlo en el archivo principal.
+
+Cada Nivel de Componentes deberá tomar y pasar el Prop hacia otros componentes, tecnologías como Redux o Content evita tener que hacerlo de esta forma.
+
+**Sintaxis**
+```react
+<Header
+  nombreProp={ datos o Funciones }
+/>
+
+<Header
+  clientes={ clientes }
+  admin={ false }
+  setCliente={ setCliente }
+  titulo="Tienda Virtual"
+/>
+```
