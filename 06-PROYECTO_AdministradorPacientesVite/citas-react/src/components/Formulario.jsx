@@ -1,7 +1,7 @@
 // Import Hooks
 import { useState, useEffect } from 'react';
 
-const Formulario = () => {
+const Formulario = ({ pacientes, setPacientes }) => {
     // Declaramos un state con un valor inicial (Debe estar dentro del componente)
     const [ nombre, setNombre ] = useState('');
     const [ propietario, setPropietario ] = useState('');
@@ -28,6 +28,26 @@ const Formulario = () => {
         }*/
 
         setError(false);
+
+        // Crear el objeto Paciente
+        const objetoPaciente = {
+            nombre,
+            propietario,
+            email,
+            fecha,
+            sintomas
+        };
+        console.log(objetoPaciente);
+
+        // Spread Operator - metodos inmutables no modifica el dato original
+        setPacientes([...pacientes, objetoPaciente]);
+
+        // Reiniciamos el form
+        setNombre('');
+        setPropietario('');
+        setEmail('');
+        setFecha('');
+        setSintomas('');
     };
 
     return (

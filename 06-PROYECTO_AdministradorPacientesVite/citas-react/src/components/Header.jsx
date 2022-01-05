@@ -1,16 +1,4 @@
-// function Header() {
-// function Header(props) {
-// function Header({numeros, isAdmin, fn}) {
-function Header({toma1Valor}) {
-    // console.log(props);
-    // console.log(numeros);
-    // console.log(isAdmin);
-    // Llamar la funcion
-    // fn();
-
-    const variableHeader = true;
-    // Pasar el valor a una funcion del componente padre
-    toma1Valor(variableHeader);
+function Header() {
 
     return (
         <h1 className="font-black text-5xl text-center md:w-2/3 mx-auto">
