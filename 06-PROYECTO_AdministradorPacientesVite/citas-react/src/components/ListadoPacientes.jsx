@@ -12,12 +12,12 @@ const ListadoPacientes = ({ pacientes }) => {
             </p>
 
             {/* Al iterar los pacientes react necesita de un Key unico */}
-            { pacientes.map((paciente, index) => (
+            { pacientes.map(paciente => (
                 // <h1>Desde map</h1>
                 // <h1>{ paciente.nombre }</h1>
 
                 <Paciente 
-                    key={ index } 
+                    key={ paciente.id }
                     paciente={ paciente } 
                 />
             ))}
