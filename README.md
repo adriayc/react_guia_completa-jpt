@@ -173,3 +173,23 @@ Cada Nivel de Componentes deberá tomar y pasar el Prop hacia otros componentes,
   titulo="Tienda Virtual"
 />
 ```
+
+### El Hook useEffect
+Después de useState es el más utilizado.
+
+useEffect siempre es un callback, que se ejecuta cuando un state cambia o cuando el componete esta listo.
+
+Es el sustituto de lo que antes era componentDifMount() y componentDidUpdate().
+
+Al ejecutarse automaticamente cuando el componente esta listo, es un excelente lugar para colocar código para consultar un API o LocalStorage.
+
+Debido a que le podemos pasar una dependencia y estar escuchando por los cambios que sucedan en una vaiable, puede actualizar el componente cuando ese cambio suceda.
+
+**Sintaxis**
+```react
+import { useEffect } from 'react';
+
+useEffect(() => {
+    console.log('El componente esta listo');
+}, []);  
+```

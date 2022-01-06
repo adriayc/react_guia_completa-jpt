@@ -1,8 +1,14 @@
+// import { useEffect } from 'react';
 
 const Paciente = ({paciente, setPaciente}) => {
     // console.log(paciente);
 
     const { nombre, propietario, email, fecha, sintomas } = paciente;
+
+    // // Para revisar el cambio de un componente (Podemos usar varios useEffect)
+    // useEffect(() => {
+    //     console.log('Componente listo');
+    // }, []);
 
     return (
         <div className="mx-5 my-10 bg-white shadow-md px-5 py-10 rounded-xl">

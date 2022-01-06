@@ -3,7 +3,9 @@ import { useState, useEffect } from 'react';
 
 import Error from './Error';
 
-const Formulario = ({ pacientes, setPacientes }) => {
+const Formulario = ({ pacientes, setPacientes, paciente }) => {
+    // console.log(paciente);
+
     // Declaramos un state con un valor inicial (Debe estar dentro del componente)
     const [ nombre, setNombre ] = useState('');
     const [ propietario, setPropietario ] = useState('');
@@ -12,6 +14,16 @@ const Formulario = ({ pacientes, setPacientes }) => {
     const [ sintomas, setSintomas ] = useState('');
 
     const [ error, setError ] = useState(false);
+
+    // Se usa useEffect para evitar los re-render de las variables (solo se ejecutara cuando cambie 'paciente')
+    useEffect(() => {
+        // console.log(paciente);
+    }, [paciente]);
+
+    // // Otro uso es para revisar el cambio de un componente (Podemos usar varios useEffect)
+    // useEffect(() => {
+    //     console.log('Componente listo');
+    // }, []);
 
     const generarId = () => {
         const random = Math.random().toString(36).substr(2);
