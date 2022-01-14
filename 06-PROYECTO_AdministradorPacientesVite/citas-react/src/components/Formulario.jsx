@@ -18,6 +18,20 @@ const Formulario = ({ pacientes, setPacientes, paciente }) => {
     // Se usa useEffect para evitar los re-render de las variables (solo se ejecutara cuando cambie 'paciente')
     useEffect(() => {
         // console.log(paciente);
+        // console.log(Object.keys(pacientes).length > 0);             // Verificar que no este vacio
+        
+        if(Object.keys(pacientes).length > 0) {
+            // console.log('Si hay algo');
+            // console.log(paciente);
+
+            setNombre(paciente.nombre);
+            setPropietario(paciente.propietario);
+            setEmail(paciente.email);
+            setFecha(paciente.fecha);
+            setSintomas(paciente.sintomas);
+        } /*else {
+            console.log('No hay nada');
+        }*/
     }, [paciente]);
 
     // // Otro uso es para revisar el cambio de un componente (Podemos usar varios useEffect)
