@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react';
 
 import Error from './Error';
+import Paciente from './Paciente';
 
 const Formulario = ({ pacientes, setPacientes, paciente }) => {
     // console.log(paciente);
@@ -165,7 +166,7 @@ const Formulario = ({ pacientes, setPacientes, paciente }) => {
                 <input 
                     type="submit" 
                     className="bg-indigo-600 w-full p-3 text-white font-bold uppercase hover:bg-indigo-700 cursor-pointer transition-all" 
-                    value="Agregar Paciente" />
+                    value={ paciente.id ? 'Editar Paciente' : 'Agregar Paciente' } />
             </form>
         </div>
     )
