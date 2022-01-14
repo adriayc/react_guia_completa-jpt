@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import Error from './Error';
 import Paciente from './Paciente';
 
-const Formulario = ({ pacientes, setPacientes, paciente }) => {
+const Formulario = ({ pacientes, setPacientes, paciente, setPaciente }) => {
     // console.log(paciente);
 
     // Declaramos un state con un valor inicial (Debe estar dentro del componente)
@@ -72,12 +72,31 @@ const Formulario = ({ pacientes, setPacientes, paciente }) => {
             email,
             fecha,
             sintomas,
-            id: generarId()
+            // id: generarId()
         };
-        console.log(objetoPaciente);
+        // console.log(objetoPaciente);
 
-        // Spread Operator - metodos inmutables no modifica el dato original
-        setPacientes([...pacientes, objetoPaciente]);
+        if(paciente.id) {
+            // Editando registro
+            // console.log('Paciente editando');
+
+            objetoPaciente.id = paciente.id;
+            // console.log(objetoPaciente);            // Objeto actualizado
+            // console.log(paciente);                  // Objeto original
+
+            // Retorna un objeto del paciente actualizado
+            const pacientesActualizados = pacientes.map(pacienteState => pacienteState.id === paciente.id ? objetoPaciente : pacienteState);
+
+            setPacientes(pacientesActualizados);
+            setPaciente({});                // Establecer a su valor por defecto (objeto vacio)
+        } else {
+            // Nuevo registro
+            // console.log('Nuevo registro');
+
+            objetoPaciente.id = generarId();
+            // Spread Operator - metodos inmutables no modifica el dato original
+            setPacientes([...pacientes, objetoPaciente]);
+        }
 
         // Reiniciamos el form
         setNombre('');
