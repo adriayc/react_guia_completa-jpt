@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 // Importar componentes
 import Header from './components/Header';
@@ -9,6 +9,13 @@ function App() {
 
   const [pacientes, setPacientes] = useState([]);
   const [paciente, setPaciente] = useState({});
+
+  useEffect(() => {
+    // console.log('Componente listo o cambió pacientes');
+
+    // Agregar a LocalStorage
+    localStorage.setItem('pacientes', JSON.stringify(pacientes));         // Convertir pacientes a string para guardar en LocalStorage
+  }, [pacientes]);
 
   const eliminarPaciente = id => {
     // console.log('Elimininando paciente ', id);
