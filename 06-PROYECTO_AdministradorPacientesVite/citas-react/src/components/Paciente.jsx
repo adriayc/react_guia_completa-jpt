@@ -1,14 +1,23 @@
 // import { useEffect } from 'react';
 
-const Paciente = ({paciente, setPaciente}) => {
+const Paciente = ({paciente, setPaciente, eliminarPaciente}) => {
     // console.log(paciente);
 
-    const { nombre, propietario, email, fecha, sintomas } = paciente;
+    const { nombre, propietario, email, fecha, sintomas, id } = paciente;
 
     // // Para revisar el cambio de un componente (Podemos usar varios useEffect)
     // useEffect(() => {
     //     console.log('Componente listo');
     // }, []);
+
+    const handleEliminar = () => {
+        // console.log('Eliminando paciente ', id);
+
+        const respuesta = confirm('Deseas eliminar este paciente?');
+        if(respuesta) {
+            eliminarPaciente(id);
+        }
+    };
 
     return (
         <div className="mx-5 my-10 bg-white shadow-md px-5 py-10 rounded-xl">
@@ -47,6 +56,8 @@ const Paciente = ({paciente, setPaciente}) => {
                 <button 
                     type="button"
                     className="py-2 px-10 bg-red-600 hover:bg-red-700 text-white font-bold uppercase rounded-lg"
+                    // onClick={ () => eliminarPaciente(id) }
+                    onClick={ handleEliminar }
                 >Eliminar</button>
             </div>
         </div>
