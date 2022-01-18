@@ -10,6 +10,19 @@ function App() {
   const [pacientes, setPacientes] = useState([]);
   const [paciente, setPaciente] = useState({});
 
+  // Los useEffect pueden existir varios en un componente y se ejecutan de arriba hacia abajo
+  useEffect(() => {
+    const obtenerLS = () => {
+      const pacientesLS = JSON.parse(localStorage.getItem('pacientes')) ?? [];        // Convertir los datos de LocalStora de string a array
+      // console.log(pacientesLS);
+      // console.log(typeof pacientesLS);          // Los datos que se almacen en LocalStorage son string
+
+      setPacientes(pacientesLS);
+    };
+
+    obtenerLS();
+  }, []);
+
   useEffect(() => {
     // console.log('Componente listo o cambió pacientes');
 
