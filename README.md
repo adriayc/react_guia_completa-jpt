@@ -193,3 +193,10 @@ useEffect(() => {
     console.log('El componente esta listo');
 }, []);  
 ```
+
+### Deployment de un Proyecto en React
+Ejecutar el siguiente comando para construir el build:
+```bash
+# npm run build                 // Construir los archivos para el deploy
+```
+Iniciar session en [Netlify](https://www.netlify.com/), vamos a 'Sites' y arrastamos todo el directorio 'dist' generado.
