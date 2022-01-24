@@ -200,3 +200,17 @@ Ejecutar el siguiente comando para construir el build:
 # npm run build                 // Construir los archivos para el deploy
 ```
 Iniciar session en [Netlify](https://www.netlify.com/), vamos a 'Sites' y arrastamos todo el directorio 'dist' generado.
+
+### Deployment por medio de Git
+* En Netlify ir a 'Site' y seleccionar 'Import an existing project' y esteblecer la autorizacion de Netfily en GitHub.
+* Crear un repositorio en GitHub
+  ```bash
+  # echo "# citas_react_vite" >> README.md
+  # git init
+  # git add .
+  # git commit -m "Deploy del proyecto citas en react"
+  # git branch -M main
+  # git remote add origin git@github.com:adriayc/citas_react_vite.git
+  # git push -u origin main
+  ```
+* Elige el repositorio de GitHub, Configuramos el Sitio e Implementamos, y Click en 'Deploy site'.
