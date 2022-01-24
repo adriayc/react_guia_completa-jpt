@@ -214,3 +214,17 @@ Iniciar session en [Netlify](https://www.netlify.com/), vamos a 'Sites' y arrast
   # git push -u origin main
   ```
 * Elige el repositorio de GitHub, Configuramos el Sitio e Implementamos, y Click en 'Deploy site'.
+
+### Añadiendo Integracion Continua
+```bash
+# git checkout -b nuevo-header main                     // Crear una rama y cambiarlo
+Modificarmos el titulo del header
+# git add .                                             // Agregar todos los archivos que tuvieron cambio
+# git commit -m "Modificamos el titulo del Header"      // Realizamos el commit con el mensaje
+# git checkout main                                     // Regresamos a la rama principal
+El encargado acepta o rechaza el PR
+# git merge nuevo-Header                                // Merge de una rama a la principal
+# git branch -d nuevo-header                            // Eliminar la rama
+# git push -u origin main                               // Subir los cambio a GitHub  
+```
+Para verificar el historial de commits en Netlify ir a 'Deploys'
