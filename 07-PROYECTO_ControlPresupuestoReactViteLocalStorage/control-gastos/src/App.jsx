@@ -1,10 +1,13 @@
 import { useState } from 'react'
 
-function App() {
-  const [count, setCount] = useState(0)
+// Importar componentes
+import Header from './components/Header';
 
+function App() {
   return (
-    <h1>Control de Gastos</h1>
+    <div>
+      <Header />
+    </div>
   )
 }
 
