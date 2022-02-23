@@ -1,9 +1,28 @@
-import React from 'react'
+import { useState } from 'react'
+
+// Importar componentes
+import Mensaje  from './Mensaje';
 
 const NuevoPresupuesto = ({ presupuesto, setPresupuesto }) => {
+  const [mensaje, setMensaje] = useState('');
+
+  const handlePresupuesto = (e) => {
+    e.preventDefault();
+
+    // console.log('Enviando formulario');
+    // console.log(Number(presupuesto));
+
+    if(!Number(presupuesto) || Number(presupuesto) < 0) {
+      // console.log('No es un presupuesto válido');
+      setMensaje('No es un presupuesto válido');
+    } else {
+      console.log('Si es un presupuesto válido');
+    }
+  };
+
   return (
     <div className='contenedor-presupuesto contenedor sombra'>
-        <form className='formulario'>
+        <form className='formulario' onSubmit={handlePresupuesto}>
             <div className='campo'>
                 <label>Definir Presupuesto</label>
 
@@ -17,6 +36,8 @@ const NuevoPresupuesto = ({ presupuesto, setPresupuesto }) => {
             </div>
 
             <input type="submit" value='Añadir' />
+
+            {mensaje && <Mensaje tipo='error'>{mensaje}</Mensaje>}
         </form>
     </div>
   )
