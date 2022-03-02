@@ -3,7 +3,7 @@ import { useState } from 'react'
 // Importar componentes
 import Mensaje  from './Mensaje';
 
-const NuevoPresupuesto = ({ presupuesto, setPresupuesto }) => {
+const NuevoPresupuesto = ({ presupuesto, setPresupuesto, setIsValidPresupuesto }) => {
   const [mensaje, setMensaje] = useState('');
 
   const handlePresupuesto = (e) => {
@@ -12,12 +12,22 @@ const NuevoPresupuesto = ({ presupuesto, setPresupuesto }) => {
     // console.log('Enviando formulario');
     // console.log(Number(presupuesto));
 
-    if(!Number(presupuesto) || Number(presupuesto) < 0) {
+    if(!presupuesto || presupuesto < 0) {
       // console.log('No es un presupuesto válido');
       setMensaje('No es un presupuesto válido');
-    } else {
+
+      return;
+    } /*else {
       console.log('Si es un presupuesto válido');
-    }
+    }*/
+
+    // console.log('Si es un presupuesto válido');
+    setMensaje('');
+
+    // console.log(presupuesto);      // El valor de presupuesto es string
+    // console.log(typeof presupuesto);
+
+    setIsValidPresupuesto(true);
   };
 
   return (
@@ -27,11 +37,11 @@ const NuevoPresupuesto = ({ presupuesto, setPresupuesto }) => {
                 <label>Definir Presupuesto</label>
 
                 <input 
-                    type="text"
+                    type="number"
                     className='nuevo-presupuesto'
                     placeholder='Añade tu Presupuesto'
                     value={presupuesto}
-                    onChange={e => setPresupuesto(e.target.value)}      //Almacena el valor en el state
+                    onChange={e => setPresupuesto(Number(e.target.value))}      //Almacena el valor en el state
                     />
             </div>
 
