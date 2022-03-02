@@ -2,6 +2,7 @@ import { useState } from 'react'
 
 // Importar componentes
 import Header from './components/Header';
+import Modal from './components/Modal';
 
 // Importar un imagen
 import IconoNuevoGasto from './img/nuevo-gasto.svg';
@@ -44,7 +45,7 @@ function App() {
         </div>
       )}
 
-      {modal && <p>Desde Modal</p>}
+      {modal && <Modal setModal={setModal} />}
     </div>
   )
 }
