@@ -2,6 +2,7 @@ import { useState } from 'react'
 
 // Importar componentes
 import Header from './components/Header';
+import ListadoGatos from './components/ListadoGastos';
 import Modal from './components/Modal';
 
 // Importar helpers
@@ -62,13 +63,20 @@ function App() {
       ): null} */}
 
       {isValidPresupuesto && (
-        <div className='nuevo-gasto'>
-          <img 
-            src={IconoNuevoGasto} 
-            alt="Icono nuevo gasto" 
-            onClick={handleNuevoGasto}
-          />
-        </div>
+        <>
+          <main>
+            <ListadoGatos 
+              gastos={gastos}
+            />
+          </main>
+          <div className='nuevo-gasto'>
+            <img 
+              src={IconoNuevoGasto} 
+              alt="Icono nuevo gasto" 
+              onClick={handleNuevoGasto}
+            />
+          </div>
+        </>
       )}
 
       {modal && <Modal 
