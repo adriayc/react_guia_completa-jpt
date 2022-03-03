@@ -37,6 +37,7 @@ function App() {
     // console.log(gasto);
 
     gasto.id = generarId();
+    gasto.fecha = Date.now();
     setGastos([...gastos, gasto]);
 
     // Cerrar el modal
