@@ -9,8 +9,12 @@ const ControlPresupuesto = ({ presupuesto, gastos }) => {
     // console.log('Componente listo');
 
     const totalGastado = gastos.reduce((total, gasto) => gasto.cantidad + total, 0);
-    console.log(totalGastado);
+    // console.log(totalGastado);
     setGastado(totalGastado);
+
+    const totalDisponible = presupuesto - totalGastado;
+    // console.log(totalDisponible);
+    setDisponible(totalDisponible);
 }, [gastos]);
 
   // Formatea el presupuesto (con una funcion propia de JS)
