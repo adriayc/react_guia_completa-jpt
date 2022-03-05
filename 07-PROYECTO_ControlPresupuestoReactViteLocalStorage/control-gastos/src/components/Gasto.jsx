@@ -1,4 +1,12 @@
 import React from 'react'
+import { 
+    LeadingActions, 
+    SwipeableList, 
+    SwipeableListItem, 
+    SwipeAction, 
+    TrailingActions 
+} from 'react-swipeable-list';
+import 'react-swipeable-list/dist/styles.css';
 
 // Importar helpers
 import { formatearFecha } from '../helpers';
@@ -17,6 +25,7 @@ const diccionarioIconos = {
     comida: IconoComida,
     casa: IconoCasa,
     gastos: IconoGastos,
+    ocio: IconoOcio,
     salud: IconoSalud,
     suscripciones: IconoSuscripciones,
 };
@@ -24,26 +33,41 @@ const diccionarioIconos = {
 const Gasto = ({ gasto }) => {
   const { nombre, cantidad, categoria, id, fecha } = gasto;
 
-  return (
-    <div className='gasto sombra'>
-        <div className='contenido-gasto'>
-            <img 
-                src={diccionarioIconos[categoria]} 
-                alt="Icono Gasto" 
-            />
+  const leadingActions = () => {
+      console.log('Editar...');
+  };
 
-            <div className='descripcion-gasto'>
-                {/* <p className='categoria'>{gasto.categoria}</p> */}
-                <p className='categoria'>{categoria}</p>
-                <p className='nombre-gasto'>{nombre}</p>
-                <p className='fecha-gasto'>
-                    Agregado el: {''}
-                    <span>{formatearFecha(fecha)}</span>
-                </p>
+  const trailingActions = () => {
+      console.log('Eliminar...')
+  };
+
+  return (
+    <SwipeableList>
+        <SwipeableListItem
+            leadingActions={leadingActions}             // Accion de la izquierda
+            trailingActions={trailingActions}           // Accion de la derecha
+        >
+            <div className='gasto sombra'>
+                <div className='contenido-gasto'>
+                    <img 
+                        src={diccionarioIconos[categoria]} 
+                        alt="Icono Gasto" 
+                    />
+
+                    <div className='descripcion-gasto'>
+                        {/* <p className='categoria'>{gasto.categoria}</p> */}
+                        <p className='categoria'>{categoria}</p>
+                        <p className='nombre-gasto'>{nombre}</p>
+                        <p className='fecha-gasto'>
+                            Agregado el: {''}
+                            <span>{formatearFecha(fecha)}</span>
+                        </p>
+                    </div>
+                </div>
+                <p className='cantidad-gasto'>${cantidad}</p>
             </div>
-        </div>
-        <p className='cantidad-gasto'>${cantidad}</p>
-    </div>
+        </SwipeableListItem>
+    </SwipeableList>
   )
 }
 
