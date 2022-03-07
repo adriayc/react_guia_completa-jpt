@@ -33,19 +33,27 @@ const diccionarioIconos = {
 const Gasto = ({ gasto }) => {
   const { nombre, cantidad, categoria, id, fecha } = gasto;
 
-  const leadingActions = () => {
-      console.log('Editar...');
-  };
+  const leadingActions = () => (
+      <LeadingActions>
+          <SwipeAction onClick={() => console.log('Editar...')}>
+              Editar
+          </SwipeAction>
+      </LeadingActions>
+  );
 
-  const trailingActions = () => {
-      console.log('Eliminar...')
-  };
+  const trailingActions = () => (
+      <TrailingActions>
+          <SwipeAction onClick={() => console.log('Eliminar...')}>
+              Eliminar
+          </SwipeAction>
+      </TrailingActions>
+  );
 
   return (
     <SwipeableList>
         <SwipeableListItem
-            leadingActions={leadingActions}             // Accion de la izquierda
-            trailingActions={trailingActions}           // Accion de la derecha
+            leadingActions={leadingActions()}             // Accion de la izquierda
+            trailingActions={trailingActions()}           // Accion de la derecha
         >
             <div className='gasto sombra'>
                 <div className='contenido-gasto'>
