@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 // Importar componentes
 import Header from './components/Header';
@@ -19,6 +19,16 @@ function App() {
   const [animarModal, setAnimarModal] = useState(false);
 
   const [gastos, setGastos] = useState([]);
+
+  const [gastoEditar, setGastoEditar] = useState({});
+
+  useEffect(() => {
+    // console.log('Componente listo!');
+    if(Object.keys(gastoEditar).length > 0) {
+      // console.log('Gato editar tiene algo');
+      handleNuevoGasto();
+    }
+  }, [gastoEditar]);
 
   const handleNuevoGasto = () => {
     // console.log('Click para añadir un nuevo gasto');
@@ -70,6 +80,7 @@ function App() {
           <main>
             <ListadoGatos 
               gastos={gastos}
+              setGastoEditar={setGastoEditar}
             />
           </main>
           <div className='nuevo-gasto'>
