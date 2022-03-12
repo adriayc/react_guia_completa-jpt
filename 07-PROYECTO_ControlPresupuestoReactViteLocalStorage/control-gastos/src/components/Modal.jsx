@@ -1,16 +1,25 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 // Importar componentes
 import Mensaje from './Mensaje';
 
 import CerrarModal from '../img/cerrar.svg';
 
-const Modal = ({ setModal, animarModal, setAnimarModal, guardarGasto }) => {
+const Modal = ({ setModal, animarModal, setAnimarModal, guardarGasto, gastoEditar }) => {
   const [nombre, setNombre] = useState('');
   const [cantidad, setCantidad] = useState('');
   const [categoria, setCategoria] = useState('');
 
   const [mensaje, setMensaje] = useState('');
+
+  useEffect(() => {
+    //   console.log('Componente listo');
+    if(Object.keys(gastoEditar).length > 0) {
+        setNombre(gastoEditar.nombre);
+        setCantidad(gastoEditar.cantidad);
+        setCategoria(gastoEditar.categoria);
+    }
+  }, []);
 
   const ocultarModal = () => {
     //   console.log('Ocultando...');

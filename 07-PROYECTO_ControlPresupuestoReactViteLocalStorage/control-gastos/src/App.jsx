@@ -26,7 +26,14 @@ function App() {
     // console.log('Componente listo!');
     if(Object.keys(gastoEditar).length > 0) {
       // console.log('Gato editar tiene algo');
-      handleNuevoGasto();
+      
+      setModal(true);
+  
+      // Animar el modal en un tiempo de 500 milisegundos
+      setTimeout(() => {
+        // console.log('Animando modal...');  
+        setAnimarModal(true);
+      }, 500);
     }
   }, [gastoEditar]);
 
@@ -34,6 +41,7 @@ function App() {
     // console.log('Click para añadir un nuevo gasto');
 
     setModal(true);
+    setGastoEditar({});       // Establecemos el objeto como vacio
 
     // Animar el modal en un tiempo de 500 milisegundos
     setTimeout(() => {
@@ -98,6 +106,7 @@ function App() {
                   animarModal={animarModal} 
                   setAnimarModal={setAnimarModal}
                   guardarGasto={guardarGasto}
+                  gastoEditar={gastoEditar}
                 />}
     </div>
   )
