@@ -53,10 +53,18 @@ function App() {
 
   const guardarGasto = gasto => {
     // console.log(gasto);
+    // return;
 
-    gasto.id = generarId();
-    gasto.fecha = Date.now();
-    setGastos([...gastos, gasto]);
+    if(gasto.id) {
+      // Actualizar
+      const gastoActualizado = gastos.map(gastoState => gastoState.id === gasto.id ? gasto : gastoState);
+      setGastos(gastoActualizado);
+    } else {
+      // Nuevo Gasto
+      gasto.id = generarId();
+      gasto.fecha = Date.now();
+      setGastos([...gastos, gasto]);
+    }
 
     // Cerrar el modal
     setAnimarModal(false);

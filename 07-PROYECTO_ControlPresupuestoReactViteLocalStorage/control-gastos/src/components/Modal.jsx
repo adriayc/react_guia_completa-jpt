@@ -9,6 +9,8 @@ const Modal = ({ setModal, animarModal, setAnimarModal, guardarGasto, gastoEdita
   const [nombre, setNombre] = useState('');
   const [cantidad, setCantidad] = useState('');
   const [categoria, setCategoria] = useState('');
+  const [fecha, setFecha] = useState('');
+  const [id, setId] = useState('');
 
   const [mensaje, setMensaje] = useState('');
 
@@ -17,7 +19,11 @@ const Modal = ({ setModal, animarModal, setAnimarModal, guardarGasto, gastoEdita
     if(Object.keys(gastoEditar).length > 0) {
         setNombre(gastoEditar.nombre);
         setCantidad(gastoEditar.cantidad);
+        setFecha(gastoEditar.fecha);
         setCategoria(gastoEditar.categoria);
+
+        // Guardar el Id en un state
+        setId(gastoEditar.id);
     }
   }, []);
 
@@ -45,7 +51,7 @@ const Modal = ({ setModal, animarModal, setAnimarModal, guardarGasto, gastoEdita
         return;
     }
 
-    guardarGasto({ nombre, cantidad, categoria });
+    guardarGasto({ nombre, cantidad, categoria, fecha, id });
   };
 
   return (
@@ -62,7 +68,7 @@ const Modal = ({ setModal, animarModal, setAnimarModal, guardarGasto, gastoEdita
             className={`formulario ${animarModal ? "animar" : "cerrar"}`}
             onSubmit={handleSubmit}
         >
-            <legend>Nuevo Gasto</legend>
+            <legend>{gastoEditar.nombre ? 'Editar Gasto' : 'Nuevo Gasto'}</legend>
             {/* {mensaje && <Mensaje children={mensaje} tipo="error" />} */}
             {mensaje && <Mensaje tipo="error">{mensaje}</Mensaje>}
 
@@ -106,7 +112,7 @@ const Modal = ({ setModal, animarModal, setAnimarModal, guardarGasto, gastoEdita
                 </select>
             </div>
 
-            <input type="submit" value="Añadir Gasto" />
+            <input type="submit" value={gastoEditar.nombre ? 'Guardar Cambios' : 'Añadir Gasto'} />
         </form>
     </div>
   )
