@@ -5,7 +5,7 @@ import Mensaje from './Mensaje';
 
 import CerrarModal from '../img/cerrar.svg';
 
-const Modal = ({ setModal, animarModal, setAnimarModal, guardarGasto, gastoEditar }) => {
+const Modal = ({ setModal, animarModal, setAnimarModal, guardarGasto, gastoEditar, setGastoEditar }) => {
   const [nombre, setNombre] = useState('');
   const [cantidad, setCantidad] = useState('');
   const [categoria, setCategoria] = useState('');
@@ -30,6 +30,7 @@ const Modal = ({ setModal, animarModal, setAnimarModal, guardarGasto, gastoEdita
   const ocultarModal = () => {
     //   console.log('Ocultando...');
     setAnimarModal(false);
+    setGastoEditar({});                 // Cuando se cierra el modal se establece un objeto vacio
 
     setTimeout(() => {
         setModal(false);
