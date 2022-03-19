@@ -12,3 +12,5 @@
   Instalar dependencias al proyecto:
     # npm i react-swipeable-list            // Componente de reacción para representar la lista con elementos deslizables
     # npm i prop-types                      // dependencia que necesita react swipeable list
+
+    # npm i react-circular-progressbar      // Componete de barra de progreso circular
