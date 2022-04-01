@@ -1,3 +1,4 @@
+import { number } from 'prop-types';
 import { useState, useEffect } from 'react'
 
 // Importar componentes
@@ -12,7 +13,8 @@ import { generarId } from './helpers';
 import IconoNuevoGasto from './img/nuevo-gasto.svg';
 
 function App() {
-  const [presupuesto, setPresupuesto] = useState(0);
+  // const [presupuesto, setPresupuesto] = useState(0);
+  const [presupuesto, setPresupuesto] = useState(Number(localStorage.getItem('presupuesto')) ?? 0);
   const [isValidPresupuesto, setIsValidPresupuesto] = useState(false);
   
   const [modal, setModal] = useState(false);
@@ -36,6 +38,21 @@ function App() {
       }, 500);
     }
   }, [gastoEditar]);
+
+  // UseEffect para almacener presupuesto en LocalStorage
+  useEffect(() => {
+    // console.log(presupuesto);
+    localStorage.setItem('presupuesto', presupuesto ?? 0);
+  }, [presupuesto]);
+
+  useEffect(() => {
+    const presupuestoLS = Number(localStorage.getItem('presupuesto')) ?? 0;
+    // console.log(presupuestoLS);
+
+    if(presupuestoLS > 0) {
+      setIsValidPresupuesto(true);
+    }
+  }, []);
 
   const handleNuevoGasto = () => {
     // console.log('Click para añadir un nuevo gasto');
