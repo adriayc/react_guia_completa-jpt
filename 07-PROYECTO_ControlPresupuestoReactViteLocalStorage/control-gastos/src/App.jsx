@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react'
 import Header from './components/Header';
 import ListadoGatos from './components/ListadoGastos';
 import Modal from './components/Modal';
+import Filtros from './components/Filtros';
 
 // Importar helpers
 import { generarId } from './helpers';
@@ -23,6 +24,8 @@ function App() {
   const [gastos, setGastos] = useState(localStorage.getItem('gastos') ? JSON.parse(localStorage.getItem('gastos')) : []);
 
   const [gastoEditar, setGastoEditar] = useState({});
+
+  const [filtro, setFiltro] = useState('');
 
   useEffect(() => {
     // console.log('Componente listo!');
@@ -58,6 +61,12 @@ function App() {
       setIsValidPresupuesto(true);
     }
   }, []);
+
+  useEffect(() => {
+    if(filtro) {
+      console.log('Filtrando por:', filtro);
+    }
+  }, [filtro]);
 
   const handleNuevoGasto = () => {
     // console.log('Click para añadir un nuevo gasto');
@@ -126,6 +135,11 @@ function App() {
       {isValidPresupuesto && (
         <>
           <main>
+            <Filtros
+              filtro={filtro}
+              setFiltro={setFiltro}
+            />
+
             <ListadoGatos 
               gastos={gastos}
               setGastoEditar={setGastoEditar}
