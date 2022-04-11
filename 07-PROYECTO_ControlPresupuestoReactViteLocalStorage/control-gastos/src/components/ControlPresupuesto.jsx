@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 
-const ControlPresupuesto = ({ presupuesto, gastos }) => {
+const ControlPresupuesto = ({ gastos, setGastos, presupuesto, setPresupuesto, setIsValidPresupuesto }) => {
   const [disponible, setDisponible] = useState(0);
   const [gastado, setGastado] = useState(0);
   const [porcentaje, setPorcentaje] = useState(0);
@@ -27,8 +27,8 @@ const ControlPresupuesto = ({ presupuesto, gastos }) => {
     setTimeout(() => {
       setPorcentaje(nuevoPorcentaje);
     }, 1500);
-    
-}, [gastos]);
+
+  }, [gastos]);
 
   // Formatea el presupuesto (con una funcion propia de JS)
   const formatearCantidad = (cantidad) => {
@@ -36,6 +36,20 @@ const ControlPresupuesto = ({ presupuesto, gastos }) => {
         style: 'currency',
         currency: 'USD',
     });
+  };
+
+  const handleResetApp = () => {
+    // console.log('Reseteando la app');
+
+    const resultado = confirm('¿Deseas reiniciar presupuesto y gastos?');
+    if(resultado) {
+      // console.log('Si');
+      setGastos([]);
+      setPresupuesto(0);
+      setIsValidPresupuesto(false);
+    }/* else {
+      console.log('No');
+    }*/
   };
 
   return (
@@ -53,6 +67,11 @@ const ControlPresupuesto = ({ presupuesto, gastos }) => {
         </div>
 
         <div className='contenido-presupuesto'>
+            <button 
+              type='buttom' 
+              className='reset-app'
+              onClick={handleResetApp}
+            >Resetar App</button>
             <p>
                 <span>Presupuesto: </span>{formatearCantidad(presupuesto)}
             </p>

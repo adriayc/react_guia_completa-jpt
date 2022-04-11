@@ -129,6 +129,7 @@ function App() {
         isValidPresupuesto={isValidPresupuesto}
         setIsValidPresupuesto={setIsValidPresupuesto}
         gastos={gastos}
+        setGastos={setGastos}
       />
 
       {/* Operador ternario */}
@@ -148,6 +149,7 @@ function App() {
 
             <ListadoGatos 
               gastos={gastos}
+              setGastos={setGastos}
               setGastoEditar={setGastoEditar}
               eliminarGasto={eliminarGasto}
               filtro={filtro}
