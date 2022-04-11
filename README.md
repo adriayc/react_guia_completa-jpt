@@ -42,3 +42,189 @@ Instalar [node.js](https://nodejs.org/en/)
 # node -v               // Muestra la version de node
 # npm -v                // Muestra la version de npm
 ```
+
+## Crear una App React con Vite
+```bash
+# npm init vite@latest              // Inicializar la app react
+# cd citas-react
+# npm install                       // Instalar las dependencias
+# npm run dev                       // Ejecutar la app react
+```
+
+## Que es JSX?
+JavaScript Syntax Extension - Es una extensión del lenguaje desarrollada por Meta para React.
+
+Parece JS pero muestra código de HTML, y básicamente es un lenguaje de Template que muestra el HTML pero tiene todas las funciones de JavaScript.
+
+Una vez compilado son archivos JS con funciones y objetos.
+
+### Reglas en JSX
+- A diferencia de HTML, que no es estrict, en JSX si un elemento HTML tiene una etiqueta de apertura deberás tener también la de cierre.
+- Las etiquetas de solo apertura como <link>, <img> o <input> deberán finalizar con />.
+- Cada componente debe tener un return.
+- En este return debe haber máximo un solo elemento en el nivel máximo.
+
+## Formas de Escribir Codigo CSS en React
+Hay muchas opciones, incluso algunas librerías te ofrecen componentes que puedes personalizar.
+- CSS Plano
+- Framework CSS
+- Módulos CSS
+- Componentes
+- SASS
+- Styled Components
+
+## Instalando TailwindCSS
+[Tailwind CSS](https://tailwindcss.com/)
+```bash
+# npm install -D tailwindcss@latest postcss@latest autoprefixer@latest
+# npx tailwindcss init -p
+```
+
+## Que son los React Hooks o Hooks?
+React cuenta con una API muy sencilla que te permite crear todo tipo de aplicaciones por medio de algo llamado Hooks.
+
+Los Hooks están disponibles desde la versión 16.8, previo a ello se tenía que crear clases para crear y modificar el state, con los Hooks no es necesario.
+
+Los Hooks se dividen en Básicos y Adicionales.
+
+### Categorías de Hooks
+Los básicos:
+- useState
+- useEffect
+- useContext
+
+Los Adicionales:
+- useReducer
+- useCallback
+- useMemo
+- useRef
+- useImperativeHandler
+- useLayoutEffect
+- useDebugValue
+
+### Crear tus propios Hoooks
+También es posible crear tus propios Hooks, de esta forma podrás separar tus código en funciones reutilizables y sacar todo el beneficio de lo que React ofrece.
+
+#### Que es el State o Estado en React? (La Pieza Central de React)
+El State o Estado es básicamente eso; cuál es el estado de nuestra aplicacion.
+
+El Estado es una variable con información relevante en nuestra aplicación de React, algunas veces el state pertenece a un componente en especifico o algunas veces deseas compartirlo a lo largo de diferentes componentes.
+
+El state es creado con la función useState();
+
+```react
+import { useState } from "react";
+
+const [cliente, setCliente] = useState({});
+const [total, setTotal] = useState(0);
+const [cliente, setCliente] = useState([]);
+const [modal, setModal] = useState(false);
+```
+
+Rect reacciona en base al State.
+
+Cada que tu state cambia, tu aplicación de React va a renderizar y actualizarse con esos cambios.
+
+Para modificar el state, se utiliza la función que extraemos cuando declaramos el stae en nuestro componente.
+
+#### Reglas de los Hooks
+Los Hooks se colocan en la parte superior de tus componentes de React.
+
+No se deben colocar dentro de condicionales, tampoco después de un return.
+
+### Eventos en React
+La forma en que React maneja los eventos es muy similar a como lo hace JavaScript de forma nativa con algunos cambios.
+
+Los eventos son camelCase, es decir en lugar de onchange se utiliza onChange, en lugar de onclick se utiliza onClick.
+
+También a diferencia de JS y HTML, donde se coloca el nombre de la función en un string en React (JSX) se utiliza la función.
+
+```react
+<button onClick={ descargarPedidos() }>Descargar Pedidos</button>
+```
+
+```react
+<form onSubmit={ handleSubmit }>
+  <button type="submit">Añadir Cliente</button>
+</form>
+```
+
+### Qué son los Props o Propiedades en React
+El State o Funciones que crees en tus componentes, solo estarán disponibles en ese componente.
+
+Una forma de evitar duplicar código y reutilizar esas variables, state o estados y funciones en otros componentes es por medio de Props o Propiedades.
+
+Los Props se pasan del padre al hijo, nunca se pueden pasar del hijo al padre.
+
+Si tienes un state que se va a pasar por diferentes componentes, lo mejor es colocarlo en el archivo principal.
+
+Cada Nivel de Componentes deberá tomar y pasar el Prop hacia otros componentes, tecnologías como Redux o Content evita tener que hacerlo de esta forma.
+
+**Sintaxis**
+```react
+<Header
+  nombreProp={ datos o Funciones }
+/>
+
+<Header
+  clientes={ clientes }
+  admin={ false }
+  setCliente={ setCliente }
+  titulo="Tienda Virtual"
+/>
+```
+
+### El Hook useEffect
+Después de useState es el más utilizado.
+
+useEffect siempre es un callback, que se ejecuta cuando un state cambia o cuando el componete esta listo.
+
+Es el sustituto de lo que antes era componentDifMount() y componentDidUpdate().
+
+Al ejecutarse automaticamente cuando el componente esta listo, es un excelente lugar para colocar código para consultar un API o LocalStorage.
+
+Debido a que le podemos pasar una dependencia y estar escuchando por los cambios que sucedan en una vaiable, puede actualizar el componente cuando ese cambio suceda.
+
+**Sintaxis**
+```react
+import { useEffect } from 'react';
+
+useEffect(() => {
+    console.log('El componente esta listo');
+}, []);  
+```
+
+### Deployment de un Proyecto en React
+Ejecutar el siguiente comando para construir el build:
+```bash
+# npm run build                 // Construir los archivos para el deploy
+```
+Iniciar session en [Netlify](https://www.netlify.com/), vamos a 'Sites' y arrastamos todo el directorio 'dist' generado.
+
+### Deployment por medio de Git
+* En Netlify ir a 'Site' y seleccionar 'Import an existing project' y esteblecer la autorizacion de Netfily en GitHub.
+* Crear un repositorio en GitHub
+  ```bash
+  # echo "# citas_react_vite" >> README.md
+  # git init
+  # git add .
+  # git commit -m "Deploy del proyecto citas en react"
+  # git branch -M main
+  # git remote add origin git@github.com:adriayc/citas_react_vite.git
+  # git push -u origin main
+  ```
+* Elige el repositorio de GitHub, Configuramos el Sitio e Implementamos, y Click en 'Deploy site'.
+
+### Añadiendo Integracion Continua
+```bash
+# git checkout -b nuevo-header main                     // Crear una rama y cambiarlo
+Modificarmos el titulo del header
+# git add .                                             // Agregar todos los archivos que tuvieron cambio
+# git commit -m "Modificamos el titulo del Header"      // Realizamos el commit con el mensaje
+# git checkout main                                     // Regresamos a la rama principal
+El encargado acepta o rechaza el PR
+# git merge nuevo-Header                                // Merge de una rama a la principal
+# git branch -d nuevo-header                            // Eliminar la rama
+# git push -u origin main                               // Subir los cambio a GitHub  
+```
+Para verificar el historial de commits en Netlify ir a 'Deploys'
