@@ -9,3 +9,6 @@
  # npm run dev
 
 * Agregar fuentes de Google Fonts: https://fonts.google.com/specimen/Lato?query=lato
+
+* Instalar dependencias
+ # npm install @emotion/react @emotion/styled

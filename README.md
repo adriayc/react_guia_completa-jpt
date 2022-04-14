@@ -228,3 +228,25 @@ El encargado acepta o rechaza el PR
 # git push -u origin main                               // Subir los cambio a GitHub  
 ```
 Para verificar el historial de commits en Netlify ir a 'Deploys'
+
+## Styled Components en React
+### Que son los Styled
+__Components en React__
+En JSX podemos utilizar HTML con expresiones JavaScript, pero también es posible crear un elemento HTML con la sintaxis de un componente y añadir propiedades CSS.
+
+En lugar de utilizar una hoja de estilos o una librería externa, se escribe el código CSS en cada componente (CSS en JS).
+
+### Ventajas de Styled Components en React
+Al dejar de utilizar un componente, podemos eliminar su código CSS también, a diferencia de una hoja de esitlos global.
+
+Sigues teniendo la ventajas de re-utilizar código CSS.
+
+### Sintaxis
+```react
+const Heading = styled.h1`
+  font-size: 2em;
+  text-transform: uppercase;
+`;
+
+<Heading>Nuestros Productos</Heading>
+```
