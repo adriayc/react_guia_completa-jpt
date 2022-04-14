@@ -3,6 +3,9 @@ import { useState } from 'react'
 // Importar styled components
 import styled from '@emotion/styled';
 
+// Importar componentes
+import Formulario from './components/Formulario';
+
 // Importar imagen
 import ImagenCripto from './img/imagen-criptos.png';
 
@@ -53,6 +56,8 @@ function App() {
       />
       <div>
         <Heading>Cotiza Criptomonedas al Instante</Heading>
+
+        <Formulario />
       </div>
     </Contenedor>
   )
