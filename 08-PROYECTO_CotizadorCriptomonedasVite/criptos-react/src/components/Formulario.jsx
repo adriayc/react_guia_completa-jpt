@@ -1,6 +1,9 @@
 import React from 'react';
 import styled from '@emotion/styled';
 
+// Importar custom hooks
+import useSelectMonedas from '../hooks/useSelectMonedas';
+
 const InputSubmit = styled.input`
     width: 100%;
     color: #FFF;
@@ -20,6 +23,10 @@ const InputSubmit = styled.input`
 `;
 
 const Formulario = () => {
+  // Llamar un custom hooks
+  const [ SelectMonedas ] = useSelectMonedas();
+  SelectMonedas();
+
   return (
     <form>
         <InputSubmit type="submit" value="Cotizar" />

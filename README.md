@@ -250,3 +250,14 @@ const Heading = styled.h1`
 
 <Heading>Nuestros Productos</Heading>
 ```
+
+## Porque Crear Tus Propios Hooks
+### Crear tus propios Hooks
+Algunas veces vas a desear crear tus propios Hooks, una de las razones de porque deseas crealos es para poder re-utilizar una función.
+
+También puedes crear una función Helper, pero existe otra gran ventaja de crear tus propios Hooks y es la de incorporar State y mantener el valor de una función de forma persistente.
+
+### Ventajas de crear tus Hooks
+Tu código personalizado tendrá todas las ventajas de React como son: state, effects, integrar otros hooks y el performance.
+
+Re utilizable en otros proyectos y lugares de tu página.
