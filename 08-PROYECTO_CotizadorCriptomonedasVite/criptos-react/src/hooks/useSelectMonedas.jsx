@@ -1,9 +1,18 @@
 import React from 'react';
 
-const useSelectMonedas = () => {
-  const SelectMonedas = () => {
-      console.log('Desde Select Monedas');
-  }
+import styled from '@emotion/styled';
+
+const Label = styled.label`
+  color: #fff;
+`;
+
+const useSelectMonedas = (label) => {
+  const SelectMonedas = () => (
+    // Fragment
+    <>
+      <Label>{label}</Label>
+    </>
+  )
 
   return [ SelectMonedas ];
 }

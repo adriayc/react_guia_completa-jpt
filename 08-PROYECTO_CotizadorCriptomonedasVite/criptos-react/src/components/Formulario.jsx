@@ -24,12 +24,16 @@ const InputSubmit = styled.input`
 
 const Formulario = () => {
   // Llamar un custom hooks
-  const [ SelectMonedas ] = useSelectMonedas();
-  SelectMonedas();
+  const [ SelectMonedas ] = useSelectMonedas('Elige tu Moneda');
+  // Podemos reutilizar nuestro hook
+  // const [ SelectCriptomonedas ] = useSelectMonedas('Elige tu Criptomoneda');
 
   return (
     <form>
-        <InputSubmit type="submit" value="Cotizar" />
+      <SelectMonedas />
+      {/* <SelectCriptomonedas /> */}
+
+      <InputSubmit type="submit" value="Cotizar" />
     </form>
   )
 }
