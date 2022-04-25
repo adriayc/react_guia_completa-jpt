@@ -1,4 +1,4 @@
-import React from 'react';
+import { useState } from 'react';
 
 import styled from '@emotion/styled';
 
@@ -18,11 +18,18 @@ const Select = styled.select`
 `;
 
 const useSelectMonedas = (label, opciones) => {
+  // Crear un state con un nombre generico
+  const [state, setState] = useState('');
+
   const SelectMonedas = () => (
     // Fragment
     <>
       <Label>{label}</Label>
-      <Select>
+      <Select
+        value={state}
+        // Establecer el valor del select al state
+        onChange={ e => setState( e.target.value ) }
+      >
         <option value="">Seleccione</option>
         {opciones.map(opcion => (
           <option
@@ -34,7 +41,8 @@ const useSelectMonedas = (label, opciones) => {
     </>
   )
 
-  return [ SelectMonedas ];
+  // Retornar el state y SelectMonedas
+  return [ state, SelectMonedas ];
 }
 
 export default useSelectMonedas

@@ -27,12 +27,16 @@ const InputSubmit = styled.input`
 `;
 
 const Formulario = () => {
-  // Llamar un custom hooks
-  const [ SelectMonedas ] = useSelectMonedas('Elige tu Moneda', monedas);
+  // Llamar un custom hooks y extraemos con destructuring de arreglos el moneda (state) y SelectMonedas
+  // const [ state, SelectMonedas ] = useSelectMonedas('Elige tu Moneda', monedas);
+  const [ moneda, SelectMonedas ] = useSelectMonedas('Elige tu Moneda', monedas);
 
   return (
     <form>
       <SelectMonedas />
+
+      {/* Mostramos el codigo de moneda (state) */}
+      { moneda }
 
       <InputSubmit type="submit" value="Cotizar" />
     </form>
