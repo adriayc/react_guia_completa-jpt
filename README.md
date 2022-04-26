@@ -261,3 +261,26 @@ También puedes crear una función Helper, pero existe otra gran ventaja de crea
 Tu código personalizado tendrá todas las ventajas de React como son: state, effects, integrar otros hooks y el performance.
 
 Re utilizable en otros proyectos y lugares de tu página.
+
+## ¿Que son las API's?
+### Qué es una API
+API = Application Programming Interface
+
+Funciones, métodos que ofrecen una librería para ser utilizada por otro software como una capa de abstracción.
+
+Una API pone a disposición recursos que están alojados en otro servidor o base de datos.
+
+Usualmente hay que enviar una petición estructurada.
+
+Al ser React un librería que corre en el cliente, no puede consultar una base de datos, por lo tanto una API es la forma de obtener datos de un servidor.
+
+La API puede ser creada en cualquier lenguaje o framework: Python, Java, Net Core, Express, Node.js, Laravel o PHP.
+
+Para ello deberá entregar una respuesta tipo JSON.
+
+### Consultar una API con React
+Al ser JavaScript puedes utilizar Fetch API y obtener los datos para mostrarlos en pantalla.
+
+Algunas API's requieren un KEY, y otras están protegidas por CORS.
+
+También es posible integrar una librería externa como Axios.

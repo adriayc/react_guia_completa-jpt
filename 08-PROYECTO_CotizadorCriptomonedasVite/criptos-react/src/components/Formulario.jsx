@@ -1,4 +1,4 @@
-import React from 'react';
+import { useEffect } from 'react';
 import styled from '@emotion/styled';
 
 // Importar custom hooks
@@ -30,6 +30,22 @@ const Formulario = () => {
   // Llamar un custom hooks y extraemos con destructuring de arreglos el moneda (state) y SelectMonedas
   // const [ state, SelectMonedas ] = useSelectMonedas('Elige tu Moneda', monedas);
   const [ moneda, SelectMonedas ] = useSelectMonedas('Elige tu Moneda', monedas);
+
+  // UseEffect que se ejecuta una sola vez
+  useEffect(() => {
+    const consultarAPI = async () => {
+      // Pagina de la API -> https://min-api.cryptocompare.com/
+      const url = 'https://min-api.cryptocompare.com/data/top/mktcapfull?limit=10&tsym=USD';
+      const respuesta = await fetch(url);
+      // console.log(respuesta);
+      const resultado = await respuesta.json();
+      // console.log(resultado);
+      console.log(resultado.Data);
+    };
+
+    // Llamar al funcion
+    consultarAPI();
+  }, []);     // [] hace que se ejecuta una sola vez
 
   return (
     <form>
