@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import styled from '@emotion/styled';
 
 // Importar custom hooks
@@ -27,6 +27,8 @@ const InputSubmit = styled.input`
 `;
 
 const Formulario = () => {
+  const [criptos, setCriptos] = useState([]);
+
   // Llamar un custom hooks y extraemos con destructuring de arreglos el moneda (state) y SelectMonedas
   // const [ state, SelectMonedas ] = useSelectMonedas('Elige tu Moneda', monedas);
   const [ moneda, SelectMonedas ] = useSelectMonedas('Elige tu Moneda', monedas);
@@ -40,7 +42,24 @@ const Formulario = () => {
       // console.log(respuesta);
       const resultado = await respuesta.json();
       // console.log(resultado);
-      console.log(resultado.Data);
+      // console.log(resultado.Data);
+
+      const arrayCriptos = resultado.Data.map(cripto => {
+        // console.log(cripto.CoinInfo);
+        // console.log(cripto.CoinInfo.FullName);
+        // console.log(cripto.CoinInfo.Name);
+
+        const objeto = {
+          id: cripto.CoinInfo.Name,
+          nombre: cripto.CoinInfo.FullName
+        };
+        // console.log(objeto);
+
+        return objeto;
+      });
+      // console.log(arrayCriptos);
+
+      setCriptos(arrayCriptos);
     };
 
     // Llamar al funcion
