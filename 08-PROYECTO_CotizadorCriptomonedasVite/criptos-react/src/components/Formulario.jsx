@@ -32,6 +32,7 @@ const Formulario = () => {
   // Llamar un custom hooks y extraemos con destructuring de arreglos el moneda (state) y SelectMonedas
   // const [ state, SelectMonedas ] = useSelectMonedas('Elige tu Moneda', monedas);
   const [ moneda, SelectMonedas ] = useSelectMonedas('Elige tu Moneda', monedas);
+  const [ criptomoneda, SelectCroptomoneda ] = useSelectMonedas('Elige tu Criptomoneda', criptos);
 
   // UseEffect que se ejecuta una sola vez
   useEffect(() => {
@@ -71,7 +72,9 @@ const Formulario = () => {
       <SelectMonedas />
 
       {/* Mostramos el codigo de moneda (state) */}
-      { moneda }
+      {/* { moneda } */}
+
+      <SelectCroptomoneda />
 
       <InputSubmit type="submit" value="Cotizar" />
     </form>
