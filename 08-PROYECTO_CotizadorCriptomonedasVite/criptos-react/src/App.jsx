@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react';
 
 // Importar styled components
 import styled from '@emotion/styled';
@@ -48,6 +48,18 @@ const Heading = styled.h1`
 `;
 
 function App() {
+  const [monedas, setMonedas] = useState({});
+
+  // Se ejecuta cuando se realize cambios en monedas
+  useEffect(() => {
+    // console.log(monedas);
+
+    // Validar que el objeto monedas no este vacio
+    if(Object.keys(monedas).length > 0) {
+      console.log(monedas);
+    }
+  }, [monedas]);
+
   return (
     <Contenedor>
       <Imagen 
@@ -57,7 +69,9 @@ function App() {
       <div>
         <Heading>Cotiza Criptomonedas al Instante</Heading>
 
-        <Formulario />
+        <Formulario 
+          setMonedas={setMonedas}
+        />
       </div>
     </Contenedor>
   )
