@@ -5,6 +5,7 @@ import styled from '@emotion/styled';
 
 // Importar componentes
 import Formulario from './components/Formulario';
+import Resultado from './components/Resultado';
 
 // Importar imagen
 import ImagenCripto from './img/imagen-criptos.png';
@@ -89,6 +90,9 @@ function App() {
         <Formulario 
           setMonedas={setMonedas}
         />
+
+        {/* Mostrar el componente si existe el precio en el objeto resultado */}
+        {resultado.PRICE && <Resultado resultado={resultado} />}
       </div>
     </Contenedor>
   )
