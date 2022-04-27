@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import styled from '@emotion/styled';
+import Error from './Error';
 
 // Importar custom hooks
 import useSelectMonedas from '../hooks/useSelectMonedas';
@@ -28,6 +29,7 @@ const InputSubmit = styled.input`
 
 const Formulario = () => {
   const [criptos, setCriptos] = useState([]);
+  const [error, setError] = useState(false);
 
   // Llamar un custom hooks y extraemos con destructuring de arreglos el moneda (state) y SelectMonedas
   // const [ state, SelectMonedas ] = useSelectMonedas('Elige tu Moneda', monedas);
@@ -67,17 +69,38 @@ const Formulario = () => {
     consultarAPI();
   }, []);     // [] hace que se ejecuta una sola vez
 
+  const handleSubmit = e => {
+    e.preventDefault();
+    // console.log('Enviando formulario');
+    // console.log(moneda);
+    // console.log(criptomoneda);
+
+    if([moneda, criptomoneda].includes('')) {
+      // console.log('Error');
+      setError(true);
+
+      return;
+    }
+    setError(false);
+  };
+
   return (
-    <form>
-      <SelectMonedas />
+    <>
+      {error && <Error>Todos los campos son obligatorios</Error>}
 
-      {/* Mostramos el codigo de moneda (state) */}
-      {/* { moneda } */}
+      <form
+        onSubmit={handleSubmit}
+      >
+        <SelectMonedas />
 
-      <SelectCroptomoneda />
+        {/* Mostramos el codigo de moneda (state) */}
+        {/* { moneda } */}
 
-      <InputSubmit type="submit" value="Cotizar" />
-    </form>
+        <SelectCroptomoneda />
+
+        <InputSubmit type="submit" value="Cotizar" />
+      </form>
+    </>
   )
 }
 
