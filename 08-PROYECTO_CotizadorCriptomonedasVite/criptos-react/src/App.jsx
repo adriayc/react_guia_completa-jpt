@@ -6,6 +6,7 @@ import styled from '@emotion/styled';
 // Importar componentes
 import Formulario from './components/Formulario';
 import Resultado from './components/Resultado';
+import Spinner from './components/Spinner';
 
 // Importar imagen
 import ImagenCripto from './img/imagen-criptos.png';
@@ -51,6 +52,7 @@ const Heading = styled.h1`
 function App() {
   const [monedas, setMonedas] = useState({});
   const [resultado, setResultado] = useState({});
+  const [cargando, setCargando] = useState(false);
 
   // Se ejecuta cuando se realize cambios en monedas
   useEffect(() => {
@@ -61,6 +63,12 @@ function App() {
       // console.log(monedas);
 
       const cotizarCripto = async () => {
+        // Establecemos el valor del spinner en true
+        setCargando(true);
+
+        // Establecemos el valor objeto resultado en vacio
+        setResultado({});
+
         const {moneda, criptomoneda} = monedas;
         // Pagina de la API -> https://min-api.cryptocompare.com/
         const url = `https://min-api.cryptocompare.com/data/pricemultifull?fsyms=${criptomoneda}&tsyms=${moneda}`;
@@ -72,6 +80,9 @@ function App() {
         // console.log(resultado.DISPLAY[criptomoneda][moneda]);         // Otra forma de acceder a objetos con atributos dinamicos
 
         setResultado(resultado.DISPLAY[criptomoneda][moneda]);
+
+        // Establecemos el valor del spinner en false
+        setCargando(false);
       };
 
       cotizarCripto();
@@ -90,6 +101,9 @@ function App() {
         <Formulario 
           setMonedas={setMonedas}
         />
+
+        {/* {cargando && <p>Cargando...</p>} */}
+        {cargando && <Spinner />}
 
         {/* Mostrar el componente si existe el precio en el objeto resultado */}
         {resultado.PRICE && <Resultado resultado={resultado} />}
