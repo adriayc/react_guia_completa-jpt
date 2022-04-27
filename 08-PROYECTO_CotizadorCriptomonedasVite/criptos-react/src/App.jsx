@@ -49,6 +49,7 @@ const Heading = styled.h1`
 
 function App() {
   const [monedas, setMonedas] = useState({});
+  const [resultado, setResultado] = useState({});
 
   // Se ejecuta cuando se realize cambios en monedas
   useEffect(() => {
@@ -56,7 +57,23 @@ function App() {
 
     // Validar que el objeto monedas no este vacio
     if(Object.keys(monedas).length > 0) {
-      console.log(monedas);
+      // console.log(monedas);
+
+      const cotizarCripto = async () => {
+        const {moneda, criptomoneda} = monedas;
+        // Pagina de la API -> https://min-api.cryptocompare.com/
+        const url = `https://min-api.cryptocompare.com/data/pricemultifull?fsyms=${criptomoneda}&tsyms=${moneda}`;
+        // console.log(url);
+
+        const respuesta =  await fetch(url);
+        const resultado = await respuesta.json();
+        // console.log(resultado);
+        // console.log(resultado.DISPLAY[criptomoneda][moneda]);         // Otra forma de acceder a objetos con atributos dinamicos
+
+        setResultado(resultado.DISPLAY[criptomoneda][moneda]);
+      };
+
+      cotizarCripto();
     }
   }, [monedas]);
 
