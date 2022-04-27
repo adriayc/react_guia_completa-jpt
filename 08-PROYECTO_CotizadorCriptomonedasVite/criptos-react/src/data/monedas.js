@@ -1,0 +1,12 @@
+  // Array de objetos con codigo de moneda de tres digitos y nombre
+  const monedas = [
+    {id: 'USD', nombre: 'Dolar de Estados Unidos'},
+    {id: 'MXN', nombre: 'Peso Mexicano'},
+    {id: 'EUR', nombre: 'Euro'},
+    {id: 'GBP', nombre: 'Libra Esterlina'},
+    {id: 'BOB', nombre: 'Peso Boliviano'},
+  ];
+
+  export {
+      monedas
+  };

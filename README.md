@@ -228,3 +228,59 @@ El encargado acepta o rechaza el PR
 # git push -u origin main                               // Subir los cambio a GitHub  
 ```
 Para verificar el historial de commits en Netlify ir a 'Deploys'
+
+## Styled Components en React
+### Que son los Styled
+__Components en React__
+En JSX podemos utilizar HTML con expresiones JavaScript, pero también es posible crear un elemento HTML con la sintaxis de un componente y añadir propiedades CSS.
+
+En lugar de utilizar una hoja de estilos o una librería externa, se escribe el código CSS en cada componente (CSS en JS).
+
+### Ventajas de Styled Components en React
+Al dejar de utilizar un componente, podemos eliminar su código CSS también, a diferencia de una hoja de esitlos global.
+
+Sigues teniendo la ventajas de re-utilizar código CSS.
+
+### Sintaxis
+```react
+const Heading = styled.h1`
+  font-size: 2em;
+  text-transform: uppercase;
+`;
+
+<Heading>Nuestros Productos</Heading>
+```
+
+## Porque Crear Tus Propios Hooks
+### Crear tus propios Hooks
+Algunas veces vas a desear crear tus propios Hooks, una de las razones de porque deseas crealos es para poder re-utilizar una función.
+
+También puedes crear una función Helper, pero existe otra gran ventaja de crear tus propios Hooks y es la de incorporar State y mantener el valor de una función de forma persistente.
+
+### Ventajas de crear tus Hooks
+Tu código personalizado tendrá todas las ventajas de React como son: state, effects, integrar otros hooks y el performance.
+
+Re utilizable en otros proyectos y lugares de tu página.
+
+## ¿Que son las API's?
+### Qué es una API
+API = Application Programming Interface
+
+Funciones, métodos que ofrecen una librería para ser utilizada por otro software como una capa de abstracción.
+
+Una API pone a disposición recursos que están alojados en otro servidor o base de datos.
+
+Usualmente hay que enviar una petición estructurada.
+
+Al ser React un librería que corre en el cliente, no puede consultar una base de datos, por lo tanto una API es la forma de obtener datos de un servidor.
+
+La API puede ser creada en cualquier lenguaje o framework: Python, Java, Net Core, Express, Node.js, Laravel o PHP.
+
+Para ello deberá entregar una respuesta tipo JSON.
+
+### Consultar una API con React
+Al ser JavaScript puedes utilizar Fetch API y obtener los datos para mostrarlos en pantalla.
+
+Algunas API's requieren un KEY, y otras están protegidas por CORS.
+
+También es posible integrar una librería externa como Axios.
