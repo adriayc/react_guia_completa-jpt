@@ -284,3 +284,15 @@ Al ser JavaScript puedes utilizar Fetch API y obtener los datos para mostrarlos 
 Algunas API's requieren un KEY, y otras están protegidas por CORS.
 
 También es posible integrar una librería externa como Axios.
+
+## Routing
+### Qué es el Routing
+Con una librería de Routing puedes tener diferentes URL's y mostrar diferentes componentes, así como restringir acceso a ciertas páginas.
+
+Un proyecto grande es mejor manjarlo en múltiples pantallas, en lugar de un solo componente que revise múltiples condiciones.
+
+### Librerías de Routing
+* React Router - V6 se une a Reach Router - Creadores de Remix Run
+* React Location - Creador de React Query
+* Gatsby
+* Next.js
