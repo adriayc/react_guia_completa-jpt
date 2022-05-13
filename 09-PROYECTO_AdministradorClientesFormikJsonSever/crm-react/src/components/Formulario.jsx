@@ -3,6 +3,11 @@ import React from 'react';
 import { Formik, Form, Field } from 'formik';
 
 const Formulario = () => {
+  
+  const handleSubmit = (valores) => {
+      console.log(valores);
+  };
+
   return (
     <div className='bg-white mt-10 px-5 py-10 rounded-md shadow-md md:w-3/4 mx-auto'>
       <h1 className='text-gray-600 font-bold text-xl uppercase text-center'>Agregar Cliente</h1>
@@ -10,13 +15,19 @@ const Formulario = () => {
       <Formik
         initialValues={
           {
-            nombre: '',
-            empresa: '',
-            email: '',
-            telefono: '',
-            notas: ''
+              nombre: '',
+              empresa: '',
+              email: '',
+              telefono: '',
+              notas: ''
           }
         }
+        onSubmit={(values) => {
+            // console.log('Enviando formulario...');
+            // console.log(values);
+
+            handleSubmit(values);
+        }}
       >
         {() => (
           <Form className='mt-10'>
