@@ -296,3 +296,13 @@ Un proyecto grande es mejor manjarlo en múltiples pantallas, en lugar de un sol
 * React Location - Creador de React Query
 * Gatsby
 * Next.js
+
+## Librerías para Formularios
+### ¿Cuando utilizar una librería de Formularios?
+Si tu proyecto contará con formularios muy grandes, complejos o múltiples formularios; una librería solucionará muchos problemas.
+
+Algunas librerías cuentan con validaciones muy robustas y otras se integran bien con alguna dependencia de validación.
+
+### Opciones de Librerías de formularios
+* Formik - Yup con herramienta de validación
+* React Hook Form

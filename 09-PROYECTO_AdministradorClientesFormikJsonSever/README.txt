@@ -15,3 +15,5 @@
   - Cancelamos la ejecucion con CTRL + C y volvemos a levantar el servicion con npm run dev
 * Instalar React Router
   # npm i react-router-dom
+* Instalar Formik
+  # npm i formik yup
