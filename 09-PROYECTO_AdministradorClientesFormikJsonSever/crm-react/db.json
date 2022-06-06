@@ -1,8 +1,12 @@
 {
-    "clientes": [
-        {
-            "id": 1,
-            "nombre": "Adriano"
-        }
-    ]
+  "clientes": [
+    {
+      "nombre": "Adriano",
+      "empresa": "AACSfot SA",
+      "email": "adriano.ayc@aacsoft.com",
+      "telefono": "70782047",
+      "notas": "Mis notas",
+      "id": 1
+    }
+  ]
 }
