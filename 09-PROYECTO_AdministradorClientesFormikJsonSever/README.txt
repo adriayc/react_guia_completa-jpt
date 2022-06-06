@@ -19,3 +19,4 @@
   # npm i formik yup
 * Instalar JSON Server
   # npm install -g json-server
+  # json-server --watch db.json --port 4000         // Ejecutar la DB de JSON server en el puerto 4000
