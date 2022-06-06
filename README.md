@@ -306,3 +306,23 @@ Algunas librerías cuentan con validaciones muy robustas y otras se integran bie
 ### Opciones de Librerías de formularios
 * Formik - Yup con herramienta de validación
 * React Hook Form
+
+## Qué es una REST API
+* REST = Representational State Transfer
+* Puede ser Diseñada en cualquier lenguaje.
+* Debe responder a los Request HTTP: GET, POST, PUT, PATCH, DELETE.
+* Tiene una forma ordenada y estructurada de poner a disposición los recursos.
+
+### Verbos HTTP
+* GET - Obtener
+* POST - Enviar Datos al Sevidor / Creación
+* PUT / PATCH - Actualizar
+* DELETE - Eliminar
+
+### Endpoints de una Rest API
+* Una REST API cuenta con Endpoints (o URLs) para hacer operaciones CRUD.
+* Listar todos los clientes   GET   /clientes
+* Obtener un solo cliente   GET   /clientes/10
+* Crear un nuevo cliente  POST  /clientes
+* Editar un cliente   PUT    /clientes/3
+* Borrar un cliente   DELETE  /clientes/8

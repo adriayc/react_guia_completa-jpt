@@ -17,3 +17,5 @@
   # npm i react-router-dom
 * Instalar Formik
   # npm i formik yup
+* Instalar JSON Server
+  # npm install -g json-server
