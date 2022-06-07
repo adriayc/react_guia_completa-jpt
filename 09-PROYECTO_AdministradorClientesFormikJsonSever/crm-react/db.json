@@ -7,6 +7,22 @@
       "telefono": "70782047",
       "notas": "Mis notas",
       "id": 1
+    },
+    {
+      "nombre": "Diana Cardozo",
+      "empresa": "Diana's Diseños S.R.L.",
+      "email": "diana.cardozo@disenios.com",
+      "telefono": "77643425",
+      "notas": "Mi notas",
+      "id": 2
+    },
+    {
+      "nombre": "Diego Mendez",
+      "empresa": "Emprel S.A.",
+      "email": "diego.mendez@emprel.com",
+      "telefono": "54568934",
+      "notas": "",
+      "id": 3
     }
   ]
 }

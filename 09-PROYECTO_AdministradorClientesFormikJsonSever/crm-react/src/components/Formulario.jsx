@@ -3,11 +3,16 @@ import React from 'react';
 import { Formik, Form, Field/*, ErrorMessage*/ } from 'formik';
 // Importar Yup
 import * as Yup from 'yup';
+// Importar React Router
+import { useNavigate } from 'react-router-dom';
 
 // Importar componentes
 import Alerta from './Alerta';
 
 const Formulario = () => {
+
+  // Definimos un navigate de react router dom
+  const navigate = useNavigate();
 
   const nuevoClienteSchema = Yup.object().shape({
     nombre: Yup.string()
@@ -45,6 +50,9 @@ const Formulario = () => {
       const resultado = await respuesta.json();
       console.log(resultado);
 
+      // Redireccionamos a la pagina de clientes
+      navigate('/clientes');
+
     } catch(error) {
       console.log(error);
     }
@@ -64,11 +72,14 @@ const Formulario = () => {
               notas: ''
           }
         }
-        onSubmit={(values) => {
+        onSubmit={ async (values, {resetForm}) => {
             // console.log('Enviando formulario...');
             // console.log(values);
 
-            handleSubmit(values);
+            await handleSubmit(values);
+
+            // Limpiar/Reset el formulario
+            resetForm();
         }}
         validationSchema = { nuevoClienteSchema }
       >
