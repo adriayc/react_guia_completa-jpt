@@ -9,7 +9,7 @@ import { useNavigate } from 'react-router-dom';
 // Importar componentes
 import Alerta from './Alerta';
 
-const Formulario = () => {
+const Formulario = ({cliente}) => {
 
   // Definimos un navigate de react router dom
   const navigate = useNavigate();
