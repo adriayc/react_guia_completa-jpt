@@ -65,13 +65,16 @@ const Formulario = ({cliente}) => {
       <Formik
         initialValues={
           {
-              nombre: '',
-              empresa: '',
-              email: '',
-              telefono: '',
-              notas: ''
+              // nombre: cliente.nombre ? cliente.nombre : '',
+              nombre: cliente?.nombre ?? '',
+              empresa: cliente?.empresa ?? '',
+              email: cliente?.email ?? '',
+              telefono: cliente?.telefono ?? '',
+              notas: cliente?.notas ?? ''
           }
         }
+        // Para tomar los valores de un DB, GraphQL, etc. Y mostrarlos en los valores en los inputs
+        enableReinitialize={true}
         onSubmit={ async (values, {resetForm}) => {
             // console.log('Enviando formulario...');
             // console.log(values);
@@ -193,5 +196,10 @@ const Formulario = ({cliente}) => {
     </div>
   )
 }
+
+// Pasar un default props
+Formulario.defaultProps = {
+  cliente: {}
+};
 
 export default Formulario;
