@@ -40,6 +40,7 @@ const EditarCliente = () => {
 
       <Formulario
         cliente={cliente}
+        cargando={cargando}
       />
     </>
   )
