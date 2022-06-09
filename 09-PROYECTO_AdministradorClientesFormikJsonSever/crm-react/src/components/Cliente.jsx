@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const Cliente = ({ cliente }) => {
+const Cliente = ({ cliente, handleEliminar }) => {
 
   // Definimos navigate de react router
   const navigate = useNavigate();
@@ -30,8 +30,8 @@ const Cliente = ({ cliente }) => {
         >Editar</button>
 
         <button 
-          type='buttom'
           className='bg-red-600 hover:bg-red-700 block w-full text-white p-2 uppercase font-bold text-xs mt-3'
+          onClick={() => handleEliminar(id)}      /* Usamos un array function para que se ejecute al dar un click */
         >Eliminar</button>
       </td>
     </tr>

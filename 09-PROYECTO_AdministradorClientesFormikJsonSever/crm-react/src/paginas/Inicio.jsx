@@ -1,3 +1,4 @@
+import { isFunction } from 'formik';
 import { useState, useEffect } from 'react';
 
 // Importar componentes
@@ -28,6 +29,36 @@ const Inicio = () => {
     obtenerClienteAPI();
   }, []);
 
+  // Metodo para eliminar un cliente
+  const handleEliminar = async id => {
+    // console.log('Eliminando...', id);
+
+    const confirmar = confirm('¿Deseas eliminar este cliente?');
+    // console.log(confirmar);
+
+    if(confirmar) {
+      try {
+        const url = `http://localhost:4000/clientes/${id}`;
+
+        // Fetch API tipo POST (Eliminar Datos)
+        const respuesta = await fetch(url, {
+          method: 'DELETE'
+        });
+        await respuesta.json();
+
+        // Recargar la pagina
+        // location.reload();        // Recarga la pagina (No es una solucion optima)
+
+        // Filtar ID del cliente eliminado (La mejor solucion es actualizar el state)
+        const arrayClientes = clientes.filter(cliente => cliente.id !== id);
+        setClientes(arrayClientes);
+
+      } catch(error) {
+        console.log(error);
+      }
+    }
+  };
+
   return (
     <>
       <h1 className='font-black text-4xl text-blue-900'>Clientes</h1>
@@ -49,6 +80,7 @@ const Inicio = () => {
               // Asignar un key unico
               key={cliente.id}
               cliente={cliente}
+              handleEliminar={handleEliminar}
             />
           ))}
         </tbody>

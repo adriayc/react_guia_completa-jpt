@@ -23,22 +23,6 @@
       "telefono": "54568934",
       "notas": "",
       "id": 3
-    },
-    {
-      "nombre": "Carla Moron",
-      "empresa": "Pretty S.A.",
-      "email": "carla_moron@pretty.com",
-      "telefono": "77623901",
-      "notas": "",
-      "id": 4
-    },
-    {
-      "nombre": "Milton Robles",
-      "empresa": "My Softtech S.R.L.",
-      "email": "milton.robles@mysofttech.com",
-      "telefono": "76459023",
-      "notas": "My Softtech es una empresa dedicada al soporte tecnico de software.",
-      "id": 5
     }
   ]
 }
