@@ -10,6 +10,10 @@ import EditarCliente from './paginas/EditarCliente';
 
 function App() {
 
+  // Acceder a las variables de entorno de VITE
+  // console.log(import.meta.env);
+  console.log(import.meta.env.VITE_API_URL);
+
   return (
     <BrowserRouter>
       <Routes>

@@ -41,7 +41,8 @@ const Formulario = ({cliente, cargando}) => {
         // console.log('Editando...');
 
         // Editando un registro
-        const url  = `http://localhost:4000/clientes/${cliente.id}`;
+        // const url  = `http://localhost:4000/clientes/${cliente.id}`;
+        const url  = `${import.meta.env.VITE_API_URL}/${cliente.id}`;
 
         // Fetch API tipo PUT (Actualizar Datos)
         respuesta = await fetch(url, {
@@ -56,7 +57,8 @@ const Formulario = ({cliente, cargando}) => {
 
         // Nuevo Registro
         // Url del servidor JSON server
-        const url = 'http://localhost:4000/clientes';
+        // const url = 'http://localhost:4000/clientes';
+        const url = import.meta.env.VITE_API_URL;
 
         // Fetch API tipo POST (Envio de Datos)
         respuesta = await fetch(url, {

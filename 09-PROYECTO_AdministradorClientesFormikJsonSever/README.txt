@@ -27,3 +27,10 @@
     * Reemplazar el user y repo por el de GitHub y revisamos el resultado en el browser
       https://my-json-server.typicode.com/user/repo/posts/1
       https://my-json-server.typicode.com/adriayc/administrador-clientes-react/clientes
+  3. Crear variables de entorno en Vite (.local es ignorado por git)
+    * Crear el archivo .env en la raiz del proyecto y agregar las variables de entorno (debe iniciar con VITE_[NOMBRE_VARIABLE]).
+    * Es recomendable reiniciar el servidor del proyecto en LOCAL.
+  4. Probar modo desarrollo
+    * # npm run build       // construye el build de produccion
+    * # npm run previow     // Ejecutar modo produccion
+    * Abrir en el navegador la url http://localhost:4173
