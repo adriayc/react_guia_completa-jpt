@@ -1,16 +1,16 @@
 {
   "clientes": [
     {
-      "nombre": "Adriano",
+      "nombre": "Adriano Ayala",
       "empresa": "AACSfot SA",
-      "email": "adriano.ayc@aacsoft.com",
+      "email": "adriano.ayala@aacsoft.com",
       "telefono": "70782047",
-      "notas": "Mis notas",
+      "notas": "Mis notas de la empresa.",
       "id": 1
     },
     {
       "nombre": "Diana Cardozo",
-      "empresa": "Diana's Diseños S.R.L.",
+      "empresa": "Diseños S.R.L.",
       "email": "diana.cardozo@disenios.com",
       "telefono": "77643425",
       "notas": "Mi notas",
@@ -23,6 +23,22 @@
       "telefono": "54568934",
       "notas": "",
       "id": 3
+    },
+    {
+      "nombre": "Carla Moron",
+      "empresa": "Pretty S.A.",
+      "email": "carla_moron@pretty.com",
+      "telefono": "77623901",
+      "notas": "",
+      "id": 4
+    },
+    {
+      "nombre": "Milton Robles",
+      "empresa": "My Softtech S.R.L.",
+      "email": "milton.robles@mysofttech.com",
+      "telefono": "76459023",
+      "notas": "My Softtech es una empresa dedicada al soporte tecnico de software.",
+      "id": 5
     }
   ]
 }
