@@ -20,3 +20,10 @@
 * Instalar JSON Server
   # npm install -g json-server
   # json-server --watch db.json --port 4000         // Ejecutar la DB de JSON server en el puerto 4000
+
+* Deploy del proyecto
+  1. Crear un nuevo repositorio en GitHub y subir el proyecto al repositorio.
+  2. Ir a la pagina de My Json Server https://my-json-server.typicode.com/
+    * Reemplazar el user y repo por el de GitHub y revisamos el resultado en el browser
+      https://my-json-server.typicode.com/user/repo/posts/1
+      https://my-json-server.typicode.com/adriayc/administrador-clientes-react/clientes
