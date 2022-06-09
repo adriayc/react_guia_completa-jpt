@@ -1,0 +1,28 @@
+{
+  "clientes": [
+    {
+      "nombre": "Adriano Ayala",
+      "empresa": "AACSfot SA",
+      "email": "adriano.ayala@aacsoft.com",
+      "telefono": "70782047",
+      "notas": "Mis notas de la empresa.",
+      "id": 1
+    },
+    {
+      "nombre": "Diana Cardozo",
+      "empresa": "Diseños S.R.L.",
+      "email": "diana.cardozo@disenios.com",
+      "telefono": "77643425",
+      "notas": "Mi notas",
+      "id": 2
+    },
+    {
+      "nombre": "Maria Fernandez",
+      "empresa": "MaiUI S.A.",
+      "email": "maria_fer@maiui.com",
+      "telefono": "76349023",
+      "notas": "",
+      "id": 3
+    }
+  ]
+}

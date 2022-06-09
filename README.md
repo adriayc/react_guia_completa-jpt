@@ -284,3 +284,45 @@ Al ser JavaScript puedes utilizar Fetch API y obtener los datos para mostrarlos 
 Algunas API's requieren un KEY, y otras están protegidas por CORS.
 
 También es posible integrar una librería externa como Axios.
+
+## Routing
+### Qué es el Routing
+Con una librería de Routing puedes tener diferentes URL's y mostrar diferentes componentes, así como restringir acceso a ciertas páginas.
+
+Un proyecto grande es mejor manjarlo en múltiples pantallas, en lugar de un solo componente que revise múltiples condiciones.
+
+### Librerías de Routing
+* React Router - V6 se une a Reach Router - Creadores de Remix Run
+* React Location - Creador de React Query
+* Gatsby
+* Next.js
+
+## Librerías para Formularios
+### ¿Cuando utilizar una librería de Formularios?
+Si tu proyecto contará con formularios muy grandes, complejos o múltiples formularios; una librería solucionará muchos problemas.
+
+Algunas librerías cuentan con validaciones muy robustas y otras se integran bien con alguna dependencia de validación.
+
+### Opciones de Librerías de formularios
+* Formik - Yup con herramienta de validación
+* React Hook Form
+
+## Qué es una REST API
+* REST = Representational State Transfer
+* Puede ser Diseñada en cualquier lenguaje.
+* Debe responder a los Request HTTP: GET, POST, PUT, PATCH, DELETE.
+* Tiene una forma ordenada y estructurada de poner a disposición los recursos.
+
+### Verbos HTTP
+* GET - Obtener
+* POST - Enviar Datos al Sevidor / Creación
+* PUT / PATCH - Actualizar
+* DELETE - Eliminar
+
+### Endpoints de una Rest API
+* Una REST API cuenta con Endpoints (o URLs) para hacer operaciones CRUD.
+* Listar todos los clientes   GET   /clientes
+* Obtener un solo cliente   GET   /clientes/10
+* Crear un nuevo cliente  POST  /clientes
+* Editar un cliente   PUT    /clientes/3
+* Borrar un cliente   DELETE  /clientes/8
