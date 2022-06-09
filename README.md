@@ -326,3 +326,16 @@ Algunas librerías cuentan con validaciones muy robustas y otras se integran bie
 * Crear un nuevo cliente  POST  /clientes
 * Editar un cliente   PUT    /clientes/3
 * Borrar un cliente   DELETE  /clientes/8
+
+## ¿Qué es Next.js?
+* Framework en React para la creación de Sitios y Aplicaciones.
+* Cuenta con una gran cantidad de características my útiles para crear aplicaciones de gran performance , SEO y facilidad de configuración.
+* A diferencia de JavaScript que corre en el cliente en Next.js el código de JS corre tanto en el servidro como el cliente (navegador).
+* Soporta Server Side Rendering (SSD) y Static Site Generation (SSG).
+
+### Ventajas de Next.js
+* No requiere configuracion.
+* Gran Performance y optimizado para SEO.
+* Routing incluido.
+* Funciones para obtener datos de API's como getServerSideProps y getStaticProps.
+* EL código sigue siendo React: componentes, hooks, etc.
