@@ -14,7 +14,6 @@ const Layout = ({children, pagina}) => {
 
       <Header />
 
-      <h1>Desde Layout</h1>
       {children}
 
       <Footer />
