@@ -14,3 +14,17 @@
   * public - Archivos estaticos del app
   * styles - Archivos de CSS (modulos de CSS y archivos globales de CSS)
   * next.config.ts - Archivo de configuracion para Next.js
+
+3. Crear un proyecto con Strapi (sqlite)
+  # npx create-strapi-app@latest          // Crear de la ultima version
+  # npx create-strapi-app@3.6.8           // Crear un version especifica
+    Ok to procced? (y) y
+    ? What would you like to name your project? guitarla_strapi_sqlite
+    > Custom (manual settings)
+    > sqlite
+    ? Filename: ENTER
+  # cd guitarla_strapi_sqlite
+  # npm run develop                       // Ejecutar la app de Strapi
+  * Ir a la siguiente url en el browser: http://localhost:1337/admin
+    > Email: adriano.ayala@strapi.com
+    > Password: Admin123

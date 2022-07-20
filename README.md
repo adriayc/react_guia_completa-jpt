@@ -339,3 +339,9 @@ Algunas librerías cuentan con validaciones muy robustas y otras se integran bie
 * Routing incluido.
 * Funciones para obtener datos de API's como getServerSideProps y getStaticProps.
 * EL código sigue siendo React: componentes, hooks, etc.
+
+## ¿Qué es Strapi?
+* Es un CMS Headless.
+* Te permite crear API's dinámicas con respuestas JSON y GraphQL.
+* Si necesitas personalizar algo de Strapi puedes hacerlo con Código de JavaScript (Node.js).
+* Se puede extender con el uso de Plugins.
