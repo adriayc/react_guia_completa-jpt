@@ -1,6 +1,7 @@
 import Head from 'next/head'
 // Importar componentes
 import Header from './Header'
+import Footer from './Footer'
 
 const Layout = ({children, pagina}) => {
   return (
@@ -15,6 +16,8 @@ const Layout = ({children, pagina}) => {
 
       <h1>Desde Layout</h1>
       {children}
+
+      <Footer />
     </div>
   )
 }
