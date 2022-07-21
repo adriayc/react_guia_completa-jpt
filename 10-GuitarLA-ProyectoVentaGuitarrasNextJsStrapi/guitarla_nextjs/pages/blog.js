@@ -1,11 +1,12 @@
 // import { useEffect } from 'react'
 // Importar componentes
 import Layout from '../components/Layout'
+import Entrada from '../components/Entrada'
 
 // Podemos extraer las "entradas" del ServerSideProps (como props) 
 const Blog = ({entradas}) => {
 
-  console.log(entradas)
+  // console.log(entradas)
 
   // Usando useEffect de React.js
   // useEffect(() => {
@@ -24,7 +25,18 @@ const Blog = ({entradas}) => {
     <Layout
       pagina='Blog'
     >
-      <h1>Desde Blog</h1>
+      <main className='contenedor'>
+        <h2 className='heading'>Blog</h2>
+
+        <div>
+          {entradas.map(entrada => (
+            <Entrada
+              key={entrada.id}
+              entrada={entrada}
+            />
+          ))}
+        </div>
+      </main>
     </Layout>
   )
 }
@@ -50,17 +62,16 @@ const Blog = ({entradas}) => {
 // StaticProps - Usamos cuando el contenido es estativo. Exportamos y automaticamente se importa en la pagina (se ejecuta en el servidor o terminal)
 export async function getStaticProps() {
 
-  const url = 'http://localhost:1337/api/blogs'
+  const url = 'http://localhost:1337/api/blogs?fields=*&populate=imagen'
  
   const respuesta = await fetch(url)
-  const entradas = await respuesta.json()
-  // console.log(entradas)
+  const { data } = await respuesta.json()
+  // console.log(data)
 
   // Retorna siempre un objeto
   return {
     props: {
-      // entradas: entradas
-      entradas
+      entradas: data
     }
   }
 }
