@@ -1,3 +1,6 @@
+import Link from "next/link"
+// Importar helper
+import { formatearFecha } from "../helpers"
 
 const Entrada = ({entrada}) => {
 
@@ -7,7 +10,13 @@ const Entrada = ({entrada}) => {
 
   return (
     <article>
-      <h1>{titulo}</h1>
+      <div>
+        <h1>{titulo}</h1>
+        <p>{formatearFecha(publishedAt)}</p>
+        <p>{resumen}</p>
+
+        <Link href={`/blog/${id}`}>Leer Entrada</Link>
+      </div>
     </article>
   )
 }
