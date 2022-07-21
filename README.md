@@ -356,3 +356,6 @@ Next.js te ofrece 3 formas de obtener datos de una API.
 ### Cuando utilizar StaticProps y ServerSideProps
 * Utiliza StaticProps cuando la informacion no cambia en cada request: una página informativa, documentación, trámites, anuncios.
 * Utilizar ServerSideProps cuando la información cambia de forma continua en cada request o donde la página se actualiza cada poco tiempo.
+
+## Configurar Next.js para imagens externas
+* Agregar la configuracion de imagenes en el archivo "next.config.js" y reiniciar el servidor de Next.js
