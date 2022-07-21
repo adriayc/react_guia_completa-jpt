@@ -8,10 +8,15 @@ const Header = () => {
     <header className={styles.header}>
       <div className="contenedor">
         <div className={styles.barra}>
-          <Link href="/">
+          {/* Opcion #1 para solucionar el warning de "React.forwardRef()" (cuando un componente es hijo directo de un Link), pero no funciona! */}
+          <Link href="/" passHref>
             {/* fill - toma al ancho de la pantalla */}
             {/* <Image layout="fill" src="/img/logo.svg" /> */}
-            <Image width={400} height={100} src="/img/logo.svg" alt="Imagen logo" /> 
+
+            {/* Opcion #2 es que el componente Link este dentro de una etiqueta "a" (cuando un componente es hijo directo de un Link) */}
+            <a>
+              <Image width={400} height={100} src="/img/logo.svg" alt="Imagen logo" /> 
+            </a>
           </Link>
 
           <nav className={styles.navegacion}>

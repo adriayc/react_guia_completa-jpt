@@ -1,3 +1,5 @@
+// Importar modulo de CSS
+import styles from "../styles/Blog.module.css"
 // import { useEffect } from 'react'
 // Importar componentes
 import Layout from '../components/Layout'
@@ -28,7 +30,7 @@ const Blog = ({entradas}) => {
       <main className='contenedor'>
         <h2 className='heading'>Blog</h2>
 
-        <div>
+        <div className={styles.blog}>
           {entradas.map(entrada => (
             <Entrada
               key={entrada.id}
