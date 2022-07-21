@@ -87,3 +87,12 @@
       > Clic "Finish"
     - Clic "Save"
   * Ir a "Content Manager" -> "Blog" -> "+ Create new entry" -> "Configure the view" para modificar la vista -> "Save" y "Confirm"
+
+6. Crear registros en Strapi
+  * Ingresar todos los campos y para finalizar clic en "Save" y "Publish"
+  * Moficar los roles para ver la informacion de Strapi
+    - Ir a "Settings" -> "USERS & PERMISSIONS PLUGIN" -> "Roles" -> "Public" (Edit Public)
+    - "Permission" -> "Blog"
+      > fund
+      > findOne
+      + Clic "Save"
