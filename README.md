@@ -345,3 +345,14 @@ Algunas librerías cuentan con validaciones muy robustas y otras se integran bie
 * Te permite crear API's dinámicas con respuestas JSON y GraphQL.
 * Si necesitas personalizar algo de Strapi puedes hacerlo con Código de JavaScript (Node.js).
 * Se puede extender con el uso de Plugins.
+
+## Consulat API's con Next.js
+### Obtener Datos en Next.js
+Next.js te ofrece 3 formas de obtener datos de una API.
+* getStaticProps: Obtener los datos cuando se crea el build.
+* getStaticPaths: Obtener el listado de páginas que se van a crear cuando se realiza el build.
+* getServerSideProps: Los datos se obtienen en cada request.
+
+### Cuando utilizar StaticProps y ServerSideProps
+* Utiliza StaticProps cuando la informacion no cambia en cada request: una página informativa, documentación, trámites, anuncios.
+* Utilizar ServerSideProps cuando la información cambia de forma continua en cada request o donde la página se actualiza cada poco tiempo.
