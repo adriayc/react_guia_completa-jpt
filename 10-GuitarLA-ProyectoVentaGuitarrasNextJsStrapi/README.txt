@@ -96,3 +96,8 @@
       > fund
       > findOne
       + Clic "Save"
+
+7. Configurando Cloudinary para imágenes
+  * Ir a https://cloudinary.com/ -> "SIGN UP FOR FREE" y creamos nuestra cuenta
+  * Instalar el proveedor de Cloudinary para Strapi
+    # npm install @strapi/provider-upload-cloudinary --save
