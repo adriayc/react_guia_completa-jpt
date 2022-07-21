@@ -1,16 +1,36 @@
-import { useRouter } from "next/router"
+// import { useRouter } from "next/router"
+import Image from 'next/image'
+// Importar helper
+import { formatearFecha } from "../../helpers"
+// Importar componentes
+import Layout from '../../components/Layout'
 
 // Recibe la "entrada" de ServerSideProps como prop
 const EntradaBlog = ({entrada}) => {
 
-  console.log(entrada)
+  // console.log(entrada)
+  const { attributes: { titulo, contenido, imagen, publishedAt }, id } = entrada
+  // console.log(imagen)
 
   // Obtener el ID de la ruta (id: depende del nombre del archivo)
   // const router = useRouter()
   // console.log(router.query)
   
   return (
-    <div>EntradaBlog</div>
+    <Layout>
+      <main className="contenedor">
+        <h1 className="heading">{titulo}</h1>
+
+        <acticle>
+          <Image layout='responsive' width={800} height={600} src={imagen.data.attributes.url} alt={`Imagen entrada ${titulo}`} />
+
+          <div>
+            <p>{formatearFecha(publishedAt)}</p>
+            <p>{contenido}</p>
+          </div>
+        </acticle>
+      </main>
+    </Layout>
   )
 }
 
