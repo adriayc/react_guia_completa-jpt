@@ -359,3 +359,6 @@ Next.js te ofrece 3 formas de obtener datos de una API.
 
 ## Configurar Next.js para imagens externas
 * Agregar la configuracion de imagenes en el archivo "next.config.js" y reiniciar el servidor de Next.js
+
+## Routing dinamico en Next.js
+* Creamos una directorio con el mismo nombre de la ruta "blog" y creamos un archivo como: [id].js. Por ejemplo la ruta es "/blog/1".
