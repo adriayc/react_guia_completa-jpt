@@ -66,3 +66,24 @@
     * Ir a la siguiente url: http://localhost:1337/admin y crear la credenciales de Strapi
       > Email: adriano.ayala@strapi.com
       > Password: Admin123
+
+5. Crear tipos de contenido en Strapi
+  * Ir a "Content-Types Builder" -> "+ Create new colletion type"
+    > Display name: Blog
+    - "Select a field for your collection type" -> "Text"
+      > Name: titulo
+      > "Short text"
+      * Ir "ADVANCED SETTINGS"
+       > "Required field"
+      > Clic "Finish"
+    - Clic "Save"
+  * Agregar un nuevo campo -> "Content-Type Builder" -> "Blog" -> "Add another field to this collection type" o "+ Add another field"
+    - Clic "Text"
+      > Name: resumen
+      > "Short text"
+      * Ir a "ADVANCED SETTINGS"
+        > "Required field"
+        > "+ Add another field"       // Agregar mas campos
+      > Clic "Finish"
+    - Clic "Save"
+  * Ir a "Content Manager" -> "Blog" -> "+ Create new entry" -> "Configure the view" para modificar la vista -> "Save" y "Confirm"
