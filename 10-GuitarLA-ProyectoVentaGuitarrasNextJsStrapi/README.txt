@@ -28,3 +28,41 @@
   * Ir a la siguiente url en el browser: http://localhost:1337/admin
     > Email: adriano.ayala@strapi.com
     > Password: Admin123
+
+4. Crear un proyecto con Strapi (mongodb)
+  * Crear una cuanta de mondodb en la siguiente url: https://www.mongodb.com/atlas/database
+    - Ir a "Database" -> "Build a Database" -> "FREE" (Create) -> "Create Cluster" (Default)
+    - Create Username and Password:
+      > Username: strapi
+      > Password: strapi123
+      - Clic "Create User"
+      - Clic "Finish and Close"
+    - URL de conexion a la base de datos
+      - Ir a "Database" -> "Atlas" -> "Connect" -> "Connect your application"
+        URL: mongodb+srv://root:<password>@<HOST>/?retryWrites=true&w=majority
+    - Agregar nuestra direccion IP
+      - Ver nuestra IP: https://whatismyipaddress.com/es/mi-ip
+      - Ir mongodb a "Network Access" -> "+ ADD IP ADDRESS"
+        > Access List Entry: COPIAR_DIRECCION_IP
+        - Clic "Confirm"
+
+  * Crear un proyecto Strapi (mongodb)
+    # npx create-strapi-app@3.6.8 guitarla_strapi_mongodb
+    # npx create-strapi-app@3.6.10 guitarla_strapi_mongodb
+      Ok to proceed? (y) y
+      > Custom (manual settings)
+      ? Would you like to use a template? n
+      > mongo
+      ? Database name: ENTER
+      ? Host: cluster0.tpnduwn.mongodb.net
+      ? +srv connection: true
+      ? Port (It will be ignored if you enable +srv): ENTER
+      ? Username: root
+      ? Password: root123
+      ? Authentication database (Maybe "admin" or blank): admin
+      ? Enable SSL connection: y
+    # cd guitarla_strapi_mongodb
+    # npm run develop
+    * Ir a la siguiente url: http://localhost:1337/admin y crear la credenciales de Strapi
+      > Email: adriano.ayala@strapi.com
+      > Password: Admin123
