@@ -40,3 +40,13 @@
     color: var(--blanco);
     background-color: var(--primary);
 }
+
+
+.entrada {
+    max-width: 80rem;
+    margin: 0 auto;
+}
+.texto {
+    /* Mostra el formato de texto con CSS */
+    white-space: pre-wrap;
+}

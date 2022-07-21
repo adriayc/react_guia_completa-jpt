@@ -2,6 +2,8 @@
 import Image from 'next/image'
 // Importar helper
 import { formatearFecha } from "../../helpers"
+// Importar modulo de CSS
+import styles from "../../styles/Entrada.module.css"
 // Importar componentes
 import Layout from '../../components/Layout'
 
@@ -21,12 +23,12 @@ const EntradaBlog = ({entrada}) => {
       <main className="contenedor">
         <h1 className="heading">{titulo}</h1>
 
-        <acticle>
+        <acticle className={styles.entrada}>
           <Image layout='responsive' width={800} height={600} src={imagen.data.attributes.url} alt={`Imagen entrada ${titulo}`} />
 
-          <div>
-            <p>{formatearFecha(publishedAt)}</p>
-            <p>{contenido}</p>
+          <div className={styles.contenido}>
+            <p className={styles.fecha}>{formatearFecha(publishedAt)}</p>
+            <p className={styles.texto}>{contenido}</p>
           </div>
         </acticle>
       </main>
