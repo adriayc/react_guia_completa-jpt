@@ -8,12 +8,19 @@ import Entrada from '../components/Entrada'
 // Podemos extraer las "entradas" del ServerSideProps (como props) 
 const Blog = ({entradas}) => {
 
+  // Error!, No se puede llamar a una variable de entorno del lado del servidor
+  // const url = `${process.env.API_URL}/blogs?fields=*&populate=imagen`
+
+  // Llamar a una variable de entorno de lado de cliente debe iniciar con "NEXT_PUBLIC"
+  // const url = `${process.env.NEXT_PUBLIC_API_URL}/blogs?fields=*&populate=imagen`
+  // console.log(url)
+
   // console.log(entradas)
 
   // Usando useEffect de React.js
   // useEffect(() => {
   //   const consultarAPI = async () => {
-  //     const url = 'http://localhost:1337/api/blogs'
+  //     const url = `${process.env.NEXT_PUBLIC_API_URL}/blogs`
 
   //     const respuesta = await fetch(url)
   //     const resultado = await respuesta.json()
@@ -46,7 +53,7 @@ const Blog = ({entradas}) => {
 // ServerSideProps - Usamos cuando el el contenido cambie muy seguido. Exportamos y automaticamente se importa en la pagina (se ejecuta en el servidor o terminal)
 // export async function getServerSideProps() {
 
-//   const url = 'http://localhost:1337/api/blogs'
+//   const url = `${process.env.API_URL}/blogs`
  
 //   const respuesta = await fetch(url)
 //   const entradas = await respuesta.json()
@@ -64,7 +71,9 @@ const Blog = ({entradas}) => {
 // StaticProps - Usamos cuando el contenido es estativo. Exportamos y automaticamente se importa en la pagina (se ejecuta en el servidor o terminal)
 export async function getStaticProps() {
 
-  const url = 'http://localhost:1337/api/blogs?fields=*&populate=imagen'
+  // Llamando a una variable de entorno desde el lado del servidor
+  const url = `${process.env.API_URL}/blogs?fields=*&populate=imagen`
+  // console.log(url)
  
   const respuesta = await fetch(url)
   const { data } = await respuesta.json()

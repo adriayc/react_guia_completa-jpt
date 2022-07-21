@@ -20,7 +20,7 @@ const EntradaBlog = ({entrada}) => {
 //   // console.log(query)
 //   // console.log(id)
 
-//   const url = `http://localhost:1337/api/blogs/${id}?fields=*&populate=imagen`
+//   const url = `${process.env.API_URL}/blogs/${id}?fields=*&populate=imagen`
 
 //   const respuesta = await fetch(url)
 //   const { data } = await respuesta.json()
@@ -37,7 +37,7 @@ const EntradaBlog = ({entrada}) => {
 // StaticPaths - Obtiene la rutas estaticas para construir
 export async function getStaticPaths() {
 
-  const url = `http://localhost:1337/api/blogs?fields=*&populate=imagen`
+  const url = `${process.env.API_URL}/blogs?fields=*&populate=imagen`
 
   const respuesta = await fetch(url)
   const { data } = await respuesta.json()
@@ -64,7 +64,7 @@ export async function getStaticPaths() {
 export async function getStaticProps({params: { id }}) {
   // console.log(id)
 
-  const url = `http://localhost:1337/api/blogs/${id}?fields=*&populate=imagen`
+  const url = `${process.env.API_URL}/blogs/${id}?fields=*&populate=imagen`
 
   const respuesta = await fetch(url)
   const { data } = await respuesta.json()

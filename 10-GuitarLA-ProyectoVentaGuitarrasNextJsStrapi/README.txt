@@ -101,3 +101,8 @@
   * Ir a https://cloudinary.com/ -> "SIGN UP FOR FREE" y creamos nuestra cuenta
   * Instalar el proveedor de Cloudinary para Strapi
     # npm install @strapi/provider-upload-cloudinary --save
+
+8. Manejo de variables de entorno en Next.js
+  * Del lado del servidor se define como queramos. Por ejemplo: API_KEY
+  * Del lado del cliente debe iniciar con NEXT_PUBLIC. Por ejemplo: NEXT_PUBLIC_API_KEY
+  Cada vez que se agrega una nueva variable de entorno se debe reniciar el servidor de Next.js para ver los cambios
