@@ -72,7 +72,7 @@ const Blog = ({entradas}) => {
 export async function getStaticProps() {
 
   // Llamando a una variable de entorno desde el lado del servidor
-  const url = `${process.env.API_URL}/blogs?fields=*&populate=imagen`
+  const url = `${process.env.API_URL}/blogs?sort=createdAt:desc&fields=*&populate=imagen`
   // console.log(url)
  
   const respuesta = await fetch(url)

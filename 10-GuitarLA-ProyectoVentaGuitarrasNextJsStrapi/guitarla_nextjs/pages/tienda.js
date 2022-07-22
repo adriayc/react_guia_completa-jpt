@@ -27,6 +27,10 @@ const Tienda = ({guitarras}) => {
  */
 export async function getServerSideProps() {
   const url = `${process.env.API_URL}/guitarras?fields=*&populate=imagen`
+  // Ordenar por los atributos
+  // const url = `${process.env.API_URL}/guitarras?sort=createdAt:desc&fields=*&populate=imagen`
+  // const url = `${process.env.API_URL}/guitarras?sort=precio:desc&fields=*&populate=imagen`
+  console.log(url)
   
   const respuesta = await fetch(url)
   const { data } = await respuesta.json()
