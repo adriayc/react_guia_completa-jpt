@@ -1,11 +1,19 @@
+// Importar componentes
+import Guitarra from "./Guitarra"
 
 const Listado = ({guitarras}) => {
-
-  console.log(guitarras)
+  
+  // console.log(guitarras)
 
   return (
     <div>
-      <h1>Desde Listado</h1>
+      {guitarras.map(guitarra => (
+        <Guitarra
+          // key={guitarra.id}
+          key={guitarra.attributes.url}
+          guitarra={guitarra}
+        />
+      ))}
     </div>
   )
 }
