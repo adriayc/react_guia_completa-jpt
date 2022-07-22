@@ -11,7 +11,8 @@ import Layout from '../../components/Layout'
 const EntradaBlog = ({entrada}) => {
 
   // console.log(entrada)
-  const { attributes: { titulo, contenido, imagen, publishedAt }, id } = entrada
+  // const { attributes: { titulo, contenido, imagen, publishedAt }, id } = entrada
+  const { attributes: { titulo, contenido, imagen, publishedAt }, id } = entrada[0]
   // console.log(imagen)
 
   // Obtener el ID de la ruta (id: depende del nombre del archivo)
@@ -19,7 +20,9 @@ const EntradaBlog = ({entrada}) => {
   // console.log(router.query)
   
   return (
-    <Layout>
+    <Layout
+      pagina={titulo}
+    >
       <main className="contenedor">
         <h1 className="heading">{titulo}</h1>
 
@@ -59,14 +62,15 @@ const EntradaBlog = ({entrada}) => {
 // StaticPaths - Obtiene la rutas estaticas para construir
 export async function getStaticPaths() {
 
-  const url = `${process.env.API_URL}/blogs?fields=*&populate=imagen`
+  const urlBlogs = `${process.env.API_URL}/blogs?fields=*&populate=imagen`
 
-  const respuesta = await fetch(url)
+  // const respuesta = await fetch(url)
+  const respuesta = await fetch(urlBlogs)
   const { data } = await respuesta.json()
   // console.log(data)
 
   const paths = data.map(entrada => ({
-    params: { id: entrada.id.toString() } 
+    params: { url: entrada.attributes.url } 
   }))
   // console.log(paths)
   // console.log(paths[0].params.id)
@@ -83,18 +87,21 @@ export async function getStaticPaths() {
 }
 
 // StaticProps - Requiere de StaticPaths en routing dinamicos para obtener la "paths" de la url (Se muestra en server o terminal)
-export async function getStaticProps({params: { id }}) {
-  // console.log(id)
+export async function getStaticProps({params: { url }}) {
+  console.log(url)
 
-  const url = `${process.env.API_URL}/blogs/${id}?fields=*&populate=imagen`
+  const urlBlog = `${process.env.API_URL}/blogs?filters[url]=${url}&fields=*&populate=imagen`
+  console.log(urlBlog)
 
-  const respuesta = await fetch(url)
+  // const respuesta = await fetch(url)
+  const respuesta = await fetch(urlBlog)
   const { data } = await respuesta.json()
   // console.log(data)
 
   return {
     props: {
       entrada: data
+      // entrada: data[0]
     }
   }
 }

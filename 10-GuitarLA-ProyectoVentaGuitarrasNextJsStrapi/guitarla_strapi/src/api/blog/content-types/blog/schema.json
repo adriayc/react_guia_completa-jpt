@@ -21,16 +21,20 @@
       "required": true
     },
     "imagen": {
-      "allowedTypes": [
-        "images"
-      ],
       "type": "media",
       "multiple": false,
-      "required": true
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
     },
     "contenido": {
       "type": "richtext",
       "required": true
+    },
+    "url": {
+      "type": "uid",
+      "targetField": "titulo"
     }
   }
 }

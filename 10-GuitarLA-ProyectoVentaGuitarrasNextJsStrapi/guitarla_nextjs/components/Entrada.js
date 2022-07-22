@@ -7,9 +7,9 @@ import { formatearFecha } from "../helpers"
 
 const Entrada = ({entrada}) => {
 
-  console.log(entrada)
+  // console.log(entrada)
   // const { titulo, resumen, imagen, publishedAt, id } = entrada.attributes
-  const { attributes: { titulo, resumen, imagen, publishedAt }, id } = entrada
+  const { attributes: { titulo, resumen, imagen, publishedAt, url }, id } = entrada
   // console.log(imagen.data.attributes.url)
 
   return (
@@ -25,7 +25,7 @@ const Entrada = ({entrada}) => {
         {/* className en componente Link no funciona */}
         {/* <Link className={styles.enlace} href={`/blog/${id}`}>Leer Entrada</Link> */}
         {/* Debemos agregar el className en una etiqueta 'a' dentro de Link*/}
-        <Link href={`/blog/${id}`}>
+        <Link href={`/blog/${url}`}>
           <a className={styles.enlace}>Leer Entrada</a>
         </Link>
       </div>

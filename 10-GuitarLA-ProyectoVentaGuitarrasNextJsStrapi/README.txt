@@ -106,3 +106,12 @@
   * Del lado del servidor se define como queramos. Por ejemplo: API_KEY
   * Del lado del cliente debe iniciar con NEXT_PUBLIC. Por ejemplo: NEXT_PUBLIC_API_KEY
   Cada vez que se agrega una nueva variable de entorno se debe reniciar el servidor de Next.js para ver los cambios
+
+9. Crear un campo para la URL en Strapi (Url amigables al SEO)
+  * Ir a "Content-Type Builder" -> "Blog" -> "+ Add another field" -> "UID"
+    > Name: url
+    > Attached field: titulo
+    Clic "Finish" y "Save"
+  * Actualizamos las entradas del Blog, ir a "Content Manager" -> "Blog" -> "Edit Item"
+    > Clic "Regenerate"
+  * Modificar la configuracion del getStaticProps y getStaticPaths
