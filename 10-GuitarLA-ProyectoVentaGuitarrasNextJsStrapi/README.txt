@@ -115,3 +115,20 @@
   * Actualizamos las entradas del Blog, ir a "Content Manager" -> "Blog" -> "Edit Item"
     > Clic "Regenerate"
   * Modificar la configuracion del getStaticProps y getStaticPaths
+
+10. Crear "Single Type" en Strapi
+  * Ir a "Content-Type Builder" -> "+ Create new single type"
+    > Display name: Cursos
+    Clic "Continue"
+  * Agregar campos
+    - Seleccionar "Text"
+      > Name: titulo
+        Short Text
+        "ADVANCED SETTINGS"
+          > Required field
+      Clic "Finish"
+  * Agregar el resto de los campos y clic "Save"
+  * Ir a "Content Manager" -> "SINGLE TYPE" - "Cursos" para agregar el contenido, clic en "Save" y "Publish"
+  * Ir a "Settings" -> "USERS & PERMISSIONS PLUGIN" - "Roles" -> "Public" -> "Curso"
+    - find
+    Clic "Save"
