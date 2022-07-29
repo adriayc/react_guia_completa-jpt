@@ -1,0 +1,80 @@
+.guitarra {
+    display: grid;
+    grid-template-columns: 2fr 3fr;
+    column-gap: 1rem;
+    align-items: center;
+
+    max-width: 70rem;
+    margin: 0 auto;
+}
+
+.contenido {
+    padding: 1rem;
+}
+.contenido h3 {
+    font-size: 3rem;
+    text-transform: uppercase;
+}
+
+.descripcion {
+    /* Mostrar solo 4 lineas con CSS */
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
+    overflow: hidden;
+}
+
+.precio {
+    color: var(--primary);
+    font-size: 6rem;
+    font-weight: 900;
+    margin: 0;
+}
+
+.enlace {
+    display: block;
+    color: var(--negro);
+    font-size: 1.1rem;
+    font-weight: 900;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    padding: 1rem 5rem;
+    border: 2px solid var(--primary);
+    margin-top: 2rem;
+    transition-property: background-color;
+    transition-duration: .3s;
+}
+.enlace:hover {
+    color: var(--blanco);
+    background-color: var(--primary);
+}
+
+.formulario {
+    display: flex;
+    flex-direction: column;
+}
+.formulario label {
+    font-size: 2.2rem;
+}
+.formulario select {
+    text-align: center;
+    padding: 1rem;
+    border: 2px solid var(--primary);
+}
+.formulario input[type="submit"] {
+    color: var(--blanco);
+    background-color: var(--primary);
+    font-weight: 700;
+    text-transform: uppercase;
+    display: block;
+    padding: 2rem;
+    margin-top: 3rem;
+    border: none;
+    transition-property: background-color;
+    transition-duration: .3s;
+}
+.formulario input[type="submit"]:hover {
+    background-color: var(--negro);
+    cursor: pointer;
+}

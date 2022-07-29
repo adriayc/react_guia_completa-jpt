@@ -326,3 +326,39 @@ Algunas librerías cuentan con validaciones muy robustas y otras se integran bie
 * Crear un nuevo cliente  POST  /clientes
 * Editar un cliente   PUT    /clientes/3
 * Borrar un cliente   DELETE  /clientes/8
+
+## ¿Qué es Next.js?
+* Framework en React para la creación de Sitios y Aplicaciones.
+* Cuenta con una gran cantidad de características my útiles para crear aplicaciones de gran performance , SEO y facilidad de configuración.
+* A diferencia de JavaScript que corre en el cliente en Next.js el código de JS corre tanto en el servidro como el cliente (navegador).
+* Soporta Server Side Rendering (SSD) y Static Site Generation (SSG).
+
+### Ventajas de Next.js
+* No requiere configuracion.
+* Gran Performance y optimizado para SEO.
+* Routing incluido.
+* Funciones para obtener datos de API's como getServerSideProps y getStaticProps.
+* EL código sigue siendo React: componentes, hooks, etc.
+
+## ¿Qué es Strapi?
+* Es un CMS Headless.
+* Te permite crear API's dinámicas con respuestas JSON y GraphQL.
+* Si necesitas personalizar algo de Strapi puedes hacerlo con Código de JavaScript (Node.js).
+* Se puede extender con el uso de Plugins.
+
+## Consulat API's con Next.js
+### Obtener Datos en Next.js
+Next.js te ofrece 3 formas de obtener datos de una API.
+* getStaticProps: Obtener los datos cuando se crea el build.
+* getStaticPaths: Obtener el listado de páginas que se van a crear cuando se realiza el build.
+* getServerSideProps: Los datos se obtienen en cada request.
+
+### Cuando utilizar StaticProps y ServerSideProps
+* Utiliza StaticProps cuando la informacion no cambia en cada request: una página informativa, documentación, trámites, anuncios.
+* Utilizar ServerSideProps cuando la información cambia de forma continua en cada request o donde la página se actualiza cada poco tiempo.
+
+## Configurar Next.js para imagens externas
+* Agregar la configuracion de imagenes en el archivo "next.config.js" y reiniciar el servidor de Next.js
+
+## Routing dinamico en Next.js
+* Creamos una directorio con el mismo nombre de la ruta "blog" y creamos un archivo como: [id].js. Por ejemplo la ruta es "/blog/1".
