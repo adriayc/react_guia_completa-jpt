@@ -101,5 +101,27 @@
         right: 0;
         /* bottom: 0; */
         bottom: -8px;
+
+        /* Llamar la animacion CSS */
+        animation-name: mostrarImagen;
+        animation-duration: 1s;             /* Duracion de la animacion */
+        animation-iteration-count: 1;       /* Cantidad de iteracion de la animacion */
+        animation-delay: 0s;                /* Retardo en ejecutarse la animacion */
+        animation-timing-function: ease-in-out;         /* Tipo de animacion */
+    }
+}
+
+/* Animacion en CSS */
+@keyframes mostrarImagen {
+    0% {
+        opacity: 0;
+        transform: translateX(-10px);       /* Mover a la izquierda */
+    }
+    50% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
     }
 }
