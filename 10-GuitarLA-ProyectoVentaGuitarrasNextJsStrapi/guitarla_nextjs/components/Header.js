@@ -1,11 +1,15 @@
 import Link from "next/link"
 import Image from "next/image"
+import { useRouter } from "next/router"
 // Importar modulo de CSS
 import styles from "../styles/Header.module.css"
 
 const Header = ({guitarra}) => {
 
-  console.log(guitarra)
+  // console.log(guitarra)
+  
+  const router = useRouter()
+  // console.log(router.pathname)
 
   return (
     <header className={styles.header}>
@@ -41,6 +45,17 @@ const Header = ({guitarra}) => {
           </div>
         )}
       </div>
+
+      {router.pathname === '/' && (
+        // Opcion #1 - Usar la etiqueta html img
+        // <img className={styles.guitarra} src="/img/header_guitarra.png" alt="Imagen header guitarra" />
+        // Opcion #2 - Usar la etiqueta html div dentro el componente Image
+        <div className={styles.guitarra}>
+          {/* Image no soporta className */}
+          {/* <Image layout="fixed" width={200} height={200} className={styles.guitarra} src="/img/header_guitarra.png" alt="Imagen header guitarra" /> */}
+          <Image layout="fixed" width={500} height={1200} src="/img/header_guitarra.png" alt="Imagen header guitarra" />
+        </div>
+      )}
     </header>
   )
 }
