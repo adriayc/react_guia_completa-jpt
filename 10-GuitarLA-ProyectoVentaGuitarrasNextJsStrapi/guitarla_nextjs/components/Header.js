@@ -31,12 +31,12 @@ const Header = ({guitarra}) => {
         </div>
 
         {guitarra && (
-          <div>
-            <h1>Modelo {guitarra.attributes.nombre}</h1>
+          <div className={styles.modelo}>
+            <h2>Modelo {guitarra.attributes.nombre}</h2>
             <p>{guitarra.attributes.descripcion}</p>
-            <p>${guitarra.attributes.precio}</p>
+            <p className={styles.precio}>${guitarra.attributes.precio}</p>
             <Link href={`/guitarras/${guitarra.attributes.url}`}>
-              <a>Ver Producto</a>
+              <a className={styles.enlace}>Ver Producto</a>
             </Link>
           </div>
         )}
