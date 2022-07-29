@@ -1,9 +1,8 @@
-// Importar modulo de CSS
-import styles from "../styles/Blog.module.css"
 // import { useEffect } from 'react'
 // Importar componentes
 import Layout from '../components/Layout'
-import Entrada from '../components/Entrada'
+import ListadoBlog from '../components/ListadoBlog'
+
 
 // Podemos extraer las "entradas" del ServerSideProps (como props) 
 const Blog = ({entradas}) => {
@@ -35,16 +34,9 @@ const Blog = ({entradas}) => {
       pagina='Blog'
     >
       <main className='contenedor'>
-        <h2 className='heading'>Blog</h2>
-
-        <div className={styles.blog}>
-          {entradas.map(entrada => (
-            <Entrada
-              key={entrada.id}
-              entrada={entrada}
-            />
-          ))}
-        </div>
+        <ListadoBlog
+          entradas={entradas}
+        />
       </main>
     </Layout>
   )

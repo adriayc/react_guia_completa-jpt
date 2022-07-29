@@ -2,11 +2,13 @@
 import Layout from '../components/Layout'
 import Listado from '../components/Listado'
 import Curso from '../components/Curso'
+import ListadoBlog from '../components/ListadoBlog'
 
-export default function Home({guitarras, curso}) {
+export default function Home({guitarras, curso, blogs}) {
 
   // console.log(guitarras)
   // console.log(curso)
+  // console.log(blogs)
 
   return (
     <Layout
@@ -23,6 +25,12 @@ export default function Home({guitarras, curso}) {
       <Curso
         curso={curso}
       />
+
+      <section className='contenedor'>
+        <ListadoBlog
+          entradas={blogs}
+        />
+      </section>
     </Layout>
   )
 }
@@ -41,16 +49,19 @@ export async function getServerSideProps() {
   // Forma optimizada de llamar multiple request (Llama de forma paralela)
   const urlGuitarras = `${process.env.API_URL}/guitarras?fields=*&populate=imagen`
   const urlCurso = `${process.env.API_URL}/curso?fields=*&populate=imagen`
+  const urlBlogs = `${process.env.API_URL}/blogs?pagination[limit]=3&sort=createdAt:desc&fields=*&populate=imagen`
 
   // Llama de forma paralela los request de la urlGuitarras y urlCurso
-  const [resGuitarras, resCurso] = await Promise.all([
+  const [resGuitarras, resCurso, resBlogs] = await Promise.all([
     fetch(urlGuitarras),
     fetch(urlCurso),
+    fetch(urlBlogs),
   ])
 
-  const [{data: guitarras}, {data: curso}] = await Promise.all([
+  const [{data: guitarras}, {data: curso}, {data: blogs}] = await Promise.all([
     resGuitarras.json(),
     resCurso.json(),
+    resBlogs.json(),
   ])
   // console.log(guitarras)
   // console.log(curso)
@@ -59,7 +70,8 @@ export async function getServerSideProps() {
     props: {
       // guitarras: guitarras
       guitarras,
-      curso
+      curso,
+      blogs
     }
   }
 }
