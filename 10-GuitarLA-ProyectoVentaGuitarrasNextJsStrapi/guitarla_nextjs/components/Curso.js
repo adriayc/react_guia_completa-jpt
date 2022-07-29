@@ -14,12 +14,12 @@ const Curso = ({curso}) => {
     //   backgroundColor: 'red'
     // }}>
     <section>
-      <div className="contenedor">
-        <div>
-          <h2>{titulo}</h2>
-          <p>{contenido}</p>
+      <div className={`contenedor ${styles.grid}`}>
+        <div className={styles.contenido}>
+          <h2 className="heading">{titulo}</h2>
+          <p className={styles.texto}>{contenido}</p>
 
-          <a href="#">Más Información</a>
+          <a className={styles.enlace} href="#">Más Información</a>
         </div>
       </div>
 
