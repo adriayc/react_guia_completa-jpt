@@ -7,12 +7,14 @@ import ListadoBlog from '../components/ListadoBlog'
 export default function Home({guitarras, curso, blogs}) {
 
   // console.log(guitarras)
+  // console.log(guitarras[3])
   // console.log(curso)
   // console.log(blogs)
 
   return (
     <Layout
       pagina='Inicio'
+      guitarra={guitarras[3]}
     >
       <main className='contenedor'>
         <h1 className='heading'>Nuestra Colección</h1>
