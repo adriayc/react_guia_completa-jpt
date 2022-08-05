@@ -4,6 +4,7 @@ import Image from "next/image"
 import styles from "../../styles/Guitarra.module.css"
 // Importar componentes
 import Layout from '../../components/Layout'
+import Carrito from "../carrito"
 
 const Producto = ({guitarra, agregarCarrito}) => {
 
