@@ -3,7 +3,11 @@ import styles from "../styles/Carrito.module.css"
 // Importar componentes
 import Layout from '../components/Layout'
 
-const Carrito = () => {
+// Extraemos el prop de carrito (definido como global)
+const Carrito = ({ carrito }) => {
+
+  console.log(carrito)
+
   return (
     <Layout
       pagina={'Carrito de Compras'}

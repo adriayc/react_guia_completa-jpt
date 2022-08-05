@@ -4,12 +4,18 @@ import styles from "../../styles/Guitarra.module.css"
 // Importar componentes
 import Layout from '../../components/Layout'
 
-const Producto = ({guitarra}) => {
+const Producto = ({guitarra, agregarCarrito}) => {
 
   // console.log(guitarra[0])
 
   const { attributes: { nombre, descripcion, precio, imagen } } = guitarra[0]
   // console.log(imagen.data.attributes.url)
+
+  const handleSubmit = e => {
+    e.preventDefault()
+
+    // Agregar al carrito
+  }
 
   return (
     <Layout
@@ -22,7 +28,7 @@ const Producto = ({guitarra}) => {
         <p className={styles.descripcion}>{descripcion}</p>
         <p className={styles.precio}>${precio}</p>
 
-        <form className={styles.formulario}>
+        <form className={styles.formulario} onSubmit={handleSubmit}>
           <label>Cantidad:</label>
           <select>
             <option value="">-- Seleccione --</option>
