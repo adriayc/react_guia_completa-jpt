@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 // Importar normalize
 import '../styles/normalize.css'
 import '../styles/globals.css'
@@ -7,6 +7,19 @@ function MyApp({ Component, pageProps }) {
 
   // Definimos un state de forma global
   const [carrito, setCarrito] = useState([])
+
+  // Cargar los items de LocalStora al carrito - se ejecuta una sola vez
+  useEffect(() => {
+    const carritoLS = JSON.parse(localStorage.getItem('carrito')) ?? []
+    if(carritoLS.length !== 0) {
+      setCarrito(carritoLS)
+    }
+  }, [])
+
+  // Agregando a LocalStorage - Se ejecuta cada vez que existe un cambio en carrito
+  useEffect(() => {
+    localStorage.setItem('carrito', JSON.stringify(carrito))
+  }, [carrito])
 
   const agregarCarrito = (producto) => {
     if(carrito.some((articulo) => articulo.id === producto.id)) {
@@ -30,6 +43,8 @@ function MyApp({ Component, pageProps }) {
       setCarrito([...carrito, producto])
     }
   }
+
+  console.log(carrito)
 
   return <Component {...pageProps}
     carrito={carrito}
