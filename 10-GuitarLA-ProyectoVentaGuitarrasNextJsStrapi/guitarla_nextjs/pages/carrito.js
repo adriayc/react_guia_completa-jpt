@@ -21,7 +21,7 @@ const Carrito = ({ carrito }) => {
             carrito.map(producto => (
               <div key={producto.id} className={styles.producto}>
                 <div>
-                  <Image layout="responsive" width={250} height={480} src={producto.imagen} alt={producto.nombre} />
+                  <Image layout="responsive" width={250} height={500} src={producto.imagen} alt={producto.nombre} />
                 </div>
 
                 <div>
