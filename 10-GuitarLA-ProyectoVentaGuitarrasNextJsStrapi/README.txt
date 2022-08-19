@@ -166,3 +166,21 @@
     > Heroku Dashboard -> "Settings" -> Clic "Reveal Config Vars" y copias todas las variables de entorno de la app
       * Reinicia el servidor y muestra la Url de local host donde se ejecuta.
       * Clic en "Open app" para abrir la app
+
+  12. Deploy del Proyecto Next.js a Vercel
+    * Ir a la pagina de Versel (Url: https://vercel.com) y iniciar session
+    * Ir a la pagina Vercel CLI (Url: https://vercel.com/docs/cli) y ejecutar el comando en la terminal
+      # npm i -g vercel     // Instalar vercel CLI
+    * Ir a nuestro repositorio y ejecutar el siguiente comando de vercel:
+      # vercel          // Elegimos el metodo de autenticacion seleccionado en el registro
+      > Automaticamente reconove la app o escribe nuevamente el comando
+      # vercel
+        ? Set up and deploy [Y/n] y
+        ? Found project "repositorio_proyecto". Link to it? [Y/n] y         // Se sube el proyecto a Vercel
+        - Muestra un log error con su respectivo URL, copiamos y pegamos la url en el browser
+          > Desplazamos "Building" para ver el error
+        * Creamos el archivo ".env.development" (variable de entorno de desarrollo) y reemplazamos con la Url generada por Heroku a las localhost
+    * Dentro de la app ejecutamos el siguiente comando:
+      # npm run build           // Construye la app para deploy
+      # vercel                  // Sube el archivo build a vercel y muestra la url de la app
+      # vercel --prod           // Sube a modo produccion
