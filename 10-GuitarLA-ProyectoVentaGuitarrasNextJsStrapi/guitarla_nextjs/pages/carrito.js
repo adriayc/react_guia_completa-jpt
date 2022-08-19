@@ -5,9 +5,9 @@ import styles from "../styles/Carrito.module.css"
 import Layout from '../components/Layout'
 
 // Extraemos el prop de carrito (definido como global)
-const Carrito = ({ carrito, actualizarCantidad }) => {
+const Carrito = ({ carrito, actualizarCantidad, eliminarProducto }) => {
 
-  console.log(carrito)
+  // console.log(carrito)
 
   return (
     <Layout
@@ -48,6 +48,12 @@ const Carrito = ({ carrito, actualizarCantidad }) => {
                   <p className={styles.precio}>$<span>{producto.precio}</span></p>
                   <p className={styles.subtotal}>Subtotal: $<span>{producto.precio * producto.cantidad}</span></p>
                 </div>
+
+                <button
+                  className={styles.eliminar}
+                  type="button"
+                  onClick={() => eliminarProducto(producto.id)}
+                >X</button>
               </div>
             ))
           )}
