@@ -1,31 +1,59 @@
+import { useState } from "react"
 import Image from "next/image"
 // Importar modulo de CSS
 import styles from "../../styles/Guitarra.module.css"
 // Importar componentes
 import Layout from '../../components/Layout'
+import Carrito from "../carrito"
 
-const Producto = ({guitarra}) => {
+const Producto = ({guitarra, agregarCarrito}) => {
+
+  const [cantidad, setCantidad] = useState(1)
 
   // console.log(guitarra[0])
 
-  const { attributes: { nombre, descripcion, precio, imagen } } = guitarra[0]
+  const { attributes: { nombre, descripcion, precio, imagen }, id } = guitarra[0]
   // console.log(imagen.data.attributes.url)
+
+  const handleSubmit = e => {
+    e.preventDefault()
+
+    if(cantidad < 1) {
+      alert('Cantidad no válida')
+      return
+    }
+
+    // Agregar al carrito
+    const guitarraSeleccionada = {
+      id,
+      imagen: imagen.data.attributes.url,
+      nombre,
+      precio,
+      cantidad
+    }
+    // console.log(guitarraSeleccionada)
+
+    agregarCarrito(guitarraSeleccionada)
+  }
 
   return (
     <Layout
       pagina={`Guitarra ${nombre}`}
     >
     <div className={styles.guitarra}>
-      <Image layout="responsive" width={180} height={350} src={imagen.data.attributes.url} alt={`Imagen Guitarra ${nombre}`} />
+      <Image priority="true" layout="responsive" width={180} height={350} src={imagen.data.attributes.url} alt={`Imagen Guitarra ${nombre}`} />
       <div className={styles.contenido}>
         <h3>{nombre}</h3>
         <p className={styles.descripcion}>{descripcion}</p>
         <p className={styles.precio}>${precio}</p>
 
-        <form className={styles.formulario}>
+        <form className={styles.formulario} onSubmit={handleSubmit}>
           <label>Cantidad:</label>
-          <select>
-            <option value="">-- Seleccione --</option>
+          <select 
+            value={cantidad}
+            onChange={e => setCantidad(parseInt(e.target.value))}
+          >
+            <option value="0">-- Seleccione --</option>
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
