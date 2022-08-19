@@ -31,6 +31,23 @@
     font-weight: 700;
 
 }
+.cantidad {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+.cantidad p {
+    margin: 0;
+}
+.select {
+    all: unset;         /* Borra los estilos */
+    padding: 1rem;
+    border: 1px solid #cfcfcf;
+    border-radius: 1rem;
+    flex: 1;
+    text-align: center;
+}
 .precio {
     color: var(--primary);
     font-weight: 700;
