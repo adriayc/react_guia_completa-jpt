@@ -132,3 +132,37 @@
   * Ir a "Settings" -> "USERS & PERMISSIONS PLUGIN" - "Roles" -> "Public" -> "Curso"
     - find
     Clic "Save"
+
+11. Deploy del Proyecto de Strapi con MongoDB a Heroku
+  * Crear un nuevo repositio en GITHUB
+    > Repositorio name: guitarla_strapi
+    > Description: Deploymnet del proyecto GuitarLA con Next y Strapi
+    > Public
+    > Create respository
+  * Abrir la app de Strapi e ir a "config/database.js", copiar las variables de entorno y su valor en el archivo ".env" y, dejar solo la variable de entorno.
+    > DATABASE_HOST=cluster0_svnr4.mongodb.net
+    > DATABASE_SRV=true
+    > DATABASE_PORT:27017
+    > DATABASE_NAME=guitarla_strapi
+    > DATABASE_USERNAME=root
+    > DATABASE_PASSWORD=root123
+  * Subir el repositorio local de la app a GITHUB
+    # git init
+    > Agregar el archivo ".env.example" a ".gitignore"
+    # git add .
+    # git commit -m "Deployment a heroku"
+    # git branch -M main
+    # git remote add origin https://github.com/adriayc/guitarla_strapi.git
+    # git push -u origin main
+  * Instalar Heroku CLI en Ubuntu (Url: https://devcenter.heroku.com/articles/heroku-cli)
+    # curl https://cli-assets.heroku.com/install-ubuntu.sh | sh
+  * Ir a Heroku e inicar seccion (Url: https://www.heroku.com)
+  * Subir la app a Heroku (En la raiz del proyecto de Strapi)
+    # heroku login      // Log in to the Heroku CLI
+    # heroku create     // Crear un nueva app en Heroku
+    # git push heroku main      // Subir la app de strapi a Heroku (realiza la comunicacion de Gihub con Heroku)
+    > Ir al Dashboard de Heroku -> Clic en la app creada -> clic "Open app" para ver la ejecucion de la Applicacion
+    > Heroku Dashboard -> "More" -> "View logs" (ver los logs de la app)
+    > Heroku Dashboard -> "Settings" -> Clic "Reveal Config Vars" y copias todas las variables de entorno de la app
+      * Reinicia el servidor y muestra la Url de local host donde se ejecuta.
+      * Clic en "Open app" para abrir la app
