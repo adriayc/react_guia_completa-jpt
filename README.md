@@ -362,3 +362,13 @@ Next.js te ofrece 3 formas de obtener datos de una API.
 
 ## Routing dinamico en Next.js
 * Creamos una directorio con el mismo nombre de la ruta "blog" y creamos un archivo como: [id].js. Por ejemplo la ruta es "/blog/1".
+
+## Context API
+Estado global sin dependencias.
+
+### Que es Context API?
+* Disponible desde React 16.3.
+* Puedes pasar el state o funciones desde el componente principal hasta los hijos, sin necesidad de pasarlo por cada componente.
+* Cuenta con un hook llamado useContext.
+* Tambien se puede actualizar el state desde el hijo. (o ejecutar una función que lo actualice)
+* Si deseas crear librerías para React, Context es la forma de hacerlo.
