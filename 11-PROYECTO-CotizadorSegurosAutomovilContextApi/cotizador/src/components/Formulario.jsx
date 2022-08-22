@@ -6,6 +6,9 @@ import useCotizador from '../hooks/useCotizador';
 
 const Formulario = () => {
 
+  // Llamando custom hook useCotizador
+  const { datos, handleChangeDatos } = useCotizador();
+
   return (
     <>
       <form>
@@ -15,6 +18,8 @@ const Formulario = () => {
             name="marca" 
             id="marca"
             className="w-full p-3 bg-white border border-gray-200"
+            value={datos.marca}
+            onChange={e => handleChangeDatos(e)}
           >
             <option value="">-- Selecciona Marca --</option>
 
@@ -33,6 +38,8 @@ const Formulario = () => {
             name="year" 
             id="year"
             className="w-full p-3 bg-white border border-gray-200"
+            value={datos.year}
+            onChange={e => handleChangeDatos(e)}
           >
             <option value="">-- Selecciona Año --</option>
 
@@ -51,7 +58,11 @@ const Formulario = () => {
             {PLANES.map(plan => (
               <Fragment key={plan.id}>
                 <label htmlFor="">{plan.nombre}</label>
-                <input type="radio" name="plan" value={plan.id} />
+                <input 
+                  type="radio" 
+                  name="plan" 
+                  value={plan.id}
+                  onChange={e => handleChangeDatos(e)} />
               </Fragment>
             ))}
           </div>
