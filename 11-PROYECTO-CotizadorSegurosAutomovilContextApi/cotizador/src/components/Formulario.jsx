@@ -1,8 +1,16 @@
-import { Fragment } from 'react';
+import { Fragment, useContext } from 'react';
 // Importar constantes
 import { MARCAS, YEARS, PLANES } from '../constants';
+// Importar context
+import CotizadorContext from '../context/CotizadorProvider';
 
 const Formulario = () => {
+
+  // Llamamos a; cotizador context
+  const { hola, fnHolaMundo } = useContext(CotizadorContext);
+  console.log(hola);
+
+  fnHolaMundo();
 
   return (
     <>
