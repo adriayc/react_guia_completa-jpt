@@ -1,14 +1,31 @@
 // Importar custom hook useCotizador
 import useCotizador from "../hooks/useCotizador"
+// Importar constantes
+import { MARCAS, PLANES } from '../constants';
 
 const Resultado = () => {
 
-  const { resultado } = useCotizador();
+  const { resultado, datos } = useCotizador();
+  const { marca, plan, year } = datos;
+
+  // console.log(MARCAS);
+  // console.log(MARCAS[marca]);       // Error, filtra por posicion
+
+  // Destructuring de un array
+  const [nombreMarca] = MARCAS.filter(m => m.id === Number(marca));
+  // console.log(nombreMarca);
 
   if(resultado === 0) return null;
 
   return (
-    <div>{resultado}</div>
+    <div className="bg-gray-100 text-center mt-5 p-5 shadow">
+      <h2 className="text-gray-600 font-black text-3xl">Resumen</h2>
+
+      <p className="my-2">
+        <span className="font-bold">Marca: </span>
+        {nombreMarca.nombre}
+      </p>
+    </div>
   )
 }
 
