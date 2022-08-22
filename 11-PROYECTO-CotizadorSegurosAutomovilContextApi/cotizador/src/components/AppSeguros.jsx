@@ -1,7 +1,11 @@
+// Importar custom hook useCotizador
+import useCotizador from "../hooks/useCotizador";
 // Importar componentes
 import Formulario from "./Formulario";
 
 const AppSeguros = () => {
+
+  const { resultado } = useCotizador();
 
   return (
     <>
@@ -11,6 +15,8 @@ const AppSeguros = () => {
 
       <main className="bg-white md:w-2/3 lg:w-2/4 mx-auto shadow rounded p-10">
         <Formulario />
+
+        {resultado}
       </main>
     </>
   )
