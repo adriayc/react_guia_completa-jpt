@@ -10,6 +10,8 @@ const CotizadorProvider = ({children}) => {
     plan: ''
   });
 
+  const [error, setError] = useState('');
+
   const handleChangeDatos = e => {
     // console.log(e.target.name);
     // console.log(e.target.value);
@@ -17,7 +19,7 @@ const CotizadorProvider = ({children}) => {
     // Establecer los nuevos valores a los datos (sin borrarlos el objeto previo)
     setDatos({
       ...datos,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   };
 
@@ -26,7 +28,9 @@ const CotizadorProvider = ({children}) => {
       // Hacer diponible variables o funciones al context
       value={{
         datos,
-        handleChangeDatos
+        handleChangeDatos,
+        error,
+        setError
       }}
     >
       {children}
