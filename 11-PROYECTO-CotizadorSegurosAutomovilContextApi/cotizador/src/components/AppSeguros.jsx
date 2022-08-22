@@ -1,13 +1,7 @@
-import { useContext } from "react";
-// Importar context
-import CotizadorContext from "../context/CotizadorProvider";
 // Importar componentes
 import Formulario from "./Formulario";
 
 const AppSeguros = () => {
-
-  const { modal } = useContext(CotizadorContext);
-  console.log(modal);
 
   return (
     <>
