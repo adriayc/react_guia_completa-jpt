@@ -15,9 +15,11 @@ const Resultado = () => {
 
   // Usamos useCallback que modificar la marca y plan cuando el resultado se actualiza (Evitar el re-render)
   // Destructuring de un array
-  const [nombreMarca] = useCallback(MARCAS.filter(m => m.id === Number(marca)), [resultado]);
+  // const [nombreMarca] = useCallback(MARCAS.filter(m => m.id === Number(marca)), [resultado]);
+  const [nombreMarca] = useMemo(() => MARCAS.filter(m => m.id === Number(marca)), [resultado]);
   // console.log(nombreMarca);
-  const [nombrePlan] = useCallback(PLANES.filter(p => p.id === Number(plan)), [resultado]);
+  // const [nombrePlan] = useCallback(PLANES.filter(p => p.id === Number(plan)), [resultado]);
+  const [nombrePlan] = useMemo(() => PLANES.filter(p => p.id === Number(plan)), [resultado]);
 
   if(resultado === 0) return null;
 
