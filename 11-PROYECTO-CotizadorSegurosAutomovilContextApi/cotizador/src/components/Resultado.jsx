@@ -1,3 +1,4 @@
+import { useCallback, useMemo, useRef } from "react";
 // Importar custom hook useCotizador
 import useCotizador from "../hooks/useCotizador"
 // Importar constantes
@@ -7,14 +8,16 @@ const Resultado = () => {
 
   const { resultado, datos } = useCotizador();
   const { marca, plan, year } = datos;
+  const yearRef = useRef(year);
 
   // console.log(MARCAS);
   // console.log(MARCAS[marca]);       // Error, filtra por posicion
 
+  // Usamos useCallback que modificar la marca y plan cuando el resultado se actualiza (Evitar el re-render)
   // Destructuring de un array
-  const [nombreMarca] = MARCAS.filter(m => m.id === Number(marca));
+  const [nombreMarca] = useCallback(MARCAS.filter(m => m.id === Number(marca)), [resultado]);
   // console.log(nombreMarca);
-  const [nombrePlan] = PLANES.filter(p => p.id === Number(plan));
+  const [nombrePlan] = useCallback(PLANES.filter(p => p.id === Number(plan)), [resultado]);
 
   if(resultado === 0) return null;
 
@@ -34,7 +37,7 @@ const Resultado = () => {
 
       <p className="my-2">
         <span className="font-bold">Año del Auto: </span>
-        {year}
+        {yearRef.current}
       </p>
 
       <p className="my-2 text-2xl">
