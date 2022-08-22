@@ -1,14 +1,32 @@
 import { useState } from "react"
+// Importar custom hook useLetras
+import useLetras from "../hooks/useLetras";
 
 const Formulario = () => {
+
+  const { setAlerta } = useLetras();
 
   const [busqueda, setBusqueda] = useState({
     artista: '',
     cancion: ''
   });
 
+  const handleSubmit = e => {
+    e.preventDefault();
+
+    // Validando el objeto que tenga valores de los atributos vacios
+    if(Object.values(busqueda).includes('')) {
+      setAlerta('Coloca nombre de artista y canción');
+      return;
+    }
+    // Establecer el valor por defecto
+    setAlerta('');
+  }; 
+
   return (
-    <form>
+    <form
+      onSubmit={handleSubmit}
+    >
       <legend>Buscar por Artista y Canción</legend>
 
       <div className="form-grid">
