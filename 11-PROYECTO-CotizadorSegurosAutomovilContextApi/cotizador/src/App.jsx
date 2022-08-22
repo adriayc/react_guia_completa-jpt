@@ -1,8 +1,11 @@
+// Importar componentes
+import AppSeguros from "./components/AppSeguros";
+
 function App() {
 
   return (
-    <h1>App</h1>
+    <AppSeguros />
   )
 }
 
-export default App
+export default App;
