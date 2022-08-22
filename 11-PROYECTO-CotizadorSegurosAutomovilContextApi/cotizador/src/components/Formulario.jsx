@@ -7,13 +7,14 @@ import CotizadorContext from '../context/CotizadorProvider';
 const Formulario = () => {
 
   // Llamamos a; cotizador context
-  const { hola, fnHolaMundo } = useContext(CotizadorContext);
-  console.log(hola);
-
-  fnHolaMundo();
+const {modal, /*setModal*/ cambiarState} = useContext(CotizadorContext);
+  console.log(modal);
 
   return (
     <>
+      {/* <button onClick={() => setModal(true)}>Cambiar Modal de Context</button> */}
+      <button onClick={cambiarState}>Cambiar Modal de Context</button>
+
       <form>
         <div className="my-5">
           <label htmlFor="marca" className="block mb-3 font-bold text-gray-400 uppercase">Marca</label>
