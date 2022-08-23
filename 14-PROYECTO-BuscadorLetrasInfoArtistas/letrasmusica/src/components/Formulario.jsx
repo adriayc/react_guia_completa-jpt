@@ -19,8 +19,6 @@ const Formulario = () => {
       setAlerta('Coloca nombre de artista y canción');
       return;
     }
-    // Establecer el valor por defecto
-    setAlerta('');
 
     busquedaLetra(busqueda);
   }; 

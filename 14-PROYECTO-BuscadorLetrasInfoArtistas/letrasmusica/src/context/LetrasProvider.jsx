@@ -25,9 +25,13 @@ const LetrasProvider = ({children}) => {
       // console.log(data.lyrics);
 
       setLetra(data.lyrics);
+      // Limpiar el valor de alerta
+      setAlerta('');
 
     } catch (error) {
-      console.log(error);
+      // console.log(error);
+
+      setAlerta('Canción no Encontrada');
     }
     setCargando(false);
   };
