@@ -4,7 +4,7 @@ import useLetras from "../hooks/useLetras";
 
 const Formulario = () => {
 
-  const { setAlerta, busquedaLetra } = useLetras();
+  const { setAlerta, busquedaLetra, cargadno } = useLetras();
 
   const [busqueda, setBusqueda] = useState({
     artista: '',

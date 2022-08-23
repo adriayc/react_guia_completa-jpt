@@ -7,10 +7,12 @@ const LetrasProvider = ({children}) => {
 
   const [alerta, setAlerta] = useState('');
   const [letra, setLetra] = useState('');
+  const [cargando, setCargando] = useState(false);
 
   const busquedaLetra = async (busqueda) => {
     // console.log(busqueda);
 
+    setCargando(true);
     try {
       const { artista, cancion } = busqueda;
 
@@ -27,6 +29,7 @@ const LetrasProvider = ({children}) => {
     } catch (error) {
       console.log(error);
     }
+    setCargando(false);
   };
 
   return (
@@ -34,7 +37,9 @@ const LetrasProvider = ({children}) => {
       value={{
         alerta,
         setAlerta,
-        busquedaLetra
+        busquedaLetra,
+        letra,
+        cargando
       }}
     >
       {children}
