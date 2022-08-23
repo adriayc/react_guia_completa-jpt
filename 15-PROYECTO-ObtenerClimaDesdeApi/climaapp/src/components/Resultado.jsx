@@ -4,7 +4,7 @@ import useClima from "../hooks/useClima";
 const Resultado = () => {
 
   const { resultado } = useClima();
-  console.log(resultado);
+  // console.log(resultado);
   const { name, main } = resultado;
 
   // Grados Kelvin
