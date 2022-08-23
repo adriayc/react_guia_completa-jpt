@@ -7,3 +7,6 @@
     # cd letrasmusica
     # npm install
     # npm run dev
+
+* Instalar Axios
+    # npm install axios

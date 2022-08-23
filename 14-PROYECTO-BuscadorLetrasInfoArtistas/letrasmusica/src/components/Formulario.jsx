@@ -4,7 +4,7 @@ import useLetras from "../hooks/useLetras";
 
 const Formulario = () => {
 
-  const { setAlerta } = useLetras();
+  const { setAlerta, busquedaLetra } = useLetras();
 
   const [busqueda, setBusqueda] = useState({
     artista: '',
@@ -21,6 +21,8 @@ const Formulario = () => {
     }
     // Establecer el valor por defecto
     setAlerta('');
+
+    busquedaLetra(busqueda);
   }; 
 
   return (
