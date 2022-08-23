@@ -86,3 +86,27 @@ form {
   align-items: center;
   width: 100%;
 }
+
+.clima {
+
+}
+.clima > p:first-of-type {
+  font-family: 'Inter', sans-serif;
+  font-size: 4rem;
+  /* font-weight: 700; */
+}
+.clima p {
+  text-align: center;
+  margin: 0;
+}
+.clima p span {
+  font-size: 1rem;
+  vertical-align: super;
+}
+
+.temp_min_max {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 2rem;
+}
