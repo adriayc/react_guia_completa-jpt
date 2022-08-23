@@ -1,5 +1,5 @@
-// Importar el custom hook useClima
 import { useState } from "react";
+// Importar el custom hook useClima
 import useClima from "../hooks/useClima";
 
 const Formulario = () => {
