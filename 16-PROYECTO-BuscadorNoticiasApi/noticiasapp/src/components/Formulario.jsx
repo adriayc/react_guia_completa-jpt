@@ -1,3 +1,5 @@
+// Importar el custom hook useNoticias
+import useNoticias from '../hooks/useNoticias';
 // Importar componentes de MUI
 import { FormControl, InputLabel, Select, MenuItem, Button, Box } from '@mui/material';
 
@@ -13,12 +15,19 @@ const CATEGORIAS = [
 ];
 
 const Formulario = () => {
+
+  const { categoria, handleChangeCategoria } = useNoticias();
+
   return (
     <form>
       {/* Prop fullWith para usar todo el ancho */}
       <FormControl fullWidth>
         <InputLabel>Categoría</InputLabel>
-        <Select label='Categoría'>
+        <Select 
+          label='Categoría'
+          value={categoria}
+          onChange={handleChangeCategoria}
+        >
           {CATEGORIAS.map(categoria => (
             <MenuItem
               key={categoria.value}
