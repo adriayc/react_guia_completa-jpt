@@ -8,6 +8,7 @@ import { NoticiasProvider } from './context/NoticiasProvider';
 import { Container, Grid, Typography } from '@mui/material';
 // Importar componentes
 import Formulario from './components/Formulario';
+import ListadoNoticias from './components/ListadoNoticias';
 
 function App() {
 
@@ -39,6 +40,8 @@ function App() {
             <Formulario />
           </Grid>
         </Grid>
+
+        <ListadoNoticias />
       </Container>
     </NoticiasProvider>
   )
