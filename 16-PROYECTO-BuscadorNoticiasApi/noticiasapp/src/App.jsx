@@ -4,6 +4,8 @@
 // import Grid from '@mui/material/Grid';
 // OPCION #2 de importar
 import { Container, Grid, Typography } from '@mui/material';
+// Importar componentes
+import Formulario from './components/Formulario';
 
 function App() {
 
@@ -20,6 +22,19 @@ function App() {
 
         <Typography align='center' marginY={5} component='h1' variant='h3'>Buscador de Noticias</Typography>
       </header>
+
+      {/* Agregamos un Grid */}
+      <Grid 
+        container
+        direction='row'
+        justifyContent='center'
+        alignItems='center'
+      >
+        {/* Agregamos otro Grid con el prop item y establecemos media queries con sx, md y lg */}
+        <Grid item xs={12} md={6} lg={4}>
+          <Formulario />
+        </Grid>
+      </Grid>
     </Container>
   )
 }
