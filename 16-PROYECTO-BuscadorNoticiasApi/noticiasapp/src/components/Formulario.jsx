@@ -1,7 +1,7 @@
 // Importar el custom hook useNoticias
 import useNoticias from '../hooks/useNoticias';
 // Importar componentes de MUI
-import { FormControl, InputLabel, Select, MenuItem, Button, Box } from '@mui/material';
+import { FormControl, InputLabel, Select, MenuItem/*, Button, Box*/ } from '@mui/material';
 
 // Variables
 const CATEGORIAS = [
@@ -39,13 +39,13 @@ const Formulario = () => {
         </Select>
 
         {/* Box = div */}
-        <Box sx={{ marginTop: 2 }}>
+        {/* <Box sx={{ marginTop: 2 }}>
           <Button 
             fullWidth
             variant='contained'
             color='primary'
           >Buscar Noticias</Button>
-        </Box>
+        </Box> */}
       </FormControl>
     </form>
   )
