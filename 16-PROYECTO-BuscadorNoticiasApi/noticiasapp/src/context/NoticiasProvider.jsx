@@ -25,7 +25,7 @@ const NoticiasProvider = ({children}) => {
       // console.log(url);
 
       const { data } = await axios(url);
-      console.log(data);
+      // console.log(data);
       // console.log(data.articles);
 
       setNoticias(data.articles);
@@ -39,7 +39,8 @@ const NoticiasProvider = ({children}) => {
       value={{
         categoria,
         handleChangeCategoria,
-        noticias
+        noticias,
+        totalNoticias
       }}
     >
         {children}
