@@ -14,6 +14,7 @@ const NoticiasProvider = ({children}) => {
     setCategoria(e.target.value);
   };
 
+  // Se ejecutara cada vez que la categoria se actualize o modifica
   useEffect(() => {
     const consultarAPI = async () => {
       // Obtiene por defecto los 20 items de la 1ra pagina
@@ -30,9 +31,32 @@ const NoticiasProvider = ({children}) => {
 
       setNoticias(data.articles);
       setTotalNoticias(data.totalResults);
+      setPagina(1);
     };
     consultarAPI();
   }, [categoria]);
+
+  // Se ejecutara cada vez que la pagina se actualiza o modifica
+  useEffect(() => {
+    const consultarAPI = async () => {
+      // Obtiene por defecto los 20 items de la 1ra pagina
+      const url = `https://newsapi.org/v2/top-headlines?country=us&category=${categoria}&page=${pagina}&apiKey=${import.meta.env.VITE_API_KEY}`;
+
+      const { data } = await axios(url);
+      // console.log(data);
+      // console.log(data.articles);
+
+      setNoticias(data.articles);
+      setTotalNoticias(data.totalResults);
+    };
+    consultarAPI();
+  }, [pagina]);
+
+  const handleChangePagina = (e, valor) => {
+    // console.log(e.target.textContent);
+    // console.log(valor);         // Obtiene el valor actual
+    setPagina(valor);
+  }
 
   return (
     <NoticiasContext.Provider
@@ -40,7 +64,9 @@ const NoticiasProvider = ({children}) => {
         categoria,
         handleChangeCategoria,
         noticias,
-        totalNoticias
+        totalNoticias,
+        handleChangePagina,
+        pagina
       }}
     >
         {children}
