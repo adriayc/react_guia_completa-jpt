@@ -11,7 +11,11 @@
 * Noticias API: https://newsapi.org/account
 
 * Instalar Axios
+<<<<<<< Updated upstream
     # npm install axios
+=======
+  # npm install axios
+>>>>>>> Stashed changes
 
 * Instalar Material UI
     # npm install @mui/material @emotion/react @emotion/styled
