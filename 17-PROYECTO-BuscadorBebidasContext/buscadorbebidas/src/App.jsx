@@ -1,5 +1,7 @@
 // Importar componentes react bootstrap
 import { Container } from "react-bootstrap"
+// Importar componentes
+import Formulario from "./components/Formulario"
 
 function App() {
 
@@ -10,7 +12,7 @@ function App() {
       </header>
 
       <Container className="mt-5">
-        1
+        <Formulario />
       </Container>
     </>
   )
