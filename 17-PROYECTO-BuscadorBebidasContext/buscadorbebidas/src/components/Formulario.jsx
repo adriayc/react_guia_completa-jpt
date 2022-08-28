@@ -25,6 +25,8 @@ const Formulario = () => {
       return;
     }
     setAlerta('');
+
+    
   };  
 
   return (
