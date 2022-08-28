@@ -7,10 +7,10 @@ import Bebida from "./Bebida";
 const ListadoBebidas = () => {
   
   const { bebidas } = useBebidas();
-  console.log(bebidas);
+  // console.log(bebidas);
 
   return (
-    <Row>
+    <Row className="mt-5">
       {bebidas.map(bebida => (
         <Bebida 
           key={bebida.idDrink}
