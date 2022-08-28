@@ -1,6 +1,7 @@
 import { useState } from 'react';
-// Importar el custom hooks categorias
+// Importar el custom hooks categorias y bebidas
 import useCategorias from '../hooks/useCategorias';
+import useBebidas from '../hooks/useBebidas';
 // Importar componentes react bootstrap
 import { Button, Form, Row, Col, Alert } from 'react-bootstrap'; 
 
@@ -14,6 +15,7 @@ const Formulario = () => {
 
   const { categorias } = useCategorias();
   // console.log(categorias);
+  const { consultarBebidas } = useBebidas();
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -26,7 +28,8 @@ const Formulario = () => {
     }
     setAlerta('');
 
-    
+    // Llamando prop del provider de bebidas
+    consultarBebidas(busqueda);
   };  
 
   return (
