@@ -6,6 +6,7 @@ import { Container } from "react-bootstrap"
 // Importar componentes
 import Formulario from "./components/Formulario"
 import ListadoBebidas from "./components/ListadoBebidas"
+import ModalBebida from "./components/ModalBebida"
 
 function App() {
 
@@ -21,6 +22,9 @@ function App() {
           <Formulario />
 
           <ListadoBebidas />
+
+          {/* No importa donde agreges el componente (pero debe estar dentro del provider) */}
+          <ModalBebida />
         </Container>
       </BebidasProvider>
     </CategoriasProvider>

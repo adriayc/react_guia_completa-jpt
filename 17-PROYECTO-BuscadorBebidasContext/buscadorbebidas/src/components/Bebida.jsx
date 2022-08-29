@@ -1,9 +1,13 @@
 // Importar componentes react bootstrap
 import { Col, Card, Button } from 'react-bootstrap';
+// Importar el custom hooks bebidas
+import useBebidas from '../hooks/useBebidas';
 
 const Bebida = ({bebida}) => {
 
   // console.log(bebida);
+
+  const { handleModalClick } = useBebidas();
 
   return (
     <Col md={6} lg={3}>
@@ -21,6 +25,9 @@ const Bebida = ({bebida}) => {
           <Button
             variant='warning'
             className='w-100 text-uppercase mt-2'
+            onClick={() => {
+              handleModalClick();
+            }}
           >Ver Receta</Button>
         </Card.Body>
       </Card>
