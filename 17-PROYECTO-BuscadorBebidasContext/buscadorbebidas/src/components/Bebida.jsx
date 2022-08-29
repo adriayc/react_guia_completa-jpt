@@ -7,7 +7,7 @@ const Bebida = ({bebida}) => {
 
   // console.log(bebida);
 
-  const { handleModalClick } = useBebidas();
+  const { handleModalClick, handleBebidaIdClick } = useBebidas();
 
   return (
     <Col md={6} lg={3}>
@@ -25,8 +25,12 @@ const Bebida = ({bebida}) => {
           <Button
             variant='warning'
             className='w-100 text-uppercase mt-2'
+            // Funcion onClick ejecuta varias funciones
             onClick={() => {
+              // Funcion para el modal
               handleModalClick();
+              // Funcion para enviar el id
+              handleBebidaIdClick(bebida.idDrink);
             }}
           >Ver Receta</Button>
         </Card.Body>
