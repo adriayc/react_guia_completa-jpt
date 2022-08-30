@@ -372,3 +372,6 @@ Estado global sin dependencias.
 * Cuenta con un hook llamado useContext.
 * Tambien se puede actualizar el state desde el hijo. (o ejecutar una función que lo actualice)
 * Si deseas crear librerías para React, Context es la forma de hacerlo.
+
+## ¿Que es Prisma?
+Prisma es un ORM que ayuda a los desarrolladores de aplicaciones a construir más rápido y cometer menos errores.
