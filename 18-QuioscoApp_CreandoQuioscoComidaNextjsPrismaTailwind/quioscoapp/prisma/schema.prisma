@@ -29,3 +29,12 @@ model Categoria {
   // Relacionando una Categoria con Producto (una categoria puede tener muchos producto)
   productos Producto[]
 }
+
+// Creando el model de Orden (Prisma)
+model Orden {
+  id     Int    @id @default(autoincrement())
+  nombre String
+  fecha  String
+  total  Float
+  pedido Json
+}
