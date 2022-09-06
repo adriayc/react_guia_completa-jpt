@@ -12,15 +12,20 @@ datasource db {
 
 // Creando el model de Producto (Prisma)
 model Producto {
-  id     Int    @id @default(autoincrement())
-  nombre String
-  precio Float
-  imagen String
+  id          Int       @id @default(autoincrement())
+  nombre      String
+  precio      Float
+  imagen      String
+  // Relacionado un Producto con Categoria (un producto tiene una categoria)
+  categoria   Categoria @relation(fields: [categoriaId], references: [id])
+  categoriaId Int
 }
 
 // Creando el model de Categoria (Prisma)
 model Categoria {
-  id     Int    @id @default(autoincrement())
-  nombre String
-  icono  String
+  id        Int        @id @default(autoincrement())
+  nombre    String
+  icono     String
+  // Relacionando una Categoria con Producto (una categoria puede tener muchos producto)
+  productos Producto[]
 }
