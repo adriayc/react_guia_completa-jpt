@@ -9,3 +9,18 @@ datasource db {
   provider = "mysql"
   url      = env("DATABASE_URL")
 }
+
+// Creando el model de Producto (Prisma)
+model Producto {
+  id     Int    @id @default(autoincrement())
+  nombre String
+  precio Float
+  imagen String
+}
+
+// Creando el model de Categoria (Prisma)
+model Categoria {
+  id     Int    @id @default(autoincrement())
+  nombre String
+  icono  String
+}
