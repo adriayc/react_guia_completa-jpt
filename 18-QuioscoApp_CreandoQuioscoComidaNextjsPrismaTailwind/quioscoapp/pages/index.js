@@ -1,3 +1,4 @@
+// import { useEffect } from 'react';
 import Head from 'next/head'
 import Image from 'next/image'
 // Importa Prisma Client
@@ -5,6 +6,17 @@ import { PrismaClient } from '@prisma/client';
 
 export default function Home({ categorias }) {
   console.log(categorias);
+
+  // NOTA: Error, no se pude consultar prisma desde el cliente (seria inseguro)
+  // useEffect(() => {
+  //   const consultarDB = async () => {
+  //     const prisma = new PrismaClient();
+  //     const categorias = await prisma.categoria.findMany();
+  //     console.log(categorias);
+  //   }
+
+  //   consultarDB();
+  // }, [])
 
   return (
     <h1>Next.js</h1>
