@@ -30,3 +30,6 @@
 * Instalar ts-node
     # npm install ts-node                 // Node con soporte a TS
     # npx prisma db seed                  // Ejecutar el script de DB de la migration
+
+* Instalar axios
+    # npm install axios
