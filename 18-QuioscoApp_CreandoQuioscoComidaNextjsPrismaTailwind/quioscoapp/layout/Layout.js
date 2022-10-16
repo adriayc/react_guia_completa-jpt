@@ -6,6 +6,7 @@ import useQuiosco from "../hooks/useQuiosco";
 
 // Importar componentes
 import Sidebar from "../components/Sidebar";
+import ModalProducto from "../components/ModalProducto";
 
 const customStyles = {
   content: {
@@ -50,7 +51,7 @@ export default function Layout({ children, pagina }) {
           isOpen={modal}
           style={customStyles}
         >
-          <h1>Modal</h1>
+          <ModalProducto />
         </Modal>
       )}
     </>
