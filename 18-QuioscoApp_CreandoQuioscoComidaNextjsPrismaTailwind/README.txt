@@ -33,3 +33,6 @@
 
 * Instalar axios
     # npm install axios
+
+* Instalar react-modal
+    # npm i react-modal

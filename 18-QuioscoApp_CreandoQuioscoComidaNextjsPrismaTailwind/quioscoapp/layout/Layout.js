@@ -1,9 +1,30 @@
 import Head from "next/head";
+// Importar react-modal
+import Modal from "react-modal"
+// Importar custom hook
+import useQuiosco from "../hooks/useQuiosco";
 
 // Importar componentes
 import Sidebar from "../components/Sidebar";
 
+const customStyles = {
+  content: {
+    top: '50%',
+    left: '50%',
+    right: 'auto',
+    bottom: 'auto',
+    marginRight: '-50%',
+    transform: 'translate(-50%, -50%)',
+  },
+};
+
+// Make sure to bind modal to your appElement (https://reactcommunity.org/react-modal/accessibility/)
+// Agregamos el id del elemento principal
+Modal.setAppElement('#__next');
+
 export default function Layout({ children, pagina }) {
+  const { modal } = useQuiosco()
+
   return (
     <>
       <Head>
@@ -22,6 +43,16 @@ export default function Layout({ children, pagina }) {
           </div>
         </main>
       </div>
+
+      {/* Mostrar modal */}
+      {modal && (
+        <Modal
+          isOpen={modal}
+          style={customStyles}
+        >
+          <h1>Modal</h1>
+        </Modal>
+      )}
     </>
   );
 }
