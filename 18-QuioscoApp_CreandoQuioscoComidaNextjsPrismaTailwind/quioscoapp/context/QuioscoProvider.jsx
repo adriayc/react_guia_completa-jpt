@@ -58,6 +58,7 @@ const QuioscoProvider = ({ children }) => {
       setPedido([...pedido, producto])
     }
     setPedido([...pedido, producto])
+    setModal(false) // Cerrar el modal cuando se agrega el pedido
   }
 
   // console.log(categorias)
@@ -72,7 +73,8 @@ const QuioscoProvider = ({ children }) => {
         handleSetProducto,
         modal,
         handleChangeModal,
-        handleAgregarPedido
+        handleAgregarPedido,
+        pedido
       }}
     >
       {children}
