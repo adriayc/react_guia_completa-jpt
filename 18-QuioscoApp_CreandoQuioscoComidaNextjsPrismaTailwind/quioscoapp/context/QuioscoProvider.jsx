@@ -47,6 +47,16 @@ const QuioscoProvider = ({ children }) => {
     // console.log('Agregando...')
     // console.log(producto)
 
+    if (pedido.some(productoState => productoState.id === producto.id)) {
+      // console.log('El producto ya existe')
+
+      // Actualizar cantidad
+      const pedidoActualizado = pedido.map(productoState => productoState.id === producto.id ? producto : productoState)
+      setPedido(pedidoActualizado)
+    } else {
+      // console.log('El producto no existe')
+      setPedido([...pedido, producto])
+    }
     setPedido([...pedido, producto])
   }
 
