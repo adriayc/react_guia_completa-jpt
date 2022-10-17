@@ -36,3 +36,6 @@
 
 * Instalar react-modal
     # npm i react-modal
+
+* Instalar react-toastify (Alertas)
+    # npm i react-toastify

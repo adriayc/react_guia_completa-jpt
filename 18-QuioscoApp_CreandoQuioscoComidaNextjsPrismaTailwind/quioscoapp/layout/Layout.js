@@ -1,8 +1,13 @@
 import Head from "next/head";
 // Importar react-modal
 import Modal from "react-modal"
+// Importar react-toastify
+import { ToastContainer } from "react-toastify"
 // Importar custom hook
 import useQuiosco from "../hooks/useQuiosco";
+
+// Importar css react-toastify
+import 'react-toastify/dist/ReactToastify.css'
 
 // Importar componentes
 import Sidebar from "../components/Sidebar";
@@ -54,6 +59,9 @@ export default function Layout({ children, pagina }) {
           <ModalProducto />
         </Modal>
       )}
+
+      {/* Mostrar Alerta */}
+      <ToastContainer />
     </>
   );
 }
