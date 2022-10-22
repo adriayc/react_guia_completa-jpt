@@ -10,7 +10,7 @@ const pasos = [
 
 const Pasos = () => {
   const router = useRouter()
-  const { handleChangePaso, paso } = useQuiosco()
+  const { handleChangePaso/*, paso*/ } = useQuiosco()
 
   const calcularProgreso = () => {
     // const porcentaje = (paso / 3) * 100
@@ -20,9 +20,9 @@ const Pasos = () => {
     // return (paso / 3) * 100;
 
     let valor
-    if (paso === 1) {
+    if (router.pathname === '/') {
       valor = 2
-    } else if (paso === 2) {
+    } else if (router.pathname === '/resumen') {
       valor = 50
     } else {
       valor = 100

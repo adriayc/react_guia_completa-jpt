@@ -12,7 +12,7 @@ const QuioscoProvider = ({ children }) => {
   const [producto, setProducto] = useState({})
   const [modal, setModal] = useState(false)
   const [pedido, setPedido] = useState([])
-  const [paso, setPaso] = useState(1)
+  // const [paso, setPaso] = useState(1)
 
   const obtenerCategorias = async () => {
     const { data } = await axios('/api/categorias')
@@ -68,10 +68,10 @@ const QuioscoProvider = ({ children }) => {
     setModal(false) // Cerrar el modal cuando se agrega el pedido
   }
 
-  const handleChangePaso = paso => {
-    // console.log(paso)
-    setPaso(paso)
-  }
+  // const handleChangePaso = paso => {
+  //   // console.log(paso)
+  //   setPaso(paso)
+  // }
 
   // console.log(categorias)
 
@@ -87,8 +87,8 @@ const QuioscoProvider = ({ children }) => {
         handleChangeModal,
         handleAgregarPedido,
         pedido,
-        paso,
-        handleChangePaso
+        // paso,
+        // handleChangePaso
       }}
     >
       {children}
