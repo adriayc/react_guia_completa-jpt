@@ -43,7 +43,7 @@ const Pasos = () => {
             className="text-2xl font-bold"
             onClick={() => {
               router.push(paso.url)
-              handleChangePaso(paso.paso)
+              // handleChangePaso(paso.paso)
             }}
           >
             {paso.nombre}

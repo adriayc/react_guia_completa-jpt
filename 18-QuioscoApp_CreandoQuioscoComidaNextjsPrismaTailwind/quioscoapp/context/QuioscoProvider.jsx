@@ -46,7 +46,7 @@ const QuioscoProvider = ({ children }) => {
   }
 
   // const handleAgregarPedido = (producto) => {
-  const handleAgregarPedido = ({ categoriaId, imagen, ...producto }) => { // Removiendo la categoriaId e imagen del objeto producto
+  const handleAgregarPedido = ({ categoriaId, /*imagen,*/ ...producto }) => { // Removiendo la categoriaId e imagen del objeto producto
     // console.log('Agregando...')
     // console.log(producto)
 
