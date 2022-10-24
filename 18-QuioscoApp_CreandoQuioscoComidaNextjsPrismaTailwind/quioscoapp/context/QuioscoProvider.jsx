@@ -73,6 +73,15 @@ const QuioscoProvider = ({ children }) => {
   //   setPaso(paso)
   // }
 
+  const handleEditarCantidades = id => {
+    // console.log(id)
+
+    const productoActualizar = pedido.filter(producto => producto.id === id)
+    setProducto(productoActualizar[0])
+
+    setModal(!modal)
+  }
+
   // console.log(categorias)
 
   return (
@@ -89,6 +98,7 @@ const QuioscoProvider = ({ children }) => {
         pedido,
         // paso,
         // handleChangePaso
+        handleEditarCantidades,
       }}
     >
       {children}
