@@ -1,4 +1,6 @@
 import { createContext, useEffect, useState } from "react";
+// Importar router
+import { useRouter } from "next/router";
 // Importar axios
 import axios from "axios";
 // Importar toast
@@ -7,6 +9,8 @@ import { toast } from 'react-toastify'
 const QuioscoContext = createContext()
 
 const QuioscoProvider = ({ children }) => {
+  const router = useRouter()
+
   const [categorias, setCategorias] = useState([])
   const [categoriaActual, setCategoriaActual] = useState({})
   const [producto, setProducto] = useState({})
@@ -34,6 +38,7 @@ const QuioscoProvider = ({ children }) => {
     const categoria = categorias.filter(cat => cat.id === id);
     // console.log(categoria)
     setCategoriaActual(categoria[0])
+    router.push('/')
   }
 
   const handleSetProducto = producto => {
