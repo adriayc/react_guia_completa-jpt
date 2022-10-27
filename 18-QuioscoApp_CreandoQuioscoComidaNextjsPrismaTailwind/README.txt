@@ -30,3 +30,12 @@
 * Instalar ts-node
     # npm install ts-node                 // Node con soporte a TS
     # npx prisma db seed                  // Ejecutar el script de DB de la migration
+
+* Instalar axios
+    # npm install axios
+
+* Instalar react-modal
+    # npm i react-modal
+
+* Instalar react-toastify (Alertas)
+    # npm i react-toastify
