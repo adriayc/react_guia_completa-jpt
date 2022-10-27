@@ -35,6 +35,12 @@ const QuioscoProvider = ({ children }) => {
     setCategoriaActual(categorias[0])
   }, [categorias])
 
+  useEffect(() => {
+    const nuevoTotal = pedido.reduce((total, producto) => (producto.precio * producto.cantidad) + total, 0)
+
+    setTotal(nuevoTotal)
+  }, [pedido])
+
   const handleClickCategoria = id => {
     // console.log(id)
     const categoria = categorias.filter(cat => cat.id === id);
@@ -96,6 +102,14 @@ const QuioscoProvider = ({ children }) => {
     setPedido(pedidoActualizado)
   }
 
+  const colocarOrden = async (e) => {
+    e.preventDefault()
+    // console.log('Enviando orden...')
+    console.log(pedido)
+    console.log(nombre)
+    console.log(total)
+  }
+
   // console.log(categorias)
 
   return (
@@ -116,6 +130,8 @@ const QuioscoProvider = ({ children }) => {
         handleEliminarProducto,
         nombre,
         setNombre,
+        colocarOrden,
+        total,
       }}
     >
       {children}
