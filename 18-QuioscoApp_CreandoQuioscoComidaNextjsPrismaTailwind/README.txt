@@ -19,3 +19,14 @@
     # npm install -D prisma               // Dependencia de desarrollo
     # npm install @prisma/client          // Dependencia de produccion (permite interactuar con la DB)
     # npx prisma init                     // Crea los archivos de configuracion de prisma
+
+* Ejecutar una migracion en Prisma
+    - Detener y ejecutar el servidor
+    # npx prisma migrate dev
+      ? Enter a name for the new migration: categorias y productos
+    # npx prisma migrate reset            // Reset DB
+    # npx prisma studio                   // Abre una ventana para visualizar los datos
+
+* Instalar ts-node
+    # npm install ts-node                 // Node con soporte a TS
+    # npx prisma db seed                  // Ejecutar el script de DB de la migration
