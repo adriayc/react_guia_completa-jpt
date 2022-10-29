@@ -1,5 +1,10 @@
 // CommonJS
-const express = require('express');
+// const express = require('express');
+
+// Module (imports)
+import express from 'express'
+// Importar archivos propios (agregar su extension .js)
+import prueba from './prueba.js'
 
 const app = express()
 
