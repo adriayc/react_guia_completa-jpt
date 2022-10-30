@@ -35,3 +35,6 @@
         
     - Instalar mongoose
         # npm i mongoose
+    
+    - Instalar dotenv (Variables de entorno)
+        # npm i dotenv
