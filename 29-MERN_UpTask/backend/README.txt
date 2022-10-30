@@ -30,4 +30,8 @@
         
         > Clic "Connect" -> "Connect using MongoDB Compass"
             - Error de conection -> Security - Network Access -> Clic "+ ADD IP ADDRESS" -> Clic "ALLOW ACCESS FROM ANYWHERE"
+
+        > Clic "Connect" -> "Connect your application" y copiar la URL de conexion a la DB
         
+    - Instalar mongoose
+        # npm i mongoose
