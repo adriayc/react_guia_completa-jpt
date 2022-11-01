@@ -38,3 +38,6 @@
     
     - Instalar dotenv (Variables de entorno)
         # npm i dotenv
+
+    - Uso de Postman
+        > Collections -> "+" | ["New" -> Collection] y agregarle un nombre -> 'Add a request' | '+' (Agregar nuevas solicitudes)
