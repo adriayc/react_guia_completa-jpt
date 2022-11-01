@@ -1,5 +1,7 @@
 // Importar models
 import Usuario from "../models/Usuario.js"
+// Importar helpers
+import generarId from "../helpers/generarId.js"
 
 // // GET
 // const usuarios = (req, res) => {
@@ -30,6 +32,7 @@ const registrar = async (req, res) => {
     try {
         const usuario = new Usuario(req.body)
         // console.log(usuario)
+        usuario.token = generarId()
         const usuarioAlmacenado = await usuario.save()
 
         // res.json({ msg: 'Creando Usuario' })
