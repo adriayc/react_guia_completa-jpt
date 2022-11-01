@@ -16,6 +16,17 @@ const registrar = async (req, res) => {
     // console.log(req)
     // console.log(req.body)
 
+    // Evitar registros duplicados
+    const { email } = req.body
+    // const existeUsuario = await Usuario.findOne({ email: email })
+    const existeUsuario = await Usuario.findOne({ email })
+    // console.log(existeUsuario)
+
+    if (existeUsuario) {
+        const error = new Error('Usuario ya registrado')
+        return res.status(400).json({ msg: error.message })
+    }
+
     try {
         const usuario = new Usuario(req.body)
         // console.log(usuario)
