@@ -10,6 +10,7 @@ import usuarioRoutes from './routes/usuarioRoutes.js'
 // import prueba from './prueba.js'
 
 const app = express()
+app.use(express.json())     // Habilitar la lectura o procesar JSON
 
 // Llamar a la config de dotenv (Busca un archivo .env)
 dotenv.config()

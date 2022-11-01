@@ -41,3 +41,13 @@
 
     - Uso de Postman
         > Collections -> "+" | ["New" -> Collection] y agregarle un nombre -> 'Add a request' | '+' (Agregar nuevas solicitudes)
+            - Enviar datos (POST):
+                > Body -> 'Row' & 'JSON'
+                    {
+                        "nombre": "Adriano",
+                        "password": "adriano123",
+                        "correo": "adriano@correo.com"
+                    }
+    
+    - Uso MongoDB Compass
+        - Ctrl + R | Boton de actualizar - Actualizar los datos
