@@ -1,4 +1,5 @@
 import mongoose from "mongoose"
+import bcrypt from "bcrypt"
 
 // Creamos el schema
 const usuarioSchema = mongoose.Schema({
@@ -28,6 +29,14 @@ const usuarioSchema = mongoose.Schema({
 }, 
 {
     timestamps: true,       // Created y Updated
+})
+
+usuarioSchema.pre('save', async function(next) {
+    if (!this.isModified('password')) {
+        next()          // Salta al siguiente middleware
+    }
+    const salt = await bcrypt.genSalt(10)
+    this.password = await bcrypt.hash(this.password, salt)
 })
 
 const Usuario = mongoose.model('Usuario', usuarioSchema)

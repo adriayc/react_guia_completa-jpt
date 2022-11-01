@@ -51,3 +51,7 @@
     
     - Uso MongoDB Compass
         - Ctrl + R | Boton de actualizar - Actualizar los datos
+
+    - Instalar bcrypt
+        # npm i bcrypt
+    
