@@ -14,6 +14,7 @@ import generarId from "../helpers/generarId.js"
 //     res.json({ msg: 'Creando usuario' })
 // }
 
+// POST (Registrar Usuario)
 const registrar = async (req, res) => {
     // console.log(req)
     // console.log(req.body)
@@ -43,9 +44,15 @@ const registrar = async (req, res) => {
     }
 }
 
+// POST (Autenticar Usuario)
+const autenticar = async (req, res) => {
+
+}
+
 export {
     // usuarios,
     // crearUsuarios,
 
-    registrar
+    registrar,
+    autenticar
 }

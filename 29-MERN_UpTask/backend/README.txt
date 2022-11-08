@@ -48,6 +48,16 @@
                         "password": "adriano123",
                         "correo": "adriano@correo.com"
                     }
+        
+        > Enviroments -> "Name Enviroment" (Crear un nuevo Ambiente)
+            - Collections ->"No Enviroment" ^ (Seleccionar el Ambiente)
+            - Click "Icono Ojo" -> "Enviroment Name" - Edit (Agrega una variable)
+              Select URL "Set as variable" -> "Set as a new variable"
+                + Name: API_URL
+                + Value: http://localhost:4000
+                + Scope: Select our enviroment (UpTask_MERM)
+        
+        > "..." (Click en el icono de la coleccion) -> Export (Exportar los request)
     
     - Uso MongoDB Compass
         - Ctrl + R | Boton de actualizar - Actualizar los datos
