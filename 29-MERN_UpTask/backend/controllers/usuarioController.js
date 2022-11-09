@@ -145,6 +145,31 @@ const comprobarToken = async (req, res) => {
     }
 }
 
+// POST (Almacena el nuevo password)
+const nuevoPassword = async (req, res) => {
+    const { token } = req.params
+    const { password } = req.body
+    // console.log(token)
+    // console.log(password)
+
+    const usuario = await Usuario.findOne({ token })
+    if (usuario) {
+        // console.log(usuario)
+        usuario.password = password
+        usuario.token = ''
+
+        try {
+            await usuario.save()
+            res.json({ msg: 'Password modificado correctamente' })
+        } catch (error) {
+            console.log(error)
+        }
+    } else {
+        const error = new Error('Token no válido');
+        return res.status(404).json({ msg: error.message })
+    }
+}
+
 export {
     // usuarios,
     // crearUsuarios,
@@ -153,5 +178,6 @@ export {
     autenticar,
     confirmar,
     olvidePassword,
-    comprobarToken
+    comprobarToken,
+    nuevoPassword
 }
