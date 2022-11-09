@@ -83,10 +83,20 @@ const autenticar = async (req, res) => {
     }
 }
 
+// GET (Confirmar cuenta via TOKEN)
+const confirmar = async (req, res) => {
+    // console.log('Routing dinamico')
+    // console.log(req.params)
+    // console.log(req.params.token)       // Obtene el valor del params URL
+    
+    const { token } = req.params
+}
+
 export {
     // usuarios,
     // crearUsuarios,
 
     registrar,
-    autenticar
+    autenticar,
+    confirmar
 }
