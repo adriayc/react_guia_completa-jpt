@@ -2,6 +2,7 @@
 import Usuario from "../models/Usuario.js"
 // Importar helpers
 import generarId from "../helpers/generarId.js"
+import generarJWT from "../helpers/generarJWT.js"
 
 // // GET
 // const usuarios = (req, res) => {
@@ -72,7 +73,8 @@ const autenticar = async (req, res) => {
             // Devolvemos los datos necesarios
             _id: usuario._id,
             nombre: usuario.nombre,
-            email: usuario.email
+            email: usuario.email,
+            token: generarJWT(usuario._id),
         })
     } else {
         // console.log('Es incorrecto')

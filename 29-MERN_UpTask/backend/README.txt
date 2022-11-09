@@ -65,3 +65,6 @@
     - Instalar bcrypt
         # npm i bcrypt
     
+    - Instalar jsonwebtoken
+        # npm i jsonwebtoken
+    
