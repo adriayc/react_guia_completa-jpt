@@ -109,11 +109,32 @@ const confirmar = async (req, res) => {
     }
 }
 
+// POST (Reestablecer un nuevo password)
+const olvidePassword = async (req, res) => {
+    const { email } = req.body
+
+    const usuario = await Usuario.findOne({ email })
+    if (!usuario) {
+        const error = new Error('El usuario no existe')
+        return res.status(404).json({ msg: error.message })
+    }
+
+    try {
+        usuario.token = generarId()
+        // console.log(usuario)
+        await usuario.save()
+        res.json({ msg: 'Hemos enviado un email con las intrucciones' })
+    } catch (error) {
+        console.log(error)
+    }
+}
+
 export {
     // usuarios,
     // crearUsuarios,
 
     registrar,
     autenticar,
-    confirmar
+    confirmar,
+    olvidePassword
 }
