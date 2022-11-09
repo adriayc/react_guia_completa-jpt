@@ -129,6 +129,22 @@ const olvidePassword = async (req, res) => {
     }
 }
 
+// GET (Comprobar Token para el nuevo password)
+const comprobarToken = async (req, res) => {
+    const { token } = req.params
+    // console.log(token);
+
+    const tokenValido = await Usuario.findOne({ token })
+    if (tokenValido) {
+        // console.log('Token valido')
+        res.json({ msg: 'Token válido y el Usuario existe' })
+    } else {
+        // console.log('Token no valido')
+        const error = new Error('Token no válido')
+        return res.status(404).json({ msg: error.message })   
+    }
+}
+
 export {
     // usuarios,
     // crearUsuarios,
@@ -136,5 +152,6 @@ export {
     registrar,
     autenticar,
     confirmar,
-    olvidePassword
+    olvidePassword,
+    comprobarToken
 }
