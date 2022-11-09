@@ -90,6 +90,23 @@ const confirmar = async (req, res) => {
     // console.log(req.params.token)       // Obtene el valor del params URL
     
     const { token } = req.params
+
+    const usuarioConfirmar = await Usuario.findOne({ token })
+    // console.log(usuarioConfirmar)
+    if (!usuarioConfirmar) {
+        const error = new Error('Token no válido')
+        return res.status(403).json({ msg: error.message })
+    }
+
+    try {
+        usuarioConfirmar.confirmado = true
+        usuarioConfirmar.token = ''     // Token de un solo uso (Eliminamos el token)
+        await usuarioConfirmar.save()
+        res.json({ msg: 'Usuario confirmado correctamente' })
+        // console.log(usuarioConfirmar)
+    } catch (error) {
+        console.log(error)
+    }
 }
 
 export {
