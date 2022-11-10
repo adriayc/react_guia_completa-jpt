@@ -170,6 +170,11 @@ const nuevoPassword = async (req, res) => {
     }
 }
 
+// GET (Perfil del usuario autenticado)
+const perfil = async (req, res) => {
+    console.log('Desde perfil...')
+}
+
 export {
     // usuarios,
     // crearUsuarios,
@@ -179,5 +184,6 @@ export {
     confirmar,
     olvidePassword,
     comprobarToken,
-    nuevoPassword
+    nuevoPassword,
+    perfil
 }
