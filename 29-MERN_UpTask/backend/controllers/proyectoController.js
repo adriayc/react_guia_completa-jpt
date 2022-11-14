@@ -55,7 +55,36 @@ const obtenerProyecto = async (req, res) => {
     return res.json(proyecto)
 }
 
-const editarProyecto = async (req, res) => {}
+const editarProyecto = async (req, res) => {
+    const { id } = req.params
+    if (!mongoose.Types.ObjectId(id)) {
+        const error = new Error('ID proyecto invalido')
+        return res.status(404).json({ msg: error.message })
+    }
+
+    const proyecto = await Proyecto.findById(id)
+    if (!proyecto) {
+        const error = new Error('No encontrado')
+        return res.status(404).json({ msg: error.message })
+    }
+
+    if (proyecto.creador.toString() !== req.usuario._id.toString()) {
+        const error = new Error('Acción no válida')
+        return res.status(404).json({ msg: error.message })
+    }
+
+    proyecto.nombre = req.body.nombre || proyecto.nombre
+    proyecto.descripcion = req.body.descripcion || proyecto.descripcion
+    proyecto.fechaEntrega = req.body.fechaEntrega || proyecto.fechaEntrega
+    proyecto.cliente = req.body.cliente || proyecto.cliente
+
+    try {
+        const proyectoAlmacenado = await proyecto.save()
+        return res.json(proyectoAlmacenado)
+    } catch(e) {
+        console.log(e)
+    }
+}
 
 const eliminarProyecto = async (req, res) => {}
 
