@@ -1,5 +1,5 @@
-// Impotar modelos
 import mongoose from "mongoose"
+// Impotar modelos
 import Proyecto from "../models/Proyecto.js"
 
 const obtenerProyectos = async (req, res) => {
