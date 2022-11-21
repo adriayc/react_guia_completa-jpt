@@ -1,6 +1,7 @@
 import mongoose from "mongoose"
 // Impotar modelos
 import Proyecto from "../models/Proyecto.js"
+import Tarea from "../models/Tarea.js"
 
 const obtenerProyectos = async (req, res) => {
     // Obtiene los proyectos del usuario autenticado
@@ -116,7 +117,19 @@ const agregarColaborador = async (req, res) => {}
 
 const eliminarColaborador = async (req, res) => {}
 
-const obtenerTareas = async (req, res) => {}
+const obtenerTareas = async (req, res) => {
+    const { id } = req.params
+
+    const existeProyecto = await Proyecto.findById(id)
+    if (!existeProyecto) {
+        const error = new Error('Proyecto no encontrado')
+        return res.status(404).json({ msg: error.message })
+    }
+
+    // Tienes que ser creador del proyecto o colaborador
+    const tareas = await Tarea.find().where('proyecto').equals(id)
+    return res.json(tareas)
+}
 
 export {
     obtenerProyectos,
