@@ -83,3 +83,7 @@
     - Instalar dependecias
         # npm install axios              // Axios
         # npm install react-router-dom   // React Router Dom
+
+    - Instalar TailwindCSS
+        # npm install -D tailwindcss postcss autoprefixer
+        # npx tailwindcss init -p
