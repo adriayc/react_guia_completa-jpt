@@ -68,3 +68,18 @@
     - Instalar jsonwebtoken
         # npm i jsonwebtoken
     
+
+* Crear el proyecto FRONTEND
+    - crear la app con Vite
+        # npm create vite@latest
+            ? Ok to proceed? (y) y
+            ? Proyect name: fronted
+            > React
+            > JavaScript
+        # cd frontend
+        # npm install
+        # npm run dev
+
+    - Instalar dependecias
+        # npm install axios              // Axios
+        # npm install react-router-dom   // React Router Dom
