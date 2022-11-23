@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import axios from 'axios'
 // Importar components
 import Alerta from '../components/Alerta'
 
@@ -10,7 +11,7 @@ const Registrar = () => {
   const [ repetirPassword, setRepetirPassword ] = useState('')
   const [ alerta, setAlerta ] = useState({}) 
 
-  const hadleSubmit = (e) => {
+  const hadleSubmit = async (e) => {
     e.preventDefault()
 
     if ([nombre, email, password, repetirPassword].includes('')) {
@@ -41,7 +42,17 @@ const Registrar = () => {
     setAlerta({})
 
     // Crear el usuario en la API
-    console.log('Creando...')
+    // console.log('Creando...')
+    try {
+      const respuesta = await axios.post('http://localhost:4000/api/usuarios', {
+        nombre,
+        email,
+        password
+      })
+      console.log(respuesta)
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   const { msg } = alerta
