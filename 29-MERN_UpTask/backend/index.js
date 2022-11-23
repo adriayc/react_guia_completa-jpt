@@ -4,6 +4,7 @@
 // Module (imports)
 import express from 'express'
 import dotenv from 'dotenv'
+import cors from 'cors'
 // Importar archivos propios (agregar su extension .js)
 import conectarDB from './config/db.js'     // Importar la configuracion de conexion de la DB
 import usuarioRoutes from './routes/usuarioRoutes.js'
@@ -19,6 +20,24 @@ dotenv.config()
 
 // Llamar a la funcion de conexion a la DB
 conectarDB()
+
+// Configurar CORS
+const whitelist = ['http://localhost:5173']     // Lista blanco (dominios permitidos)
+
+const corsOptions = {
+    origin: function (origin, callback) {
+        // console.log(origin)
+        if (whitelist.includes(origin)) {
+            // Puede consultar la API
+            callback(null, true)
+        } else {
+            // No esta permitido
+            callback(new Error('Error de Cors'))
+        }
+    }
+}
+
+app.use(cors(corsOptions))
 
 // Llamar a una variable de entorno
 // console.log(process.env.HOLA)

@@ -67,6 +67,9 @@
     
     - Instalar jsonwebtoken
         # npm i jsonwebtoken
+
+    - Instalar CORS
+        # npm i cors
     
 
 * Crear el proyecto FRONTEND
