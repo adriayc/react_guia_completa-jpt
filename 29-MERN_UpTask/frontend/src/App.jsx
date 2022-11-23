@@ -8,6 +8,9 @@ import OlvidePassword from './pages/OlvidePassword'
 import NuevoPassword from './pages/NuevoPassword'
 import ConfirmarCuenta from './pages/ConfirmarCuenta'
 
+// Llamando a la variable de entorno 
+// console.log(import.meta.env.VITE_BACKEND_URL)
+
 function App() {
 
   return (

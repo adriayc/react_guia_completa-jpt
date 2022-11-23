@@ -45,7 +45,8 @@ const Registrar = () => {
     // console.log('Creando...')
     try {
       // const respuesta = await axios.post('http://localhost:4000/api/usuarios', {
-        const { data } = await axios.post('http://localhost:4000/api/usuarios', {
+      // Llamar a la variable de entorno  
+      const { data } = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/usuarios`, {
         nombre,
         email,
         password
@@ -57,6 +58,11 @@ const Registrar = () => {
         msg: data.msg,
         error: false
       })
+
+      setNombre('')
+      setEmail('')
+      setPassword('')
+      setRepetirPassword('')
     } catch (error) {
       // console.log(error)
       // console.log(error.response)
