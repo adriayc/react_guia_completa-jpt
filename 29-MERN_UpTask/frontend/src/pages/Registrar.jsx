@@ -45,7 +45,8 @@ const Registrar = () => {
     // console.log('Creando...')
     try {
       // const respuesta = await axios.post('http://localhost:4000/api/usuarios', {
-      // Llamar a la variable de entorno  
+      // Llamar a la variable de entorno
+      // TODO: Mover hacia un clinete Axios  
       const { data } = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/usuarios`, {
         nombre,
         email,

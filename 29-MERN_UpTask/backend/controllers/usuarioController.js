@@ -3,7 +3,7 @@ import Usuario from "../models/Usuario.js"
 // Importar helpers
 import generarId from "../helpers/generarId.js"
 import generarJWT from "../helpers/generarJWT.js"
-import { emailResgistro } from "../helpers/email.js"
+import { emailResgistro, emailOlvidePassword } from "../helpers/email.js"
 
 // // GET
 // const usuarios = (req, res) => {
@@ -134,7 +134,15 @@ const olvidePassword = async (req, res) => {
         usuario.token = generarId()
         // console.log(usuario)
         await usuario.save()
-        res.json({ msg: 'Hemos enviado un email con las intrucciones' })
+
+        // Enviar el email
+        emailOlvidePassword({
+            email: usuario.email,
+            nombre: usuario.nombre,
+            token: usuario.token
+        })
+
+        return res.json({ msg: 'Hemos enviado un email con las intrucciones' })
     } catch (error) {
         console.log(error)
     }

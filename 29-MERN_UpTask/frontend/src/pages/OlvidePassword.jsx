@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import axio from 'axios'
 // Importar components
 import Alerta from '../components/Alerta'
 
@@ -16,6 +17,27 @@ const OlvidePassword = () => {
         error: true
       })
       return
+    }
+
+    try {
+      // TODO: Mover hacia un clinete Axios        
+      const  { data } = await axio.post(`${import.meta.env.VITE_BACKEND_URL}/api/usuarios/olvide-password`, {
+        email
+      })
+
+      // Enviar el email
+
+      // console.log(data);
+      setAlerta({
+        msg: data.msg,
+        error: false
+      })
+    } catch (error) {
+      // console.log(error.response)
+      setAlerta({
+        msg: error.response.data.msg,
+        error: true
+      })
     }
   }
 
