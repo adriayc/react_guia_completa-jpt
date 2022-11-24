@@ -70,6 +70,13 @@
 
     - Instalar CORS
         # npm i cors
+
+    - Instalar Nodemailer
+        # npm install nodemailer
+
+        * Configurar Mailtrap
+        > Home -> "Setup Inbox" -> "Add Inbox" -> Click name o Edit Settings -> "SMTP Settings'
+            - Integrations: Nodemailer (Node.js)
     
 
 * Crear el proyecto FRONTEND

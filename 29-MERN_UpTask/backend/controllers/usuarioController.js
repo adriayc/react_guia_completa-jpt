@@ -3,6 +3,7 @@ import Usuario from "../models/Usuario.js"
 // Importar helpers
 import generarId from "../helpers/generarId.js"
 import generarJWT from "../helpers/generarJWT.js"
+import { emailResgistro } from "../helpers/email.js"
 
 // // GET
 // const usuarios = (req, res) => {
@@ -37,6 +38,14 @@ const registrar = async (req, res) => {
         usuario.token = generarId()
         // const usuarioAlmacenado = await usuario.save()
         await usuario.save()
+
+        // Enviar el mail de confirmacion
+        // console.log(usuario)
+        emailResgistro({
+            email: usuario.email,
+            nombre: usuario.nombre,
+            token: usuario.token
+        })
 
         // res.json({ msg: 'Creando Usuario' })
         // res.json(usuarioAlmacenado)
