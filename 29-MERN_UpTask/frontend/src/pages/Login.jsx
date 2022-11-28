@@ -2,6 +2,8 @@ import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 // Importar settings
 import clienteAxios from '../config/clienteAxios'
+// Impotar custom hooks
+import useAuth from '../hooks/useAuth'
 // Importar components
 import Alerta from '../components/Alerta'
 
@@ -9,6 +11,9 @@ const Login = () => {
   const [ email, setEmail ] = useState('')
   const [ password, setPassword ] = useState('')
   const [ alerta, setAlerta ] = useState({})
+
+  const { hola } = useAuth()
+  console.log(hola)
 
   const handleSubmit = async e => {
     e.preventDefault()
