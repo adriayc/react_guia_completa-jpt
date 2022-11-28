@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import axios from 'axios'
+// Importar settings
+import clienteAxios from '../config/clienteAxios'
 // Importar components
 import Alerta from '../components/Alerta'
 
@@ -46,8 +47,7 @@ const Registrar = () => {
     try {
       // const respuesta = await axios.post('http://localhost:4000/api/usuarios', {
       // Llamar a la variable de entorno
-      // TODO: Mover hacia un clinete Axios  
-      const { data } = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/usuarios`, {
+      const { data } = await clienteAxios.post('/usuarios', {
         nombre,
         email,
         password
