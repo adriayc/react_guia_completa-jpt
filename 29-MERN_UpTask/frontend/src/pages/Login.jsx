@@ -12,8 +12,7 @@ const Login = () => {
   const [ password, setPassword ] = useState('')
   const [ alerta, setAlerta ] = useState({})
 
-  const { hola } = useAuth()
-  console.log(hola)
+  const { setAuth } = useAuth()
 
   const handleSubmit = async e => {
     e.preventDefault()
@@ -38,6 +37,8 @@ const Login = () => {
       // console.log(data)
       // Almacenar el token en LocalStorage
       localStorage.setItem('token', data.token)
+
+      setAuth(data)
 
     } catch (error) {
       // console.log(error.response.data.msg)

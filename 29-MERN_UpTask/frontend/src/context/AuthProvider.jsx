@@ -3,12 +3,12 @@ import { useState, useEffect, createContext } from "react"
 const AuthContext = createContext()
 
 const AuthProvider = ({children}) => {
-  const [ hola, setHola ] = useState('Hola Mundo!')
+  const [ auth, setAuth ] = useState({})
 
   return (
     <AuthContext.Provider
       value={{
-        hola
+        setAuth,
       }}
     >
       {children}
