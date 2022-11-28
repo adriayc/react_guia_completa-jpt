@@ -21,6 +21,26 @@ const Login = () => {
       })
       return
     }
+
+    try {
+      const { data } = await clienteAxios.post('usuarios/login', {
+        email,
+        password
+      })
+      
+      setAlerta({})
+
+      // console.log(data)
+      // Almacenar el token en LocalStorage
+      localStorage.setItem('token', data.token)
+
+    } catch (error) {
+      // console.log(error.response.data.msg)
+      setAlerta({
+        msg: error.response.data.msg,
+        error: true
+      })
+    }
   }
 
   const { msg } = alerta
