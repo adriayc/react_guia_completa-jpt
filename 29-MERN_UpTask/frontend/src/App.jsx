@@ -12,6 +12,7 @@ import NuevoPassword from './pages/NuevoPassword'
 import ConfirmarCuenta from './pages/ConfirmarCuenta'
 
 import Proyectos from './pages/Proyectos'
+import NuevoProyecto from './pages/NuevoProyecto'
 
 // Llamando a la variable de entorno 
 // console.log(import.meta.env.VITE_BACKEND_URL)
@@ -32,6 +33,7 @@ function App() {
 
           <Route path='/proyectos' element={<RutaProtegida />}>
             <Route index element={<Proyectos />} />
+            <Route path='crear-proyecto' element={<NuevoProyecto />} />
           </Route>
         </Routes>
       </AuthProvider>
