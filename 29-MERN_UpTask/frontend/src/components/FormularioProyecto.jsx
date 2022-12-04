@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { useNavigate } from 'react-router-dom'
 // Importar custom hooks
 import useProyectos from "../hooks/useProyectos"
 // Importar components
@@ -10,9 +11,11 @@ const FormularioProyecto = () => {
   const [ fechaEntrega, setFechaEntrega ] = useState('')
   const [ cliente, setCliente ] = useState('')
 
+  const navigate = useNavigate()
+
   const { mostrarAlerta, alerta, submitProyecto } = useProyectos()
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
 
     if ([nombre, descripcion, fechaEntrega, cliente].includes('')) {
@@ -25,12 +28,17 @@ const FormularioProyecto = () => {
     }
 
     // Pasar los datos hacia el provider
-    submitProyecto({
+    await submitProyecto({
       nombre,
       descripcion,
       fechaEntrega,
       cliente,
     })
+
+    setNombre('')
+    setDescripcion('')
+    setFechaEntrega('')
+    setCliente('')
   }
 
   const { msg } = alerta
