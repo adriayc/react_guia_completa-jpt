@@ -5,15 +5,17 @@ import clienteAxios from '../config/clienteAxios'
 const ProyectosContext = createContext()
 
 const ProyectosProvider = ({children}) => {
-    return (
-      <ProyectosContext.Provider
-        value={{
+  const [ proyectos, setProyectos ] = useState([])
 
-        }}
-      >
-        {children}
-      </ProyectosContext.Provider>
-    )
+  return (
+    <ProyectosContext.Provider
+      value={{
+        proyectos,
+      }}
+    >
+      {children}
+    </ProyectosContext.Provider>
+  )
 }
 
 export {
