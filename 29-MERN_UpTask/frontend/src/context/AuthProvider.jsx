@@ -36,7 +36,7 @@ const AuthProvider = ({children}) => {
         // console.log(data)
         setAuth(data)
         // Redireccionar a la pagina de proyectos
-        navigate('/proyectos')
+        // navigate('/proyectos')
       } catch (error) {
         setAuth({})
       }/* finally {
