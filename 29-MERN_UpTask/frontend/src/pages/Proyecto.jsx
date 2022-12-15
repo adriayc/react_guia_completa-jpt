@@ -7,7 +7,7 @@ const Proyecto = () => {
   const params = useParams()
   // console.log(params)
 
-  const { obtenerProyecto } = useProyectos()
+  const { obtenerProyecto, proyecto, cargando } = useProyectos()
 
   // obtenerProyecto(params.id)
   // Lo ideal es mejor cargarlo por medio de hooks
@@ -15,8 +15,15 @@ const Proyecto = () => {
     obtenerProyecto(params.id)
   }, [])
 
+  // console.log(proyecto)
+  const { nombre } = proyecto
+
   return (
-    <div>Proyecto</div>
+    cargando ? '...' : (
+      <div>
+        <h1 className="font-black text-4xl">{nombre}</h1>
+    </div>
+    )
   )
 }
 
