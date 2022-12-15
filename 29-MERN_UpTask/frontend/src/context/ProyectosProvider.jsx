@@ -53,6 +53,30 @@ const ProyectosProvider = ({children}) => {
     }
   }
 
+  useEffect(() => {
+    const obtenerProyectos = async () => {
+      try {
+        const token = localStorage.getItem('token')
+        if (!token) return
+
+        const config = {
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`
+          }
+        }
+
+        const { data } = await clienteAxios('/proyectos', config)
+        // console.log(data)
+        setProyectos(data)
+      } catch (error) {
+        console.log(error)
+      }
+    }
+
+    obtenerProyectos()
+  }, [])
+
   return (
     <ProyectosContext.Provider
       value={{
