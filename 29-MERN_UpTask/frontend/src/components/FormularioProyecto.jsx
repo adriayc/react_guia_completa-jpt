@@ -32,12 +32,14 @@ const FormularioProyecto = () => {
 
     // Pasar los datos hacia el provider
     await submitProyecto({
+      id,
       nombre,
       descripcion,
       fechaEntrega,
       cliente,
     })
 
+    setId(null)
     setNombre('')
     setDescripcion('')
     setFechaEntrega('')
