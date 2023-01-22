@@ -97,3 +97,6 @@
     - Instalar TailwindCSS
         # npm install -D tailwindcss postcss autoprefixer
         # npx tailwindcss init -p
+    
+    - Instalar Headless UI
+        # npm install @headlessui/react
