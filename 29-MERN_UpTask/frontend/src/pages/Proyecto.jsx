@@ -4,6 +4,7 @@ import { useParams, Link } from "react-router-dom"
 import useProyectos from "../hooks/useProyectos"
 // Importar components
 import ModalFormularioTarea from "../components/ModalFormularioTarea"
+import Tarea from "../components/Tarea"
 
 const Proyecto = () => {
   const params = useParams()
@@ -22,7 +23,8 @@ const Proyecto = () => {
 
   if (cargando) return 'Cargando...'
 
-  console.log(proyecto)
+  // console.log(proyecto)
+  // console.log(proyecto.tareas?.length)
 
   return (
     <>
@@ -41,7 +43,6 @@ const Proyecto = () => {
         </div>
       </div>
 
-
       <button
         type="button"
         className="text-sm px-5 py-3 w-full md:w-auto rounded-lg uppercase font-bold bg-sky-400 text-white text-center mt-5 flex gap-2 items-center justify-center"
@@ -52,6 +53,17 @@ const Proyecto = () => {
         </svg>
         Nueva Tarea
       </button>
+
+      <p className="font-bold text-xl mt-10">Tareas del Proyecto</p>
+      <div className="bg-white shadow rounded-lg mt-10">
+        {/* {proyecto.tareas?.length ? 'Si hay tareas' : 'No hay tareas'} */}
+        {proyecto.tareas?.length ? proyecto.tareas?.map(tarea => (
+          <Tarea 
+            key={tarea._id}
+            tarea={tarea}
+          />
+        )) : <p className="text-center my-5 p-10">No hay tareas en este proyecto</p>}
+      </div>
 
       <ModalFormularioTarea />
     </>
