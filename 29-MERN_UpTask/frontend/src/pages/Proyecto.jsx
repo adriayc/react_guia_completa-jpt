@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useEffect/*, useState*/ } from "react"
 import { useParams, Link } from "react-router-dom"
 // Importar custom hooks
 import useProyectos from "../hooks/useProyectos"

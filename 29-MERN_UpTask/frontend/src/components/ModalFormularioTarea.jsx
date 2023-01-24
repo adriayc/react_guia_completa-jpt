@@ -14,7 +14,7 @@ const ModalFormularioTarea = () => {
   const [fechaEntrega, setFechaEntrega] = useState('')
   const [prioridad, setPrioridad] = useState('')
 
-  const { modalFormularioTarea, handleModalTarea, mostrarAlerta, alerta, submitTarea } = useProyectos()
+  const { modalFormularioTarea, handleModalTarea, mostrarAlerta, alerta, submitTarea, tarea } = useProyectos()
 
   const params = useParams()
   // console.log(params)
@@ -44,6 +44,11 @@ const ModalFormularioTarea = () => {
     setFechaEntrega('')
     setPrioridad('')
   }
+
+  // Modificamos useEffect cada vez que actualize tarea
+  useEffect(() => {
+    console.log(tarea)
+  } ,[tarea])
 
   const { msg } = alerta
  
