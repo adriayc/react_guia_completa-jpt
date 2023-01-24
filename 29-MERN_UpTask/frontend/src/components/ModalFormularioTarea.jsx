@@ -32,6 +32,7 @@ const ModalFormularioTarea = () => {
       return
     }
     await submitTarea({
+      id,
       nombre,
       descripcion,
       fechaEntrega,
@@ -40,6 +41,7 @@ const ModalFormularioTarea = () => {
     })
 
     // Reset los valores del formulario
+    setId('')
     setNombre('')
     setDescripcion('')
     setFechaEntrega('')
