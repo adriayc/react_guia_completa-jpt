@@ -9,6 +9,7 @@ import Alerta from './Alerta'
 const PRIORIDAD = ['Baja', 'Media', 'Alta']
 
 const ModalFormularioTarea = () => {
+  const [id, setId] = useState('')
   const [nombre, setNombre] = useState('')
   const [descripcion, setDescripcion] = useState('')
   const [fechaEntrega, setFechaEntrega] = useState('')
@@ -47,8 +48,24 @@ const ModalFormularioTarea = () => {
 
   // Modificamos useEffect cada vez que actualize tarea
   useEffect(() => {
-    console.log(tarea)
-  } ,[tarea])
+    // console.log(tarea)
+
+    if (tarea?._id) {
+      setId(tarea._id)
+      setNombre(tarea.nombre)
+      setDescripcion(tarea.descripcion)
+      setFechaEntrega(tarea.fechaEntrega?.split('T')[0])    // Recortar solo la fecha (fecha de mongodb)
+      setPrioridad(tarea.prioridad)
+      
+      return
+    }
+    
+    setId('')
+    setNombre('')
+    setDescripcion('')
+    setFechaEntrega('')
+    setPrioridad('')
+  }, [tarea])
 
   const { msg } = alerta
  
@@ -101,7 +118,7 @@ const ModalFormularioTarea = () => {
               <div className="sm:flex sm:items-start">
                 <div className="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left w-full">
                   <Dialog.Title as="h3" className="text-lg leading-6 font-bold text-gray-900">
-                    Crear Tarea
+                    {id ? 'Editar Tarea' : 'Crear Tarea'}
                   </Dialog.Title>
 
                   { msg && <Alerta alerta={alerta} /> }
@@ -174,7 +191,7 @@ const ModalFormularioTarea = () => {
                     <input 
                       type="submit" 
                       className='bg-sky-600 hover:bg-sky-700 w-full p-3 text-white text-sm uppercase font-bold cursor-pointer transition-colors rounded'
-                      value="Crear Tarea"
+                      value={id ? 'Guardar Cambios' : 'Crear Tarea'}
                     />
                   </form>
                 </div>

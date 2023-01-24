@@ -13,7 +13,7 @@ const Tarea = ({tarea}) => {
       <div>
         <p className="text-xl mb-1">{nombre}</p>
         <p className="text-sm text-gray-500 uppercase mb-1">{descripcion}</p>
-        <p className="text-xl mb-1">{formatearFecha(fechaEntrega)}</p>
+        <p className="text-sm mb-1">{formatearFecha(fechaEntrega)}</p>
         <p className="text-gray-600 mb-1">Prioridad: {prioridad}</p>
       </div>
 
