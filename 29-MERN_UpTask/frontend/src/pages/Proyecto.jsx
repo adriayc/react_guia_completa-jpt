@@ -22,6 +22,8 @@ const Proyecto = () => {
 
   if (cargando) return 'Cargando...'
 
+  console.log(proyecto)
+
   return (
     <>
       <div className="flex justify-between">

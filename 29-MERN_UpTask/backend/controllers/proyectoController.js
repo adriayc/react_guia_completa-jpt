@@ -5,7 +5,8 @@ import Tarea from "../models/Tarea.js"
 
 const obtenerProyectos = async (req, res) => {
     // Obtiene los proyectos del usuario autenticado
-    const proyectos = await Proyecto.find().where('creador').equals(req.usuario)
+    // const proyectos = await Proyecto.find().where('creador').equals(req.usuario)
+    const proyectos = await Proyecto.find().where('creador').equals(req.usuario).select('-tareas')      // Excluye las tareas
     return res.json(proyectos)
 }
 
@@ -36,7 +37,8 @@ const obtenerProyecto = async (req, res) => {
         return res.status(404).json({ msg: error.message })
     }
 
-    const proyecto = await Proyecto.findById(id)
+    // const proyecto = await Proyecto.findById(id)
+    const proyecto = await Proyecto.findById(id).populate('tareas')
     // console.log(proyecto)
 
     if (!proyecto) {
