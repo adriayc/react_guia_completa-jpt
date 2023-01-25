@@ -2,6 +2,7 @@ import mongoose from "mongoose"
 // Impotar modelos
 import Proyecto from "../models/Proyecto.js"
 import Tarea from "../models/Tarea.js"
+import Usuario from "../models/Usuario.js"
 
 const obtenerProyectos = async (req, res) => {
     // Obtiene los proyectos del usuario autenticado
@@ -125,6 +126,21 @@ const eliminarProyecto = async (req, res) => {
     }
 }
 
+const buscarColaborador = async (req, res) => {
+    // console.log(req.body)
+
+    const { email } = req.body
+    // const usuario = await Usuario.findOne({email})
+    const usuario = await Usuario.findOne({email}).select('-password -token -confirmado -createdAt -updatedAt -__v')
+
+    if (!usuario) {
+        const error = new Error('Usuario no encontrado')
+        return res.status(404).json({ msg: error.message })
+    }
+
+    return res.json(usuario)
+}
+
 const agregarColaborador = async (req, res) => {}
 
 const eliminarColaborador = async (req, res) => {}
@@ -149,6 +165,7 @@ export {
     obtenerProyecto,
     editarProyecto,
     eliminarProyecto,
+    buscarColaborador,
     agregarColaborador,
     eliminarColaborador,
     // obtenerTareas,
