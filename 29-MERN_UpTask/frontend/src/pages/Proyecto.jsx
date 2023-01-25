@@ -6,12 +6,13 @@ import useProyectos from "../hooks/useProyectos"
 import ModalFormularioTarea from "../components/ModalFormularioTarea"
 import ModalEliminarTarea from "../components/ModalEliminarTarea"
 import Tarea from "../components/Tarea"
+import Alerta from "../components/Alerta"
 
 const Proyecto = () => {
   const params = useParams()
   // console.log(params)
 
-  const { obtenerProyecto, proyecto, cargando, handleModalTarea } = useProyectos()
+  const { obtenerProyecto, proyecto, cargando, handleModalTarea, alerta } = useProyectos()
 
   // obtenerProyecto(params.id)
   // Lo ideal es mejor cargarlo por medio de hooks
@@ -26,6 +27,8 @@ const Proyecto = () => {
 
   // console.log(proyecto)
   // console.log(proyecto.tareas?.length)
+
+  const { msg } = alerta
 
   return (
     <>
@@ -56,6 +59,13 @@ const Proyecto = () => {
       </button>
 
       <p className="font-bold text-xl mt-10">Tareas del Proyecto</p>
+
+      <div className="flex justify-center">
+        <div className="w-full md:w-1/3 lg:w-1/4">
+          {msg && <Alerta alerta={alerta} />}
+        </div>
+      </div>
+      
       <div className="bg-white shadow rounded-lg mt-10">
         {/* {proyecto.tareas?.length ? 'Si hay tareas' : 'No hay tareas'} */}
         {proyecto.tareas?.length ? proyecto.tareas?.map(tarea => (
