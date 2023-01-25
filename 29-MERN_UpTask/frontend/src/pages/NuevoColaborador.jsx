@@ -4,10 +4,11 @@ import { useParams } from "react-router-dom"
 import useProyectos from "../hooks/useProyectos"
 // Importar components
 import FormularioColaborador from "../components/FormularioColaborador"
+import Alerta from "../components/Alerta"
 
 const NuevoColaborador = () => {
   
-  const { obtenerProyecto, proyecto, cargando, colaborador, agregarColaborador } = useProyectos()
+  const { obtenerProyecto, proyecto, cargando, colaborador, agregarColaborador, alerta } = useProyectos()
 
   const params = useParams()
 
@@ -18,6 +19,8 @@ const NuevoColaborador = () => {
   // if (cargando) return 'Cargando...'
 
   // console.log(colaborador)
+
+  if (!proyecto?._id) return <Alerta alerta={alerta} />
 
   return (
     <>
