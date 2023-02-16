@@ -88,7 +88,7 @@ const Proyecto = () => {
         {proyecto.colaboradores?.length ? proyecto.colaboradores?.map(colaborador => (
           <Colaborador 
             key={colaborador._id}
-            tarea={colaborador}
+            colaborador={colaborador}
           />
         )) : <p className="text-center my-5 p-10">No hay colaboradores en este proyecto</p>}
       </div>
