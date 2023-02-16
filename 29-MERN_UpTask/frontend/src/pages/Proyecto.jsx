@@ -8,6 +8,7 @@ import ModalEliminarTarea from "../components/ModalEliminarTarea"
 import Tarea from "../components/Tarea"
 import Alerta from "../components/Alerta"
 import Colaborador from "../components/Colaborador"
+import ModalEliminarColaborador from "../components/ModalElimiarColaborador"
 
 const Proyecto = () => {
   const params = useParams()
@@ -21,7 +22,7 @@ const Proyecto = () => {
     obtenerProyecto(params.id)
   }, [])
 
-  console.log(proyecto)
+  // console.log(proyecto)
   const { nombre } = proyecto
 
   if (cargando) return 'Cargando...'
@@ -95,6 +96,7 @@ const Proyecto = () => {
 
       <ModalFormularioTarea />
       <ModalEliminarTarea />
+      <ModalEliminarColaborador />
     </>
   )
 }
