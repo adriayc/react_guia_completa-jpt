@@ -7,6 +7,7 @@ import ModalFormularioTarea from "../components/ModalFormularioTarea"
 import ModalEliminarTarea from "../components/ModalEliminarTarea"
 import Tarea from "../components/Tarea"
 import Alerta from "../components/Alerta"
+import Colaborador from "../components/Colaborador"
 
 const Proyecto = () => {
   const params = useParams()
@@ -20,7 +21,7 @@ const Proyecto = () => {
     obtenerProyecto(params.id)
   }, [])
 
-  // console.log(proyecto)
+  console.log(proyecto)
   const { nombre } = proyecto
 
   if (cargando) return 'Cargando...'
@@ -81,6 +82,15 @@ const Proyecto = () => {
           to={`/proyectos/nuevo-colaborador/${proyecto._id}`}
           className='text-gray-400 hover:text-black font-bold uppercase'
         >Añadir</Link>
+      </div>
+
+      <div className="bg-white shadow rounded-lg mt-10">
+        {proyecto.colaboradores?.length ? proyecto.colaboradores?.map(colaborador => (
+          <Colaborador 
+            key={colaborador._id}
+            tarea={colaborador}
+          />
+        )) : <p className="text-center my-5 p-10">No hay colaboradores en este proyecto</p>}
       </div>
 
       <ModalFormularioTarea />

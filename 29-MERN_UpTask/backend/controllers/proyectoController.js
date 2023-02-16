@@ -39,7 +39,10 @@ const obtenerProyecto = async (req, res) => {
     }
 
     // const proyecto = await Proyecto.findById(id)
-    const proyecto = await Proyecto.findById(id).populate('tareas')
+    // const proyecto = await Proyecto.findById(id).populate('tareas')
+    // const proyecto = await Proyecto.findById(id).populate('tareas').populate('colaboradores')
+    const proyecto = await Proyecto.findById(id).populate('tareas').populate('colaboradores', 'nombre email')       // Filtrar datos de consultas complejas
+    // const proyecto = await Proyecto.findById(id).populate('tareas').populate('colaboradores')->select('-password')      // No funciona select (solo en consultas simples)
     // console.log(proyecto)
 
     if (!proyecto) {
