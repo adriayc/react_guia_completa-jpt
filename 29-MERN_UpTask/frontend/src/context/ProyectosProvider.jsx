@@ -398,7 +398,7 @@ const ProyectosProvider = ({children}) => {
       })
       // Reset colaborador y alerta
       setColaborador({})
-      setAlerta({})
+      // setAlerta({})
       
     } catch (error) {
       // console.log(error.response)
@@ -418,7 +418,42 @@ const ProyectosProvider = ({children}) => {
   }
 
   const eliminarColaborador = async () => {
-    console.log(colaborador)
+    // console.log(colaborador)
+
+    try {
+      const token = localStorage.getItem('token')
+      if (!token) return
+
+      const config = {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`
+        }
+      }
+
+      const { data } = await clienteAxios.post(`/proyectos/eliminar-colaborador/${proyecto._id}`, { id: colaborador._id }, config)
+      // console.log(data)
+
+      const proyectoActualizado = {...proyecto}
+      proyectoActualizado.colaboradores = proyectoActualizado.colaboradores.filter(colaboradorState => colaboradorState._id !== colaborador._id)
+
+      setProyecto(proyectoActualizado)
+      setModalEliminarColaborador(false)
+
+      setAlerta({
+        msg: data.msg,
+        error: false
+      })
+      setColaborador({})
+
+    } catch (error) {
+      // console.log(error.response)
+
+      setAlerta({
+        msg: error.response.data.msg,
+        error: true
+      })
+    }
   }
 
   return (
