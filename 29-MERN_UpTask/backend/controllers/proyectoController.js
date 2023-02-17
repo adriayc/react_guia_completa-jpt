@@ -7,7 +7,17 @@ import Usuario from "../models/Usuario.js"
 const obtenerProyectos = async (req, res) => {
     // Obtiene los proyectos del usuario autenticado
     // const proyectos = await Proyecto.find().where('creador').equals(req.usuario)
-    const proyectos = await Proyecto.find().where('creador').equals(req.usuario).select('-tareas')      // Excluye las tareas
+    // const proyectos = await Proyecto.find().where('creador').equals(req.usuario).select('-tareas')      // Excluye las tareas
+    const proyectos = await Proyecto.find({
+        '$or': [
+            { colaboradores: { $in: req.usuario } },
+            { creador: { $in: req.usuario } },
+        ]
+    })
+        // .where('creador')
+        // .equals(req.usuario)
+        .select('-tareas')      // Excluye las tareas
+
     return res.json(proyectos)
 }
 
