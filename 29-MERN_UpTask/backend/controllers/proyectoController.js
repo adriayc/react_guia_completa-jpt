@@ -64,7 +64,7 @@ const obtenerProyecto = async (req, res) => {
     // console.log(req.usuario._id)
     // console.log(proyecto.creador.toString() === req.usuario._id.toString())   // convert ObjectId to string
 
-    if (proyecto.creador.toString() !== req.usuario._id.toString()) {
+    if (proyecto.creador.toString() !== req.usuario._id.toString() && !proyecto.colaboradores.some(colaborador => colaborador._id.toString() === req.usuario._id.toString())) {
         const error = new Error('Acción no válida')
         return res.status(404).json({ msg: error.message })
     }

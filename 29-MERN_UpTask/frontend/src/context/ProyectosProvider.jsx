@@ -155,6 +155,7 @@ const ProyectosProvider = ({children}) => {
       const { data } = await clienteAxios(`/proyectos/${id}`, config)
       // console.log(data)
       setProyecto(data)
+      setAlerta({})
 
     } catch (error) {
       // console.log(error)
@@ -399,6 +400,10 @@ const ProyectosProvider = ({children}) => {
       // Reset colaborador y alerta
       setColaborador({})
       // setAlerta({})
+
+      setTimeout(() => {
+        setAlerta({})
+      }, 3000)
       
     } catch (error) {
       // console.log(error.response)
@@ -445,6 +450,10 @@ const ProyectosProvider = ({children}) => {
         error: false
       })
       setColaborador({})
+
+      setTimeout(() => {
+        setAlerta({})
+      }, 3000)
 
     } catch (error) {
       // console.log(error.response)
