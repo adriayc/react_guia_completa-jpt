@@ -1,4 +1,4 @@
-import mongoose from "mongoose"
+import mongoose, { mongo } from "mongoose"
 
 const tareaSchema = mongoose.Schema({
     nombre: {
@@ -28,6 +28,11 @@ const tareaSchema = mongoose.Schema({
     proyecto: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Proyecto',
+    },
+    completado: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Usuario',
+        default: null,
     }
 }, {
     timestamp: true,

@@ -12,11 +12,12 @@ const Tarea = ({tarea}) => {
 
   return (
     <div className="border-b p-5 flex justify-between items-center">
-      <div>
+      <div className='flex flex-col items-start'>
         <p className="text-xl mb-1">{nombre}</p>
         <p className="text-sm text-gray-500 uppercase mb-1">{descripcion}</p>
         <p className="text-sm mb-1">{formatearFecha(fechaEntrega)}</p>
         <p className="text-gray-600 mb-1">Prioridad: {prioridad}</p>
+        {estado && <p className='text-xs bg-green-600 uppercase p-1 rounded-lg text-white'>Completado por: {tarea.completado.nombre}</p>}
       </div>
 
       <div className="flex gap-2">
