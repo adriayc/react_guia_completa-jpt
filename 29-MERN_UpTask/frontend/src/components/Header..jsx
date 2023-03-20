@@ -1,6 +1,12 @@
 import { Link } from 'react-router-dom'
+// Importar custom hooks
+import useProyectos from '../hooks/useProyectos'
+// Importar components
+import Busqueda from './Busqueda'
 
 const Header = () => {
+  const { handleBuscador } = useProyectos()
+
   return (
     <header className="px-4 py-5 bg-white border-b">
       <div className="md:flex md:justify-between">
@@ -16,6 +22,7 @@ const Header = () => {
           <button
             type='button'
             className='font-bold uppercase'
+            onClick={handleBuscador}
           >Buscar Proyectos</button>
 
           <Link 
@@ -27,6 +34,9 @@ const Header = () => {
             type='button'
             className='text-white text-sm bg-sky-600 p-3 rounded-md uppercase font-bold'
           >Cerrar Sesíon</button>
+
+          {/* Modal buscador */}
+          <Busqueda />
         </div>
       </div>
     </header>
