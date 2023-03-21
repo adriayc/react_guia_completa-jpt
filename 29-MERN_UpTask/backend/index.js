@@ -79,5 +79,11 @@ io.on('connection', (socket) => {
     console.log('Conectando a socket.io')
 
     // Definir los eventos de socket.io
-    
+    // Recibe el evento del prueba desde frontend
+    // socket.on('prueba', () => {
+    // socket.on('prueba',(nombre) => {
+    socket.on('prueba',(proyectos) => {
+        // console.log('Prueba desde Socket.io ', nombre)
+        console.log('Prueba desde Socket.io ', proyectos)
+    });
 })

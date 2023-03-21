@@ -18,6 +18,11 @@ const Proyectos = () => {
   useEffect(() => {
     // Abrimos la conexion a la URL del backend
     socket = io(import.meta.env.VITE_BACKEND_URL)
+
+    //  Emitir un evento de prueba al servidor
+    // socket.emit('prueba')
+    // socket.emit('prueba', 'Adriano')
+    socket.emit('prueba', proyectos)
   }, [])
 
   const { msg } = alerta
