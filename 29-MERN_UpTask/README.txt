@@ -78,6 +78,8 @@
         > Home -> "Setup Inbox" -> "Add Inbox" -> Click name o Edit Settings -> "SMTP Settings'
             - Integrations: Nodemailer (Node.js)
     
+    - Instalar Socket.io
+        # npm install socket.io
 
 * Crear el proyecto FRONTEND
     - crear la app con Vite
@@ -100,3 +102,6 @@
     
     - Instalar Headless UI
         # npm install @headlessui/react
+
+    - Instalar Socket.io
+        # npm install socket.io-client

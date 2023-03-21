@@ -432,3 +432,7 @@ MonngoDB Express React Node
 * Encargado de registrar todas las URL's o Endpoints que soporta nuestra aplicación.
 
 Ejemplo: Si el usuario accede a una URL el Router ya tiene indicaciones de comunicarse con un Controlador en especifico, ese Controlador ya sabe que Modelo va a llamar y que vista va a ejecutar.
+
+## ¿Qué es Socket.IO?
+* Es una librería que se basa en eventos y está desarrollada sobre el lenguaje de programación JavaScript que permite crear aplicaciones en tiempo real (realtime).
+* Comunicación bidireccional y de baja latencia para cada plataforma.
