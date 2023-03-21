@@ -79,14 +79,14 @@ io.on('connection', (socket) => {
     console.log('Conectando a socket.io')
 
     // Definir los eventos de socket.io
-    // Recibe el evento del prueba desde frontend
-    // socket.on('prueba', () => {
-    // socket.on('prueba',(nombre) => {
-    socket.on('prueba',(proyectos) => {
-        // console.log('Prueba desde Socket.io ', nombre)
-        console.log('Prueba desde Socket.io ', proyectos)
+    socket.on('abrir proyecto', (proyecto) => {
+        // console.log('Desde el proyecto ', proyecto)
 
-        // Enviar un respuesta de regreso a Socket.io
-        socket.emit('respuesta', { nombre: 'Adriano' })
-    });
+        // Cada proyecto entra a un socket diferente (room)
+        socket.join(proyecto)
+
+        // Emitir un respuesta a socket.io-client (frontend)
+        // socket.emit('respuesta', { nombre: 'Adriano' })
+        // socket.to('639b1adb70b46e34414722c3').emit('respuesta', { nombre: 'Adriano' })
+    })
 })

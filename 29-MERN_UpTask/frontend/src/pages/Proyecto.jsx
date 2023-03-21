@@ -1,5 +1,7 @@
 import { useEffect/*, useState*/ } from "react"
 import { useParams, Link } from "react-router-dom"
+// Importar socket.io
+import io from 'socket.io-client'
 // Importar custom hooks
 import useProyectos from "../hooks/useProyectos"
 import useAdmin from "../hooks/useAdmin"
@@ -9,6 +11,9 @@ import ModalEliminarTarea from "../components/ModalEliminarTarea"
 import Tarea from "../components/Tarea"
 import Colaborador from "../components/Colaborador"
 import ModalEliminarColaborador from "../components/ModalElimiarColaborador"
+
+// Definimos una variable para socke.io-client
+let socket
 
 const Proyecto = () => {
   const params = useParams()
@@ -22,6 +27,21 @@ const Proyecto = () => {
   useEffect(() => {
     obtenerProyecto(params.id)
   }, [])
+
+  // useEffect que se ejecuta una sola vez para la conexion a socket.io (backend)
+  useEffect(() => {
+    socket = io(import.meta.env.VITE_BACKEND_URL)
+    // Emitir un evento al backend (socket.io) e informa en que proyecto se encuentra
+    socket.emit('abrir proyecto', params.id)
+  }, [])
+
+  // useEffect que se ejecuta todo el tiempo
+  useEffect(() => {
+    // Recibir la respuesta desde socker.io (backend)
+    socket.on('respuesta', (persona) => {
+      console.log(persona)
+    })
+  })   // Sin dependencia
 
   // console.log(proyecto)
   const { nombre } = proyecto
