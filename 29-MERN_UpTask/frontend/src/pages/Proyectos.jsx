@@ -1,12 +1,24 @@
+import { useEffect } from 'react'
+// Importar socket.io
+import io from 'socket.io-client'
 // Importar custom hooks
 import useProyectos from "../hooks/useProyectos"
 // Importar components
 import PreviewProyecto from "../components/PreviewProyecto"
 import Alerta from "../components/Alerta"
 
+// Definir una variable para socket.io
+let socket
+
 const Proyectos = () => {
   const { proyectos, alerta } = useProyectos()
   // console.log(proyectos)
+
+  // useEffect para socket.io (de una sola ejecucion)
+  useEffect(() => {
+    // Abrimos la conexion a la URL del backend
+    socket = io(import.meta.env.VITE_BACKEND_URL)
+  }, [])
 
   const { msg } = alerta
 
