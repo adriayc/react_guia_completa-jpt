@@ -23,7 +23,14 @@ const Proyectos = () => {
     // socket.emit('prueba')
     // socket.emit('prueba', 'Adriano')
     socket.emit('prueba', proyectos)
-  }, [])
+
+    // Recibir informacion desde socket.io (frontend)
+    // socket.on('respuesta', () => {
+    socket.on('respuesta', (persona) => {
+      console.log('Desde el frontend ', persona)
+    })
+  // }, [])
+})    // Usualmente usamos sin dependencia para que se ejecute todo el tiempo
 
   const { msg } = alerta
 

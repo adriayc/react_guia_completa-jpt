@@ -85,5 +85,8 @@ io.on('connection', (socket) => {
     socket.on('prueba',(proyectos) => {
         // console.log('Prueba desde Socket.io ', nombre)
         console.log('Prueba desde Socket.io ', proyectos)
+
+        // Enviar un respuesta de regreso a Socket.io
+        socket.emit('respuesta', { nombre: 'Adriano' })
     });
 })
