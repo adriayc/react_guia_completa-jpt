@@ -101,10 +101,17 @@ io.on('connection', (socket) => {
         socket.to(proyecto).emit('tarea agregada', tarea)
     })
 
-    // Escuchar el vento 'eliminar tarea' (desde el frontend)
+    // Escuchar el 2vento 'eliminar tarea' (desde el frontend)
     socket.on('eliminar tarea', tarea => {
         const proyecto = tarea.proyecto
         // socket.in(proyecto).emit('tarea eliminada', tarea)   // in igual a to
         socket.to(proyecto).emit('tarea eliminada', tarea)
+    })
+
+    // Escuchar el evento 'actualizar tarea' (desde el frontend)
+    socket.on('actualizar tarea', tarea => {
+        // console.log(tarea)
+        const proyecto = tarea.proyecto._id
+        socket.to(proyecto).emit('tarea actualizada', tarea)
     })
 })

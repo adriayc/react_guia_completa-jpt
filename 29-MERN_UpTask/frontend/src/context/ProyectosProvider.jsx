@@ -286,10 +286,8 @@ const ProyectosProvider = ({children}) => {
       const { data } = await clienteAxios.put(`tareas/${tarea.id}`, tarea, config)
       // console.log(data)
 
-      // Actualizar el state de tareas del proyecto
-      const proyectoActualizado = {...proyecto}
-      proyectoActualizado.tareas = proyectoActualizado.tareas.map(tareaState => tareaState._id === data._id ? data : tareaState)
-      setProyecto(proyectoActualizado)
+      // Socket.io
+      socket.emit('actualizar tarea', data)
 
       // Remover la alerta y modal
       setAlerta({})
@@ -527,6 +525,14 @@ const ProyectosProvider = ({children}) => {
     setProyecto(proyectoActualizado)
   }
 
+  const actualizarTareaProyecto = tarea => {
+    // Actualizar el state de tareas del proyecto
+    const proyectoActualizado = {...proyecto}
+    proyectoActualizado.tareas = proyectoActualizado.tareas.map(tareaState => tareaState._id === tarea._id ? tarea : tareaState)
+
+    setProyecto(proyectoActualizado)
+  }
+
   return (
     <ProyectosContext.Provider
       value={{
@@ -557,6 +563,7 @@ const ProyectosProvider = ({children}) => {
         handleBuscador,
         submitTareaProyecto,
         eliminarTareaProyecto,
+        actualizarTareaProyecto,
       }}
     >
       {children}
