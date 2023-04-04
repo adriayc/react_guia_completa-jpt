@@ -89,4 +89,15 @@ io.on('connection', (socket) => {
         // socket.emit('respuesta', { nombre: 'Adriano' })
         // socket.to('639b1adb70b46e34414722c3').emit('respuesta', { nombre: 'Adriano' })
     })
+
+    // Escuchar el evento 'nueva tarea'
+    socket.on('nueva tarea', (tarea) => {
+        // console.log(tarea)
+
+        const proyecto = tarea.proyecto
+        // Emitir el proyecto (frontend)
+        // socket.on(tarea.proyecto)
+        // socket.on(proyecto).emit('tarea agregada', tarea)
+        socket.to(proyecto).emit('tarea agregada', tarea)
+    })
 })

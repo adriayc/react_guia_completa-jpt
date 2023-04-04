@@ -1,7 +1,12 @@
 import { useEffect, useState, createContext } from 'react' 
 import { useNavigate } from 'react-router-dom'
+// Importar socket.io
+import io from 'socket.io-client'
 // Importar settings
 import clienteAxios from '../config/clienteAxios'
+
+// Definir una variable para socket.io
+let socket
 
 const ProyectosContext = createContext()
 
@@ -18,6 +23,11 @@ const ProyectosProvider = ({children}) => {
   const [ buscador, setBuscador ] = useState(false)
 
   const navigate = useNavigate()
+
+  // Crear la conexion a socket.io (backend)
+  useEffect(() => {
+    socket = io(import.meta.env.VITE_BACKEND_URL)
+  }, [])
 
   const mostrarAlerta = alerta => {
     setAlerta(alerta)
@@ -249,15 +259,12 @@ const ProyectosProvider = ({children}) => {
       const { data } = await clienteAxios.post('/tareas', tarea, config)
       // console.log(data)
 
-      // Agregar la tarea al state
-      const proyectoActualizado = {...proyecto}
-      proyectoActualizado.tareas = [...proyecto.tareas, data]
-
-      setProyecto(proyectoActualizado)
-
       // Cerrar la alerta y modal
       setAlerta({})
       setModalFormularioTarea(false)
+
+      // Socket.io
+      socket.emit('nueva tarea', data)
 
     } catch (error) {
       console.log(error)
@@ -504,6 +511,16 @@ const ProyectosProvider = ({children}) => {
     setBuscador(!buscador)
   }
 
+  // Socket.io
+  const submitTareaProyecto = (tarea) => {
+    // Agregar la tarea al state
+    const proyectoActualizado = {...proyecto}
+    // proyectoActualizado.tareas = [...proyecto.tareas, data]
+    proyectoActualizado.tareas = [...proyectoActualizado.tareas, tarea]
+
+    setProyecto(proyectoActualizado)
+  }
+
   return (
     <ProyectosContext.Provider
       value={{
@@ -532,6 +549,7 @@ const ProyectosProvider = ({children}) => {
         completarTarea,
         buscador,
         handleBuscador,
+        submitTareaProyecto,
       }}
     >
       {children}

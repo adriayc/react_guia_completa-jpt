@@ -19,7 +19,7 @@ const Proyecto = () => {
   const params = useParams()
   // console.log(params)
 
-  const { obtenerProyecto, proyecto, cargando, handleModalTarea, alerta } = useProyectos()
+  const { obtenerProyecto, proyecto, cargando, handleModalTarea, alerta, submitTareaProyecto } = useProyectos()
   const admin = useAdmin()
 
   // obtenerProyecto(params.id)
@@ -34,6 +34,18 @@ const Proyecto = () => {
     // Emitir un evento al backend (socket.io) e informa en que proyecto se encuentra
     socket.emit('abrir proyecto', params.id)
   }, [])
+
+    // Recibiendo el evento 'tarea nueva' desde socker.io (backend)
+    useEffect(() => {
+      socket.on('tarea agregada', tareaNueva => {
+        // console.log(tareaNueva)
+
+        // Validar el ID del proyecto
+        if (tareaNueva.proyecto === proyecto._id) {
+          submitTareaProyecto(tareaNueva)
+        }
+      })
+    })
 
   // useEffect que se ejecuta todo el tiempo
   useEffect(() => {
