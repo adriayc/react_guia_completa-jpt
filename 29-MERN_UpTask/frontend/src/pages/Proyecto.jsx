@@ -19,7 +19,7 @@ const Proyecto = () => {
   const params = useParams()
   // console.log(params)
 
-  const { obtenerProyecto, proyecto, cargando, handleModalTarea, alerta, submitTareaProyecto, eliminarTareaProyecto, actualizarTareaProyecto } = useProyectos()
+  const { obtenerProyecto, proyecto, cargando, handleModalTarea, alerta, submitTareaProyecto, eliminarTareaProyecto, actualizarTareaProyecto, cambiarEstadoTarea } = useProyectos()
   const admin = useAdmin()
 
   // obtenerProyecto(params.id)
@@ -51,10 +51,16 @@ const Proyecto = () => {
           eliminarTareaProyecto(tareaEliminada)
         }
       })
-      
+
       socket.on('tarea actualizada', tareaActualizar => {
         if (tareaActualizar.proyecto._id === proyecto._id) {
           actualizarTareaProyecto(tareaActualizar)
+        }
+      })
+
+      socket.on('nuevo estado', nuevoEstadoTarea => {
+        if (nuevoEstadoTarea.proyecto._id === proyecto._id) {
+          cambiarEstadoTarea(nuevoEstadoTarea)
         }
       })
     })
