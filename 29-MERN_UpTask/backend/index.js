@@ -100,4 +100,11 @@ io.on('connection', (socket) => {
         // socket.on(proyecto).emit('tarea agregada', tarea)
         socket.to(proyecto).emit('tarea agregada', tarea)
     })
+
+    // Escuchar el vento 'eliminar tarea' (desde el frontend)
+    socket.on('eliminar tarea', tarea => {
+        const proyecto = tarea.proyecto
+        // socket.in(proyecto).emit('tarea eliminada', tarea)   // in igual a to
+        socket.to(proyecto).emit('tarea eliminada', tarea)
+    })
 })

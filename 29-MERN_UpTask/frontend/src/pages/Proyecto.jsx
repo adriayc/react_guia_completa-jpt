@@ -19,7 +19,7 @@ const Proyecto = () => {
   const params = useParams()
   // console.log(params)
 
-  const { obtenerProyecto, proyecto, cargando, handleModalTarea, alerta, submitTareaProyecto } = useProyectos()
+  const { obtenerProyecto, proyecto, cargando, handleModalTarea, alerta, submitTareaProyecto, eliminarTareaProyecto } = useProyectos()
   const admin = useAdmin()
 
   // obtenerProyecto(params.id)
@@ -35,7 +35,7 @@ const Proyecto = () => {
     socket.emit('abrir proyecto', params.id)
   }, [])
 
-    // Recibiendo el evento 'tarea nueva' desde socker.io (backend)
+    // Recibiendo el evento desde socker.io (backend)
     useEffect(() => {
       socket.on('tarea agregada', tareaNueva => {
         // console.log(tareaNueva)
@@ -43,6 +43,12 @@ const Proyecto = () => {
         // Validar el ID del proyecto
         if (tareaNueva.proyecto === proyecto._id) {
           submitTareaProyecto(tareaNueva)
+        }
+      })
+
+      socket.on('tarea eliminada', tareaEliminada => {
+        if (tareaEliminada.proyecto === proyecto._id) {
+          eliminarTareaProyecto(tareaEliminada)
         }
       })
     })
