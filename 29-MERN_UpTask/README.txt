@@ -109,6 +109,20 @@
 * Deployamos la app MERN UpTask
   - Backend:
     + Subir la app al repositorio de GitHub
+    + Deploy de la app (backend) a Heroku
+      -> Instalar Heroku CLI
+        - Iniciar Sesion con heroku CLI
+          # heroku login
+        - Crear una app en blanco
+          # heroku create
+        - Sincronizar el repositorio con heroku
+          # git push heroku main
+      -> 'Open' para ejecutar la app
+      -> 'More' / 'View Logs' para visualizar los logs de la app
+      -> 'Settings' / 'Reveal Config Vars' para visualizar los variables de entorno
+      -> Instalar openssl y generar un codigo random aleatorio
+        # sudo apt install openssl -y
+        # openssl rand -base64 32
 
   - Frontend:
     + Subir la app al repositorio de github
