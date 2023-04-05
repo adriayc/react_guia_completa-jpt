@@ -109,3 +109,6 @@
 * Deployamos la app MERN UpTask
   - Backend:
     + Subir la app al repositorio de GitHub
+
+  - Frontend:
+    + Subir la app al repositorio de github
