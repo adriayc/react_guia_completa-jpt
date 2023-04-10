@@ -404,3 +404,31 @@ MonngoDB Express React Node
 * Comunicación entre Backend y Frontend con JSON y peticiones HTTP.
 * NPM con una gran cantidad de dependencias.
 * Solo código de JavaScript.
+
+## ¿Qué es MVC?
+* Model View Controller
+* Patrón de Arquitectura de Software que permite la separación de obligaciones de cada pieaza de tu código.
+* Enfatiza la seperación de la lógica de programación con la presentación.
+* MVC es la arquitectura más común hoy en día tanto para la web y se utiliza en cualquier lenguaje.
+
+### Ventajas de MVC
+* Tu aplicación no tendrá mejor performance pero si tendrá un mejor orden en el código.
+* Al implementar una arquitectura probada con MVC todos los programadores de un grupo saben exactamente donde encontrar el código encargado de realizar alguna tarea.
+* Aprender MVC y cualquier framework MVC te será fácil de aprender.
+
+### ¿Qué es el Modelo?
+* Encargado de todo lo relacionado a los datos, Base de Datos y el CRUD.
+* El Modelo se encargará de consultar una base de datos pero no se encarga de mostrar esos datos.
+
+### ¿Qué es la Vista?
+* Se encarga de todo lo que se ve en pantalla (HTML).
+* El Modelo se encargará de consultar la base de datos pero la vista la que se encarga de mostrar los resultados.
+* En nuestro proyecto, React es la vista.
+
+### ¿Qué es el Controlador?
+* Es el que comunica Modelo y Vista, antes de que el modelo consulte a la base de datos el Controlador es el encargado de llamarlo, una vez que el Modelo ya consulto la base de datos, es el Controlador quien le comunica a la vista los datos para que los muestre.
+
+### ¿Qué es el Router?
+* Encargado de registrar todas las URL's o Endpoints que soporta nuestra aplicación.
+
+Ejemplo: Si el usuario accede a una URL el Router ya tiene indicaciones de comunicarse con un Controlador en especifico, ese Controlador ya sabe que Modelo va a llamar y que vista va a ejecutar.
