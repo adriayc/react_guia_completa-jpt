@@ -375,3 +375,32 @@ Estado global sin dependencias.
 
 ## ¿Que es Prisma?
 Prisma es un ORM que ayuda a los desarrolladores de aplicaciones a construir más rápido y cometer menos errores.
+
+## ¿Qué es MERN?
+MonngoDB Express React Node
+
+### Qué es MERN Stack
+* Un Stack es un conjunto de Herramientas para crear una app.
+* Full Stack quiere decir que puedes crear el Stack Completo de una App y MERN Stack te permite hacerlo.
+* React en el Front End y Node en el backend son una combinación muy común.
+* Pudes utilizar React con Backends de Django, Rails o Laravel.
+
+### ¿Qué es MonngoDB?
+* Basde de Datos NoSQL orientada a Documentos y grandes cantidades de datos.
+* Los datos son almacenados en un formato similar a JSON (documentos) llamda BSON.
+* Las Tablas se llaman Colecciones y los REgistros Documentos.
+
+### ¿Qué es Node?
+* Entorno de ejecución en JavaScript que se ejecuta en el sevidor.
+* Entre sus ventajas se encuentra la gran cantidad de librerías disponibles para integrarlas en proyectos con NPM.
+* Puede consultar Base de Datos, Autenticar Usuarios, manejar rutas y mucho más.
+
+### ¿Qué es Express.js?
+* Es una herramienta para crear un Servidor en JavaScript.
+* A diferencia de Rails o Laravel no tiene un sistema de Vistas definido, tampoco ORM o Autenticación; sino que te deja mucha parte de la configuración en tus manos.
+
+### Ventajas de MERN
+* Separación de Backend y Frontend.
+* Comunicación entre Backend y Frontend con JSON y peticiones HTTP.
+* NPM con una gran cantidad de dependencias.
+* Solo código de JavaScript.
