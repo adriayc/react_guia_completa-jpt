@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 8.0.30, for Linux (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.31, for Linux (x86_64)
 --
 -- Host: localhost    Database: quioscoapp
 -- ------------------------------------------------------
--- Server version	8.0.30-0ubuntu0.22.04.1
+-- Server version	8.0.31-0ubuntu0.22.04.1
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -54,7 +54,7 @@ CREATE TABLE `Orden` (
   `total` double NOT NULL,
   `pedido` json NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -63,6 +63,7 @@ CREATE TABLE `Orden` (
 
 LOCK TABLES `Orden` WRITE;
 /*!40000 ALTER TABLE `Orden` DISABLE KEYS */;
+INSERT INTO `Orden` VALUES (1,'Adriano Ayala','1666930821293',179.7,'[{\"id\": 1, \"imagen\": \"cafe_01\", \"nombre\": \"Café Caramel con Chocolate\", \"precio\": 59.9, \"cantidad\": 2}, {\"id\": 35, \"imagen\": \"hamburguesas_01\", \"nombre\": \"Hamburguesa Sencilla\", \"precio\": 59.9, \"cantidad\": 1}]'),(2,'Diana Cardozo','1666931422136',99.80000000000001,'[{\"id\": 49, \"imagen\": \"pizzas_01\", \"nombre\": \"Pizza Spicy con Doble Queso\", \"precio\": 69.9, \"cantidad\": 1}, {\"id\": 29, \"imagen\": \"galletas_01\", \"nombre\": \"Paquete Galletas de Chocolate\", \"precio\": 29.9, \"cantidad\": 1}]');
 /*!40000 ALTER TABLE `Orden` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -134,4 +135,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-09-06  0:16:00
+-- Dump completed on 2022-10-28  0:32:15

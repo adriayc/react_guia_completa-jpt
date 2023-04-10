@@ -39,3 +39,15 @@
 
 * Instalar react-toastify (Alertas)
     # npm i react-toastify
+
+* Deployment de la app a Railway (URL: https://railway.app/)
+    - Crear un repositorio en GitHub y subir la app
+    - Crear un nuevo proyecto para la DB en Railway:
+      > Clic en "+ New Project" -> "Provision MySQL" -> Clic "MySQL" -> Variables (Variables de conexion).
+      > Conectarse a la DB de Railway con MySQL Workbench o TablePlus e importar la base de datos.
+    - Crear un nuevo proyecto para la app en Railway:
+      > Clic "+ New" -> "GitHub Repo"
+      > Clic en el repo de GitHub -> "Variables" -> "+ New Variables":
+        + NEW_VARIABLE: DATABASE_URL        VALUE: VALOR_VARIABLE
+      > "Settings" -> "Domains" -> Clic "Generate Domain"
+    - Si existe error con el nombre de la tablas modificamos la primera letra de las tablas a mayusculas
