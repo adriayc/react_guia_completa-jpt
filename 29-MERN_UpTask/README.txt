@@ -126,3 +126,8 @@
 
   - Frontend:
     + Subir la app al repositorio de github
+    + Deploy de la app (frontend) a Netlify
+      -> Importar un proyecto existente de GitHub
+        - Click 'Show advanced', agregamos las variables de entorno y deployamos la app
+      -> Creamos el archivo 'public/_redirects' y agregamos el siguiente contenido:
+        /* /index.html 200      # Soluciona error de redireccines React Router DOM V6
