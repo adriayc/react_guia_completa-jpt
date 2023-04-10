@@ -21,3 +21,20 @@
     
     - Instalar nodemon
         # npm i -D nodemon      // Dependencia de desarrollo
+    
+    - Crear una DB en mongoDB (URL: https://www.mongodb.com/)
+        > Database -> Clic "Build a Database" -> FREE - Clic "Create" -> FREE Shared - Clic "Create Cluster" 
+            -> "Username and Password" and Edit user root
+                - Actualizar Password
+            -> Clic "Finish and Close" y Clic "Go to Databases"
+        
+        > Clic "Connect" -> "Connect using MongoDB Compass"
+            - Error de conection -> Security - Network Access -> Clic "+ ADD IP ADDRESS" -> Clic "ALLOW ACCESS FROM ANYWHERE"
+
+        > Clic "Connect" -> "Connect your application" y copiar la URL de conexion a la DB
+        
+    - Instalar mongoose
+        # npm i mongoose
+    
+    - Instalar dotenv (Variables de entorno)
+        # npm i dotenv
