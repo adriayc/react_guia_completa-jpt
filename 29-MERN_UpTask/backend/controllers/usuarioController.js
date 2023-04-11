@@ -3,6 +3,7 @@ import Usuario from "../models/Usuario.js"
 // Importar helpers
 import generarId from "../helpers/generarId.js"
 import generarJWT from "../helpers/generarJWT.js"
+import { emailResgistro, emailOlvidePassword } from "../helpers/email.js"
 
 // // GET
 // const usuarios = (req, res) => {
@@ -35,10 +36,20 @@ const registrar = async (req, res) => {
         const usuario = new Usuario(req.body)
         // console.log(usuario)
         usuario.token = generarId()
-        const usuarioAlmacenado = await usuario.save()
+        // const usuarioAlmacenado = await usuario.save()
+        await usuario.save()
+
+        // Enviar el mail de confirmacion
+        // console.log(usuario)
+        emailResgistro({
+            email: usuario.email,
+            nombre: usuario.nombre,
+            token: usuario.token
+        })
 
         // res.json({ msg: 'Creando Usuario' })
-        res.json(usuarioAlmacenado)
+        // res.json(usuarioAlmacenado)
+        return res.json({ msg: 'Usuario Creado Correctamente, Revisa tu Email para confirmar tu cuenta' })
         
     } catch (error) {
         console.log(error)
@@ -102,7 +113,7 @@ const confirmar = async (req, res) => {
         usuarioConfirmar.confirmado = true
         usuarioConfirmar.token = ''     // Token de un solo uso (Eliminamos el token)
         await usuarioConfirmar.save()
-        res.json({ msg: 'Usuario confirmado correctamente' })
+        return res.json({ msg: 'Usuario confirmado correctamente' })
         // console.log(usuarioConfirmar)
     } catch (error) {
         console.log(error)
@@ -123,7 +134,15 @@ const olvidePassword = async (req, res) => {
         usuario.token = generarId()
         // console.log(usuario)
         await usuario.save()
-        res.json({ msg: 'Hemos enviado un email con las intrucciones' })
+
+        // Enviar el email
+        emailOlvidePassword({
+            email: usuario.email,
+            nombre: usuario.nombre,
+            token: usuario.token
+        })
+
+        return res.json({ msg: 'Hemos enviado un email con las intrucciones' })
     } catch (error) {
         console.log(error)
     }
