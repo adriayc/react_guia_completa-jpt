@@ -134,7 +134,9 @@ const cambiarEstado = async (req, res) => {
 
     const { id } = req.params
 
-    const tarea = await Tarea.findById(id).populate('proyecto')
+    const tarea = await Tarea.findById(id)
+        .populate('proyecto')
+        // .populate('completado')          // Error, no muestra la tarea poblado por completado
     // console.log(tarea)
 
     if (!tarea) {
@@ -152,8 +154,19 @@ const cambiarEstado = async (req, res) => {
     // console.log(!tarea.estado)
 
     tarea.estado = !tarea.estado
+    tarea.completado = req.usuario._id
     await tarea.save()
-    res.json(tarea)
+
+    // Para mostrar la tarea con el nombre de usuario que lo completo
+    const tareaAlmacenada = await Tarea.findById(id)
+        .populate('proyecto')
+        .populate('completado')
+
+    // console.log(tarea)           // Error, no muestra la tarea con el usuario completado poblado
+    // console.log(tareaAlmacenada)
+
+    // res.json(tarea)
+    return res.json(tareaAlmacenada)
 }
 
 export {
