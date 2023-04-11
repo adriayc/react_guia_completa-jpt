@@ -7,6 +7,7 @@ import dotenv from 'dotenv'
 // Importar archivos propios (agregar su extension .js)
 import conectarDB from './config/db.js'     // Importar la configuracion de conexion de la DB
 import usuarioRoutes from './routes/usuarioRoutes.js'
+import proyectoRoutes from './routes/proyectoRoutes.js'
 // import prueba from './prueba.js'
 
 const app = express()
@@ -34,6 +35,7 @@ conectarDB()
 //     res.json({'msg': 'OK'})
 // })
 app.use('/api/usuarios', usuarioRoutes)
+app.use('/api/proyectos', proyectoRoutes)
 
 const PORT = process.env.PORT || 4000       // La variable entorno PORT se inyectará automaticamente en prod y en local sera 4000
 
