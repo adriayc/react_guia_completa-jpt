@@ -8,6 +8,8 @@ const ProyectosContext = createContext()
 const ProyectosProvider = ({children}) => {
   const [ proyectos, setProyectos ] = useState([])
   const [ alerta, setAlerta ] = useState({})
+  const [ proyecto, setProyecto ] = useState({})
+  const [ cargando, setCargando ] = useState(false)
 
   const navigate = useNavigate()
 
@@ -38,6 +40,9 @@ const ProyectosProvider = ({children}) => {
       const { data } = await clienteAxios.post('/proyectos', proyecto, config)
       // console.log(data)
 
+      // Agregar el proyecto al state (evita solicitar a la API)
+      setProyectos([...proyectos, data])
+
       setAlerta({
         msg: 'Proyecto creado correctamente',
         error: false
@@ -53,6 +58,57 @@ const ProyectosProvider = ({children}) => {
     }
   }
 
+  useEffect(() => {
+    const obtenerProyectos = async () => {
+      try {
+        const token = localStorage.getItem('token')
+        if (!token) return
+
+        const config = {
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`
+          }
+        }
+
+        const { data } = await clienteAxios('/proyectos', config)
+        // console.log(data)
+        setProyectos(data)
+      } catch (error) {
+        console.log(error)
+      }
+    }
+
+    obtenerProyectos()
+  }, [])
+
+  const obtenerProyecto = async id => {
+    // console.log(id)
+
+    setCargando(true)
+    try {
+      const token = localStorage.getItem('token')
+      if (!token) return
+
+      const config = {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`
+        }
+      }
+
+      const { data } = await clienteAxios(`/proyectos/${id}`, config)
+      // console.log(data)
+      setProyecto(data)
+
+    } catch (error) {
+      console.log(error)
+    } finally {
+      setCargando(false)
+    }
+    // setCargando(false)
+  }  
+
   return (
     <ProyectosContext.Provider
       value={{
@@ -60,6 +116,9 @@ const ProyectosProvider = ({children}) => {
         mostrarAlerta,
         alerta,
         submitProyecto,
+        obtenerProyecto,
+        proyecto,
+        cargando,
       }}
     >
       {children}
