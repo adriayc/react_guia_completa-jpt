@@ -7,6 +7,8 @@ import ModalFormularioTarea from "../components/ModalFormularioTarea"
 import ModalEliminarTarea from "../components/ModalEliminarTarea"
 import Tarea from "../components/Tarea"
 import Alerta from "../components/Alerta"
+import Colaborador from "../components/Colaborador"
+import ModalEliminarColaborador from "../components/ModalElimiarColaborador"
 
 const Proyecto = () => {
   const params = useParams()
@@ -83,8 +85,18 @@ const Proyecto = () => {
         >Añadir</Link>
       </div>
 
+      <div className="bg-white shadow rounded-lg mt-10">
+        {proyecto.colaboradores?.length ? proyecto.colaboradores?.map(colaborador => (
+          <Colaborador 
+            key={colaborador._id}
+            colaborador={colaborador}
+          />
+        )) : <p className="text-center my-5 p-10">No hay colaboradores en este proyecto</p>}
+      </div>
+
       <ModalFormularioTarea />
       <ModalEliminarTarea />
+      <ModalEliminarColaborador />
     </>
   )
 }
