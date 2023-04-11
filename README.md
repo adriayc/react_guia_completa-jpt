@@ -457,3 +457,15 @@ Ejemplo: Si el usuario accede a una URL el Router ya tiene indicaciones de comun
 * Encontrarás muchos ejemplos de react y redux.
 * Algunos utilizan hooks y otros clases.
 * El código con hooks es muy diferente.
+
+### Principios de Redux
+* Solo existe un Stora con todo el State de la Aplicacion.
+* Los Componentes/Vistas no modifican el state directamente.
+* El State se modifica por medio de funciones.
+
+### Terminología de Redux
+* Store: contiene el state (1 por aplicacion).
+* Dispatch: ejecuta una acción que actualizará el state.
+* Action: objetos javascript, tienen un tipo y payload (datos).
+* Subscribe: similar a un event listener para el state.
+* Reducers: funciones, saben que hacer con las acciones y el payload.
