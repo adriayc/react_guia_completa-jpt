@@ -25,3 +25,4 @@ dist-ssr
 
 # AAC
 package-lock.json
+.env
