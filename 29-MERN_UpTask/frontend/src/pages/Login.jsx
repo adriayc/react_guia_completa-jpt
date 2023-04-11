@@ -2,6 +2,8 @@ import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 // Importar settings
 import clienteAxios from '../config/clienteAxios'
+// Impotar custom hooks
+import useAuth from '../hooks/useAuth'
 // Importar components
 import Alerta from '../components/Alerta'
 
@@ -9,6 +11,11 @@ const Login = () => {
   const [ email, setEmail ] = useState('')
   const [ password, setPassword ] = useState('')
   const [ alerta, setAlerta ] = useState({})
+
+const { /*auth, */setAuth/*, cargando*/ } = useAuth()
+
+  // console.log(auth)
+  // console.log(cargando)
 
   const handleSubmit = async e => {
     e.preventDefault()
@@ -33,6 +40,8 @@ const Login = () => {
       // console.log(data)
       // Almacenar el token en LocalStorage
       localStorage.setItem('token', data.token)
+
+      setAuth(data)
 
     } catch (error) {
       // console.log(error.response.data.msg)
