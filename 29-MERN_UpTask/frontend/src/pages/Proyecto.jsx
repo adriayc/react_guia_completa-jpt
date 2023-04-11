@@ -1,5 +1,7 @@
 import { useEffect/*, useState*/ } from "react"
 import { useParams, Link } from "react-router-dom"
+// Importar socket.io
+import io from 'socket.io-client'
 // Importar custom hooks
 import useProyectos from "../hooks/useProyectos"
 import useAdmin from "../hooks/useAdmin"
@@ -10,11 +12,14 @@ import Tarea from "../components/Tarea"
 import Colaborador from "../components/Colaborador"
 import ModalEliminarColaborador from "../components/ModalElimiarColaborador"
 
+// Definimos una variable para socke.io-client
+let socket
+
 const Proyecto = () => {
   const params = useParams()
   // console.log(params)
 
-  const { obtenerProyecto, proyecto, cargando, handleModalTarea, alerta } = useProyectos()
+  const { obtenerProyecto, proyecto, cargando, handleModalTarea, alerta, submitTareaProyecto, eliminarTareaProyecto, actualizarTareaProyecto, cambiarEstadoTarea } = useProyectos()
   const admin = useAdmin()
 
   // obtenerProyecto(params.id)
@@ -22,6 +27,51 @@ const Proyecto = () => {
   useEffect(() => {
     obtenerProyecto(params.id)
   }, [])
+
+  // useEffect que se ejecuta una sola vez para la conexion a socket.io (backend)
+  useEffect(() => {
+    socket = io(import.meta.env.VITE_BACKEND_URL)
+    // Emitir un evento al backend (socket.io) e informa en que proyecto se encuentra
+    socket.emit('abrir proyecto', params.id)
+  }, [])
+
+    // Recibiendo el evento desde socker.io (backend)
+    useEffect(() => {
+      socket.on('tarea agregada', tareaNueva => {
+        // console.log(tareaNueva)
+
+        // Validar el ID del proyecto
+        if (tareaNueva.proyecto === proyecto._id) {
+          submitTareaProyecto(tareaNueva)
+        }
+      })
+
+      socket.on('tarea eliminada', tareaEliminada => {
+        if (tareaEliminada.proyecto === proyecto._id) {
+          eliminarTareaProyecto(tareaEliminada)
+        }
+      })
+
+      socket.on('tarea actualizada', tareaActualizar => {
+        if (tareaActualizar.proyecto._id === proyecto._id) {
+          actualizarTareaProyecto(tareaActualizar)
+        }
+      })
+
+      socket.on('nuevo estado', nuevoEstadoTarea => {
+        if (nuevoEstadoTarea.proyecto._id === proyecto._id) {
+          cambiarEstadoTarea(nuevoEstadoTarea)
+        }
+      })
+    })
+
+  // useEffect que se ejecuta todo el tiempo
+  useEffect(() => {
+    // Recibir la respuesta desde socker.io (backend)
+    socket.on('respuesta', (persona) => {
+      console.log(persona)
+    })
+  })   // Sin dependencia
 
   // console.log(proyecto)
   const { nombre } = proyecto
