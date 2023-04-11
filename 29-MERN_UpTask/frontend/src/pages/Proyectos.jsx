@@ -1,6 +1,16 @@
+// importar custom hooks
+import useProyectos from "../hooks/useProyectos"
+
 const Proyectos = () => {
+  const { proyectos } = useProyectos()
+  // console.log(proyectos)
+
   return (
-    <div>Proyectos</div>
+    <>
+      <h1 className="font-black text-4xl">Proyectos</h1>
+
+      <div></div>
+    </>
   )
 }
 
