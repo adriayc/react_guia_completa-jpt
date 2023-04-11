@@ -77,7 +77,7 @@ const autenticar = async (req, res) => {
 
     // Comprobar su password
     if (await usuario.comprobarPassword(password)) {
-        console.log('Es correcto')
+        // console.log('Es correcto')
         res.json({
             // usuario     // No es correcto devolver toda la informacion del usuario
 

@@ -12,7 +12,9 @@ const Login = () => {
   const [ password, setPassword ] = useState('')
   const [ alerta, setAlerta ] = useState({})
 
-const { /*auth, */setAuth/*, cargando*/ } = useAuth()
+  const navigate = useNavigate()
+
+  const { /*auth, */setAuth/*, cargando*/ } = useAuth()
 
   // console.log(auth)
   // console.log(cargando)
@@ -43,8 +45,11 @@ const { /*auth, */setAuth/*, cargando*/ } = useAuth()
 
       setAuth(data)
 
+      // Navegar a la raiz del proyecto
+      navigate('/proyectos')
+
     } catch (error) {
-      // console.log(error.response.data.msg)
+      console.log(error.response.data.msg)
       setAlerta({
         msg: error.response.data.msg,
         error: true
