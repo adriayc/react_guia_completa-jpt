@@ -19,7 +19,7 @@ const ModalFormularioTarea = () => {
   const params = useParams()
   // console.log(params)
 
-  const handleSubmit = e => {
+  const handleSubmit = async e => {
     e.preventDefault()
 
     if ([nombre, descripcion, fechaEntrega, prioridad].includes('')) {
@@ -30,13 +30,19 @@ const ModalFormularioTarea = () => {
 
       return
     }
-    submitTarea({
+    await submitTarea({
       nombre,
       descripcion,
       fechaEntrega,
       prioridad,
       proyecto: params.id
     })
+
+    // Reset los valores del formulario
+    setNombre('')
+    setDescripcion('')
+    setFechaEntrega('')
+    setPrioridad('')
   }
 
   const { msg } = alerta
