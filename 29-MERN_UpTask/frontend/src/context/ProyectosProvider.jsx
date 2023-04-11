@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import io from 'socket.io-client'
 // Importar settings
 import clienteAxios from '../config/clienteAxios'
+import useAuth from '../hooks/useAuth'
 
 // Definir una variable para socket.io
 let socket
@@ -23,6 +24,7 @@ const ProyectosProvider = ({children}) => {
   const [ buscador, setBuscador ] = useState(false)
 
   const navigate = useNavigate()
+  const { auth } = useAuth()
 
   // Crear la conexion a socket.io (backend)
   useEffect(() => {
@@ -146,7 +148,8 @@ const ProyectosProvider = ({children}) => {
     }
 
     obtenerProyectos()
-  }, [])
+
+  }, [auth])        // Se llama cada vez que se modifica el auth
 
   const obtenerProyecto = async id => {
     // console.log(id)
@@ -539,6 +542,12 @@ const ProyectosProvider = ({children}) => {
     setProyecto(proyectoActualizado)
   }
 
+  const cerrarSesionProyectos = () => {
+    setProyectos([])
+    setProyecto({})
+    setAlerta({})
+  }
+
   return (
     <ProyectosContext.Provider
       value={{
@@ -571,6 +580,7 @@ const ProyectosProvider = ({children}) => {
         eliminarTareaProyecto,
         actualizarTareaProyecto,
         cambiarEstadoTarea,
+        cerrarSesionProyectos,
       }}
     >
       {children}
