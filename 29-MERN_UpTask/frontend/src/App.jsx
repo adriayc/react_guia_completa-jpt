@@ -17,6 +17,8 @@ import NuevoProyecto from './pages/NuevoProyecto'
 import Proyecto from './pages/Proyecto'
 import EditarProyecto from './pages/EditarProyecto'
 
+import NuevoColaborador from './pages/NuevoColaborador'
+
 // Llamando a la variable de entorno 
 // console.log(import.meta.env.VITE_BACKEND_URL)
 
@@ -41,6 +43,7 @@ function App() {
               <Route path='crear-proyecto' element={<NuevoProyecto />} />
               <Route path=':id' element={<Proyecto />} />    {/* Asegurarse que este al final porque tiene una ruta dinamica */}
               <Route path='editar/:id' element={<EditarProyecto />} />
+              <Route path='nuevo-colaborador/:id' element={<NuevoColaborador />} />
             </Route>
           </Routes>
         </ProyectosProvider>
