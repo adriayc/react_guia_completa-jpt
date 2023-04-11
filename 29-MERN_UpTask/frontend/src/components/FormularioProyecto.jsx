@@ -1,19 +1,22 @@
-import { useState } from "react"
-import { useNavigate } from 'react-router-dom'
+import { useState, useEffect } from "react"
+import { useNavigate, useParams } from 'react-router-dom'
 // Importar custom hooks
 import useProyectos from "../hooks/useProyectos"
 // Importar components
 import Alerta from "./Alerta"
 
 const FormularioProyecto = () => {
+  const [ id, setId ] = useState(null)
   const [ nombre, setNombre ] = useState('')
   const [ descripcion, setDescripcion ] = useState('')
   const [ fechaEntrega, setFechaEntrega ] = useState('')
   const [ cliente, setCliente ] = useState('')
 
   const navigate = useNavigate()
+  const params = useParams()
+  // console.log(params)
 
-  const { mostrarAlerta, alerta, submitProyecto } = useProyectos()
+  const { mostrarAlerta, alerta, submitProyecto, proyecto } = useProyectos()
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -29,12 +32,14 @@ const FormularioProyecto = () => {
 
     // Pasar los datos hacia el provider
     await submitProyecto({
+      id,
       nombre,
       descripcion,
       fechaEntrega,
       cliente,
     })
 
+    setId(null)
     setNombre('')
     setDescripcion('')
     setFechaEntrega('')
@@ -42,6 +47,24 @@ const FormularioProyecto = () => {
   }
 
   const { msg } = alerta
+
+  useEffect(() => {
+    // console.log(params)
+    if (params.id) {
+    // if (params.id && proyecto.nombre) {
+      // console.log('Editando Proyecto...')
+      // console.log(proyecto.fechaEntrega)
+
+      setId(proyecto._id)
+      setNombre(proyecto.nombre)
+      setDescripcion(proyecto.descripcion)
+      // setFechaEntrega(proyecto.fechaEntrega.split('T')[0])
+      setFechaEntrega(proyecto.fechaEntrega?.split('T')[0])
+      setCliente(proyecto.cliente)
+    }/* else {
+      console.log('Nuevo Proyecto')
+    }*/
+  }, [params])
 
   return (
     <form 
@@ -115,7 +138,7 @@ const FormularioProyecto = () => {
 
       <input 
         type='submit'
-        value='Crear Proyecto'
+        value={id ? 'Actualizar Proyecto' : 'Crear Proyecto'}
         className="bg-sky-600 w-full p-3 font-bold text-white uppercase rounded cursor-pointer hover:bg-sky-700 transition-colors"
       />
     </form>

@@ -24,10 +24,60 @@ const ProyectosProvider = ({children}) => {
 
   const submitProyecto = async proyecto => {
     // console.log(proyecto)
+    // return;
+
+    if (proyecto.id) {
+      await editarProyecto(proyecto)
+    } else {
+      await nuevoProyecto(proyecto)
+    }
+  }
+
+  const editarProyecto = async proyecto => {
+    // console.log('Editando...')
 
     try {
       const token = localStorage.getItem('token')
-      if(!token) return
+      if (!token) return
+
+      // Configuracion de la autorizacion
+      const config = {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`
+        }
+      }
+
+      const { data } = await clienteAxios.put(`/proyectos/${proyecto.id}`, proyecto, config)
+      // console.log(data)
+      // Sincronizar el state
+      const proyectoActualizado = proyectos.map(proyectoState => proyectoState._id === data._id ? data : proyectoState)
+      // console.log(proyectoActualizado)
+      setProyectos(proyectoActualizado)
+
+      // Mostrar la alerta
+      setAlerta({
+        msg: 'Proyecto Actualizado Correctamente',
+        error: false
+      })
+
+      // Redireccionar
+      setTimeout(() => {
+        setAlerta({})
+        navigate('/proyectos')
+      }, 3000)
+
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  const nuevoProyecto = async proyecto => {
+    // console.log('Creando...')
+
+    try {
+      const token = localStorage.getItem('token')
+      if (!token) return
 
       // Configuracion de la autorizacion
       const config = {
