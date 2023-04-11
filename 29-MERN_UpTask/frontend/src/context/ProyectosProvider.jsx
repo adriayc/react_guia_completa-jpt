@@ -11,6 +11,7 @@ const ProyectosProvider = ({children}) => {
   const [ proyecto, setProyecto ] = useState({})
   const [ cargando, setCargando ] = useState(false)
   const [ modalFormularioTarea, setModalFormularioTarea ] = useState(false)
+  const [ tarea, setTarea ] = useState({})
 
   const navigate = useNavigate()
 
@@ -201,11 +202,24 @@ const ProyectosProvider = ({children}) => {
 
   const handleModalTarea = () => {
     setModalFormularioTarea(!modalFormularioTarea)
+    setTarea({})
   }
 
   const submitTarea = async tarea => {
     // console.log(tarea)
 
+    if (tarea?.id) {
+      // console.log('Editando...')
+      // return
+      await editarTarea(tarea)
+    } else {
+      // console.log('Creando...')
+      // return
+      await crearTarea(tarea)
+    }
+  }
+
+  const crearTarea = async tarea => {
     try {
       const token = localStorage.getItem('token')
       if (!token) return
@@ -235,6 +249,43 @@ const ProyectosProvider = ({children}) => {
     }
   }
 
+  const editarTarea = async tarea => {
+    try {
+      const token = localStorage.getItem('token')
+      if (!token) return
+
+      const config = {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`
+        }
+      }
+
+      const { data } = await clienteAxios.put(`tareas/${tarea.id}`, tarea, config)
+      // console.log(data)
+
+      // Actualizar el state de tareas del proyecto
+      const proyectoActualizado = {...proyecto}
+      proyectoActualizado.tareas = proyectoActualizado.tareas.map(tareaState => tareaState._id === data._id ? data : tareaState)
+      setProyecto(proyectoActualizado)
+
+      // Remover la alerta y modal
+      setAlerta({})
+      setModalFormularioTarea(false)
+
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  const handleModalEditarTarea = tarea => {
+    // console.log(tarea)
+
+    setTarea(tarea)
+    // Mostrar modal
+    setModalFormularioTarea(true)
+  }
+
   return (
     <ProyectosContext.Provider
       value={{
@@ -249,6 +300,8 @@ const ProyectosProvider = ({children}) => {
         modalFormularioTarea,
         handleModalTarea,
         submitTarea,
+        handleModalEditarTarea,
+        tarea,
       }}
     >
       {children}
