@@ -12,3 +12,8 @@
     # npm install -g json-server
     + Ejecutar la db.json
       # json-server db.json --port 4000
+
+  - Redux Toolkit
+    # npm i react-redux redux redux-thunk       # NOTA: deprecado!
+    # npm install react-redux
+    # npm install @reduxjs/toolkit
