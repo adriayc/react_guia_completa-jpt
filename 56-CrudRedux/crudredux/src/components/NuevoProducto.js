@@ -2,23 +2,34 @@
 import { useDispatch, useSelector } from 'react-redux';
 // Importar actions de redux
 import { crearNuevoProductosAction } from '../actions/productoActions';
+import { useState } from 'react';
 
 const NuevoProducto = () => {
+  // State del componente
+  const [ nombre, guardarNombre ] = useState('');
+  const [ precio, guardarPrecio ] = useState(0);
+
   // Utilizar useDispatch (hook) y te crea una funcion
   const dispatch = useDispatch();
 
   // Llamar funciones del action (productoAction) con dispatch
-  const agregarProducto = () => dispatch( crearNuevoProductosAction() );
+  const agregarProducto = producto => dispatch( crearNuevoProductosAction(producto) );
 
   const submitNuevoProducto = e => {
     e.preventDefault();
 
     // Validar formulario
+    if (nombre.trim() === '' || precio <= 0) {
+      return;
+    }
     
     // Si no hay errores
 
     // Crear el nuevo producto
-    agregarProducto();
+    agregarProducto({
+      nombre,
+      precio
+    });
   };
 
   return (
@@ -39,6 +50,8 @@ const NuevoProducto = () => {
                   className="form-control"
                   id="nombre"
                   placeholder="Nombre Producto"
+                  value={nombre}
+                  onChange={e => guardarNombre(e.target.value)}
                 />
               </div>
 
@@ -50,6 +63,8 @@ const NuevoProducto = () => {
                   className="form-control"
                   id="precio"
                   placeholder="Precio Producto"
+                  value={precio}
+                  onChange={e => guardarPrecio(Number(e.target.value))}
                 />
               </div>
 

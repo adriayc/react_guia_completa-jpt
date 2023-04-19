@@ -5,8 +5,8 @@ import {
   } from '../types';
 
   // Crear nuevos productos
-  export function crearNuevoProductosAction() {
+  export function crearNuevoProductosAction(producto) {
     return () => {
-      console.log('Desde action');
+      console.log(producto);
     };
   }
