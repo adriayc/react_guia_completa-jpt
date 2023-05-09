@@ -436,3 +436,36 @@ Ejemplo: Si el usuario accede a una URL el Router ya tiene indicaciones de comun
 ## ¿Qué es Socket.IO?
 * Es una librería que se basa en eventos y está desarrollada sobre el lenguaje de programación JavaScript que permite crear aplicaciones en tiempo real (realtime).
 * Comunicación bidireccional y de baja latencia para cada plataforma.
+
+## ¿Qué es Redux?
+* Un contenedor de estado predecible para aplicaciones JS.
+* Redux te permitirá manejar el state de tus aplicaciones más fácil conforme van creaciendo.
+* Te ayuda a manejar los datos conforme a las acciones realizadas por el usuario.
+
+### Caracteristicas de Redux
+* Solo se tiene un state principal.
+* El state cambia de acuerdo a lo que sucede en la interfaz de usuario.
+* Solo ciertas funciones cambian el state.
+* El usuario es el que utiliza estas funciones y cambia el state.
+* Solo se realiza un cambio a la vez.
+
+### Cuando utilizar Redux
+* Si tu aplicación es sencilla y pequeña no necesitas Redux - Utiliza Hooks o Context.
+* Si tu proyecto es grande y será mantenido por varias personas, Redux será de gran ayuda.
+
+### React y Redux
+* Encontrarás muchos ejemplos de react y redux.
+* Algunos utilizan hooks y otros clases.
+* El código con hooks es muy diferente.
+
+### Principios de Redux
+* Solo existe un Stora con todo el State de la Aplicacion.
+* Los Componentes/Vistas no modifican el state directamente.
+* El State se modifica por medio de funciones.
+
+### Terminología de Redux
+* Store: contiene el state (1 por aplicacion).
+* Dispatch: ejecuta una acción que actualizará el state.
+* Action: objetos javascript, tienen un tipo y payload (datos).
+* Subscribe: similar a un event listener para el state.
+* Reducers: funciones, saben que hacer con las acciones y el payload.
