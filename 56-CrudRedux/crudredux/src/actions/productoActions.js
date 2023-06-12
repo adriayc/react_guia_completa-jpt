@@ -16,7 +16,7 @@ import clienteAxios from '../config/axios';
 
       try {
         // Insertar en la API
-        await clienteAxios.post('/productoserror', producto);
+        await clienteAxios.post('/productosee', producto);
         // Si todo sale bien, actualizar el state
         dispatch(agregarProductoExito(producto));
       } catch (error) {

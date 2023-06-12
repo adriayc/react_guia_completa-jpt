@@ -12,6 +12,13 @@ const NuevoProducto = () => {
   // Utilizar useDispatch (hook) y te crea una funcion
   const dispatch = useDispatch();
 
+  // Acceder al state del store
+  // const cargando = useSelector(state => state);   // NOTA: para ver el valor del state
+  // const cargando = useSelector(state => state.productos);
+  const cargando = useSelector(state => state.productos.loading);
+  const error = useSelector(state => state.productos.error);
+  // console.log(cargando)
+
   // Llamar funciones del action (productoAction) con dispatch
   const agregarProducto = producto => dispatch( crearNuevoProductosAction(producto) );
 
@@ -73,6 +80,9 @@ const NuevoProducto = () => {
                 className="btn btn-primary font-weight-bold text-uppercase d-block w-100"
               >Agregar</button>
             </form>
+
+            {cargando ? <p>Cargando...</p> : null}
+            {error ? <p className='alert alert-danger p2 mt-4 text-center'>Hubo un error</p> : null}
           </div>
         </div>
       </div>
