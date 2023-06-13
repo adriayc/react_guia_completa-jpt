@@ -17,3 +17,9 @@
     # npm i react-redux redux redux-thunk       # NOTA: deprecado!
     # npm install react-redux
     # npm install @reduxjs/toolkit
+
+  - Axios
+    # npm install axios
+
+  - SweetAlert2
+    # npm install sweetalert2
