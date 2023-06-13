@@ -1,9 +1,12 @@
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 // Importar redux
 import { useDispatch, useSelector } from 'react-redux';
 // Importar actions de redux
 import { crearNuevoProductosAction } from '../actions/productoActions';
-import { useState } from 'react';
 
+// Cuando intalamos react router dom y nuestros componentes estan en el routing, tenemos accesos a history (DEPRECADO!)
+// const NuevoProducto = ({history}) => {
 const NuevoProducto = () => {
   // State del componente
   const [ nombre, guardarNombre ] = useState('');
@@ -11,6 +14,9 @@ const NuevoProducto = () => {
 
   // Utilizar useDispatch (hook) y te crea una funcion
   const dispatch = useDispatch();
+
+  // Utilizamos para el redirect
+  const navigate = useNavigate();
 
   // Acceder al state del store
   // const cargando = useSelector(state => state);   // NOTA: para ver el valor del state
@@ -37,6 +43,10 @@ const NuevoProducto = () => {
       nombre,
       precio
     });
+
+    // Redireccionar
+    // history.push('/');      // Deprecado!
+    navigate('/');
   };
 
   return (

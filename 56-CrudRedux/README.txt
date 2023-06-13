@@ -20,3 +20,6 @@
 
   - Axios
     # npm install axios
+
+  - SweetAlert2
+    # npm install sweetalert2
