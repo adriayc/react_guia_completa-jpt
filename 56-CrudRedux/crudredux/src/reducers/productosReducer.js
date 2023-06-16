@@ -30,6 +30,7 @@ export default function(state = initialState, action) {
         productos: [...state.productos, action.payload]     // Actualizamos productos
       };
     case AGREGAR_PRODUCTO_ERROR:
+    case DESCARGA_PRODUCTOS_ERROR:
       return {
         ...state,
         loading: false,
@@ -39,6 +40,19 @@ export default function(state = initialState, action) {
     //   return {
     //     ...state,
     //     loading: action.payload   // true
+    //   };
+    case DESCARGA_PRODUCTOS_EXITO:
+      return {
+        ...state,
+        loading: false,
+        error: null,
+        productos: action.payload
+      };
+    // case DESCARGA_PRODUCTOS_ERROR:
+    //   return {
+    //     ...state,
+    //     loading: false,
+    //     error: action.payload
     //   };
 
     default:
