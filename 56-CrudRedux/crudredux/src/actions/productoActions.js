@@ -76,6 +76,12 @@ export function obtenerProductosAction() {
       // console.log(respuesta.data);
       dispatch(descargaProductosExitoso(respuesta.data));
 
+      // Test
+      // setTimeout(async () => {
+      //   const respuesta = await clienteAxios.get('/productos');
+      //   dispatch(descargaProductosExitoso(respuesta.data));
+      // }, 3000);
+
     } catch (error) {
       console.log(error);
       dispatch(descargaProductosError());
