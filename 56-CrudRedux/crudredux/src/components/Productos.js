@@ -3,6 +3,8 @@ import { Fragment, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 // Importar actions
 import { obtenerProductosAction } from "../actions/productoActions";
+// Importar components
+import Producto from "./Producto";
 
 const Productos = () => {
   const dispatch = useDispatch();
@@ -13,6 +15,11 @@ const Productos = () => {
 
     cargarProductos();
   }, []);
+
+  // Obtener el state
+  // const productos = useSelector(state => state.productos);
+  const productos = useSelector(state => state.productos.productos);
+  console.log(productos);
 
   return (
     <Fragment>
@@ -27,7 +34,16 @@ const Productos = () => {
           </tr>
         </thead>
 
-        <tbody></tbody>
+        <tbody>
+          {productos.lenght === 0 ? 'No hay productos' : (
+            productos.map(producto => (
+              <Producto
+                key={producto.id}
+                producto={producto}
+              />
+            ))
+          )}
+        </tbody>
       </table>
     </Fragment>
   );
