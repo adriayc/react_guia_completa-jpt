@@ -4,7 +4,10 @@ import {
     AGREGAR_PRODUCTO_ERROR,
     COMENZAR_DESCARGA_PRODUCTOS,
     DESCARGA_PRODUCTOS_EXITO,
-    DESCARGA_PRODUCTOS_ERROR
+    DESCARGA_PRODUCTOS_ERROR,
+    OBTENER_PRODUCTO_ELIMINAR,
+    PRODUCTO_ELIMINADO_EXITOSO,
+    PRODUCTO_ELIMINADO_ERROR
   } from '../types';
 // Importar axios
 import clienteAxios from '../config/axios';
@@ -101,5 +104,47 @@ const descargaProductosExitoso = productos => ({
 
 const descargaProductosError = () => ({
   type: DESCARGA_PRODUCTOS_ERROR,
+  payload: true
+});
+
+// Selecciona y elimina el producto (NOTA: no usamos sweealert2 en la action porque sweetalert usa promises y la action async/await)
+export function borrarProductoAction(id) {
+  return async (dispatch) => {
+    dispatch(obtenerProductoEliminar(id));
+    // console.log(id);
+
+    try {
+      // const resultado = await clienteAxios.delete(`/productos/${id}`);
+      await clienteAxios.delete(`/productos/${id}`);
+      // await clienteAxios.delete(`/productoserror/${id}`);
+      // console.log(resultado);
+
+      dispatch(eliminarProductoExito());
+
+      // Si se elimina mostrar alerta
+      Swal.fire(
+        'Eliminado!',
+        'El producto se elimino correctamente.',
+        'success'
+      )
+      
+    } catch (error) {
+      console.log(error);
+      dispatch(eliminarProductoError());
+    }
+  };
+}
+
+const obtenerProductoEliminar = id => ({
+  type: OBTENER_PRODUCTO_ELIMINAR,
+  payload: id
+});
+
+const eliminarProductoExito = () => ({
+  type: PRODUCTO_ELIMINADO_EXITOSO
+});
+
+const eliminarProductoError = () => ({
+  type: PRODUCTO_ELIMINADO_ERROR,
   payload: true
 });
