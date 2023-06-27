@@ -35,6 +35,7 @@ export default function(state = initialState, action) {
       };
     case AGREGAR_PRODUCTO_ERROR:
     case DESCARGA_PRODUCTOS_ERROR:
+    case PRODUCTO_ELIMINADO_ERROR:
       return {
         ...state,
         loading: false,
@@ -63,6 +64,18 @@ export default function(state = initialState, action) {
         ...state,
         productoeliminar: action.payload
       };
+    case PRODUCTO_ELIMINADO_EXITOSO:
+      return {
+        ...state,
+        productos: state.productos.filter(producto => producto.id !== state.productoeliminar),   // Eliminamos el producto del state
+        productoeliminar: null
+      };
+    // case PRODUCTO_ELIMINADO_ERROR:
+    //   return {
+    //     ...state,
+    //     loading: false,
+    //     error: action.payload
+    //   };
 
     default:
       return state;

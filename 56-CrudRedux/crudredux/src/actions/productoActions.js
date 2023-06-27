@@ -111,11 +111,33 @@ const descargaProductosError = () => ({
 export function borrarProductoAction(id) {
   return async (dispatch) => {
     dispatch(obtenerProductoEliminar(id));
-    console.log(id);
+    // console.log(id);
+
+    try {
+      // const resultado = await clienteAxios.delete(`/productos/${id}`);
+      await clienteAxios.delete(`/productos/${id}`);
+      // await clienteAxios.delete(`/productoserror/${id}`);
+      // console.log(resultado);
+
+      dispatch(eliminarProductoExito());
+      
+    } catch (error) {
+      console.log(error);
+      dispatch(eliminarProductoError());
+    }
   };
 }
 
 const obtenerProductoEliminar = id => ({
   type: OBTENER_PRODUCTO_ELIMINAR,
   payload: id
+});
+
+const eliminarProductoExito = () => ({
+  type: PRODUCTO_ELIMINADO_EXITOSO
+});
+
+const eliminarProductoError = () => ({
+  type: PRODUCTO_ELIMINADO_ERROR,
+  payload: true
 });
