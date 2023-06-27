@@ -107,7 +107,7 @@ const descargaProductosError = () => ({
   payload: true
 });
 
-// Selecciona y elimina el producto
+// Selecciona y elimina el producto (NOTA: no usamos sweealert2 en la action porque sweetalert usa promises y la action async/await)
 export function borrarProductoAction(id) {
   return async (dispatch) => {
     dispatch(obtenerProductoEliminar(id));
@@ -120,6 +120,13 @@ export function borrarProductoAction(id) {
       // console.log(resultado);
 
       dispatch(eliminarProductoExito());
+
+      // Si se elimina mostrar alerta
+      Swal.fire(
+        'Eliminado!',
+        'El producto se elimino correctamente.',
+        'success'
+      )
       
     } catch (error) {
       console.log(error);
