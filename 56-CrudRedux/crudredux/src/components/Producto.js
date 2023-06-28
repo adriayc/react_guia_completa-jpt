@@ -2,7 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 // Redux
 import { useDispatch } from "react-redux";
 // Importar actions
-import { borrarProductoAction } from "../actions/productoActions";
+import { borrarProductoAction, obtenerProductoEditarAction } from "../actions/productoActions";
 // Importar sweetalert2
 import Swal from "sweetalert2";
 
@@ -38,6 +38,8 @@ function Producto({producto}) {
 
   // Redirige de forma programada
   const redireccionarEdicion = producto => {
+    dispatch(obtenerProductoEditarAction(producto));
+    // Redirigir
     navigate(`/productos/editar/${producto.id}`);
   };
 
