@@ -1,16 +1,36 @@
+import { useEffect, useState } from "react";
 // Redux
 import { useDispatch, useSelector } from "react-redux";
 // Importar actions
 import { editarProductoAction } from "../actions/productoActions";
 
 const EditarProducto = () => {
+  // Nuevo state de producto
+  const [producto, guardarProducto] = useState({
+    nombre: '',
+    precio: ''
+  });
+
   // Producto a editar
   // const producto = useSelector(state => state.productos);
-  const producto = useSelector(state => state.productos.productoeditar);
+  const productoEditar = useSelector(state => state.productos.productoeditar);
   // console.log(producto);
 
-  // Si no existe producto retorna null
-  if (!producto) return null;
+  // Si no existe producto retorna null (NOTA: no se puede usar useEffect si hay un return)
+  // if (!producto) return null;
+
+  // Llenar el state automaticamente
+  useEffect(() => {
+    guardarProducto(productoEditar);
+  }, [productoEditar]);
+
+  // Leer los datos del formulario
+  const onChangeFormulario = e => {
+    guardarProducto({
+      ...producto,
+      [e.target.name]: e.target.value,
+    });
+  };
 
   const { nombre, precio, id } = producto;
 
@@ -39,6 +59,7 @@ const EditarProducto = () => {
                   id="nombre"
                   placeholder="Nombre Producto"
                   value={nombre}
+                  onChange={onChangeFormulario}
                 />
               </div>
 
@@ -51,6 +72,7 @@ const EditarProducto = () => {
                   id="precio"
                   placeholder="Precio Producto"
                   value={precio}
+                  onChange={onChangeFormulario}
                 />
               </div>
 
