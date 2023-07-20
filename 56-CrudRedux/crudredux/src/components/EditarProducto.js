@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 // Redux
 import { useDispatch, useSelector } from "react-redux";
 // Importar actions
@@ -10,6 +11,12 @@ const EditarProducto = () => {
     nombre: '',
     precio: ''
   });
+
+  // Utilizar useDispatch (hook)
+  const dispatch = useDispatch();
+
+    // Utilizamos para el redirect
+    const navigate = useNavigate();
 
   // Producto a editar
   // const producto = useSelector(state => state.productos);
@@ -32,12 +39,17 @@ const EditarProducto = () => {
     });
   };
 
-  const { nombre, precio, id } = producto;
+  // const { nombre, precio, id } = producto;
+  const { nombre, precio } = producto;
 
   const submitEditarProducto = e => {
     e.preventDefault();
 
-    // editarProductoAction();
+    // Llamar funcion con dispatch
+    dispatch(editarProductoAction(producto));
+
+    // Redireccionar hacia el componente principal
+    navigate('/');
   };
 
   return (

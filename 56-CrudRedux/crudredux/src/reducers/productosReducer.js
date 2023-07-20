@@ -8,7 +8,10 @@ import {
   OBTENER_PRODUCTO_ELIMINAR,
   PRODUCTO_ELIMINADO_EXITOSO,
   PRODUCTO_ELIMINADO_ERROR,
-  OBTENER_PRODUCTO_EDITAR
+  OBTENER_PRODUCTO_EDITAR,
+  COMENZAR_EDITADO_PRODUCTO,
+  PRODUCTO_EDITADO_EXITOSO,
+  PRODUCTO_EDITADO_ERROR
 } from '../types';
 
 // Cada reducer tiene su propio state
@@ -24,6 +27,7 @@ export default function(state = initialState, action) {
   switch(action.type) {
     case AGREGAR_PRODUCTO:
     case COMENZAR_DESCARGA_PRODUCTOS:
+    case COMENZAR_EDITADO_PRODUCTO:
       return {
         ...state,
         // loading: true
@@ -38,6 +42,7 @@ export default function(state = initialState, action) {
     case AGREGAR_PRODUCTO_ERROR:
     case DESCARGA_PRODUCTOS_ERROR:
     case PRODUCTO_ELIMINADO_ERROR:
+    case PRODUCTO_EDITADO_ERROR:
       return {
         ...state,
         loading: false,
@@ -82,6 +87,23 @@ export default function(state = initialState, action) {
       return {
         ...state,
         productoeditar: action.payload
+      };
+    // case COMENZAR_EDITADO_PRODUCTO:
+    //   return {
+    //     ...state,
+    //     loading: action.payload   // true
+    //   };
+    case PRODUCTO_EDITADO_EXITOSO:
+      return {
+        ...state,
+        productos: state.productos.map(producto => producto.id === action.payload.id ? producto = action.payload : producto),
+        productoeditar: null
+      };
+    case PRODUCTO_EDITADO_ERROR:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload
       };
 
     default:
