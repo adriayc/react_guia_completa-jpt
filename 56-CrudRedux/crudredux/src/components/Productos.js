@@ -14,6 +14,8 @@ const Productos = () => {
     const cargarProductos = () => dispatch(obtenerProductosAction());
 
     cargarProductos();
+    // Para ignorar el warning del build console
+    // eslint-disable-next-line
   }, []);
 
   // Obtener el state

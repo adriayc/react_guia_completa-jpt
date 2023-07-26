@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 // Importar actions de redux
 import { crearNuevoProductosAction } from '../actions/productoActions';
+import { mostrarAlertaAction, ocultarAlertaAction } from '../actions/alertaActions';
 
 // Cuando intalamos react router dom y nuestros componentes estan en el routing, tenemos accesos a history (DEPRECADO!)
 // const NuevoProducto = ({history}) => {
@@ -23,6 +24,7 @@ const NuevoProducto = () => {
   // const cargando = useSelector(state => state.productos);
   const cargando = useSelector(state => state.productos.loading);
   const error = useSelector(state => state.productos.error);
+  const alerta = useSelector(state => state.alerta.alerta);   // Obtenemos la alerta del state de alerta
   // console.log(cargando)
 
   // Llamar funciones del action (productoAction) con dispatch
@@ -33,10 +35,17 @@ const NuevoProducto = () => {
 
     // Validar formulario
     if (nombre.trim() === '' || precio <= 0) {
+      const alerta = {
+        msg: 'Ambos campos son obligatorios',
+        classes: 'alert alert-danger text-center text-uppercase p3'
+      };
+      dispatch(mostrarAlertaAction(alerta));
+
       return;
     }
     
     // Si no hay errores
+    dispatch(ocultarAlertaAction());
 
     // Crear el nuevo producto
     agregarProducto({
@@ -55,6 +64,9 @@ const NuevoProducto = () => {
         <div className="card">
           <div className="card-body">
             <h2 className="text-center mb-4 font-weight-bold">Agregar Nuevo Producto</h2>
+
+            {/* Mostrar alerta */}
+            {alerta ? <p className={alerta.classes}>{alerta.msg}</p> : null}
 
             <form
               onSubmit={submitNuevoProducto}
