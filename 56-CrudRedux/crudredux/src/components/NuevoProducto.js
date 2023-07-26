@@ -24,6 +24,7 @@ const NuevoProducto = () => {
   // const cargando = useSelector(state => state.productos);
   const cargando = useSelector(state => state.productos.loading);
   const error = useSelector(state => state.productos.error);
+  const alerta = useSelector(state => state.alerta.alerta);   // Obtenemos la alerta del state de alerta
   // console.log(cargando)
 
   // Llamar funciones del action (productoAction) con dispatch
@@ -62,6 +63,9 @@ const NuevoProducto = () => {
         <div className="card">
           <div className="card-body">
             <h2 className="text-center mb-4 font-weight-bold">Agregar Nuevo Producto</h2>
+
+            {/* Mostrar alerta */}
+            {alerta ? <p className={alerta.classes}>{alerta.msg}</p> : null}
 
             <form
               onSubmit={submitNuevoProducto}
