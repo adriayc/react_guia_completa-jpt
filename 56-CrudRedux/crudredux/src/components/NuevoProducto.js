@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 // Importar actions de redux
 import { crearNuevoProductosAction } from '../actions/productoActions';
-import { mostrarAlertaAction } from '../actions/alertaActions';
+import { mostrarAlertaAction, ocultarAlertaAction } from '../actions/alertaActions';
 
 // Cuando intalamos react router dom y nuestros componentes estan en el routing, tenemos accesos a history (DEPRECADO!)
 // const NuevoProducto = ({history}) => {
@@ -45,6 +45,7 @@ const NuevoProducto = () => {
     }
     
     // Si no hay errores
+    dispatch(ocultarAlertaAction());
 
     // Crear el nuevo producto
     agregarProducto({

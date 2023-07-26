@@ -8,6 +8,8 @@ const initialState = {
   alert: null
 };
 
+// Para ignorar el warning del build console
+// eslint-disable-next-line
 export default function(state = initialState, action) {
   switch(action.type) {
     case MOSTRAR_ALERTA:
@@ -15,7 +17,13 @@ export default function(state = initialState, action) {
         ...state,
         alerta: action.payload
       };
-      
+    case OCULTAR_ALERTA:
+      return {
+        ...state,
+        // alerta: action.payload
+        alerta: null
+      };
+
     default:
       return state;
   }

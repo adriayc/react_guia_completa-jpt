@@ -19,6 +19,11 @@
       "nombre": "Rib Eye 800g",
       "precio": "300",
       "id": 4
+    },
+    {
+      "nombre": "Jugo de durazno",
+      "precio": 90,
+      "id": 5
     }
   ]
 }
