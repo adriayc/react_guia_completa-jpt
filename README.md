@@ -524,3 +524,43 @@ Un serverless no es solo la plataforma, si un servicio es hospedado sin necesida
 * Firebase Hosting.
 * Google Forms.
 * Paypal.
+
+## Google Firebase y Cloud Firestore o Realtime
+### ¿Que es?
+Firebase ofrece dos soluciones de bases de datos en la nube y accesibles, ambas son en tiempo real. Sitio Web de [Firebase](https://firebase.google.com).
+
+Ambas utilizan NoSQL como base de datos.
+* **Realtime database:** Es la solución origianl de Firebase, en tiempo real.
+* **Cloud Firestore:** Es la nueva base de datos. Es una versión mejorada de la versión original, un modelo de datos más intuitivo (JSON). Consultas rápidas y también en tiempo real.
+
+### Diferencias entre Realtime DB y Cloud Firestore
+* Cloud Firestore es la nueva base de datos, tendrá más fucniones, rendimiento, escalabilidad, soporta grandes aplicaciones, más seguro.
+* Cloud Firestore es la mejor opción, pero veamos ciertas diferencias y consideraciones.
+
+**Datos**
+*Realtime DB:*
+- Se almacena los datos de forma muy anidada como JSON.
+- Si los dato se almacenan en un gran árbol puede hacer que sea más dificíl de organizar.
+
+*Cloud Firestore:*
+- Se almacenan los datos en un formato muy similar a JSON, en documentos.
+- Se pueden almacenar datos muy complejos de forma sencilla, con colecciones y subcolecciones en los documentos.
+
+**Soporte sin conexión y tiempo real**
+*Realtime DB:*
+- Solo soporta las plataformas iOS y Android sin conexión.
+
+*Cloud Firestore:*
+*  Soporta Android, iOS y plataformas web sin conexión.
+
+**Consultas**
+*Realtime DB:*
+- Solo se pueden ordenar o filtrar según una propiedad.
+- Si realizas una consulta de un registro, obtiene todo el árbol JSON Completo.
+
+*Cloud Firestore:*
+- Se pueden realizar diferentes filtros y ordenar pro distintas condiciones.
+- Puedes realizar consultas para subcolecciones en lugar del árbol completo.
+
+### Otras aplicaciones similares a Firebase
+* AWS Ampligy. Sitio Web de [AWS Amplify](https://aws.amazon.com/amplify/)
