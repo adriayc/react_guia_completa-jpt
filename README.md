@@ -499,3 +499,28 @@ Ejemplo: Si el usuario accede a una URL el Router ya tiene indicaciones de comun
 * Soporte para CSS.
 * Hot Reload.
 * URL's Limpias.
+
+## Serverless
+* Pareciera que por el nombre significa "sin servidores" pero aún así hay un servidor.
+* En lugar de tener que comprar un servidor físico y configurarlo, es una opción donde alguien más ofrece la contratación y renta de un espacio.
+
+### Serverless y Front End
+* Si eres desarrollador Front end, gracias a serverless puedes ralizar actividades que solo un ckaend podría realizar como obtener datos de una BD.
+* Cada día los servicios de serverless van agregando nuevas características que permiten crear aplicaciones full stack solo con conocimientos de front end o javascript.
+
+### Los Servidores más populares de serverless
+* Google Firebase.
+* Google Cloud.
+* Amazon Web Servicess.
+* Microsoft Azure.
+* StdLib.
+* WebTask.
+* IBM Cloud Functions.
+
+### Existen otros Serverless...
+Un serverless no es solo la plataforma, si un servicio es hospedado sin necesidad de tener el vervidro físico se puede considerar serverless.
+* Netlify.
+* Github pages.
+* Firebase Hosting.
+* Google Forms.
+* Paypal.
