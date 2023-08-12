@@ -486,3 +486,16 @@ Ejemplo: Si el usuario accede a una URL el Router ya tiene indicaciones de comun
 ### Aplicaciones que usan SSR
 * NEXT.JS
 * Gatsby
+
+## Next.JS
+* Un framework sencillo para crear aplicaciones React con SSR.
+* VueJS y Angular también tienen sus alternativas SSR.
+* Sitio Web de [Next.js](https://nextjs.org/)
+
+### características pricipales
+* Server Side Rendering.
+* Code Splitting y Lazy Loading a los Componentes.
+* Routing en base a los archivos.
+* Soporte para CSS.
+* Hot Reload.
+* URL's Limpias.
