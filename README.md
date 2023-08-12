@@ -469,3 +469,20 @@ Ejemplo: Si el usuario accede a una URL el Router ya tiene indicaciones de comun
 * Action: objetos javascript, tienen un tipo y payload (datos).
 * Subscribe: similar a un event listener para el state.
 * Reducers: funciones, saben que hacer con las acciones y el payload.
+
+## SSR (Server Side Rendering)
+### ¿Qué es SSR?
+* SSR = Server Side Rendering.
+* Tal vez las has leído como Aplicaciones Universales.
+* En SSR es el servideor que se encarga de generar el HTML.
+* En Client REndering es el Navegador el que se encarga de generar el HTML.
+
+### Beneficios
+* EL sitio web o aplicación carga más rápido ya que los recursos de la computadora no son utilizados sino los del servidor.
+* Si alguien navega en una computadora o un teléfono con distintos procesadores su experiencia será distinta.
+* Se recomienda para aplicaciones grandes o si la aplicacion va a crecer en el futuro.
+* Mejora el CEO
+
+### Aplicaciones que usan SSR
+* NEXT.JS
+* Gatsby
