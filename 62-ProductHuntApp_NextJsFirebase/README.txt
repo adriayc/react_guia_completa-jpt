@@ -12,3 +12,7 @@
     # cd producthuntnext
     # npm run dev
     - Abrir en el navegador: http://localhost:3000/
+
+* Instalar dependencias
+  - Styled components (Emotion)
+    # npm i @emotion/core @emotion/styled babel-plugin-emotion @emotion/babel-preset-css-prop

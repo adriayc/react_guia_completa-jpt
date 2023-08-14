@@ -1,13 +1,17 @@
+// Importar styled components
+import styled from '@emotion/styled';
+
+
+// Styled components
+const Heading = styled.h1`
+  color: red;
+`;
+
 const Home = () => (
   <div>
     <h1>Inicio</h1>
-
-    {/* CSS en Next.js */}
-    <style jsx>{`
-      h1 {
-        color: red;
-      }
-    `}</style>
+    {/* Add the styled components */}
+    {/* <Heading>Inicio</Heading> */}
   </div>
 );
 
