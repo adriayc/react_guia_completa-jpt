@@ -469,3 +469,98 @@ Ejemplo: Si el usuario accede a una URL el Router ya tiene indicaciones de comun
 * Action: objetos javascript, tienen un tipo y payload (datos).
 * Subscribe: similar a un event listener para el state.
 * Reducers: funciones, saben que hacer con las acciones y el payload.
+
+## SSR (Server Side Rendering)
+### ¿Qué es SSR?
+* SSR = Server Side Rendering.
+* Tal vez las has leído como Aplicaciones Universales.
+* En SSR es el servideor que se encarga de generar el HTML.
+* En Client REndering es el Navegador el que se encarga de generar el HTML.
+
+### Beneficios
+* EL sitio web o aplicación carga más rápido ya que los recursos de la computadora no son utilizados sino los del servidor.
+* Si alguien navega en una computadora o un teléfono con distintos procesadores su experiencia será distinta.
+* Se recomienda para aplicaciones grandes o si la aplicacion va a crecer en el futuro.
+* Mejora el CEO
+
+### Aplicaciones que usan SSR
+* NEXT.JS
+* Gatsby
+
+## Next.JS
+* Un framework sencillo para crear aplicaciones React con SSR.
+* VueJS y Angular también tienen sus alternativas SSR.
+* Sitio Web de [Next.js](https://nextjs.org/)
+
+### características pricipales
+* Server Side Rendering.
+* Code Splitting y Lazy Loading a los Componentes.
+* Routing en base a los archivos.
+* Soporte para CSS.
+* Hot Reload.
+* URL's Limpias.
+
+## Serverless
+* Pareciera que por el nombre significa "sin servidores" pero aún así hay un servidor.
+* En lugar de tener que comprar un servidor físico y configurarlo, es una opción donde alguien más ofrece la contratación y renta de un espacio.
+
+### Serverless y Front End
+* Si eres desarrollador Front end, gracias a serverless puedes ralizar actividades que solo un ckaend podría realizar como obtener datos de una BD.
+* Cada día los servicios de serverless van agregando nuevas características que permiten crear aplicaciones full stack solo con conocimientos de front end o javascript.
+
+### Los Servidores más populares de serverless
+* Google Firebase.
+* Google Cloud.
+* Amazon Web Servicess.
+* Microsoft Azure.
+* StdLib.
+* WebTask.
+* IBM Cloud Functions.
+
+### Existen otros Serverless...
+Un serverless no es solo la plataforma, si un servicio es hospedado sin necesidad de tener el vervidro físico se puede considerar serverless.
+* Netlify.
+* Github pages.
+* Firebase Hosting.
+* Google Forms.
+* Paypal.
+
+## Google Firebase y Cloud Firestore o Realtime
+### ¿Que es?
+Firebase ofrece dos soluciones de bases de datos en la nube y accesibles, ambas son en tiempo real. Sitio Web de [Firebase](https://firebase.google.com).
+
+Ambas utilizan NoSQL como base de datos.
+* **Realtime database:** Es la solución origianl de Firebase, en tiempo real.
+* **Cloud Firestore:** Es la nueva base de datos. Es una versión mejorada de la versión original, un modelo de datos más intuitivo (JSON). Consultas rápidas y también en tiempo real.
+
+### Diferencias entre Realtime DB y Cloud Firestore
+* Cloud Firestore es la nueva base de datos, tendrá más fucniones, rendimiento, escalabilidad, soporta grandes aplicaciones, más seguro.
+* Cloud Firestore es la mejor opción, pero veamos ciertas diferencias y consideraciones.
+
+**Datos**
+*Realtime DB:*
+- Se almacena los datos de forma muy anidada como JSON.
+- Si los dato se almacenan en un gran árbol puede hacer que sea más dificíl de organizar.
+
+*Cloud Firestore:*
+- Se almacenan los datos en un formato muy similar a JSON, en documentos.
+- Se pueden almacenar datos muy complejos de forma sencilla, con colecciones y subcolecciones en los documentos.
+
+**Soporte sin conexión y tiempo real**
+*Realtime DB:*
+- Solo soporta las plataformas iOS y Android sin conexión.
+
+*Cloud Firestore:*
+*  Soporta Android, iOS y plataformas web sin conexión.
+
+**Consultas**
+*Realtime DB:*
+- Solo se pueden ordenar o filtrar según una propiedad.
+- Si realizas una consulta de un registro, obtiene todo el árbol JSON Completo.
+
+*Cloud Firestore:*
+- Se pueden realizar diferentes filtros y ordenar pro distintas condiciones.
+- Puedes realizar consultas para subcolecciones en lugar del árbol completo.
+
+### Otras aplicaciones similares a Firebase
+* AWS Ampligy. Sitio Web de [AWS Amplify](https://aws.amazon.com/amplify/)
