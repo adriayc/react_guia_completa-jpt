@@ -2,7 +2,7 @@ import React from 'react';
 // Importar styled components
 import styled from '@emotion/styled';
 // Importar layout
-import Layout from '../components/layout/layout';
+import Layout from '../components/layout/Layout';
 
 
 // Styled components
