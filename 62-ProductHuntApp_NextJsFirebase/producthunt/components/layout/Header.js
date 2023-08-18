@@ -40,7 +40,12 @@ const Header = () => {
       `}
     >
       <ContenedorHeader>
-        <div>
+        <div
+          css={css`
+            display: flex;
+            align-items: center;
+          `}
+        >
           <Link href='/'>
             <LogoParrafo>P</LogoParrafo>
           </Link>
