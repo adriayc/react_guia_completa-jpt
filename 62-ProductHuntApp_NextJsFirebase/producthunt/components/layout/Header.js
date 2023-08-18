@@ -59,6 +59,14 @@ const Header = () => {
           css={css`
             display: flex;
             align-items: center;
+
+            a {
+              margin-right: 1rem;
+              
+              &:last-of-type {
+                margin-right: 0;
+              }
+            }
           `}
         >
           {usuario ? (
@@ -76,17 +84,17 @@ const Header = () => {
             </>
           ) : (
             <>
-              {/* <Link href='#'> */}
+              <Link href='/login'>
                 <Boton
                   type='button'
                   bgColor='true'
                 >Login</Boton>
-              {/* </Link> */}
-              {/* <Link href='#'> */}
+              </Link>
+              <Link href='/crear-cuenta'>
                 <Boton
                   type='button'
                 >Crear Cuenta</Boton>
-              {/* </Link> */}
+              </Link>
             </>
           )}
         </div>
