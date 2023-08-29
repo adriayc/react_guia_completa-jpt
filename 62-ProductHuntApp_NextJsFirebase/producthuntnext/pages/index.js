@@ -1,6 +1,8 @@
 import React from 'react';
 // Importar styled emotion
 import styled from '@emotion/styled';
+// Impotar layout component
+import Layout from '../components/layouts/Layout';
 
 const Heading = styled.h1`
   color: red;
@@ -9,14 +11,9 @@ const Heading = styled.h1`
 const Home = () => {
   return (
     <div>
-      <Heading>Inicio</Heading>
-
-      {/* CSS en next.js */}
-      {/* <style jsx>{`
-        h1 {
-          color: red;
-        }
-      `}</style> */}
+      <Layout>
+        <Heading>Inicio</Heading>
+      </Layout>
     </div>
   );
 }
