@@ -1,16 +1,22 @@
 import React from 'react';
+// Importar styled emotion
+import styled from '@emotion/styled';
+
+const Heading = styled.h1`
+  color: red;
+`;
 
 const Home = () => {
   return (
     <div>
-      <h1>Inicio</h1>
+      <Heading>Inicio</Heading>
 
       {/* CSS en next.js */}
-      <style jsx>{`
+      {/* <style jsx>{`
         h1 {
           color: red;
         }
-      `}</style>
+      `}</style> */}
     </div>
   );
 }
