@@ -8,6 +8,7 @@ import styled from '@emotion/styled';
 import { css } from '@emotion/react';
 // Importar components
 import Navegacion from './Navegacion';
+import Boton from '../ui/Boton';
 
 // Styles
 const ContenedorHeader = styled.div`
@@ -32,6 +33,8 @@ const LogoParagraph = styled.p`
 `;
 
 const Header = () => {
+  const usuario = false;
+
   return (
     <header
       css={css`
@@ -53,14 +56,38 @@ const Header = () => {
           <Navegacion />
         </div>
 
-        <div>
+        <div
+          css={css`
+            display: flex;
+            align-items: center;
+          `}
+        >
           {/* Menu de administracion */}
-          <p>Hola: Adriano</p>
-
-          <button type='button'>Cerrar Sesión</button>
-
-          <Link href='/'>Login</Link>
-          <Link href='/'>Crear Cuenta</Link>
+          {usuario ? (
+            <>
+              <p
+                css={css`
+                  margin-right: 2rem;
+                `}
+              >Hola: Adriano</p>
+    
+              {/* <button type='button'>Cerrar Sesión</button> */}
+              <Boton
+                bgColor='true'
+              >Cerrar Sesión</Boton>
+            </>
+          ) : (
+            <>
+              {/* <Link href='/'>Login</Link> */}
+              {/* <Link href='/'>Crear Cuenta</Link> */}
+              <Link href='/'>
+                <Boton
+                  bgColor='true'
+                >Login</Boton>
+              </Link>
+              <Link href='/'><Boton>Crear Cuenta</Boton></Link>
+            </>
+          )}
         </div>
       </ContenedorHeader>
     </header>
