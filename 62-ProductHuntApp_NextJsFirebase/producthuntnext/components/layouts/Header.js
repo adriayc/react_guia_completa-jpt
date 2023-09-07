@@ -33,7 +33,8 @@ const LogoParagraph = styled.p`
 `;
 
 const Header = () => {
-  const usuario = false;
+  const usuario = true;
+  // const usuario = false;
 
   return (
     <header
@@ -43,7 +44,12 @@ const Header = () => {
       `}
     >
       <ContenedorHeader>
-        <div>
+        <div
+          css={css`
+            display: flex;
+            align-items: center;
+          `}
+        >
           {/* Insertar un style component dentro de un Link */}
           <Link href='/'>
             <LogoParagraph>P</LogoParagraph>
