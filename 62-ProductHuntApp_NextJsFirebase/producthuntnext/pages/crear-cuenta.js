@@ -1,16 +1,25 @@
 import React from 'react';
+// Importar emotion
+// import { css } from '@emotion/core';    // Deprecado! (Old version)
+import { css } from '@emotion/react';
 // Impotar layout component
 import Layout from '../components/layouts/Layout';
+import { Formulario, GroupForm, InputSubmit } from '../components/ui/Formulario';
 
 const CrearCuenta = () => {
   return (
     <div>
       <Layout>
         <>
-          <h1>Crear Cuenta</h1>
+          <h1
+            css={css`
+              text-align: center;
+              margin-top: 5rem;
+            `}
+          >Crear Cuenta</h1>
 
-          <form>
-            <div>
+          <Formulario>
+            <GroupForm>
               <label htmlFor='nombre'>Nombre</label>
               <input
                 type='text'
@@ -18,9 +27,9 @@ const CrearCuenta = () => {
                 name='nombre'
                 placeholder='Tu Nombre'
               />
-            </div>
+            </GroupForm>
 
-            <div>
+            <GroupForm>
               <label htmlFor='email'>Email</label>
               <input
                 type='email'
@@ -28,9 +37,9 @@ const CrearCuenta = () => {
                 name='email'
                 placeholder='Tu Email'
               />
-            </div>
+            </GroupForm>
 
-            <div>
+            <GroupForm>
               <label htmlFor='password'>Password</label>
               <input
                 type='password'
@@ -38,10 +47,10 @@ const CrearCuenta = () => {
                 name='password'
                 placeholder='Tu Password'
               />
-            </div>
+            </GroupForm>
 
-            <input type='submit' value='Crear Cuenta' />
-          </form>
+            <InputSubmit type='submit' value='Crear Cuenta' />
+          </Formulario>
         </>
       </Layout>
     </div>
