@@ -33,8 +33,8 @@ const LogoParagraph = styled.p`
 `;
 
 const Header = () => {
-  const usuario = true;
-  // const usuario = false;
+  // const usuario = true;
+  const usuario = false;
 
   return (
     <header
@@ -86,12 +86,12 @@ const Header = () => {
             <>
               {/* <Link href='/'>Login</Link> */}
               {/* <Link href='/'>Crear Cuenta</Link> */}
-              <Link href='/'>
+              <Link href='/login'>
                 <Boton
                   bgColor='true'
                 >Login</Boton>
               </Link>
-              <Link href='/'><Boton>Crear Cuenta</Boton></Link>
+              <Link href='/crear-cuenta'><Boton>Crear Cuenta</Boton></Link>
             </>
           )}
         </div>
