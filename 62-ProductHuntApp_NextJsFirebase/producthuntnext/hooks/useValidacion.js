@@ -23,7 +23,7 @@ const useValidacion = (stateInicial, validar, fn) => {
 
   }, [errores]);
 
-  // Función que se ejecuta cuando el usuario escrive algo
+  // Función que se ejecuta cuando el usuario escribe algo
   const handleChange = e => {
     guardarValores({
       ...valores,     // Copia de los valores
@@ -31,7 +31,13 @@ const useValidacion = (stateInicial, validar, fn) => {
     })
   };
 
-  // Función que se ejecuta cuand el usuario hace submit
+  // Funcion que se ejecuta cuando el usuario ha perdido el foco del elemento (blur)
+  const handleBlur = e => {
+    const erroresValidacion = validar(valores);
+    guardarErrores(erroresValidacion);
+  };
+
+  // Función que se ejecuta cuando el usuario hace submit
   const handleSubmit = e => {
     e.preventDefault();
     // Validar los valores
@@ -45,8 +51,8 @@ const useValidacion = (stateInicial, validar, fn) => {
   return {
     valores,
     errores,
-    submitForm,
     handleChange,
+    handleBlur,
     handleSubmit
   };
 }

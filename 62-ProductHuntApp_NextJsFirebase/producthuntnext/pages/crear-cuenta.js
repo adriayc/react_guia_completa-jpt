@@ -8,7 +8,7 @@ import useValidacion from '../hooks/useValidacion';
 import validarCrearCuenta from '../validacion/validarCrearCuenta';
 // Impotar layout component
 import Layout from '../components/layouts/Layout';
-import { Formulario, GroupForm, InputSubmit } from '../components/ui/Formulario';
+import { Formulario, GroupForm, InputSubmit ,Error } from '../components/ui/Formulario';
 
 // Variables
 const STATE_INICIAL = {
@@ -18,7 +18,7 @@ const STATE_INICIAL = {
 };
 
 const CrearCuenta = () => {
-  const { valores, errores, submitForm, handleChange, handleSubmit } = useValidacion(STATE_INICIAL, validarCrearCuenta, crearCuenta);
+  const { valores, errores, handleChange, handleBlur, handleSubmit } = useValidacion(STATE_INICIAL, validarCrearCuenta, crearCuenta);
 
   const { nombre, email, password } = valores;
 
@@ -51,8 +51,10 @@ const CrearCuenta = () => {
                 placeholder='Tu Nombre'
                 value={nombre}
                 onChange={handleChange}
+                onBlur={handleBlur}
               />
             </GroupForm>
+            {errores.nombre && <Error>{errores.nombre}</Error>}
 
             <GroupForm>
               <label htmlFor='email'>Email</label>
@@ -63,8 +65,10 @@ const CrearCuenta = () => {
                 placeholder='Tu Email'
                 value={email}
                 onChange={handleChange}
+                onBlur={handleBlur}
               />
             </GroupForm>
+            {errores.email && <Error>{errores.email}</Error>}
 
             <GroupForm>
               <label htmlFor='password'>Password</label>
@@ -75,8 +79,10 @@ const CrearCuenta = () => {
                 placeholder='Tu Password'
                 value={password}
                 onChange={handleChange}
+                onBlur={handleBlur}
               />
             </GroupForm>
+            {errores.password && <Error>{errores.password}</Error>}
 
             <InputSubmit type='submit' value='Crear Cuenta' />
           </Formulario>
