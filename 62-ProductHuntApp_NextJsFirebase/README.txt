@@ -26,3 +26,12 @@
     + Ingresar el nombre del proyecto: Product Hunt
       > Marcar la casilla de verificación y click en el boton 'Continuar'
     + Deshabilitar Google Analitics para el proyecto y click en el boton 'Continuar'
+
+* Habilitar Autenticación en Firebase
+  - Ir al proyecto creado
+  - Desplegar 'Compilacion' y click en 'Autentication'
+  - Click en el boton 'Comenzar'
+  - Elegir el metodo de acceso 'Correo electrónico/constraseña'
+    > Habilitar 'Correo electrónico/contraseña'
+    > Dejar por defecto deshabilitado 'Vinculo de correo electrónico (acceso sin contraseñá)'
+    > Click en 'Guardar'
