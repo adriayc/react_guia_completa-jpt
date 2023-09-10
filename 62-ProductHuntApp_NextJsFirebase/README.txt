@@ -18,3 +18,11 @@
   * Instalar dependencias
     + Emotion (Styled components)
       # npm install @emotion/core @emotion/styled babel-plugin-emotion @emotion/babel-preset-css-prop
+
+* Creando la app en Firebase
+  - Ir al sitio web: https://firebase.google.com/
+  - Iniciar session y click en 'Ir a la consola'
+  - Click en 'Agregar proyecto'
+    + Ingresar el nombre del proyecto: Product Hunt
+      > Marcar la casilla de verificación y click en el boton 'Continuar'
+    + Deshabilitar Google Analitics para el proyecto y click en el boton 'Continuar'
