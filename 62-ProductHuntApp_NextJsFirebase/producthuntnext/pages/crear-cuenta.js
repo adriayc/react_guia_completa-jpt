@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
+// Importar router
+import Router from 'next/router';
 // Importar emotion
 // import { css } from '@emotion/core';    // Deprecado! (Old version)
 import { css } from '@emotion/react';
@@ -20,6 +22,8 @@ const STATE_INICIAL = {
 };
 
 const CrearCuenta = () => {
+  const [error, guardarError] = useState(false);
+
   const { valores, errores, handleChange, handleBlur, handleSubmit } = useValidacion(STATE_INICIAL, validarCrearCuenta, crearCuenta);
 
   const { nombre, email, password } = valores;
@@ -29,9 +33,14 @@ const CrearCuenta = () => {
 
     try {
       await firebase.registrar(nombre, email, password);
+      // Redireccionar a la raiz '/'
+      Router.push('/');
+      
     } catch (error) {
       // console.error('Hubo un error al crear un usuario ', error);
       console.error('Hubo un error al crear un usuario', error.message);
+
+      guardarError(error.message);
     }
   }
 
@@ -92,6 +101,9 @@ const CrearCuenta = () => {
               />
             </GroupForm>
             {errores.password && <Error>{errores.password}</Error>}
+
+            {/* Error de Firebase */}
+            {error && <Error>{error}</Error>}
 
             <InputSubmit type='submit' value='Crear Cuenta' />
           </Formulario>
