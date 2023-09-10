@@ -20,6 +20,8 @@ const STATE_INICIAL = {
 const CrearCuenta = () => {
   const { valores, errores, submitForm, handleChange, handleSubmit } = useValidacion(STATE_INICIAL, validarCrearCuenta, crearCuenta);
 
+  const { nombre, email, password } = valores;
+
   function crearCuenta() {
     console.log('Creando cuenta...');
   }
@@ -35,7 +37,11 @@ const CrearCuenta = () => {
             `}
           >Crear Cuenta</h1>
 
-          <Formulario>
+          <Formulario
+            onSubmit={handleSubmit}
+            // Quitar la validacion de HTML
+            noValidate
+          >
             <GroupForm>
               <label htmlFor='nombre'>Nombre</label>
               <input
@@ -43,6 +49,8 @@ const CrearCuenta = () => {
                 id='nombre'
                 name='nombre'
                 placeholder='Tu Nombre'
+                value={nombre}
+                onChange={handleChange}
               />
             </GroupForm>
 
@@ -53,6 +61,8 @@ const CrearCuenta = () => {
                 id='email'
                 name='email'
                 placeholder='Tu Email'
+                value={email}
+                onChange={handleChange}
               />
             </GroupForm>
 
@@ -63,6 +73,8 @@ const CrearCuenta = () => {
                 id='password'
                 name='password'
                 placeholder='Tu Password'
+                value={password}
+                onChange={handleChange}
               />
             </GroupForm>
 
