@@ -2,11 +2,28 @@ import React from 'react';
 // Importar emotion
 // import { css } from '@emotion/core';    // Deprecado! (Old version)
 import { css } from '@emotion/react';
+// Impotar custom hook
+import useValidacion from '../hooks/useValidacion';
+// Importar validaciones
+import validarCrearCuenta from '../validacion/validarCrearCuenta';
 // Impotar layout component
 import Layout from '../components/layouts/Layout';
 import { Formulario, GroupForm, InputSubmit } from '../components/ui/Formulario';
 
+// Variables
+const STATE_INICIAL = {
+  nombre: '',
+  email: '',
+  password: ''
+};
+
 const CrearCuenta = () => {
+  const { valores, errores, submitForm, handleChange, handleSubmit } = useValidacion(STATE_INICIAL, validarCrearCuenta, crearCuenta);
+
+  function crearCuenta() {
+    console.log('Creando cuenta...');
+  }
+
   return (
     <div>
       <Layout>
