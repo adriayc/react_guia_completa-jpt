@@ -21,6 +21,11 @@ class Firebase {
       displayName: nombre
     });
   }
+
+  // Iniciar sesion un usuario
+  async login(email, password) {
+    return await this.auth.signInWithEmailAndPassword(email, password);
+  }
 }
 
 // Crear un objeto de firebase
