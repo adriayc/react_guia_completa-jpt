@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 // Importar components
 import Buscar from '../ui/Buscar';
 import Link from 'next/link';
@@ -6,6 +6,8 @@ import Link from 'next/link';
 import styled from '@emotion/styled';
 // import { css } from '@emotion/core';   // Deprecado! (Old version)
 import { css } from '@emotion/react';
+// Importar el contexts
+import { FirebaseContext } from '../../firebase';
 // Importar components
 import Navegacion from './Navegacion';
 import Boton from '../ui/Boton';
@@ -33,8 +35,8 @@ const LogoParagraph = styled.p`
 `;
 
 const Header = () => {
-  // const usuario = true;
-  const usuario = false;
+  const { usuario, firebase } = useContext(FirebaseContext);
+  // console.log(usuario);
 
   return (
     <header
@@ -75,11 +77,12 @@ const Header = () => {
                 css={css`
                   margin-right: 2rem;
                 `}
-              >Hola: Adriano</p>
+              >Hola: {usuario.displayName}</p>
     
               {/* <button type='button'>Cerrar Sesión</button> */}
               <Boton
                 bgColor='true'
+                onClick={() => firebase.cerrarSesion()}
               >Cerrar Sesión</Boton>
             </>
           ) : (

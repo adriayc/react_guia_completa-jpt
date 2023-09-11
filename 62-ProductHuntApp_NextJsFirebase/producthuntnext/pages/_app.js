@@ -11,15 +11,16 @@ import '../styles/globals.css';
 // const MyApp = props => {                     // Tutorial
 const MyApp = ({Component, pageProps}) => {
   // const { Component, pageProps } = props;    // Tutorial
-  
+
   // Obtener al usuario autenticado del custom hook
   const usuario = useAutenticacion();
-  console.log(usuario);
+  // console.log(usuario);
 
   return (
     <FirebaseContext.Provider
       value={{
-        firebase
+        firebase,
+        usuario
       }}
     >
       <Component {...pageProps} />

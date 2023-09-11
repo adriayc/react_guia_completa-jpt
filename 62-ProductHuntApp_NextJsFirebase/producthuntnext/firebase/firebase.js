@@ -26,6 +26,11 @@ class Firebase {
   async login(email, password) {
     return await this.auth.signInWithEmailAndPassword(email, password);
   }
+
+  // Cerrar sesion un usuario
+  async cerrarSesion() {
+    await this.auth.signOut();
+  }
 }
 
 // Crear un objeto de firebase
