@@ -4,6 +4,13 @@ export const Formulario = styled.form`
   width: 95%;
   max-width: 600px;
   margin: 5rem auto 0 auto;
+
+  fieldset {
+    font-size: 2rem;
+    padding: 2rem;
+    border: 1px solid #e1e1e1;
+    margin: 2rem 0;
+  }
 `;
 
 export const GroupForm = styled.div`
@@ -16,9 +23,13 @@ export const GroupForm = styled.div`
     flex: 0 0 150px;    // flex: felx-grow | flex-shrink | flex-basis;
   }
 
-  input {
+  input,
+  textarea {
     padding: 1rem;
     flex: 1;    // flex: flex-grow; (Toma el resto del tamaño)
+  }
+  textarea {
+    height: 400px;
   }
 `;
 
