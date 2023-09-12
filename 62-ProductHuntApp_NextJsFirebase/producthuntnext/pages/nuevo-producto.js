@@ -18,7 +18,7 @@ import { Formulario, GroupForm, InputSubmit ,Error } from '../components/ui/Form
 const STATE_INICIAL = {
   nombre: '',
   empresa: '',
-  imagen: '',
+  // imagen: '',
   ulr: '',
   descripcion: ''
 };
@@ -28,7 +28,8 @@ const NuevoProducto = () => {
 
   const { valores, errores, handleChange, handleBlur, handleSubmit } = useValidacion(STATE_INICIAL, validarCrearProducto, crearProducto);
 
-  const { nombre, empresa, imagen, url, descripcion } = valores;
+  // const { nombre, empresa, imagen, url, descripcion } = valores;
+  const { nombre, empresa, url, descripcion } = valores;
 
   async function crearProducto() {
     console.log('Creando producto...');
@@ -80,7 +81,7 @@ const NuevoProducto = () => {
               </GroupForm>
               {errores.empresa && <Error>{errores.empresa}</Error>}
 
-              <GroupForm>
+              {/* <GroupForm>
                 <label htmlFor='imagen'>Imagen</label>
                 <input
                   type='file'
@@ -91,7 +92,7 @@ const NuevoProducto = () => {
                   onBlur={handleBlur}
                 />
               </GroupForm>
-              {errores.imagen && <Error>{errores.imagen}</Error>}
+              {errores.imagen && <Error>{errores.imagen}</Error>} */}
 
               <GroupForm>
                 <label htmlFor='url'>URL</label>
