@@ -10,6 +10,8 @@ import useValidacion from '../hooks/useValidacion';
 import validarCrearProducto from '../validacion/validarCrearProducto';
 // Import firebase
 import firebase, { FirebaseContext } from '../firebase';
+// Importar componente FileUploader
+import FileUploader from 'react-firebase-file-uploader';
 // Impotar layout component
 import Layout from '../components/layouts/Layout';
 import { Formulario, GroupForm, InputSubmit ,Error } from '../components/ui/Formulario';
@@ -24,6 +26,12 @@ const STATE_INICIAL = {
 };
 
 const NuevoProducto = () => {
+  // State de la imagen
+  const [nombreImagen, guardarNombreImage] = useState('');
+  const [subiendo, guardarSubiendo] = useState(false);
+  const [progreso, guardarProgreso] = useState(0);
+  const [urlImagen, guardarUrlImagen] = useState('');
+
   const [error, guardarError] = useState(false);
 
   const { valores, errores, handleChange, handleBlur, handleSubmit } = useValidacion(STATE_INICIAL, validarCrearProducto, crearProducto);
@@ -50,6 +58,7 @@ const NuevoProducto = () => {
       nombre,
       empresa,
       url,
+      urlImagen,
       descripcion,
       votos: 0,
       comentarios: [],
@@ -58,7 +67,40 @@ const NuevoProducto = () => {
 
     // Insertar en la base de datos
     firebase.db.collection('productos').add(producto);
+
+    // Redirigir a la raiz del app
+    return router.push('/');
   }
+
+  // File uploaded Firebase
+  const handleUploadStart = () => {
+    guardarProgreso(0);
+    guardarSubiendo(true);
+  };
+
+  const handleProgress = progreso => guardarProgreso({ progreso });
+  
+  const handleUploadError = error => {
+    // console.log(error);
+    guardarSubiendo(error);
+  };
+
+  const handleUploadSuccess = nombre => {
+    guardarProgreso(100);
+    guardarSubiendo(false);
+    guardarNombreImage(nombre);
+
+    firebase
+      // .storage()
+      .storage
+      .ref('productos')
+      .child(nombre)
+      .getDownloadURL()
+      .then(url => {
+        // console.log(url);
+        guardarUrlImagen(url)
+      });
+  };
 
   return (
     <div>
@@ -106,18 +148,26 @@ const NuevoProducto = () => {
               </GroupForm>
               {errores.empresa && <Error>{errores.empresa}</Error>}
 
-              {/* <GroupForm>
+              <GroupForm>
                 <label htmlFor='imagen'>Imagen</label>
-                <input
-                  type='file'
+                <FileUploader
+                  // type='file'
                   id='imagen'
                   name='imagen'
-                  value={imagen}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
+                  // value={imagen}
+                  // onChange={handleChange}
+                  // onBlur={handleBlur}
+
+                  accept='image/*'    /* Imagens de cualquier tipo */
+                  randomizeFilename
+                  storageRef={firebase.storage.ref('productos')}
+                  onUploadStart={handleUploadStart}
+                  onUploadError={handleUploadError}
+                  onUploadSuccess={handleUploadSuccess}
+                  onProgress={handleProgress}
                 />
               </GroupForm>
-              {errores.imagen && <Error>{errores.imagen}</Error>} */}
+              {/* {errores.imagen && <Error>{errores.imagen}</Error>} */}
 
               <GroupForm>
                 <label htmlFor='url'>URL</label>
