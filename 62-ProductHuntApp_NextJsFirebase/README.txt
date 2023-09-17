@@ -69,3 +69,7 @@
  - Click en 'Comenzar'
   > Seleccionar 'Comenzar en modo de prueba' y click en 'Siguiente'
   > Seleccinar la configuracion por defecto y click en 'Listo'
+
+* Instalar dependecia date-fns (Formato de fechas)
+  # npm install date-fns
+  # npm install date-fns --legacy-peer-deps | --force
