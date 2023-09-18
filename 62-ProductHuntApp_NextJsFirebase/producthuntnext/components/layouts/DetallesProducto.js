@@ -1,4 +1,6 @@
 import React from 'react';
+// Importar routing
+import Link from 'next/link';
 // Importar emotion
 import styled from '@emotion/styled';
 // Importar date-fns
@@ -96,7 +98,9 @@ const DetallesProducto = ({producto}) => {
         </div>
 
         <div>
-          <Titulo>{nombre}</Titulo>
+          <Link href='/productos/[id]' as={`/productos/${id}`} >
+            <Titulo>{nombre}</Titulo>
+          </Link>
 
           <TextoDescripcion>{descripcion}</TextoDescripcion>
 
