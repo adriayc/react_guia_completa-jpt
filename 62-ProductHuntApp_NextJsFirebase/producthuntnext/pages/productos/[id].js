@@ -5,8 +5,21 @@ import { useRouter } from 'next/router';
 import { FirebaseContext } from '../../firebase';
 // Impotar layout component
 import Layout from '../../components/layouts/Layout';
+// Importar emotion
+import styled from '@emotion/styled';
+// import { css } from '@emotion/core'
+import { css } from '@emotion/react'
 // Importar components
 import Error404 from '../../components/layouts/404';
+
+
+const ContenedorProducto = styled.div`
+  @media (min-width: 768px) {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    column-gap: 2rem;
+  }
+`;
 
 const Producto = () => {
   // State del componente
@@ -46,10 +59,29 @@ const Producto = () => {
 
   // if (error) return <Error404 />
 
+  if (Object.keys(producto).length === 0) return 'Cargando...';
+
+  const { nombre, url, urlImagen, descripcion, empresa, votos, comentarios, creado } = producto;
+
   return (
     <Layout>
       <>
         {error && <Error404 />}
+
+        <div className='contenedor'>
+          <h1
+            css={css`
+              text-align: center;
+              margin-top: 5rem;
+            `}
+          >{nombre}</h1>
+
+          <ContenedorProducto>
+            <div>1</div>
+
+            <aside>2</aside>
+          </ContenedorProducto>
+        </div>
       </>
     </Layout>
   );
