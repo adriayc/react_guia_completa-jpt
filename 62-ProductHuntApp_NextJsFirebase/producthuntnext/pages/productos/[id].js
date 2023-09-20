@@ -5,12 +5,17 @@ import { useRouter } from 'next/router';
 import { FirebaseContext } from '../../firebase';
 // Impotar layout component
 import Layout from '../../components/layouts/Layout';
+// Importar date-fns
+import { formatDistanceToNow } from 'date-fns';
+import { es } from 'date-fns/locale';
 // Importar emotion
 import styled from '@emotion/styled';
 // import { css } from '@emotion/core'
 import { css } from '@emotion/react'
 // Importar components
 import Error404 from '../../components/layouts/404';
+import { GroupForm, InputSubmit } from '../../components/ui/Formulario';
+
 
 
 const ContenedorProducto = styled.div`
@@ -77,7 +82,37 @@ const Producto = () => {
           >{nombre}</h1>
 
           <ContenedorProducto>
-            <div>1</div>
+            <div>
+              <p>Publicado hace: { formatDistanceToNow(new Date(creado), {locale: es}) }</p>
+              <img src={urlImagen} />
+              <p>{descripcion}</p>
+              
+              <h2>Agrega tu comentario</h2>
+              <form>
+                <GroupForm>
+                  <input 
+                    type='text'
+                    name='mensaje' 
+                  />
+
+                  <InputSubmit type='submit' value='Agregar Comentario' />
+                </GroupForm>
+              </form>
+
+              <h2
+                css={css`
+                  margin: 2rem 0;
+                `}
+              >Comentarios</h2>
+              {comentarios.map((comentario, index) => (
+                <li
+                  key={index}
+                >
+                  <p>{comentario.nombre}</p>
+                  <p>Escrito por: {comentario.usuarioNombre}</p>
+                </li>
+              ))}
+            </div>
 
             <aside>2</aside>
           </ContenedorProducto>
