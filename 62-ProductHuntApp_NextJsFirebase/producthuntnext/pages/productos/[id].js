@@ -15,6 +15,7 @@ import { css } from '@emotion/react'
 // Importar components
 import Error404 from '../../components/layouts/404';
 import { GroupForm, InputSubmit } from '../../components/ui/Formulario';
+import Boton from '../../components/ui/Boton';
 
 
 
@@ -114,7 +115,27 @@ const Producto = () => {
               ))}
             </div>
 
-            <aside>2</aside>
+            <aside>
+              <Boton
+                target='_blank'
+                bgColor='true'
+                href={url}
+              >Visitar URL</Boton>
+
+              <div
+                css={css`
+                  margin-top: 5rem;
+                `}
+              >
+                <p
+                  css={css`
+                    text-align: center;
+                  `}
+                >{votos} Votos</p>
+
+                <Boton>Votar</Boton>
+              </div>
+            </aside>
           </ContenedorProducto>
         </div>
       </>
