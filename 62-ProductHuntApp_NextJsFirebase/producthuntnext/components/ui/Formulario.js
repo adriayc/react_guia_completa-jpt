@@ -20,7 +20,7 @@ export const GroupForm = styled.div`
 
   label {
     font-size: 1.8rem;
-    flex: 0 0 150px;    // flex: felx-grow | flex-shrink | flex-basis;
+    flex: 0 0 150px;    // flex: flex-grow | flex-shrink | flex-basis;
   }
 
   input,
@@ -44,6 +44,7 @@ export const InputSubmit = styled.input`
   text-transform: uppercase;
   padding: 1.5rem;
   border: none;
+  margin: 2rem 0;
 
   &:hover {
     cursor: pointer;
