@@ -15,6 +15,7 @@ import FileUploader from 'react-firebase-file-uploader';
 // Impotar layout component
 import Layout from '../components/layouts/Layout';
 import { Formulario, GroupForm, InputSubmit ,Error } from '../components/ui/Formulario';
+import Error404 from '../components/layouts/404';
 
 // Variables
 const STATE_INICIAL = {
@@ -107,110 +108,114 @@ const NuevoProducto = () => {
       });
   };
 
+  // if (!usuario) return <Error404 />;
+
   return (
     <div>
       <Layout>
-        <>
-          <h1
-            css={css`
-              text-align: center;
-              margin-top: 5rem;
-            `}
-          >Nuevo Producto</h1>
-
-          <Formulario
-            onSubmit={handleSubmit}
-            noValidate
-          >
-            <fieldset>
-              <legend>Información General</legend>
-            
-              <GroupForm>
-                <label htmlFor='nombre'>Nombre</label>
-                <input
-                  type='text'
-                  id='nombre'
-                  name='nombre'
-                  placeholder='Nombre Producto'
-                  value={nombre}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                />
-              </GroupForm>
-              {errores.nombre && <Error>{errores.nombre}</Error>}
-
-              <GroupForm>
-                <label htmlFor='empresa'>Empresa</label>
-                <input
-                  type='text'
-                  id='empresa'
-                  name='empresa'
-                  placeholder='Nombre Empresa o Compañia'
-                  value={empresa}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                />
-              </GroupForm>
-              {errores.empresa && <Error>{errores.empresa}</Error>}
-
-              <GroupForm>
-                <label htmlFor='imagen'>Imagen</label>
-                <FileUploader
-                  // type='file'
-                  id='imagen'
-                  name='imagen'
-                  // value={imagen}
-                  // onChange={handleChange}
-                  // onBlur={handleBlur}
-
-                  accept='image/*'    /* Imagens de cualquier tipo */
-                  randomizeFilename
-                  storageRef={firebase.storage.ref('productos')}
-                  onUploadStart={handleUploadStart}
-                  onUploadError={handleUploadError}
-                  onUploadSuccess={handleUploadSuccess}
-                  onProgress={handleProgress}
-                />
-              </GroupForm>
-              {/* {errores.imagen && <Error>{errores.imagen}</Error>} */}
-
-              <GroupForm>
-                <label htmlFor='url'>URL</label>
-                <input
-                  type='url'
-                  id='url'
-                  name='url'
-                  placeholder='Url de tu Producto'
-                  value={url}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                />
-              </GroupForm>
-              {errores.url && <Error>{errores.url}</Error>}
-            </fieldset>
-
-            <fieldset>
-              <legend>Sobre tu Producto</legend>
-
-              <GroupForm>
-                <label htmlFor='descripcion'>Descripcion</label>
-                <textarea
-                  id='descripcion'
-                  name='descripcion'
-                  placeholder='Descripción de tu Producto'
-                  value={descripcion}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                ></textarea>
-              </GroupForm>
-              {errores.descripcion && <Error>{errores.descripcion}</Error>}
-            </fieldset>
-
-            {error && <Error>{error}</Error>}
-
-            <InputSubmit type='submit' value='Crear Producto' />
-          </Formulario>
-        </>
+        {!usuario ? <Error404 /> : (
+          <>
+            <h1
+              css={css`
+                text-align: center;
+                margin-top: 5rem;
+              `}
+            >Nuevo Producto</h1>
+  
+            <Formulario
+              onSubmit={handleSubmit}
+              noValidate
+            >
+              <fieldset>
+                <legend>Información General</legend>
+              
+                <GroupForm>
+                  <label htmlFor='nombre'>Nombre</label>
+                  <input
+                    type='text'
+                    id='nombre'
+                    name='nombre'
+                    placeholder='Nombre Producto'
+                    value={nombre}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                  />
+                </GroupForm>
+                {errores.nombre && <Error>{errores.nombre}</Error>}
+  
+                <GroupForm>
+                  <label htmlFor='empresa'>Empresa</label>
+                  <input
+                    type='text'
+                    id='empresa'
+                    name='empresa'
+                    placeholder='Nombre Empresa o Compañia'
+                    value={empresa}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                  />
+                </GroupForm>
+                {errores.empresa && <Error>{errores.empresa}</Error>}
+  
+                <GroupForm>
+                  <label htmlFor='imagen'>Imagen</label>
+                  <FileUploader
+                    // type='file'
+                    id='imagen'
+                    name='imagen'
+                    // value={imagen}
+                    // onChange={handleChange}
+                    // onBlur={handleBlur}
+  
+                    accept='image/*'    /* Imagens de cualquier tipo */
+                    randomizeFilename
+                    storageRef={firebase.storage.ref('productos')}
+                    onUploadStart={handleUploadStart}
+                    onUploadError={handleUploadError}
+                    onUploadSuccess={handleUploadSuccess}
+                    onProgress={handleProgress}
+                  />
+                </GroupForm>
+                {/* {errores.imagen && <Error>{errores.imagen}</Error>} */}
+  
+                <GroupForm>
+                  <label htmlFor='url'>URL</label>
+                  <input
+                    type='url'
+                    id='url'
+                    name='url'
+                    placeholder='Url de tu Producto'
+                    value={url}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                  />
+                </GroupForm>
+                {errores.url && <Error>{errores.url}</Error>}
+              </fieldset>
+  
+              <fieldset>
+                <legend>Sobre tu Producto</legend>
+  
+                <GroupForm>
+                  <label htmlFor='descripcion'>Descripcion</label>
+                  <textarea
+                    id='descripcion'
+                    name='descripcion'
+                    placeholder='Descripción de tu Producto'
+                    value={descripcion}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                  ></textarea>
+                </GroupForm>
+                {errores.descripcion && <Error>{errores.descripcion}</Error>}
+              </fieldset>
+  
+              {error && <Error>{error}</Error>}
+  
+              <InputSubmit type='submit' value='Crear Producto' />
+            </Formulario>
+          </>
+        )}
       </Layout>
     </div>
   );

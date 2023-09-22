@@ -39,7 +39,8 @@ const Producto = () => {
   // console.log(id);
 
   // Context de firebase
-  const { firebase } = useContext(FirebaseContext);
+  const { usuario, firebase } = useContext(FirebaseContext);
+  console.log(usuario);
 
   useEffect(() => {
     if (id) {
@@ -89,17 +90,21 @@ const Producto = () => {
               <img src={urlImagen} />
               <p>{descripcion}</p>
               
-              <h2>Agrega tu comentario</h2>
-              <form>
-                <GroupForm>
-                  <input 
-                    type='text'
-                    name='mensaje' 
-                  />
+              {usuario && (
+                <>
+                  <h2>Agrega tu comentario</h2>
+                  <form>
+                    <GroupForm>
+                      <input 
+                        type='text'
+                        name='mensaje' 
+                      />
 
-                  <InputSubmit type='submit' value='Agregar Comentario' />
-                </GroupForm>
-              </form>
+                      <InputSubmit type='submit' value='Agregar Comentario' />
+                    </GroupForm>
+                  </form>
+                </>
+              )}
 
               <h2
                 css={css`
@@ -134,7 +139,9 @@ const Producto = () => {
                   `}
                 >{votos} Votos</p>
 
-                <Boton>Votar</Boton>
+                {usuario && (
+                  <Boton>Votar</Boton>
+                )}
               </div>
             </aside>
           </ContenedorProducto>

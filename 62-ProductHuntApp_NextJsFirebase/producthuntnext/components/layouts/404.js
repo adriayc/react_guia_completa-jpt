@@ -10,7 +10,8 @@ const Error404 = () => {
         text-align: center;
         margin-top: 5rem;
       `}
-    >Producto no existente</h1>
+    // >Producto no existente</h1>
+    >No se puede mostrar</h1>
   );
 }
 
