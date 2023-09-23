@@ -40,7 +40,7 @@ const Producto = () => {
 
   // Context de firebase
   const { usuario, firebase } = useContext(FirebaseContext);
-  console.log(usuario);
+  // console.log(usuario);
 
   useEffect(() => {
     if (id) {
@@ -69,6 +69,28 @@ const Producto = () => {
   if (Object.keys(producto).length === 0) return 'Cargando...';
 
   const { nombre, url, urlImagen, descripcion, empresa, votos, comentarios, creado, creador } = producto;
+
+  // Administrar y validar los votos
+  const votarProducto = () => {
+    // console.log('Votando...');
+
+    if (!usuario) {
+      return router.push('/login');
+    }
+
+    // Obtener y sumar un nuevo voto
+    const nuevoTotal = votos + 1;
+    // console.log(nuevoTotal);
+
+    // Actualizar en la BD
+    firebase.db.collection('productos').doc(id).update({votos: nuevoTotal});
+
+    // Actualizar en el state
+    guardarProducto({
+      ...producto,
+      votos: nuevoTotal
+    })
+  };
 
   return (
     <Layout>
@@ -140,7 +162,9 @@ const Producto = () => {
                 >{votos} Votos</p>
 
                 {usuario && (
-                  <Boton>Votar</Boton>
+                  <Boton
+                    onClick={votarProducto}
+                  >Votar</Boton>
                 )}
               </div>
             </aside>
