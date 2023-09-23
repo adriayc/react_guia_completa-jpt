@@ -62,13 +62,14 @@ const Producto = () => {
       obtenerProducto();
 
     }
-  }, [id])
+  // }, [id]);
+}, [id, producto]);
 
   // if (error) return <Error404 />
 
   if (Object.keys(producto).length === 0) return 'Cargando...';
 
-  const { nombre, url, urlImagen, descripcion, empresa, votos, comentarios, creado, creador } = producto;
+  const { nombre, url, urlImagen, descripcion, empresa, votos, comentarios, creado, creador, haVotado } = producto;
 
   // Administrar y validar los votos
   const votarProducto = () => {
@@ -82,8 +83,18 @@ const Producto = () => {
     const nuevoTotal = votos + 1;
     // console.log(nuevoTotal);
 
+    // Verificar si el usuario actual ha votado
+    if (haVotado.includes(usuario.uid)) return;
+
+
+    // Guardar el ID del usuario que ha votado
+    const nuevoHaVotado = [...haVotado, usuario.uid];
+
     // Actualizar en la BD
-    firebase.db.collection('productos').doc(id).update({votos: nuevoTotal});
+    firebase.db.collection('productos').doc(id).update({
+      votos: nuevoTotal, 
+      haVotado: nuevoHaVotado
+    });
 
     // Actualizar en el state
     guardarProducto({
