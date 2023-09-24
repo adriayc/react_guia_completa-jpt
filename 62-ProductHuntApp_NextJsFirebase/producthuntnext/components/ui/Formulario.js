@@ -44,7 +44,7 @@ export const InputSubmit = styled.input`
   text-transform: uppercase;
   padding: 1.5rem;
   border: none;
-  margin: 2rem 0;
+  // margin: 2rem 0;
 
   &:hover {
     cursor: pointer;
