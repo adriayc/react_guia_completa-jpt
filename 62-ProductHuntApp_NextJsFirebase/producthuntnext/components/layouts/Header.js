@@ -24,7 +24,8 @@ const ContenedorHeader = styled.div`
 `;
 
 // const LogoParagraph = styled.(Link)`      // Error! en agregar style component a un componente (Permitido en gatsbyjs)
-const LogoParagraph = styled.p`
+// const LogoParagraph = styled.p`
+const LogoParagraph = styled.a`
   color: var(--naranja);
   font-size: 4rem;
   font-family: 'Roboto Slab', serif;
