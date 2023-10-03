@@ -51,3 +51,21 @@
     // Old version
     # npm install firebase@8.*
     # npm install firebase-admin@8.*
+
+* Creanr la Base de Datos en Firebase
+  - Ir al proyecto creado
+  - Desplegar 'Compilación' y click en 'Firestore Database'
+  - Click en 'Crear base de datos'
+    > Seleccionar 'Comenzar en modo de prueba' y click en 'Siguiente'
+    > Seleccionar todo por defecto y click en 'Habilitar'
+
+* Instalar dependencias para subir archivos a Firebase
+  # npm i react-firebase-file-uploader
+  # npm i react-firebase-file-uploader --legacy-peer-deps
+
+* Habilitar Storage de firebase
+ - Ir al proyecto creado
+ - Desplegar 'Compilación' y click en 'Storage'
+ - Click en 'Comenzar'
+  > Seleccionar 'Comenzar en modo de prueba' y click en 'Siguiente'
+  > Seleccinar la configuracion por defecto y click en 'Listo'
