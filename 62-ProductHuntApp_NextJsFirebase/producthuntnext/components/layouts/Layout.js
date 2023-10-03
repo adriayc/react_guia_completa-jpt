@@ -54,6 +54,10 @@ const Layout = props => {
           a {
             text-decoration: none;
           }
+
+          img {
+            width: 100%;
+          }
         `}
       />
 

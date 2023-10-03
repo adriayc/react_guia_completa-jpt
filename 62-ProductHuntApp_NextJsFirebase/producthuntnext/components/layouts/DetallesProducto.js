@@ -1,4 +1,6 @@
 import React from 'react';
+// Importar routing
+import Link from 'next/link';
 // Importar emotion
 import styled from '@emotion/styled';
 // Importar date-fns
@@ -86,7 +88,7 @@ const Votos = styled.div`
 
 const DetallesProducto = ({producto}) => {
   // console.log(producto);
-  const { id, nombre, url, urlImagen, descripcion, empresa, votos, comentarios, creado  } = producto;
+  const { id, nombre, url, urlImagen, descripcion, empresa, votos, comentarios, creado } = producto;
 
   return (
     <Producto>
@@ -96,7 +98,9 @@ const DetallesProducto = ({producto}) => {
         </div>
 
         <div>
-          <Titulo>{nombre}</Titulo>
+          <Link href='/productos/[id]' as={`/productos/${id}`} >
+            <Titulo>{nombre}</Titulo>
+          </Link>
 
           <TextoDescripcion>{descripcion}</TextoDescripcion>
 
