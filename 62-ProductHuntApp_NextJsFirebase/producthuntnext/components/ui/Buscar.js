@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
+// Importar router
+import Router from 'next/router';
 // Impotar emotion
 import styled from '@emotion/styled';
 // import { css } from '@emotion/core';     // Deprecado!, (Old version)
@@ -32,16 +34,34 @@ const ButtonSubmit = styled.button`
 `;
 
 const Buscar = () => {
+  const [busqueda, guardarBusqueda] = useState('');
+
+  const buscarProducto = e => {
+    e.preventDefault();
+    // console.log('Buscando producto...', busqueda);
+
+    if (busqueda.trim() === '') return;
+
+    // Redireccionar a '/buscar'  (Enviar un valor/es a un componente)
+    Router.push({
+      pathname: '/buscar',
+      // query: {'busqueda': 'hola'}
+      query: { q: busqueda }
+    });
+  };
+
   return (
     <form
       css={css`
         position: relative;
       `}
+      onSubmit={buscarProducto}
     >
       {/* <input type='text' /> */}
       <InputText 
         type='text'
         placeholder='Buscar Productos'
+        onChange={e => guardarBusqueda(e.target.value)}
       />
 
       {/* <button type='submit'>Buscar</button> */}
