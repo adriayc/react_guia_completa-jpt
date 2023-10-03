@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+// Importar router
+import Router from 'next/router';
 // Impotar emotion
 import styled from '@emotion/styled';
 // import { css } from '@emotion/core';     // Deprecado!, (Old version)
@@ -40,7 +42,12 @@ const Buscar = () => {
 
     if (busqueda.trim() === '') return;
 
-    // Redireccionar a /buscar
+    // Redireccionar a '/buscar'  (Enviar un valor/es a un componente)
+    Router.push({
+      pathname: '/buscar',
+      // query: {'busqueda': 'hola'}
+      query: { q: busqueda }
+    });
   };
 
   return (
