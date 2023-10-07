@@ -1,0 +1,25 @@
+* Creando la app backend de NodeSend
+  - Crear la carpeta 'backend' y ingresar a la carpeta
+  - Inicializar la app
+      # npm init
+        > package name: nodesend-backend
+        > version: (1.0.0)
+        > descripcion: App NodeSend
+        > entry point: (index.js)
+        > text command: (ENTER, por default)
+        > git repository: (ENTER, por default)
+        > keywords: (ENTER, por default)
+        > author: Adriano Ayala
+        > license: (ISC)
+        > Is this OK? (yes)
+
+  - Instalar dependencias
+    > Express
+      # npm install express
+    > Nodemon
+      # npm install --save-dev nodemon
+
+  - Agregar 'scripts' de configuracion en 'package.json'
+
+  - Ejecutar la App
+    # npm run dev
