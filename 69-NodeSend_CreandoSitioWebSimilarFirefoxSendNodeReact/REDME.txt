@@ -18,8 +18,25 @@
       # npm install express
     > Nodemon
       # npm install --save-dev nodemon
+    > Mongoose y DotEnv
+      # npm install mongoose dotenv
 
   - Agregar 'scripts' de configuracion en 'package.json'
 
   - Ejecutar la App
     # npm run dev
+
+  - Conectar MongoDB con la App
+    + Iniciar session en https://www.mongodb.com/atlas
+    + Database -> Data Services -> Clic "Build a Database"
+    + Select 'FREE', dejar todo por defecto y clic 'Create'
+    + Editamos el password a 'root123' y clic 'Finish and Close'
+    + Ingresamos al cluster y clic 'Connect'
+    + Connect to your application -> 'Drivers' y muestra las configuracion de coneccion a mongodb
+
+  - Conectar MongoDB con MongoDB Compass (Interfaz grafica)
+    + Abrir MongoDB Compass, insertar la URI: mongodb+srv://root:<password>cluster0.gpg5hmm.mongodb.net y clic en 'Connect'
+    + Ir a 'Databases' y clic 'Create database'
+      > Database Name: nodesend
+      > Collection Name: usuarios
+      > Clic 'Create Database'

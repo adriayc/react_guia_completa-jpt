@@ -1,8 +1,12 @@
 // Usando 'CommonJS' para la importacion
 const express = require('express');
+const conectarDB = require('./config/db');
 
 // Crear el servidor
 const app = express();
+
+// Conectar a la base de datos
+conectarDB();
 
 console.log('Comensando con la app Node Send!');
 
