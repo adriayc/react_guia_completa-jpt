@@ -1,11 +1,19 @@
 // Bcrypt
 const bcrypt = require('bcrypt');
+// Express validator
+const { validationResult } = require('express-validator');
 // Models
 const Usuario = require("../models/Usuario");
 
 exports.nuevoUsuario = async (req, res) => {
     // console.log('Desde nuevo usuarios');
     // console.log(req.body);
+
+    // Mostrar mensajes de error de express validator
+    const errores = validationResult(req);
+    if (!errores.isEmpty()) {
+        return res.status(400).json({errores: errores.array()});
+    }
 
     // Verificar si el usuario ya estuvo registrado
     const { email, password } = req.body;
