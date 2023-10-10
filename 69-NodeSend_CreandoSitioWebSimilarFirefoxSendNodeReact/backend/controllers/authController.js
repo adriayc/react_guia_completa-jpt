@@ -1,5 +1,9 @@
 // Bcrypt
 const bcrypt = require('bcrypt');
+// Json web token
+const jwt = require('jsonwebtoken');
+// DotEnv
+require('dotenv').config({ path: 'variables.env' });
 // Models
 const Usuario = require('../models/Usuario');
 
@@ -22,7 +26,16 @@ exports.autenticarUsuario = async (req, res, next) => {
     // console.log('El usuario si existe');
     if (bcrypt.compareSync(password, usuario.password)) {
         // console.log('El password es correcto');
-        // Crear JWT
+        // Crear JWT (Firma el token)
+        const token = jwt.sign({
+            id: usuario._id,
+            nombre: usuario.nombre,
+            email: usuario.email
+        }, process.env.SECRETA, {
+            expiresIn: '8h'
+        });
+        // console.log(token);
+        return res.json({ token });
 
     } else {
         // console.log('El password es incorrecto');

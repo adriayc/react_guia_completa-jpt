@@ -24,6 +24,8 @@
       # npm install bcrypt
     > Express validator
      # npm install express-validator
+    > Json Web Token
+     # npm install jsonwebtoken
 
   - Agregar 'scripts' de configuracion en 'package.json'
 
