@@ -1,9 +1,14 @@
 // Usando 'CommonJS' para la importacion
 const express = require('express');
 const conectarDB = require('./config/db');
+// Middlewate
+// const auth = require('./middleware/auth');
 
 // Crear el servidor
 const app = express();
+
+// Habilitar el middleware
+// app.use(auth);
 
 // Conectar a la base de datos
 conectarDB();

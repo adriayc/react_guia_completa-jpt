@@ -2,6 +2,8 @@ const express = require('express');
 const router = express.Router();
 // Express validator
 const { check } = require('express-validator');
+// Middlewate
+const auth = require('../middleware/auth');
 // Controllers
 const authController = require('../controllers/authController');
 
@@ -14,6 +16,8 @@ router.post('/',
 );
 
 router.get('/',
+    // Usar el middleware solo donde sea necesario
+    auth,
     authController.usuarioAutenticado
 )
 
