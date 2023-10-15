@@ -2,13 +2,19 @@
 const shortid = require('shortid');
 // Bcrypt
 const bcrypt = require('bcrypt');
+// Express validator
+const { validationResult } = require('express-validator');
 // Models
 const Enlaces = require('../models/Enlace');
 
 exports.nuevoEnlace = async (req, res, next) => {
-    console.log('Desde nuevo enlace');
+    // console.log('Desde nuevo enlace');
 
     // Revisar si hay errores
+    const errores = validationResult(req);
+    if (!errores.isEmpty()) {
+        return res.status(400).json({msg: errores.array()});
+    }
 
     // Crear un objeto de Enlace
     // console.log(req.body);
