@@ -26,6 +26,8 @@
      # npm install express-validator
     > Json Web Token
      # npm install jsonwebtoken
+    > ShotId (Generar URL)
+     # npm install shortid
 
   - Agregar 'scripts' de configuracion en 'package.json'
 
