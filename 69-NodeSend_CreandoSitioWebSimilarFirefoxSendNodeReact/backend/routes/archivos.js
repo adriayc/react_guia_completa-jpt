@@ -6,6 +6,7 @@ const auth = require('../middleware/auth');
 const archivosController = require('../controllers/archivosController');
 
 router.post('/',
+    auth,
     archivosController.subirArchivo
 );
 
