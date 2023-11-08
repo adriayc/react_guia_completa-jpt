@@ -1,4 +1,7 @@
 import Head from "next/head";
+// Components
+import Header from "./Header";
+
 
 const Layout = ({children}) => {
   return (
@@ -12,10 +15,10 @@ const Layout = ({children}) => {
         <script src="https://cdn.tailwindcss.com" async />
       </Head>
 
-      {/* <img src="logo.svg" /> */}
-
       <div className="bg-gray-100 min-h-creen">
         <div className="container mx-auto">
+          <Header />
+
           <main className="mt-20">
             {children}
           </main>
