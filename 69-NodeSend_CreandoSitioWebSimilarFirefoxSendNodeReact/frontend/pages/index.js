@@ -1,7 +1,12 @@
-export default function Home() {
+// Components
+import Layout from "../components/Layout"
+
+const Index = () => {
   return (
-    <div className="container">
-      <h1>Hola Mundo Next.js!</h1>
-    </div>
+    <Layout>
+      <h1>Index</h1>
+    </Layout>
   )
 }
+
+export default Index;
