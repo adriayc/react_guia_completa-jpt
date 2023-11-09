@@ -15,7 +15,7 @@ const Layout = ({children}) => {
         <script src="https://cdn.tailwindcss.com" async />
       </Head>
 
-      <div className="bg-gray-100 min-h-creen">
+      <div className="bg-gray-100 min-h-screen">
         <div className="container mx-auto">
           <Header />
 
