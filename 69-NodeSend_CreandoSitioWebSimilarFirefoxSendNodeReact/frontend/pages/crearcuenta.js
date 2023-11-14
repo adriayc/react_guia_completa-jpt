@@ -1,6 +1,8 @@
 import React from "react";
 // Formik
 import { useFormik } from "formik";
+// Yup
+import * as Yup from "yup";
 // Components
 import Layout from "../components/Layout";
 
@@ -12,6 +14,16 @@ const CrearCuenta = () => {
       email: '',
       password: ''
     },
+    validationSchema: Yup.object({
+      nombre: Yup.string()
+                .required('El nombre es obligatorio'),
+      email: Yup.string()
+                .email('El email no es válido')
+                .required('El email es obligatorio'),
+      password: Yup.string()
+                .min(6, 'El password debe contener al menos 6 caracteres')
+                .required('El password es obligatorio')
+    }),
     // onSubmit: () => {
     onSubmit: valores => {
       // console.log('Enviando formulario...');
@@ -44,6 +56,12 @@ const CrearCuenta = () => {
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
                 />
+                {formik.touched.nombre && formik.errors.nombre ? (
+                  <div className="my-2 bg-gray-200 border-l-4 border-red-500 text-red-700 p-4">
+                    <p className="font-bold">Error</p>
+                    <p>{formik.errors.nombre}</p>
+                  </div>
+                ) : null}
               </div>
 
               <div className="mb-4">
@@ -60,6 +78,12 @@ const CrearCuenta = () => {
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
                 />
+                {formik.touched.email && formik.errors.email ? (
+                  <div className="my-2 bg-gray-200 border-l-4 border-red-500 text-red-700 p-4">
+                    <p className="font-bold">Error</p>
+                    <p>{formik.errors.email}</p>
+                  </div>
+                ) : null}
               </div>
 
               <div className="mb-4">
@@ -76,6 +100,12 @@ const CrearCuenta = () => {
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
                 />
+                {formik.touched.password && formik.errors.password ? (
+                  <div className="my-2 bg-gray-200 border-l-4 border-red-500 text-red-700 p-4">
+                    <p className="font-bold">Error</p>
+                    <p>{formik.errors.password}</p>
+                  </div>
+                ) : null}
               </div>
 
               <input
