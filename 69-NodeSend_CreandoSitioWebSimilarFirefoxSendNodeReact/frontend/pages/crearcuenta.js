@@ -1,7 +1,24 @@
+import React from "react";
+// Formik
+import { useFormik } from "formik";
 // Components
-import Layout from "../components/Layout"
+import Layout from "../components/Layout";
 
 const CrearCuenta = () => {
+  // Validacion del formulario con formik y yup
+  const formik = useFormik({
+    initialValues: {
+      nombre: '',
+      email: '',
+      password: ''
+    },
+    // onSubmit: () => {
+    onSubmit: valores => {
+      // console.log('Enviando formulario...');
+      console.log(valores);
+    }
+  });
+
   return (
     <Layout>
       <div className="md:w-4/5 xl:w-3/5 mx-auto mb-32">
@@ -9,7 +26,10 @@ const CrearCuenta = () => {
 
         <div className="flex justify-center mt-5">
           <div className="w-full max-w-lg">
-            <form className="bg-white roundend shadow-md px-8 pt-6 pb-8 mb-4">
+            <form 
+              className="bg-white roundend shadow-md px-8 pt-6 pb-8 mb-4"
+              onSubmit={formik.handleSubmit}
+            >
               <div className="mb-4">
                 <label 
                   className="block text-black text-sm font-bold mb-2"
@@ -20,6 +40,9 @@ const CrearCuenta = () => {
                   className="shadow appearance-none border roundend w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                   id="nombre"
                   placeholder="Nombre de Usuario"
+                  value={formik.values.nombre}
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
                 />
               </div>
 
@@ -33,6 +56,9 @@ const CrearCuenta = () => {
                   className="shadow appearance-none border roundend w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                   id="email"
                   placeholder="Email de Usuario"
+                  value={formik.values.email}
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
                 />
               </div>
 
@@ -46,6 +72,9 @@ const CrearCuenta = () => {
                   className="shadow appearance-none border roundend w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                   id="password"
                   placeholder="Password de Usuario"
+                  value={formik.values.password}
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
                 />
               </div>
 
