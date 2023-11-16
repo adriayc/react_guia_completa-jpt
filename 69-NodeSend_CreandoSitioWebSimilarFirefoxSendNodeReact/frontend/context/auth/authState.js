@@ -1,17 +1,29 @@
 import React, { useReducer } from "react";
 // Context
 import authContext from "./authContext";
+// Reducer
+import authReducer from "./authReducer";
 
 // const AuthState = props => {
 const AuthState = ({children}) => {
-  const hola = () => {
-    console.log('Hola!');
+  // Definir un state inicial
+  const initialState = {
+    token: '',
+    autenticado: null,
+    usuario: null,
+    mensaje: null,
   };
+
+  // Definir el reducer
+  const [state, dispatch] = useReducer(authReducer, initialState);
 
   return (
     <authContext.Provider
       value={{
-        hola
+        token: state.token,
+        autenticado: state.autenticado,
+        usuario: state.usuario,
+        mensaje: state.mensaje,
       }}
     >
       {children}
