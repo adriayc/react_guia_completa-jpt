@@ -12,14 +12,7 @@ import Layout from "../components/Layout";
 const CrearCuenta = () => {
   // Acceder al state
   const AuthContext = useContext(authContext);
-  const { usuarioAutenticado, token } = AuthContext;
-  // console.log(token);
-
-  // useEffect(() => {
-  //   setTimeout(() => {
-  //     usuarioAutenticado('Adriano');
-  //   }, 3000);
-  // }, []);
+  const { registrarUsuario } = AuthContext;
 
   // Validacion del formulario con formik y yup
   const formik = useFormik({
@@ -41,7 +34,9 @@ const CrearCuenta = () => {
     // onSubmit: () => {
     onSubmit: valores => {
       // console.log('Enviando formulario...');
-      console.log(valores);
+      // console.log(valores);
+      
+      registrarUsuario(valores);
     }
   });
 
