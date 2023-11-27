@@ -30,6 +30,9 @@
      # npm install shortid
     > Multer (Subir archivos)
      # npm install multer
+    > Cors (Conexion entre backend y frontend)
+     # npm install cors
+
 
   - Agregar 'scripts' de configuracion en 'package.json'
 

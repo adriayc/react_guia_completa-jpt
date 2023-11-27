@@ -1,5 +1,6 @@
 // Usando 'CommonJS' para la importacion
 const express = require('express');
+const cors = require('cors');
 const conectarDB = require('./config/db');
 // Middlewate
 // const auth = require('./middleware/auth');
@@ -12,6 +13,15 @@ const app = express();
 
 // Conectar a la base de datos
 conectarDB();
+
+// Habilitar cors
+// app.use(cors());    // Habilitacion de peticion publica
+// Habilitar peticiones de una origin especifico
+// console.log(process.env.FRONTEND_URL);
+const opcionesCors = {
+  origin: process.env.FRONTEND_URL
+};
+app.use(cors(opcionesCors));
 
 console.log('Comensando con la app Node Send!');
 
