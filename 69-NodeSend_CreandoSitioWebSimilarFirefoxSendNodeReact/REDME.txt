@@ -95,3 +95,5 @@
   - Instalar dependencias
     > Formik y Yup
       # npm install formik yup
+    > Axios
+      # npm install axios
