@@ -6,7 +6,8 @@ import authReducer from "./authReducer";
 // Axios
 import clienteAxios from "../../config/axios";
 // Types
-import { USUARIO_AUTENTICADO } from "../../types";
+// import { USUARIO_AUTENTICADO } from "../../types";
+import { REGISTRO_EXITOSO } from "../../types";
 
 // const AuthState = props => {
 const AuthState = ({children}) => {
@@ -28,7 +29,13 @@ const AuthState = ({children}) => {
 
     try {
       const respuesta = await clienteAxios.post('/api/usuarios', datos);
-      console.log(respuesta);
+      // console.log(respuesta);
+      // console.log(respuesta.data.msg);
+
+      dispatch({
+        type: REGISTRO_EXITOSO,
+        payload: respuesta.data.msg
+      });
       
     } catch (error) {
       console.log(error);
