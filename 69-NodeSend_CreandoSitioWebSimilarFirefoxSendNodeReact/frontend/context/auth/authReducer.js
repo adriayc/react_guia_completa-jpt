@@ -1,6 +1,6 @@
 // Types
 // import { USUARIO_AUTENTICADO } from "../../types";
-import { REGISTRO_EXITOSO } from "../../types";
+import { REGISTRO_EXITOSO, REGISTRO_ERROR, LIMPIAR_ALERTA } from "../../types";
 
 export default (state, action) => {
   switch (action.type) {
@@ -11,9 +11,20 @@ export default (state, action) => {
     //     usuario: action.payload,
     //   };
     case REGISTRO_EXITOSO:
+    case REGISTRO_ERROR:
       return {
         ...state,
         mensaje: action.payload
+      };
+    // case REGISTRO_ERROR:
+    //   return {
+    //     ...state,
+    //     mensaje: action.payload
+    //   };
+    case LIMPIAR_ALERTA:
+      return {
+        ...state,
+        mensaje: null
       };
     default:
       return state;
