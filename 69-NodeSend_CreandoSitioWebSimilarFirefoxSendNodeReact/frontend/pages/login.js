@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useReducer } from "react";
 // Formik
 import { useFormik } from "formik";
 // Yup
@@ -8,11 +8,22 @@ import authContext from "../context/auth/authContext";
 // Components
 import Layout from "../components/Layout";
 import Alerta from "../components/Alerta";
+import { useRouter } from "next/router";
 
 const Login = () => {
   // Defunir el context
   const AuthContext = useContext(authContext);
-  const { iniciarSesion, mensaje } = AuthContext;
+  const { iniciarSesion, autenticado, mensaje } = AuthContext;
+
+  // Next router
+  const router = useRouter();
+
+  useEffect(() => {
+    if (autenticado) {
+      router.push('/');
+    }
+
+  }, [autenticado]);
 
   // Validacion del formulario con formik y yup
   const formik = useFormik({

@@ -19,7 +19,10 @@ import {
 const AuthState = ({children}) => {
   // Definir un state inicial
   const initialState = {
-    token: '',
+    // token: '',
+    // token: localStorage.getItem('token'),
+    // Verificar que obtenga el token del frontend (vista)
+    token: typeof window !== 'undefined' ? localStorage.getItem('token') : '',
     autenticado: null,
     usuario: null,
     mensaje: null,
@@ -74,7 +77,12 @@ const AuthState = ({children}) => {
 
     try {
       const respuesta = await clienteAxios.post('/api/auth', datos);
-      console.log(respuesta);
+      // console.log(respuesta.data.token);
+
+      dispatch({
+        type: LOGIN_EXITOSO,
+        payload: respuesta.data.token
+      });
 
     } catch (error) {
       // console.log(error.response.data.msg);

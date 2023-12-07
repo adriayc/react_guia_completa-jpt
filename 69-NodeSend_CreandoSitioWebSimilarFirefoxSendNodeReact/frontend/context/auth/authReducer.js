@@ -28,6 +28,15 @@ export default (state, action) => {
     //     ...state,
     //     mensaje: action.payload
     //   };
+    case LOGIN_EXITOSO:
+      // Guardar el token en LocalStorage
+      localStorage.setItem('token', action.payload);
+      
+      return {
+        ...state,
+        token: action.payload,
+        autenticado: true
+      };
     case LIMPIAR_ALERTA:
       return {
         ...state,
