@@ -7,7 +7,13 @@ import authReducer from "./authReducer";
 import clienteAxios from "../../config/axios";
 // Types
 // import { USUARIO_AUTENTICADO } from "../../types";
-import { REGISTRO_EXITOSO, REGISTRO_ERROR, LIMPIAR_ALERTA } from "../../types";
+import { 
+  REGISTRO_EXITOSO, 
+  REGISTRO_ERROR, 
+  LIMPIAR_ALERTA,
+  LOGIN_EXITOSO,
+  LOGIN_ERROR
+} from "../../types";
 
 // const AuthState = props => {
 const AuthState = ({children}) => {
@@ -64,7 +70,27 @@ const AuthState = ({children}) => {
 
   // Autenticar usuarios
   const iniciarSesion = async datos => {
-    console.log(datos);
+    // console.log(datos);
+
+    try {
+      const respuesta = await clienteAxios.post('/api/auth', datos);
+      console.log(respuesta);
+
+    } catch (error) {
+      // console.log(error.response.data.msg);
+
+      dispatch({
+        type: LOGIN_ERROR,
+        payload: error.response.data.msg
+      });
+    }
+
+    // Limpiar la alerta despues de 3 segundos
+    setTimeout(() => {
+      dispatch({
+        type: LIMPIAR_ALERTA
+      });
+    }, 3000);
   };
 
   // Usuario autenticado
