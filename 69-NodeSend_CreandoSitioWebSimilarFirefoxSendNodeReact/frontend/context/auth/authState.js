@@ -62,6 +62,11 @@ const AuthState = ({children}) => {
     }, 3000);
   };
 
+  // Autenticar usuarios
+  const iniciarSesion = async datos => {
+    console.log(datos);
+  };
+
   // Usuario autenticado
   const usuarioAutenticado = nombre => {
     dispatch({
@@ -79,6 +84,7 @@ const AuthState = ({children}) => {
         mensaje: state.mensaje,
         registrarUsuario,
         usuarioAutenticado,
+        iniciarSesion,
       }}
     >
       {children}

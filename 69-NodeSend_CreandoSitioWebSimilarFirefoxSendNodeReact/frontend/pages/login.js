@@ -1,31 +1,39 @@
-import React from "react";
+import React, { useContext } from "react";
 // Formik
 import { useFormik } from "formik";
 // Yup
 import * as Yup from "yup";
 // Components
 import Layout from "../components/Layout"
+// Contexts
+import authContext from "../context/auth/authContext";
 
 const Login = () => {
-    // Validacion del formulario con formik y yup
-    const formik = useFormik({
-      initialValues: {
-        email: '',
-        password: ''
-      },
-      validationSchema: Yup.object({
-        email: Yup.string()
-                  .email('El email no es válido')
-                  .required('El email es obligatorio'),
-        password: Yup.string()
-                  .required('El password es obligatorio')
-      }),
-      // onSubmit: () => {
-      onSubmit: valores => {
-        // console.log('Enviando formulario...');
-        console.log(valores);
-      }
-    });
+  // Defunir el context
+  const AuthContext = useContext(authContext);
+  const { iniciarSesion, mensaje } = AuthContext;
+
+  // Validacion del formulario con formik y yup
+  const formik = useFormik({
+    initialValues: {
+      email: '',
+      password: ''
+    },
+    validationSchema: Yup.object({
+      email: Yup.string()
+                .email('El email no es válido')
+                .required('El email es obligatorio'),
+      password: Yup.string()
+                .required('El password es obligatorio')
+    }),
+    // onSubmit: () => {
+    onSubmit: valores => {
+      // console.log('Enviando formulario...');
+      // console.log(valores);
+
+      iniciarSesion(valores);
+    }
+  });
 
   return (
     <Layout>
