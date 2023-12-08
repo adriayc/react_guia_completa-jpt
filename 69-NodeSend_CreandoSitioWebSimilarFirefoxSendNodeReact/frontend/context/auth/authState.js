@@ -15,7 +15,8 @@ import {
   LIMPIAR_ALERTA,
   LOGIN_EXITOSO,
   LOGIN_ERROR,
-  USUARIO_AUTENTICADO
+  USUARIO_AUTENTICADO,
+  CERRAR_SESION
 } from "../../types";
 
 // const AuthState = props => {
@@ -123,8 +124,20 @@ const AuthState = ({children}) => {
       });
 
     } catch (error) {
-      
+      dispatch({
+        type: LOGIN_ERROR,
+        payload: error.response.data.msg
+      });
     }
+  };
+
+  // Cerrar la sesión
+  const cerrarSesion = () => {
+    // console.log('Cerrando sesion...');
+
+    dispatch({
+      type: CERRAR_SESION
+    });
   };
 
   // Usuario autenticado
@@ -147,6 +160,7 @@ const AuthState = ({children}) => {
         registrarUsuario,
         iniciarSesion,
         usuarioAutenticado,
+        cerrarSesion,
       }}
     >
       {children}

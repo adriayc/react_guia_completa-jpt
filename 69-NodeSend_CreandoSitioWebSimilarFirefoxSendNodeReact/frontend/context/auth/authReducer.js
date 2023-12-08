@@ -6,7 +6,8 @@ import {
   LIMPIAR_ALERTA,
   LOGIN_EXITOSO,
   LOGIN_ERROR,
-  USUARIO_AUTENTICADO
+  USUARIO_AUTENTICADO,
+  CERRAR_SESION
  } from "../../types";
 
 export default (state, action) => {
@@ -47,6 +48,16 @@ export default (state, action) => {
       return {
         ...state,
         usuario: action.payload
+      };
+    case CERRAR_SESION:
+      // Eliminar el token de LocalStorage
+      localStorage.removeItem('token');
+
+      return {
+        ...state,
+        usuario: null,
+        token: null,
+        autenticado: null
       };
     default:
       return state;
