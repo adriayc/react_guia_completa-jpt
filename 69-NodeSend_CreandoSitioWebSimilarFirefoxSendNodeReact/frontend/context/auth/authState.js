@@ -5,6 +5,8 @@ import authContext from "./authContext";
 import authReducer from "./authReducer";
 // Axios
 import clienteAxios from "../../config/axios";
+// TokenAuth
+import tokenAuth from "../../config/tokenAuth";
 // Types
 // import { USUARIO_AUTENTICADO } from "../../types";
 import { 
@@ -12,7 +14,8 @@ import {
   REGISTRO_ERROR, 
   LIMPIAR_ALERTA,
   LOGIN_EXITOSO,
-  LOGIN_ERROR
+  LOGIN_ERROR,
+  USUARIO_AUTENTICADO
 } from "../../types";
 
 // const AuthState = props => {
@@ -103,7 +106,25 @@ const AuthState = ({children}) => {
 
   // Usuario autenticado
   const usuarioAutenticado = async() => {
-    console.log('Revisando...');
+    // console.log('Revisando...');
+
+    const token = localStorage.getItem('token');
+    if (token) {
+      tokenAuth(token);
+    }
+
+    try {
+      const respuesta = await clienteAxios.get('/api/auth');
+      // console.log(respuesta.data.usuario);
+      
+      dispatch({
+        type: USUARIO_AUTENTICADO,
+        payload: respuesta.data.usuario
+      });
+
+    } catch (error) {
+      
+    }
   };
 
   // Usuario autenticado
