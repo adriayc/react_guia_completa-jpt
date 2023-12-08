@@ -102,23 +102,30 @@ const AuthState = ({children}) => {
   };
 
   // Usuario autenticado
-  const usuarioAutenticado = nombre => {
-    dispatch({
-      type: USUARIO_AUTENTICADO,
-      payload: nombre
-    });
+  const usuarioAutenticado = async() => {
+    console.log('Revisando...');
   };
+
+  // Usuario autenticado
+  // const usuarioAutenticado = nombre => {
+  //   dispatch({
+  //     type: USUARIO_AUTENTICADO,
+  //     payload: nombre
+  //   });
+  // };
 
   return (
     <authContext.Provider
       value={{
+        // States
         token: state.token,
         autenticado: state.autenticado,
         usuario: state.usuario,
         mensaje: state.mensaje,
+        // Funciones
         registrarUsuario,
-        usuarioAutenticado,
         iniciarSesion,
+        usuarioAutenticado,
       }}
     >
       {children}
