@@ -8,10 +8,18 @@ const Dropzone = () => {
   // Funcion que se envia a useDropzone
   // const onDrop = (acceptedFiles) => {
   // useCallback - Evita la renderizacion multiple
-  const onDrop = useCallback((acceptedFiles) => {
+  const onDrop = useCallback( async (acceptedFiles) => {
     // console.log('Soltando archivo...');
     console.log(acceptedFiles);
-  });
+
+    // Crear un Form Data
+    const formData = new FormData();
+    formData.append('archivo', acceptedFiles[0]);
+
+    // Enviar en formato form-data el archivo
+    const resultado = await clienteAxios.post('/api/archivos', formData);
+    console.log(resultado);
+  }, []);
 
   // Extraer contenido de Dropzone
   const { getRootProps, getInputProps, isDragActive, acceptedFiles } = useDropzone({onDrop});
