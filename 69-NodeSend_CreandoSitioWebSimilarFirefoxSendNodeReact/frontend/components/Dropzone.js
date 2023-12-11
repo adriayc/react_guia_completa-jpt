@@ -8,7 +8,8 @@ const Dropzone = () => {
   // Funcion que se envia a useDropzone
   // const onDrop = (acceptedFiles) => {
   // useCallback - Evita la renderizacion multiple
-  const onDrop = useCallback( async (acceptedFiles) => {
+  // const onDrop = useCallback( async (acceptedFiles) => {
+  const onDropAccepted = useCallback( async (acceptedFiles) => {
     // console.log('Soltando archivo...');
     console.log(acceptedFiles);
 
@@ -21,8 +22,13 @@ const Dropzone = () => {
     console.log(resultado);
   }, []);
 
+  const onDropRejected = () => {
+    console.log('No se pudo subir');
+  };
+
   // Extraer contenido de Dropzone
-  const { getRootProps, getInputProps, isDragActive, acceptedFiles } = useDropzone({onDrop});
+  // const { getRootProps, getInputProps, isDragActive, acceptedFiles } = useDropzone({onDrop});
+  const { getRootProps, getInputProps, isDragActive, acceptedFiles } = useDropzone({onDropAccepted, onDropRejected, maxSize: 1000000});
 
   // const archivos = acceptedFiles.map(archivo => {
   //   console.log(archivo);
