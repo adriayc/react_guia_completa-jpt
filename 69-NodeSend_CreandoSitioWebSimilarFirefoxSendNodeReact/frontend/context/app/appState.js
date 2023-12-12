@@ -6,7 +6,8 @@ import appReducer from './appReducer';
 // Types
 import {
   MOSTRAR_ALERTA,
-  LIMPIAR_ALERTA,
+  // LIMPIAR_ALERTA,
+  OCULTAR_ALERTA,
   SUBIR_ARCHIVO_EXITO,
   SUBIR_ARCHIVO_ERROR,
   CREAR_ENLACE_EXITO,
@@ -15,7 +16,7 @@ import {
 
 const AppState = ({children}) => {
   const initialState = {
-    mensaje_archivo: '',
+    mensaje_archivo: null,
   };
 
   // Crear dispatch y state
@@ -23,12 +24,20 @@ const AppState = ({children}) => {
 
   // Mostrar una alerta
   const mostrarAlerta = msg => {
-    console.log(msg);
+    // console.log(msg);
 
     dispatch({
       type: MOSTRAR_ALERTA,
       payload: msg
     });
+
+    // Limpiar alerta
+    setTimeout(() => {
+      dispatch({
+        // type: LIMPIAR_ALERTA,
+        type: OCULTAR_ALERTA,
+      })
+    }, 3000);
   };
 
   return (

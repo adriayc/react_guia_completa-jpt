@@ -3,14 +3,20 @@ import { useContext, useEffect } from "react";
 import Link from "next/link";
 // Contexts
 import authContext from "../context/auth/authContext";
+import appContext from "../context/app/appContext";
 // Components
 import Layout from "../components/Layout";
 import Dropzone from "../components/Dropzone";
+import Alerta from "../components/Alerta";
 
 const Index = () => {
-  // Definir el context
+  // Definir el context authContext
   const AuthContext = useContext(authContext);
   const { usuarioAutenticado } = AuthContext;
+
+  // Definir context appContext
+  const AppContext = useContext(appContext);
+  const { mensaje_archivo } = AppContext;
 
   useEffect(() => {
     usuarioAutenticado();
@@ -20,6 +26,9 @@ const Index = () => {
   return (
     <Layout>
       <div className="md:w-4/5 xl:w-3/5 mx-auto mb-32">
+        {/* Mostar alerta */}
+        {mensaje_archivo && <Alerta />}        
+
         <div className="lg:flex md:shadow-lg p-5 bg-white rounded-lg py-10">
           {/* Dropzone */}
           <Dropzone />

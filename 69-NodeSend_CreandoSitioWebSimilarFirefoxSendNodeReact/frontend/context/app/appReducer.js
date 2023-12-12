@@ -1,7 +1,8 @@
 // Types
 import {
   MOSTRAR_ALERTA,
-  LIMPIAR_ALERTA,
+  // LIMPIAR_ALERTA,
+  OCULTAR_ALERTA,
   SUBIR_ARCHIVO_EXITO,
   SUBIR_ARCHIVO_ERROR,
   CREAR_ENLACE_EXITO,
@@ -14,6 +15,12 @@ export default (state, action) => {
       return {
         ...state,
         mensaje_archivo: action.payload
+      };
+    // case LIMPIAR_ALERTA:
+    case OCULTAR_ALERTA:
+      return {
+        ...state,
+        mensaje_archivo: null
       };
 		default:
 			return state;
