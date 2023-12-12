@@ -1,10 +1,16 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useContext } from "react";
 // React Dropzone
 import { useDropzone } from "react-dropzone";
 // Cliente Axios
 import clienteAxios from "../config/axios";
+// Contexts
+import appContext from "../context/app/appContext";
 
 const Dropzone = () => {
+  // Definimos el appContext
+  const AppContext = useContext(appContext);
+  const { mostrarAlerta } = AppContext;
+
   // Funcion que se envia a useDropzone
   // const onDrop = (acceptedFiles) => {
   // useCallback - Evita la renderizacion multiple
@@ -23,7 +29,9 @@ const Dropzone = () => {
   }, []);
 
   const onDropRejected = () => {
-    console.log('No se pudo subir');
+    // console.log('No se pudo subir');
+
+    mostrarAlerta('No se pudo subir');
   };
 
   // Extraer contenido de Dropzone
