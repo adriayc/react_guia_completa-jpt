@@ -9,7 +9,7 @@ import appContext from "../context/app/appContext";
 const Dropzone = () => {
   // Definimos el appContext
   const AppContext = useContext(appContext);
-  const { mostrarAlerta } = AppContext;
+  const { mostrarAlerta, subirArchivos, cargando } = AppContext;
 
   // Funcion que se envia a useDropzone
   // const onDrop = (acceptedFiles) => {
@@ -17,15 +17,19 @@ const Dropzone = () => {
   // const onDrop = useCallback( async (acceptedFiles) => {
   const onDropAccepted = useCallback( async (acceptedFiles) => {
     // console.log('Soltando archivo...');
-    console.log(acceptedFiles);
+    // console.log(acceptedFiles);
+    // console.log(acceptedFiles[0].path);
 
     // Crear un Form Data
     const formData = new FormData();
     formData.append('archivo', acceptedFiles[0]);
 
+    subirArchivos(formData, acceptedFiles[0].path);
+
     // Enviar en formato form-data el archivo
-    const resultado = await clienteAxios.post('/api/archivos', formData);
-    console.log(resultado);
+    // const resultado = await clienteAxios.post('/api/archivos', formData);
+    // console.log(resultado);
+
   }, []);
 
   const onDropRejected = () => {
@@ -60,11 +64,15 @@ const Dropzone = () => {
           <ul>
             { archivos }
           </ul>
-          <button
-            type="button"
-            className="bg-blue-700 w-full py-3 rounded-lg text-white my-10 hover:bg-blue-800"
-            onClick={() => crearEnlace()}
-          >Crear Enlace</button>
+
+          {cargando ? <p className="my-10 text-center text-gray-600">Subiendo archivo...</p> : (
+            <button
+              type="button"
+              className="bg-blue-700 w-full py-3 rounded-lg text-white my-10 hover:bg-blue-800"
+              onClick={() => crearEnlace()}
+            >Crear Enlace</button>
+          )}
+        
         </div>
       ) : (
         // Dropzone
