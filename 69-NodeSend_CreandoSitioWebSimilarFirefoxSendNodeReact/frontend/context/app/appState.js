@@ -22,7 +22,11 @@ const AppState = ({children}) => {
     mensaje_archivo: null,
     nombre: '',
     nombre_original: '',
-    cargando: null
+    cargando: null,
+    descargas: 1,
+    password: '',
+    autor: null,
+    url: ''
   };
 
   // Crear dispatch y state
@@ -73,8 +77,34 @@ const AppState = ({children}) => {
 
       dispatch({
         type: SUBIR_ARCHIVO_ERROR,
-        payload: error.response.data.mgs
+        payload: error.response.data.msg
       });      
+    }
+  };
+
+  // Crea un enlace una vez que se subio el archivo
+  const crearEnlace = async () => {
+    // console.log('Creando el enlace...');
+
+    const data = {
+      nombre: state.nombre,
+      nombre_original: state.nombre_original,
+      descargas: state.descargas,
+      password: state.password,
+      autor: state.autor
+    };
+
+    try {
+      const resultado = await clienteAxios.post('/api/enlaces', data);
+      // console.log(resultado.data.msg);
+
+      dispatch({
+        type: CREAR_ENLACE_EXITO,
+        payload: resultado.data.msg
+      });
+
+    } catch (error) {
+      console.log(error);
     }
   };
 
@@ -85,8 +115,13 @@ const AppState = ({children}) => {
         nombre: state.nombre,
         nombre_original: state.nombre_original,
         cargando: state.cargando,
+        descargas: state.descargas,
+        password: state.password,
+        autor: state.autor,
+        url: state.url,
         mostrarAlerta,
         subirArchivos,
+        crearEnlace,
       }}
     >
       {children}

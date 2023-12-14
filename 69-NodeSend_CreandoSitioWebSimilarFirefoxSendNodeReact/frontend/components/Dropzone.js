@@ -9,7 +9,7 @@ import appContext from "../context/app/appContext";
 const Dropzone = () => {
   // Definimos el appContext
   const AppContext = useContext(appContext);
-  const { mostrarAlerta, subirArchivos, cargando } = AppContext;
+  const { mostrarAlerta, subirArchivos, cargando, crearEnlace } = AppContext;
 
   // Funcion que se envia a useDropzone
   // const onDrop = (acceptedFiles) => {
@@ -51,10 +51,6 @@ const Dropzone = () => {
       <p className="text-sm text-gray-500">{(archivo.size / Math.pow(1024, 2)).toFixed(2)} MB</p>
     </li>
   ));
-
-  const crearEnlace = () => {
-    console.log('Creando el enlace...');
-  };
 
   return (
     <div className="md:flex-1 mb-3 mx-2 mt-16 lg:mt-0 flex flex-col items-center justify-center border-dashed border-gray-400 border-2 bg-gray-100 px-4">

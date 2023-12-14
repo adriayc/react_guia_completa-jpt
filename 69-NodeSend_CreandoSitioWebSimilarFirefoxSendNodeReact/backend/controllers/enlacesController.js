@@ -18,11 +18,11 @@ exports.nuevoEnlace = async (req, res, next) => {
 
     // Crear un objeto de Enlace
     // console.log(req.body);
-    const { nombre_original } = req.body;
+    const { nombre_original, nombre } = req.body;
 
     const enlace = new Enlaces();
     enlace.url = shortid.generate();
-    enlace.nombre = shortid.generate();
+    enlace.nombre = nombre;
     enlace.nombre_original = nombre_original;
     // console.log(enlace);
 
@@ -53,7 +53,7 @@ exports.nuevoEnlace = async (req, res, next) => {
         // return next();
         return res.json({msg: `${enlace.url}`});
         next();
-        
+
     } catch (error) {
         console.log(error);
     }
