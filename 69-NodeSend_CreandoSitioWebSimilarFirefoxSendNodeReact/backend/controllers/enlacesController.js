@@ -60,6 +60,17 @@ exports.nuevoEnlace = async (req, res, next) => {
 
 };
 
+// Obtener todos los enlaces
+exports.todosEnlaces = async (req, res) => {
+  try {
+    const enlaces = await Enlaces.find({}).select('url -_id');
+    res.json({enlaces});
+
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 // Obtener el enlace
 exports.obtenerEnlace = async (req, res, next) => {
     // console.log(req.params.url);
