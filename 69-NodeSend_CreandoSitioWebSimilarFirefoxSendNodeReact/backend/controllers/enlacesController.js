@@ -87,6 +87,8 @@ exports.obtenerEnlace = async (req, res, next) => {
 
     // El enlace existe
     res.json({archivo: enlace.nombre});
+    // Evitar que se siga ejecutando el resto del codigo
+    return;
 
     const { descargas, nombre } = enlace;
 
