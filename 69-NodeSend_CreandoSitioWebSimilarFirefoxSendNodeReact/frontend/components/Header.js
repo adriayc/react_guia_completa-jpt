@@ -17,7 +17,7 @@ const Header = () => {
     <header className="py-8 flex flex-col md:flex-row items-center justify-between">
       {/* <img src="logo.svg" className="w-64 mf:mb-0" /> */}
       <Link href='/'>
-        <Image src='logo.svg' width={256} height={47} alt="Logo" />
+        <Image src='/logo.svg' width={256} height={47} alt="Logo" />
       </Link>
 
       <div>
