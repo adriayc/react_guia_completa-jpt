@@ -4,8 +4,16 @@ import Layout from "../../components/Layout";
 import clienteAxios from "../../config/axios";
 
 // Respuesta que obtenemos
-export async function getStaticProps() {
-  const resultado = await clienteAxios.get('/api/enlaces/vIUlvvbAs');
+// StaticProps
+// export async function getStaticProps(props) {
+// export async function getStaticProps({params}) {
+// ServerSideProps
+export async function getServerSideProps({params}) {
+  // console.log(props);
+  const { enlace } = params;
+  console.log(enlace);
+  // const resultado = await clienteAxios.get('/api/enlaces/vIUlvvbAs');
+  const resultado = await clienteAxios.get(`/api/enlaces/${enlace}`);
   // console.log(resultado);
 
   return {
@@ -15,23 +23,27 @@ export async function getStaticProps() {
   };
 };
 
-// Routing para obtener diferentes URLs
-export async function getStaticPaths() {
+// Routing para obtener diferentes URL
+// StaticPaths
+// export async function getStaticPaths() {
+// ServerSidePaths
+export async function getServerSidePaths() {
   const enlaces = await clienteAxios.get('/api/enlaces');
-  console.log(enlaces.data.enlaces);
+  // console.log(enlaces.data.enlaces);
 
   return {
     // paths: [],
     paths: enlaces.data.enlaces.map(enlace => ({
       params: {enlace: enlace.url}
     })),
+    // False para que sean URLs validas
     fallback: false
   };
 };
 
 // export default () => {
 const Enlace =  ({enlace}) => {
-  // console.log(enlace);
+  console.log(enlace);
 
   return (
     <Layout>
