@@ -11,7 +11,8 @@ router.post('/',
 );
 
 router.get('/:archivo',
-  archivosController.descargar
+  archivosController.descargar,
+  archivosController.eliminarArchivo
 );
 
 // router.delete('/:id',

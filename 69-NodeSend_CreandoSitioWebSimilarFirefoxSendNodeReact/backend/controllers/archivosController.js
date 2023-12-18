@@ -4,6 +4,8 @@ const multer = require('multer');
 const shortid = require('shortid');
 // File system
 const fs = require('fs');
+// Models
+const Enlaces = require('../models/Enlace');
 
 exports.subirArchivo = async (req, res, next) => {
     // console.log(req.file);
@@ -61,10 +63,37 @@ exports.eliminarArchivo = async (req, res) => {
 };
 
 // Descargar un archivo
-exports.descargar = (req, res) => {
+exports.descargar = async (req, res, next) => {
   // console.log('Descargando...');
   // console.log(req.params.archivo);
 
-  const archivo = __dirname +'/../uploads/'+ req.params.archivo;
-  res.download(archivo);
+  const { archivo } = req.params;
+  // Obtener el enlace
+  const enlace = await Enlaces.findOne({nombre: archivo});
+
+  const archivoDescarga = __dirname +'/../uploads/'+ archivo;
+  res.download(archivoDescarga);
+
+  // Eliminar el archivo y la entrada de la DB
+  const { descargas, nombre } = enlace;
+
+  // Si la descarga es igual a 1, borrar la entrada y el archivo
+  if (descargas === 1) {
+      // console.log('Solo existe 1');
+      // Eliminar el archivo
+      req.archivo = nombre;
+
+      // Eliminar la entrada de la db
+      // await Enlaces.findOneAndRemove(req.params.url);      // Error!
+      await Enlaces.findOneAndDelete(enlace.id);
+
+      // Next - pasa al siguiente controlador "enlaceController.eliminarArchivo"
+      next();
+
+  } else {
+      // console.log('Existe mas de 1');
+      // Si la decarga es mayor a 1, restar menos 1
+      enlace.descargas--;
+      await enlace.save();
+  }
 };
