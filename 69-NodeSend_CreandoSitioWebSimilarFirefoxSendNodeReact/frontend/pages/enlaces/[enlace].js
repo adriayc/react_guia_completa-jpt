@@ -43,11 +43,20 @@ export async function getServerSidePaths() {
 
 // export default () => {
 const Enlace =  ({enlace}) => {
-  console.log(enlace);
+  // console.log(enlace);
+  // console.log(enlace.archivo);
 
   return (
     <Layout>
-      <h1>Desde [enlace].js</h1>
+      <h1 className="text-4xl text-center text-gray-700">Descarga tu archivo:</h1>
+      <div className="flex items-center justify-center mt-10">
+        <a 
+          // href={`${process.env.backendURL}/${enlace.archivo}`} 
+          href={`${process.env.backendURL}/api/archivos/${enlace.archivo}`} 
+          className="bg-red-500 text-center px-10 py-3 rounded uppercase text-white font-bold cursor-pointer"
+          download
+        >Aquí</a>
+      </div>
     </Layout>
   );
 };

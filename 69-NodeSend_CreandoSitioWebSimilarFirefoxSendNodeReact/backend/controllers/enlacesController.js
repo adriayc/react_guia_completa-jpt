@@ -86,7 +86,9 @@ exports.obtenerEnlace = async (req, res, next) => {
     }
 
     // El enlace existe
-    res.json({archivo: enlace.nombre});
+    res.json({archivo: enlace.nombre});    // Respuesta como JSON
+    // res.send({archivo: enlace.nombre});     // Muestra un vista
+    // res.download({archivo: enlace.nombre});   // Agrega el content-disposition para descarga de archivos
     // Evitar que se siga ejecutando el resto del codigo
     return;
 
