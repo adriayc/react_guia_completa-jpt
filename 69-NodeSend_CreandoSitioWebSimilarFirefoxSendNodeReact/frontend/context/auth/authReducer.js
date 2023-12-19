@@ -49,7 +49,8 @@ export default (state, action) => {
     case USUARIO_AUTENTICADO:
       return {
         ...state,
-        usuario: action.payload
+        usuario: action.payload,
+        autenticado: true
       };
     case CERRAR_SESION:
       // Eliminar el token de LocalStorage

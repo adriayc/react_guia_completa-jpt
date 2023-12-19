@@ -4,9 +4,14 @@ import { useDropzone } from "react-dropzone";
 // Cliente Axios
 import clienteAxios from "../config/axios";
 // Contexts
+import authContext from "../context/auth/authContext";
 import appContext from "../context/app/appContext";
 
 const Dropzone = () => {
+  // Definimos el authContext
+  const AuthContext = useContext(authContext);
+  const { usuario, autenticado } = AuthContext;
+
   // Definimos el appContext
   const AppContext = useContext(appContext);
   const { mostrarAlerta, subirArchivos, cargando, crearEnlace } = AppContext;
@@ -60,6 +65,8 @@ const Dropzone = () => {
           <ul>
             { archivos }
           </ul>
+
+          {autenticado ? 'Esto se ve si esta autenticado' : ''}
 
           {cargando ? <p className="my-10 text-center text-gray-600">Subiendo archivo...</p> : (
             <button
