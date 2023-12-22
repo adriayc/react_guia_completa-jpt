@@ -1,6 +1,12 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
+// Contexts
+import appContext from '../context/app/appContext';
 
 const Formulario = () => {
+  // Definir context
+  const AppContext = useContext(appContext);
+  const { agregarPassword } = AppContext;
+
   // States
   const [tienePassword, setTienePassword] = useState(false);
 
@@ -26,7 +32,11 @@ const Formulario = () => {
           />
         </div>
         {tienePassword ? (
-          <input type='password' className='appearance-none w-full mt-2 bg-white border border-gray-400 text-black py-3 px-4 pr-8 rounded leading-none focus:outline-none focus:border-gray-500' />
+          <input 
+            type='password' 
+            className='appearance-none w-full mt-2 bg-white border border-gray-400 text-black py-3 px-4 pr-8 rounded leading-none focus:outline-none focus:border-gray-500'
+            onChange={e => agregarPassword(e.target.value)}  
+          />
         ) : null}
       </div>
     </div>
