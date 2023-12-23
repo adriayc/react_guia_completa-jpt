@@ -16,7 +16,8 @@ import {
   CREAR_ENLACE_EXITO,
   CREAR_ENLACE_ERROR,
   LIMPIAR_STATE,
-  AGREGAR_PASSWORD
+  AGREGAR_PASSWORD,
+  AGREGAR_DESCARGAS
 } from '../../types';
 
 const AppState = ({children}) => {
@@ -129,6 +130,16 @@ const AppState = ({children}) => {
     });
   };
 
+  // Agrega el numero de descarga
+  const agregarDescargas = descargas => {
+    // console.log(descargas);
+
+    dispatch({
+      type: AGREGAR_DESCARGAS,
+      payload: descargas
+    });
+  };
+
   return (
     <appContext.Provider
       value={{
@@ -144,7 +155,8 @@ const AppState = ({children}) => {
         subirArchivos,
         crearEnlace,
         limpiarState,
-        agregarPassword
+        agregarPassword,
+        agregarDescargas
       }}
     >
       {children}

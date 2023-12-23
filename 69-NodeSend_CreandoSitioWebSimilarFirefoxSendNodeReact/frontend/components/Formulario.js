@@ -5,7 +5,7 @@ import appContext from '../context/app/appContext';
 const Formulario = () => {
   // Definir context
   const AppContext = useContext(appContext);
-  const { agregarPassword } = AppContext;
+  const { agregarPassword, agregarDescargas } = AppContext;
 
   // States
   const [tienePassword, setTienePassword] = useState(false);
@@ -14,8 +14,13 @@ const Formulario = () => {
     <div className='w-full mt-20'>
       <div>
         <label className='text-lg text-gray-800'>Eliminar tras:</label>
-        <select className='appearance-none w-full mt-2 bg-white border border-gray-400 text-black py-3 px-4 pr-8 rounded leading-none focus:outline-none focus:border-gray-500'>
-          <option value='' selected disabled>-- Seleccione --</option>
+        <select 
+          className='appearance-none w-full mt-2 bg-white border border-gray-400 text-black py-3 px-4 pr-8 rounded leading-none focus:outline-none focus:border-gray-500'
+          defaultValue='1'
+          onChange={e => agregarDescargas(parseInt(e.target.value))}
+        >
+          {/* <option value='' selected disabled>-- Seleccione --</option> */}
+          <option value='' disabled>-- Seleccione --</option>
           <option value='1'>1 Descarga</option>
           <option value='5'>5 Descargas</option>
           <option value='10'>10 Descargas</option>
