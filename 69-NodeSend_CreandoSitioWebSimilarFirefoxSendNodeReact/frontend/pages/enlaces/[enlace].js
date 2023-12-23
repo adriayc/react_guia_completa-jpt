@@ -1,8 +1,12 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 // Layouts
 import Layout from "../../components/Layout";
 // Cliente axios
 import clienteAxios from "../../config/axios";
+// Contexts
+import appContext from "../../context/app/appContext";
+// Components
+import Alerta from "../../components/Alerta";
 
 // Respuesta que obtenemos
 // StaticProps
@@ -12,7 +16,7 @@ import clienteAxios from "../../config/axios";
 export async function getServerSideProps({params}) {
   // console.log(props);
   const { enlace } = params;
-  console.log(enlace);
+  // console.log(enlace);
   // const resultado = await clienteAxios.get('/api/enlaces/vIUlvvbAs');
   const resultado = await clienteAxios.get(`/api/enlaces/${enlace}`);
   // console.log(resultado);
@@ -47,13 +51,35 @@ const Enlace =  ({enlace}) => {
   // console.log(enlace);
   // console.log(enlace.archivo);
 
+  // Definir context
+  const AppContext = useContext(appContext);
+  const { mostrarAlerta, mensaje_archivo } = AppContext;
+
   // States
   const [tienePassword, setTienePassword] = useState(enlace.password);
+  const [password, setPassword] = useState('');
   // console.log(tienePassword);
 
-  const varificarPassword = e => {
+  const varificarPassword = async e => {
     e.preventDefault();
-    console.log('Verificando password...');
+    // console.log('Verificando password...');
+
+    const data = {
+      password
+    };
+
+    try {
+      const resultado = await clienteAxios.post(`/api/enlaces/${enlace.enlace}`, data);
+      // console.log(resultado);
+
+      setTienePassword(resultado.data.password);
+
+    } catch (error) {
+      // console.log(error);
+      // console.log(error.response.data.msg);
+
+      mostrarAlerta(error.response.data.msg);
+    }
   };
 
   return (
@@ -61,6 +87,9 @@ const Enlace =  ({enlace}) => {
       {tienePassword ? (
         <>
           <p className="text-center">Este enlace esta protegido por un password, colocalo a continuación</p>
+
+          {mensaje_archivo && <Alerta />}
+
           <div className="flex justify-center mt-5">
             <div className="w-full max-w-lg">
               <form
@@ -73,10 +102,12 @@ const Enlace =  ({enlace}) => {
                     htmlFor="password"
                   >Password</label>
                   <input
-                    type="passwrod"
+                    type="password"
                     className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                     id="password"
                     placeholder="Password del enlace"
+                    value={password}
+                    onChange={e => setPassword(e.target.value)}
                   />
                 </div>
 
