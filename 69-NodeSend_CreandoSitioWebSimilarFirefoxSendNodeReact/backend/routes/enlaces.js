@@ -22,7 +22,8 @@ router.get('/',
 );
 
 router.get('/:url',
-    enlacesController.obtenerEnlace,
+  enlacesController.tienePassword,
+  enlacesController.obtenerEnlace,
     // archivoController.eliminarArchivo
 );
 

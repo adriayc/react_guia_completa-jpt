@@ -99,6 +99,7 @@ const AppState = ({children}) => {
 
     try {
       const resultado = await clienteAxios.post('/api/enlaces', data);
+      // console.log(resultado);
       // console.log(resultado.data.msg);
 
       dispatch({
@@ -108,6 +109,7 @@ const AppState = ({children}) => {
 
     } catch (error) {
       console.log(error);
+      // console.log(error.response.data.msg);
     }
   };
 
