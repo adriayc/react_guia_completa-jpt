@@ -24,6 +24,8 @@
       # npm install bcrypt
     > Express validator
      # npm install express-validator
+    > Json Web Token
+     # npm install jsonwebtoken
 
   - Agregar 'scripts' de configuracion en 'package.json'
 
@@ -44,3 +46,17 @@
       > Database Name: nodesend
       > Collection Name: usuarios
       > Clic 'Create Database'
+
+  - Solicitudes Postman
+    + POST
+      > URL: http://localhost:4000/api/auth
+        * Body -> raw
+          {
+            "email": "adriano@correo.com",
+            "password": "adriano123"
+          }
+        * Clic "Send"
+    + GET
+      > URL: ttp://localhost:4000/api/auth
+        * Authorization -> Type: "Bearer Token" (Si existe autorizacion con token)
+          Token: <TOKEN_GENERADO>

@@ -1,9 +1,14 @@
 // Usando 'CommonJS' para la importacion
 const express = require('express');
 const conectarDB = require('./config/db');
+// Middlewate
+// const auth = require('./middleware/auth');
 
 // Crear el servidor
 const app = express();
+
+// Habilitar el middleware
+// app.use(auth);
 
 // Conectar a la base de datos
 conectarDB();
@@ -18,6 +23,7 @@ app.use(express.json());
 
 // Rutas de la app
 app.use('/api/usuarios', require('./routes/usuarios'));
+app.use('/api/auth', require('./routes/auth'));
 
 // Arrancar la app
 app.listen(port, '0.0.0.0', () => {
