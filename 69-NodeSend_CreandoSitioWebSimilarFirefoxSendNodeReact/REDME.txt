@@ -20,6 +20,10 @@
       # npm install --save-dev nodemon
     > Mongoose y DotEnv
       # npm install mongoose dotenv
+    > Bcrypt
+      # npm install bcrypt
+    > Express validator
+     # npm install express-validator
 
   - Agregar 'scripts' de configuracion en 'package.json'
 
