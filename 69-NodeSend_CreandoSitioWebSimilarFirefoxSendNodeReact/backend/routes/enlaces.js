@@ -6,6 +6,7 @@ const { check } = require('express-validator');
 const auth = require('../middleware/auth');
 // Controllers
 const enlacesController = require('../controllers/enlacesController');
+const archivoController = require('../controllers/archivosController');
 
 router.post('/',
     [
@@ -14,6 +15,11 @@ router.post('/',
     ],
     auth,
     enlacesController.nuevoEnlace
+);
+
+router.get('/:url',
+    enlacesController.obtenerEnlace,
+    archivoController.eliminarArchivo
 );
 
 module.exports = router;

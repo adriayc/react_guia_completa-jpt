@@ -28,6 +28,8 @@
      # npm install jsonwebtoken
     > ShotId (Generar URL)
      # npm install shortid
+    > Multer (Subir archivos)
+     # npm install multer
 
   - Agregar 'scripts' de configuracion en 'package.json'
 
@@ -62,3 +64,11 @@
       > URL: ttp://localhost:4000/api/auth
         * Authorization -> Type: "Bearer Token" (Si existe autorizacion con token)
           Token: <TOKEN_GENERADO>
+
+  - Subir archivos Postman
+    + POST
+      > URL: http://localhost:4000/api/archivos
+        * Body -> form-data
+          Key: archivo    (Seleccionamos 'File')
+          Value: <SELECCIONAR_ARCHIVO_A_SUBIR>
+        * Clic "Send"
