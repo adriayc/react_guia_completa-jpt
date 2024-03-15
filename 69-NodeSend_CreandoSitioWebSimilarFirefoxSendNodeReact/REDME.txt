@@ -100,3 +100,5 @@
       # npm install formik yup
     > Axios
       # npm install axios
+    > React Dropzone
+      # npm install react-dropzone
