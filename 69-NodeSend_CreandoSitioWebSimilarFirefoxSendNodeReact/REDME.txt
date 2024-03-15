@@ -1,0 +1,42 @@
+* Creando la app backend de NodeSend
+  - Crear la carpeta 'backend' y ingresar a la carpeta
+  - Inicializar la app
+      # npm init
+        > package name: nodesend-backend
+        > version: (1.0.0)
+        > descripcion: App NodeSend
+        > entry point: (index.js)
+        > text command: (ENTER, por default)
+        > git repository: (ENTER, por default)
+        > keywords: (ENTER, por default)
+        > author: Adriano Ayala
+        > license: (ISC)
+        > Is this OK? (yes)
+
+  - Instalar dependencias
+    > Express
+      # npm install express
+    > Nodemon
+      # npm install --save-dev nodemon
+    > Mongoose y DotEnv
+      # npm install mongoose dotenv
+
+  - Agregar 'scripts' de configuracion en 'package.json'
+
+  - Ejecutar la App
+    # npm run dev
+
+  - Conectar MongoDB con la App
+    + Iniciar session en https://www.mongodb.com/atlas
+    + Database -> Data Services -> Clic "Build a Database"
+    + Select 'FREE', dejar todo por defecto y clic 'Create'
+    + Editamos el password a 'root123' y clic 'Finish and Close'
+    + Ingresamos al cluster y clic 'Connect'
+    + Connect to your application -> 'Drivers' y muestra las configuracion de coneccion a mongodb
+
+  - Conectar MongoDB con MongoDB Compass (Interfaz grafica)
+    + Abrir MongoDB Compass, insertar la URI: mongodb+srv://root:<password>cluster0.gpg5hmm.mongodb.net y clic en 'Connect'
+    + Ir a 'Databases' y clic 'Create database'
+      > Database Name: nodesend
+      > Collection Name: usuarios
+      > Clic 'Create Database'
