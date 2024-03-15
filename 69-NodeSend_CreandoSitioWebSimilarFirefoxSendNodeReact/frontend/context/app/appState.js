@@ -15,7 +15,9 @@ import {
   SUBIR_ARCHIVO_ERROR,
   CREAR_ENLACE_EXITO,
   CREAR_ENLACE_ERROR,
-  LIMPIAR_STATE
+  LIMPIAR_STATE,
+  AGREGAR_PASSWORD,
+  AGREGAR_DESCARGAS
 } from '../../types';
 
 const AppState = ({children}) => {
@@ -97,6 +99,7 @@ const AppState = ({children}) => {
 
     try {
       const resultado = await clienteAxios.post('/api/enlaces', data);
+      // console.log(resultado);
       // console.log(resultado.data.msg);
 
       dispatch({
@@ -106,6 +109,7 @@ const AppState = ({children}) => {
 
     } catch (error) {
       console.log(error);
+      // console.log(error.response.data.msg);
     }
   };
 
@@ -115,6 +119,26 @@ const AppState = ({children}) => {
     dispatch({
       type: LIMPIAR_STATE,
       payload: ''
+    });
+  };
+
+  // Agregar el password
+  const agregarPassword = password => {
+    // console.log(password);
+
+    dispatch({
+      type: AGREGAR_PASSWORD,
+      payload: password
+    });
+  };
+
+  // Agrega el numero de descarga
+  const agregarDescargas = descargas => {
+    // console.log(descargas);
+
+    dispatch({
+      type: AGREGAR_DESCARGAS,
+      payload: descargas
     });
   };
 
@@ -132,7 +156,9 @@ const AppState = ({children}) => {
         mostrarAlerta,
         subirArchivos,
         crearEnlace,
-        limpiarState
+        limpiarState,
+        agregarPassword,
+        agregarDescargas
       }}
     >
       {children}

@@ -102,3 +102,54 @@
       # npm install axios
     > React Dropzone
       # npm install react-dropzone
+
+
+* Deploy de la App NodeSend
+  + frontent -> Vercel
+    - Ir al directorio de la app y ejecutar
+      # npm run build
+    - Instalar vercel
+      # npm i -g vercel
+    - Crear un cuenta y iniciar sesion en Vercel (URL: https://vercel.com/)
+    - Iniciar session en CLI de Vercel
+      # vc login
+      > Ir al correo para su respectivo verificacion
+    - Deploy a Vercel
+      # vc
+        ? Set up and deploy [Y/n] y
+        ? Which scope do you want to deploy to? [ENTER]
+        ? Link to existing proyect? [Y/n] n
+        ? What's your project's name? [ENTER]
+        ? In which directory is your code located? ./ [ENTER]
+        ? Want to modify these settings? [y/N] n
+          Inspect: URL (Copiar y pegar en el navegador para ver el estado del deploy) -> Boton 'Visit' (Para ver el sitio)
+          Preview: URL (Copiar y pegar en el navegador para vel el sitio)
+    - Modificar las URL's (Archivo: next.config.js)
+      env: {
+        backend: URL_HEROKU_DEPLOY (Click app -> click boton 'Open app' y copiar la URL)
+        frontend: URL_VERCEL_DEPLOY (Click app -> Copiar la URL de deployment o click boton 'Visit' y copiar la URL)
+      }
+    - Ejecuar nuevamente el build y deploy a Vercel
+      # npm run build
+      # vc
+
+  + Backend -> Heroku
+    - Ir a GitHub, crear un nuevo repositorio y subir la app al repositorio
+    - Heroku CLI (https://devcenter.heroku.com/articles/heroku-cli)
+      # npm install -g heroku
+    - Crear e iniciar sesion en Heroku (https://www.heroku.com/)
+    - Inicar sesion en Heroku CLI
+      # heroku login
+    - Crea la app y enlazar el repositorio con la app de Heroku
+      # heroku create --remote production
+      # git push production master
+    - Agregar las variables de configuracion
+      -> Ir a dashboard -> Click en la app creada -> Seleccionamos 'Settings' -> Click en el boton 'Reveal Config Vars'
+        KEY: DB_URL, VALUE: URL_MONGODB
+        KEY: SECRETA, VALUE: PALABRA_SECRETA_FIRMA_SESION
+        KEY: FRONTENT_URL, VALUE: FRONTENT_URL_VERCEL
+    - Agregar un nuevo cambio en el repositorio
+      # git add .
+      # git commit -m "MENSAJE_COMMIT"
+      # git push -u origin master
+      # git push production master
