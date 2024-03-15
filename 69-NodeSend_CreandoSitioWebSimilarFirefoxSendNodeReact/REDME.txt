@@ -75,7 +75,7 @@
 
 
 * Creando la app frontend de NodeSend
-  - Incresar dentro de la carpeta del proyecto
+  - Ingresar dentro de la carpeta del proyecto
   - Crear la app
     # npx create-next-app frontend        // New version
       > Ok to proceed? (y): y
@@ -91,3 +91,7 @@
     # npx create-next-app@12 frontend     // Old version
     # cd frontent
     # npm run dev
+
+  - Instalar dependencias
+    > Formik y Yup
+      # npm install formik yup
