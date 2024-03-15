@@ -1,36 +1,58 @@
-import React from "react";
+import React, { useContext, useEffect, useReducer } from "react";
 // Formik
 import { useFormik } from "formik";
 // Yup
 import * as Yup from "yup";
+// Contexts
+import authContext from "../context/auth/authContext";
 // Components
-import Layout from "../components/Layout"
+import Layout from "../components/Layout";
+import Alerta from "../components/Alerta";
+import { useRouter } from "next/router";
 
 const Login = () => {
-    // Validacion del formulario con formik y yup
-    const formik = useFormik({
-      initialValues: {
-        email: '',
-        password: ''
-      },
-      validationSchema: Yup.object({
-        email: Yup.string()
-                  .email('El email no es válido')
-                  .required('El email es obligatorio'),
-        password: Yup.string()
-                  .required('El password es obligatorio')
-      }),
-      // onSubmit: () => {
-      onSubmit: valores => {
-        // console.log('Enviando formulario...');
-        console.log(valores);
-      }
-    });
+  // Defunir el context
+  const AuthContext = useContext(authContext);
+  const { iniciarSesion, autenticado, mensaje } = AuthContext;
+
+  // Next router
+  const router = useRouter();
+
+  useEffect(() => {
+    if (autenticado) {
+      router.push('/');
+    }
+
+  }, [autenticado]);
+
+  // Validacion del formulario con formik y yup
+  const formik = useFormik({
+    initialValues: {
+      email: '',
+      password: ''
+    },
+    validationSchema: Yup.object({
+      email: Yup.string()
+                .email('El email no es válido')
+                .required('El email es obligatorio'),
+      password: Yup.string()
+                .required('El password es obligatorio')
+    }),
+    // onSubmit: () => {
+    onSubmit: valores => {
+      // console.log('Enviando formulario...');
+      // console.log(valores);
+
+      iniciarSesion(valores);
+    }
+  });
 
   return (
     <Layout>
       <div className="md:w-4/5 xl:w-3/5 mx-auto mb-32">
         <h2 className="text-4xl font-sans font-bold text-gray-800 text-center my-4">Iniciar Sesión</h2>
+
+        {mensaje && <Alerta />}
 
         <div className="flex justify-center mt-5">
           <div className="w-full max-w-lg">
