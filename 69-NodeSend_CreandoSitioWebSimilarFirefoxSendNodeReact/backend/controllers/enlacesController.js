@@ -60,6 +60,17 @@ exports.nuevoEnlace = async (req, res, next) => {
 
 };
 
+// Obtener todos los enlaces
+exports.todosEnlaces = async (req, res) => {
+  try {
+    const enlaces = await Enlaces.find({}).select('url -_id');
+    res.json({enlaces});
+
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 // Obtener el enlace
 exports.obtenerEnlace = async (req, res, next) => {
     // console.log(req.params.url);
@@ -75,27 +86,33 @@ exports.obtenerEnlace = async (req, res, next) => {
     }
 
     // El enlace existe
-    res.json({archivo: enlace.nombre});
+    // res.json({archivo: enlace.nombre});    // Respuesta como JSON
+    return res.json({archivo: enlace.nombre});
+    // res.send({archivo: enlace.nombre});     // Muestra un vista
+    // res.download({archivo: enlace.nombre});   // Agrega el content-disposition para descarga de archivos
+    // Evitar que se siga ejecutando el resto del codigo
+    // return;
+    // return next();
 
-    const { descargas, nombre } = enlace;
-
-    // Si la descarga es igual a 1, borrar la entrada y el archivo
-    if (descargas === 1) {
-        // console.log('Solo existe 1');
-        // Eliminar el archivo
-        req.archivo = nombre;
-
-        // Eliminar la entrada de la db
-        // await Enlaces.findOneAndRemove(req.params.url);      // Error!
-        await Enlaces.findOneAndDelete(req.params.url);
-
-        // Next - pasa al siguiente controlador "enlaceController.eliminarArchivo"
-        next();
-
-    } else {
-        // console.log('Existe mas de 1');
-        // Si la decarga es mayor a 1, restar menos 1
-        enlace.descargas--;
-        await enlace.save();
-    }
+    // const { descargas, nombre } = enlace;
+    //
+    // // Si la descarga es igual a 1, borrar la entrada y el archivo
+    // if (descargas === 1) {
+    //     // console.log('Solo existe 1');
+    //     // Eliminar el archivo
+    //     req.archivo = nombre;
+    //
+    //     // Eliminar la entrada de la db
+    //     // await Enlaces.findOneAndRemove(req.params.url);      // Error!
+    //     await Enlaces.findOneAndDelete(req.params.url);
+    //
+    //     // Next - pasa al siguiente controlador "enlaceController.eliminarArchivo"
+    //     next();
+    //
+    // } else {
+    //     // console.log('Existe mas de 1');
+    //     // Si la decarga es mayor a 1, restar menos 1
+    //     enlace.descargas--;
+    //     await enlace.save();
+    // }
 };

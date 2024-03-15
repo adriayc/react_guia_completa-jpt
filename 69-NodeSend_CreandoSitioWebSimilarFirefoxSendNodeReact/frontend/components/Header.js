@@ -1,24 +1,48 @@
 import { useContext, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
+// Router
+import { useRouter } from "next/router";
 // Contexts
 import authContext from "../context/auth/authContext";
+import appContext from "../context/app/appContext";
+
 const Header = () => {
-    // Definir el context
+    // Routing
+    const router = useRouter();
+
+    // Definir el context de auth
     const AuthContext = useContext(authContext);
     const { usuarioAutenticado, usuario, cerrarSesion } = AuthContext;
+
+    // Definir el context de app
+    const AppContext = useContext(appContext);
+    const { limpiarState } = AppContext;
 
     useEffect(() => {
       usuarioAutenticado();
       
     }, [])
 
+    const redireccionar = () => {
+      // console.log('Redireccionando...');
+
+      router.push('/');
+      limpiarState();
+    };
+
   return (
     <header className="py-8 flex flex-col md:flex-row items-center justify-between">
       {/* <img src="logo.svg" className="w-64 mf:mb-0" /> */}
-      <Link href='/'>
-        <Image src='logo.svg' width={256} height={47} alt="Logo" />
-      </Link>
+      {/* <Link href='/'> */}
+      <Image 
+        src='/logo.svg' 
+        className="w-64 mb-8 md:mb-0 cursos-pointer" 
+        width={256} 
+        height={47} 
+        alt="Logo"
+        onClick={() => redireccionar()} />
+      {/* </Link> */}
 
       <div>
         {/* Error */}

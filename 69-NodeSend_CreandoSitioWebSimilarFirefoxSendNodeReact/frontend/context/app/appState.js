@@ -14,7 +14,8 @@ import {
   SUBIR_ARCHIVO_EXITO,
   SUBIR_ARCHIVO_ERROR,
   CREAR_ENLACE_EXITO,
-  CREAR_ENLACE_ERROR
+  CREAR_ENLACE_ERROR,
+  LIMPIAR_STATE
 } from '../../types';
 
 const AppState = ({children}) => {
@@ -108,6 +109,15 @@ const AppState = ({children}) => {
     }
   };
 
+  const limpiarState = () => {
+    // console.log('Limpiando state...');
+
+    dispatch({
+      type: LIMPIAR_STATE,
+      payload: ''
+    });
+  };
+
   return (
     <appContext.Provider
       value={{
@@ -122,6 +132,7 @@ const AppState = ({children}) => {
         mostrarAlerta,
         subirArchivos,
         crearEnlace,
+        limpiarState
       }}
     >
       {children}
